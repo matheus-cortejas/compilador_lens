@@ -1,11 +1,12 @@
-# 📘 Documentação da Linguagem Lens (Baseada na Gramática)
+# 📘 Documentação da Linguagem Lens (Versão Expandida - Baseada na Gramática)
 
-Este documento apresenta a especificação da linguagem fictícia **Lens**, construída com base na gramática formal fornecida. A Lens é uma linguagem minimalista, estaticamente tipada, com suporte a funções, operadores personalizados, controle de fluxo e entrada/saída padrão.
+A linguagem **Lens** é uma linguagem de programação fictícia, estaticamente tipada e com foco em clareza e simplicidade. Esta versão da documentação foi atualizada de acordo com a gramática formal mais recente, incluindo suporte a arrays e operadores personalizados.
 
 ---
 
-## 🧱 Estrutura Básica de um Programa
-Todo programa Lens inicia com `@start` e termina com `@end`.
+## 🧱 Estrutura Geral do Programa
+
+Todo programa deve iniciar com `@start` e finalizar com `@end`:
 
 ```lens
 @start
@@ -17,61 +18,63 @@ Todo programa Lens inicia com `@start` e termina com `@end`.
 
 ## 📥 Entrada e 📤 Saída
 
-### Impressão:
+### Impressão
 ```lens
-print:: "Texto", variavel, 10
+print:: "Olá, ", nome, 2024
 ```
-Permite concatenar múltiplas expressões com vírgulas.
 
-### Leitura de Entrada:
+### Leitura de Entrada
 ```lens
 input(nome)
 ```
-Lê um valor do usuário e armazena em `nome`.
 
 ---
 
-## 🧾 Declaração de Variáveis
+## 🔢 Declaração e Atribuição de Variáveis
 
 ```lens
 let idade: int
-let nome: String = "João"
-let ativo: bool = True
-```
-- É obrigatória a declaração de tipo: `int`, `float`, `String`, `bool`
-- Atribuições podem ser feitas diretamente na declaração ou em comandos separados:
-```lens
-idade = 20
-idade += 5
+let nome: String = "Lucas"
+idade = 25
+idade += 1
 ```
 
 ---
 
-## 🔄 Estruturas de Repetição
+## 🧮 Tipos de Dados
 
-### For:
+- `int`: Números inteiros
+- `float`: Números decimais
+- `String`: Texto entre aspas
+- `bool`: `True` ou `False`
+
+---
+
+## 🔁 Estruturas de Repetição
+
+### For
 ```lens
 let i: int
-for i in 1..5 {
+for i in 0..5 {
     print:: i
 }
 ```
 
-### While:
+### While
 ```lens
-let contador: int = 0
-while contador < 3 {
-    print:: contador
-    contador += 1
+let i: int = 0
+while i < 3 {
+    print:: i
+    i += 1
 }
 ```
 
 ---
 
-## 🧠 Condicionais
+## 🔀 Estruturas Condicionais
 
 ```lens
-if idade >= 18 {
+if idade > 17 {
     print:: "Maior de idade"
 } elseif idade == 17 {
     print:: "Quase lá"
@@ -80,18 +83,7 @@ if idade >= 18 {
 }
 ```
 
-Expressões lógicas e comparativas são permitidas:
-- `&&`, `||`, `!`
-- `==`, `!=`, `>`, `<`, `>=`, `<=`
-
----
-
-## 🧮 Expressões Aritméticas
-
-```lens
-let resultado: int = (10 + 2) * 3
-```
-Operadores suportados: `+`, `-`, `*`, `/`
+Operadores válidos: `==`, `!=`, `<`, `>`, `<=`, `>=`, `&&`, `||`
 
 ---
 
@@ -120,29 +112,41 @@ op %% (a: int, b: int) -> int {
 
 print:: 4 %% 2
 ```
-- O símbolo do operador deve ser um ou mais caracteres especiais não reservados.
 
 ---
 
-## 📚 Tipos de Dados
+## 📦 Arrays
 
-- `int`: números inteiros
-- `float`: números com ponto flutuante
-- `String`: sequência de caracteres
-- `bool`: `True` ou `False`
+### Declaração
+```lens
+let notas: [int][3]
+let nomes: [String][2] = ["Ana", "João"]
+```
+
+### Atribuição de Elementos
+```lens
+notas[0] = 10
+nomes[1] = "Carlos"
+```
+
+### Acesso
+```lens
+print:: nomes[1]
+```
 
 ---
 
-## 🚀 Boas Práticas
+## 🔧 Expressões e Aritmética
 
-- Declare sempre o tipo da variável com `let`.
-- Use blocos `{}` para estruturas condicionais e de repetição.
-- Mantenha nomes de variáveis e funções descritivos.
-- Funções devem ter tipo de retorno explícito.
+```lens
+let resultado: int = (10 + 5) * 2
+```
+Suporte aos operadores: `+`, `-`, `*`, `/`
 
 ---
 
-## 🔧 Exemplos Combinados
+## 🧪 Exemplo Completo
+
 ```lens
 @start
     let nome: String
@@ -160,5 +164,13 @@ print:: 4 %% 2
 
 ---
 
-> Esta documentação foi gerada com base na gramática formal da linguagem Lens, com o objetivo de auxiliar estudantes e entusiastas no estudo de construção de linguagens formais.
+## 📚 Observações
+
+- Toda variável deve ser declarada com `let` e tipo explícito.
+- A variável de controle do `for` deve ser previamente declarada.
+- A linguagem não é executável, sendo voltada ao estudo de construção de linguagens.
+
+---
+
+> Esta versão da documentação foi atualizada para refletir as últimas definições da gramática Lens, incluindo operadores, arrays e sintaxe geral.
 
