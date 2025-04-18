@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ANTLR4 Debug",
+      "type": "antlr-debug",
+      "request": "launch",
+      "input": "gramatica/input.txt",
+      "grammar": "${file}",
+      "startRule": "lens",
+      "printParseTree": true,
+      "visualParseTree": true
+    }
+  ]
+}

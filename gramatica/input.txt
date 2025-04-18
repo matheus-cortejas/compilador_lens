@@ -1,0 +1,11 @@
+@start
+    let soma: int = 0
+    let i: int
+
+    for i in 1..6 {
+        soma += i
+        print:: "Somando: " + i + " → Total parcial: " + soma
+    }
+
+    print:: "Soma total: " + soma
+@end
