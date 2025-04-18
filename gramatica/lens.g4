@@ -15,6 +15,8 @@ comando
     | funcaoW
     | funcaoD
     | opper
+    | arraysdec
+    | setarray
     ;
 
 //DIFERENCIAL
@@ -32,7 +34,7 @@ imprime
     ;
     
 concat //Concatencao
-    : exp (',' exp)*
+    : rolav (',' rolav)*
     ;
     
 ler
@@ -131,8 +133,8 @@ expcond
     ;
     
 dec
-    : 'let' VAR':' class 
-    | 'let' VAR':' class atr
+    : letvar class 
+    | letvar class atr
     ;
     
 class
@@ -140,6 +142,25 @@ class
     | 'bool'
     | 'String'
     | 'float'
+    ;
+    
+atray
+    : '=' '['(valor|STRING) (','(valor|STRING))*']'
+    ;
+
+arraysdec
+    : letvar '['class']''['INT']' 
+    | letvar '['class']''['INT']' atray
+    ;
+
+letvar: 'let' VAR':';
+
+arraysolto
+    :VAR'['(INT|VAR)']'
+    ;
+
+setarray
+    :VAR'['INT']' '=' rolav
     ;
 
 atrsolta
@@ -163,6 +184,7 @@ valor
     | INT
     | FLOAT
     | aritp
+    | arraysolto
     ;
 
 STRING
@@ -192,6 +214,8 @@ BOOL
     ;
     
 ANY :  [#^&!?%~`]+ ;
+
+COMENTARIO: '//' ~[\r\n]* -> skip;
 
 
 WS

@@ -1,30 +1,31 @@
 @start
-    let nome: String = "?"
-    let idade: int = 0
-    let ativo: bool = True
+    // Declarando um array de inteiros com tamanho 3
+    let notas: [int][3] = [8, 7, 10]
 
-    input(nome)
-    input(idade)
+    // Declarando um array de nomes sem inicialização
+    let nomes: [String][3]
 
-    if idade < 18 {
-        print:: "Acesso negado para ", nome
-        ativo = False
-    } elseif idade == 18 {
-        print:: nome , " tem 18 anos, verificação extra será feita."
-    } else {
-        print:: "Acesso liberado, " , nome
+    // Atribuindo valores diretamente a índices
+    nomes[0] = "Ana"
+    nomes[1] = "Léo"
+    nomes[2] = "Duda"
+
+    // Imprimindo com concatenação
+    print:: nomes[0], " tirou nota ", notas[0]
+    print:: nomes[1], " tirou nota ", notas[1]
+    print:: nomes[2], " tirou nota ", notas[2]
+
+    // Operação com valor de array
+    let total: int = notas[0] + notas[1] + notas[2]
+    print:: "Nota total: ", total
+
+    // Condicional com valor de array
+    if notas[2] > 9 {
+        print:: nomes[2], " foi excelente!"
     }
 
-    let contador: int = 0
-    while contador < 3 {
-        print:: "Tentativa de login número: ", contador
-        contador += 1
+    // Usando for com arrays
+    for i in 0..3 {
+        print:: "Posição ", i, " => ", nomes[i]
     }
-
-    let i: int = 0
-    for i in 1..4 {
-        print:: nome, " passou pela etapa ", i
-    }
-
-    print:: "Finalizando programa para ", nome
 @end
