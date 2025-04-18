@@ -15,11 +15,11 @@ comando
     ;
 
 imprime
-    : 'print' DUPONT  exp  
+    : 'print' DUPONT  concat  
     ;
     
 concat//Concatencao
-    : STRING ('+' (STRING|VAR))*
+    : exp (',' exp)*
     ;
     
 ler
@@ -90,7 +90,6 @@ exp
     | arit
     | explogi
     | expcomp
-    | concat
     ;
     
 expcond

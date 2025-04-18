@@ -1,11 +1,30 @@
 @start
-    let soma: int = 0
-    let i: int
+    let nome: String = "?"
+    let idade: int = 0
+    let ativo: bool = True
 
-    for i in 1..6 {
-        soma += i
-        print:: "Somando: " + i + " → Total parcial: " + soma
+    input(nome)
+    input(idade)
+
+    if idade < 18 {
+        print:: "Acesso negado para ", nome
+        ativo = False
+    } elseif idade == 18 {
+        print:: nome , " tem 18 anos, verificação extra será feita."
+    } else {
+        print:: "Acesso liberado, " , nome
     }
 
-    print:: "Soma total: " + soma
+    let contador: int = 0
+    while contador < 3 {
+        print:: "Tentativa de login número: ", contador
+        contador += 1
+    }
+
+    let i: int = 0
+    for i in 1..4 {
+        print:: nome, " passou pela etapa ", i
+    }
+
+    print:: "Finalizando programa para ", nome
 @end
