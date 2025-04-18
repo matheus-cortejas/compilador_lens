@@ -11,6 +11,7 @@ comando
     | ler
     | condicao
     | lacofor
+    | lacowhile
     ;
 
 imprime
@@ -43,6 +44,9 @@ elcond
     
 lacofor
     : 'for' VAR 'in' INT '..' (VAR|INT) '{'comando*'}'
+    ;
+lacowhile
+    : 'while' VAR comparacao (VAR|INT) '{' comando* '}'
     ;
 
 arit
