@@ -17,6 +17,8 @@ comando
     | opper
     | arraysdec
     | setarray
+    | objeto
+    | atrobj //atribuicao de objetos
     ;
 
 //DIFERENCIAL
@@ -46,7 +48,7 @@ funcaoW
     ;
     
 funcaoD
-    : VAR '('exp')'
+    : VAR '('exp?')'
     ;
     
 condicao
@@ -142,6 +144,7 @@ class
     | 'bool'
     | 'String'
     | 'float'
+    | VAR //Nome de um objeto
     ;
     
 atray
@@ -176,6 +179,7 @@ atr
 rolav
     :exp
     |valor
+    |obj
     ;
     
 valor
@@ -186,6 +190,24 @@ valor
     | aritp
     | arraysolto
     ;
+    
+//POO
+objeto
+    : 'obj' VAR '{' (decobj|comando)* '}'
+    ;
+
+decobj
+    : VAR':'class
+    ;
+
+atrobj
+    : obj ('=' rolav)?
+    ;
+    
+obj
+    :VAR'.'(funcaoD|VAR)+
+    ;
+
 
 STRING
     : '"' (~["\\] | '\\' .)* '"'
@@ -203,7 +225,8 @@ FLOAT
 VAR
     : [a-zA-Z_][a-zA-Z_0-9]*
     ;
-
+    
+    
 DUPONT
     : '::'
     ;

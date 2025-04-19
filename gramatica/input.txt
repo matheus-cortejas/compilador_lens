@@ -1,31 +1,16 @@
 @start
-    // Declarando um array de inteiros com tamanho 3
-    let notas: [int][3] = [8, 7, 10]
+obj Pessoa {
+    nome: String
+    idade: int
 
-    // Declarando um array de nomes sem inicialização
-    let nomes: [String][3]
-
-    // Atribuindo valores diretamente a índices
-    nomes[0] = "Ana"
-    nomes[1] = "Léo"
-    nomes[2] = "Duda"
-
-    // Imprimindo com concatenação
-    print:: nomes[0], " tirou nota ", notas[0]
-    print:: nomes[1], " tirou nota ", notas[1]
-    print:: nomes[2], " tirou nota ", notas[2]
-
-    // Operação com valor de array
-    let total: int = notas[0] + notas[1] + notas[2]
-    print:: "Nota total: ", total
-
-    // Condicional com valor de array
-    if notas[2] > 9 {
-        print:: nomes[2], " foi excelente!"
+    func apresentar() -> String {
+        return "Olá, sou ", nome
     }
+}
 
-    // Usando for com arrays
-    for i in 0..3 {
-        print:: "Posição ", i, " => ", nomes[i]
-    }
+let p1: Pessoa
+p1.nome = "Lucas"
+print:: p1.apresentar()
+
+
 @end
