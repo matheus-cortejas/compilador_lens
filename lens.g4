@@ -1,249 +1,241 @@
 grammar lens;
 
-//---------------------------------
-// 1. PROGRAM ROOT
-//---------------------------------
 lens
-    : START bloco* END
+    : '@start' comando* '@end' 
     ;
 
-bloco
-    : stmt
+comando
+    : imprime
+    | atrsolta
+    | dec
+    | ler
+    | condicao
+    | lacofor
+    | lacowhile
+    | funcaoW
+    | funcaoD
+    | opper
+    | arraysdec
+    | setarray
     | objeto
+    | atrobj //atribuicao de objetos
     ;
 
-//---------------------------------
-// 2. STATEMENTS (stmts)
-//---------------------------------
-stmt
-    : declaracao                   #stmtDeclaracao
-    | atribuicao                   #stmtAtribuicao
-    | imprime                      #stmtImprime
-    | leitura                      #stmtLeitura
-    | condicao                     #stmtCondicao
-    | lacofor                      #stmtLacofor
-    | lacowhile                    #stmtLacowhile
-    | funcDef                      #stmtFuncDef
-    | chamadaFuncao                #stmtCall
-    | opperDef                     #stmtOpper
-    | arrayDecl                    #stmtArrayDecl
-    | setarray                     #stmtSetarray
-    | retorno                      #stmtRetorno
+//DIFERENCIAL
+//Operadores personalizados
+opper
+    : 'op' ANY '('VAR ':' class (','VAR':' class)*')''->'class '{'comando* 'return' exp'}'
+    ;
+    
+expop
+    : expTemplate (ANY expTemplate)+
     ;
 
-retorno
-    : RETURN expr
-    ;
-
-//---------------------------------
-// 3. DECLARATIONS
-//---------------------------------
-declaracao
-    : LET VAR COLON tipo (ASSIGN expr)?
-    ;
-
-tipo
-    : INT_T
-    | BOOL_T
-    | STRING_T
-    | FLOAT_T
-    | VAR              // User‑defined class
-    ;
-
-//---------------------------------
-// 4. ASSIGNMENTS
-//---------------------------------
-atribuicao
-    : VAR ASSIGN expr                        #simpleAssign
-    | VAR opArit ASSIGN expr                 #opAssign
-    | setarray                                    #arrayAssign
-    | atrobj                                      #objAssign
-    ;
-
-setarray
-    : VAR LBRACK INT RBRACK ASSIGN expr 
-    ;
-
-//---------------------------------
-// 5. ARRAY DECLARATION
-//---------------------------------
-arrayDecl
-    : LET VAR COLON LBRACK tipo RBRACK LBRACK INT RBRACK (ASSIGN arrayLiteral)?
-    ;
-
-arrayLiteral
-    : LBRACK expr (COMMA expr)* RBRACK
-    ;
-
-//---------------------------------
-// 6. OBJECTS
-//---------------------------------
-objeto
-    : OBJ VAR LBRACE (objMember)* RBRACE
-    ;
-
-objMember
-    : declaracao
-    | funcDef
-    ;
-
-objAccess
-    : VAR (DOT membro)+
-    ;
-
-membro
-    : chamadaFuncao
-    | VAR
-    | arrayAccess
-    ;
-
-atrobj
-    : objAccess ASSIGN expr
-    ;
-
-//---------------------------------
-// 7. FUNCTIONS & OPERATORS
-//---------------------------------
-funcDef
-    : FUNC VAR LPAREN parametros? RPAREN ARROW tipo LBRACE stmt* retorno? RBRACE
-    ;
-
-opperDef
-    : OP ANY LPAREN parametros? RPAREN ARROW tipo LBRACE stmt* retorno RBRACE
-    ;
-
-parametros
-    : VAR COLON tipo (COMMA VAR COLON tipo)*
-    ;
-
-// Function call usable in expressions or as statement
-chamadaFuncao
-    : VAR LPAREN argList? RPAREN
-    ;
-
-argList
-    : expr (COMMA expr)*
-    ;
-
-//---------------------------------
-// 8. I/O
-//---------------------------------
 imprime
-    : PRINT DUPONT concat
+    : 'print' DUPONT  concat  
     ;
-
-concat
-    : expr (COMMA expr)*
+    
+concat //Concatencao
+    : rolav (',' rolav)*
     ;
-
-leitura
-    : INPUT LPAREN VAR RPAREN
+    
+ler
+    : 'input' '(' VAR ')'
     ;
-
-//---------------------------------
-// 9. CONTROL FLOW
-//---------------------------------
+    
+funcaoW
+    :'func' VAR'('(VAR':' class)? (','VAR':' class)*')' '->' class '{'comando* ('return' concat)?'}'
+    ;
+    
+funcaoD
+    : VAR '('(exp(','exp)*)?')'
+    ;
+    
 condicao
-    : IF exprCond blocoBraces (ELSEIF exprCond blocoBraces)* (ELSE blocoBraces)?
+    : ifcond elifcond* elcond?
     ;
-
-blocoBraces
-    : LBRACE stmt* RBRACE
+    
+ifcond
+    : 'if' expcond '{' comando* '}'
     ;
-
+    
+elifcond
+    :'elseif' expcond '{' comando* '}'
+    ;
+    
+elcond
+    :'else' '{' comando* '}'
+    ;
+    
 lacofor
-    : FOR VAR IN INT RANGE INT blocoBraces
+    : 'for' VAR 'in' INT '..' (VAR|INT) '{'comando*'}'
     ;
 
 lacowhile
-    : WHILE exprCond blocoBraces
+    : 'while' VAR comparacao (VAR|INT) '{' comando* '}'
     ;
 
-//---------------------------------
-// 10. EXPRESSIONS (with precedence)
-//---------------------------------
-expr
-    : logicExpr
+arit
+    : valor (oparit valor)*
     ;
 
-logicExpr
-    : compExpr (opalogi compExpr)*
+aritp
+    : '(' arit ')'
     ;
 
-compExpr
-    : arithExpr ((comparacao) arithExpr)?
+oparit
+    : '*'
+    | '/'
+    | '+'
+    | '-'
     ;
 
-arithExpr
-    : term ((ADD | SUB) term)*
+opalogi
+    : '&&'
+    | '||'
+    ;
+    
+comparacao
+    : '!='
+    | '<'
+    | '>'
+    | '<='
+    | '>='
+    | '=='
     ;
 
-term
-    : factor ((MUL | DIV) factor)*
+expcomp
+    : valor (comparacao valor)*
+    ;    
+    
+explogi
+    : VAR (opalogi VAR)*
     ;
 
-factor
-    : LPAREN expr RPAREN
-    | chamadaFuncao
-    | arrayAccess
-    | objAccess
-    | literal
-    | VAR
-    ;
-
-arrayAccess
-    : VAR LBRACK expr RBRACK
-    ;
-
-literal
+expTemplate
     : STRING
     | INT
-    | FLOAT
+    | VAR
     | BOOL
+    | arit
+    | explogi
+    | expcomp
+    | funcaoD
+    ;
+    
+exp
+    : expTemplate
+    | expop
+    ;
+    
+expcond
+    : explogi
+    | expcomp
+    | expop
+    ;
+    
+dec
+    : letvar class 
+    | letvar class atr
+    ;
+    
+class
+    : 'int'
+    | 'bool'
+    | 'String'
+    | 'float'
+    | VAR //Nome de um objeto
+    ;
+    
+atray
+    : '=' '['(valor|STRING) (','(valor|STRING))*']'
     ;
 
-exprCond
-    : logicExpr
+arraysdec
+    : letvar '['class']''['INT']' 
+    | letvar '['class']''['INT']' atray
     ;
 
-//---------------------------------
-// 11. OPERATORS TOKEN RULES
-//---------------------------------
-opArit  : ADD | SUB | MUL | DIV ;   // used for +=, etc.
-opalogic: AND | OR ;
-comparacao: NEQ | EQ | LT | GT | LTE | GTE ;
-opalogi   : AND | OR ;
+letvar: 'let' VAR':' ;
 
-//---------------------------------
-// 12. LEXER RULES
-//---------------------------------
-STRING : '"' (~["\\] | '\\' .)* '"';
-INT    : '-'? [0-9]+;
-FLOAT  : '-'? [0-9]+ '.' [0-9]+;
-BOOL   : 'true' | 'false';
-VAR    : [a-z][a-zA-Z_0-9]*;
+arraysolto
+    : VAR '['(INT|VAR)']'
+    ;
 
-// Keywords
-START : '@start';   END : '@end';
-LET : 'let';        PRINT : 'print';     INPUT : 'input';
-FUNC : 'func';      OP : 'op';           OBJ : 'obj';
-RETURN : 'return';  IF : 'if';           ELSEIF : 'elseif';
-ELSE : 'else';      FOR : 'for';         IN : 'in';
-RANGE : '..';       WHILE : 'while';
+setarray
+    : VAR '['INT']' '=' rolav
+    ;
 
-// Types
-INT_T : 'int';   BOOL_T : 'bool';   STRING_T : 'String';   FLOAT_T : 'float';
+atrsolta
+    : VAR '=' rolav
+    | VAR oparit '=' rolav
+    ;
+    
+atr
+    : '=' rolav 
+    ;
+    
+rolav
+    : exp
+    | valor
+    | obj
+    ;
 
-// Symbols & Operators
-ARROW : '->'; DUPONT : '::'; AND : '&&'; OR : '||';
-NEQ : '!='; EQ  : '=='; LT  : '<'; GT  : '>'; LTE : '<='; GTE : '>=';
-ASSIGN : '=';  COMMA : ','; COLON : ':';
-LPAREN : '(';  RPAREN : ')';
-LBRACE : '{';  RBRACE : '}';
-LBRACK : '[';  RBRACK : ']';
-DOT    : '.';  MUL : '*'; DIV : '/'; ADD : '+'; SUB : '-';
-ANY    : [#^&!?%~`]+;  // keep last in list
+valor
+    : VAR
+    | BOOL
+    | INT
+    | FLOAT
+    | aritp
+    | arraysolto
+    ;
 
-// Ignored
-LINE_COMMENT: '//' ~[\r\n]* -> skip;
-WS           : [ \t\r\n]+  -> skip;
+//POO
+objeto
+    : 'obj' VAR '{' (decobj|comando)* '}'
+    ;
+
+decobj
+    : VAR ':' class
+    ;
+
+atrobj
+    : obj ('=' rolav)?
+    ;
+
+obj
+    : VAR '.' (funcaoD | VAR)+
+    ;
+
+STRING
+    : '"' (~["\\] | '\\' .)* '"'
+    ;
+
+INT
+    : '-'?[0-9]+
+    ;
+
+FLOAT
+    : '-'?[0-9]+ '.' [0-9]+
+    ;
+
+VAR
+    : [a-zA-Z_][a-zA-Z_0-9]*
+    ;
+
+DUPONT
+    : '::'
+    ;
+
+BOOL
+    : 'True'
+    | 'False'
+    ;
+
+ANY :  [#^&!?%~`]+ ;
+
+COMENTARIO: '//' ~[\r\n]* -> skip;
+
+WS
+    : [ \t\r\n]+ -> skip
+    ;
