@@ -1,7 +1,7 @@
 grammar lens;
 
 lens
-    : '@start' comando* '@end' 
+    : '@start' comando* '@end'
     ;
 
 comando
@@ -18,61 +18,63 @@ comando
     | arraysdec
     | setarray
     | objeto
-    | atrobj //atribuicao de objetos
+    | atrobj
     ;
 
-//DIFERENCIAL
-//Operadores personalizados
 opper
-    : 'op' ANY '('VAR ':' class (','VAR':' class)*')''->'class '{'comando* 'return' exp'}'
+    : 'op' ANY '('VAR ':' tipo (','VAR ':' tipo)*')' '->' tipo '{' comando* 'return' exp '}'
     ;
-    
+
 expop
     : expTemplate (ANY expTemplate)+
     ;
 
 imprime
-    : 'print' DUPONT  concat  
+    : 'print' DUPONT concat
     ;
-    
-concat //Concatencao
+
+concat
     : rolav (',' rolav)*
     ;
-    
+
 ler
     : 'input' '(' VAR ')'
     ;
-    
+
 funcaoW
-    :'func' VAR'('(VAR':' class)? (','VAR':' class)*')' '->' class '{'comando* ('return' concat)?'}'
+    : 'func' VAR '(' parametros? ')' '->' tipo '{' comando* ('return' concat)? '}'
     ;
-    
+
+parametros
+    : VAR ':' tipo (',' VAR ':' tipo)*
+    ;
+
 funcaoD
-    : VAR '('exp?')'
+    : VAR '(' exp? ')'
     ;
-    
+
 condicao
     : ifcond elifcond* elcond?
     ;
-    
+
 ifcond
     : 'if' expcond '{' comando* '}'
     ;
-    
+
 elifcond
-    :'elseif' expcond '{' comando* '}'
+    : 'elseif' expcond '{' comando* '}'
     ;
-    
+
 elcond
-    :'else' '{' comando* '}'
+    : 'else' '{' comando* '}'
     ;
-    
+
 lacofor
-    : 'for' VAR 'in' INT '..' (VAR|INT) '{'comando*'}'
+    : 'for' VAR 'in' INT '..' (VAR | INT) '{' comando* '}'
     ;
 
 lacowhile
-    : 'while' VAR comparacao (VAR|INT) '{' comando* '}'
+    : 'while' VAR comparacao (VAR | INT) '{' comando* '}'
     ;
 
 arit
@@ -84,162 +86,139 @@ aritp
     ;
 
 oparit
-    : '*'
-    | '/'
-    | '+'
-    | '-'
+    : '*' | '/' | '+' | '-'
     ;
 
 opalogi
-    : '&&'
-    | '||'
+    : '&&' | '||'
     ;
-    
+
 comparacao
-    : '!='
-    | '<'
-    | '>'
-    | '<='
-    | '>='
-    | '=='
+    : '!=' | '<' | '>' | '<=' | '>=' | '=='
     ;
 
 expcomp
     : valor (comparacao valor)*
-    ;    
-    
+    ;
+
 explogi
     : VAR (opalogi VAR)*
     ;
 
 expTemplate
-    : STRING
-    | INT
-    | VAR
-    | BOOL
-    | arit
-    | explogi
-    | expcomp
-    | funcaoD
+    : STRING | INT | VAR | BOOL | arit | explogi | expcomp | funcaoD
     ;
-    
+
 exp
-    : expTemplate
-    | expop
+    : expTemplate | expop
     ;
-    
+
 expcond
-    : explogi
-    | expcomp
-    | expop
+    : explogi | expcomp | expop
     ;
-    
+
 dec
-    : letvar class 
-    | letvar class atr
+    : letvar tipo
+    | letvar tipo atr
     ;
-    
-class
-    : 'int'
-    | 'bool'
-    | 'String'
-    | 'float'
-    | VAR //Nome de um objeto
+
+tipo
+    : 'int' | 'bool' | 'String' | 'float' | TIPO
     ;
-    
+
 atray
-    : '=' '['(valor|STRING) (','(valor|STRING))*']'
+    : '=' '[' (valor | STRING) (',' (valor | STRING))* ']'
     ;
 
 arraysdec
-    : letvar '['class']''['INT']' 
-    | letvar '['class']''['INT']' atray
+    : letvar '[' tipo ']' '[' INT ']' 
+    | letvar '[' tipo ']' '[' INT ']' atray
     ;
 
-letvar: 'let' VAR':';
+letvar
+    : 'let' VAR ':'
+    ;
 
 arraysolto
-    :VAR'['(INT|VAR)']'
+    : VAR '[' (INT | VAR) ']'
     ;
 
 setarray
-    :VAR'['INT']' '=' rolav
+    : VAR '[' INT ']' '=' rolav
     ;
 
 atrsolta
     : VAR '=' rolav
     | VAR oparit '=' rolav
     ;
-    
+
 atr
-    : '=' rolav 
+    : '=' rolav
     ;
-    
 
 rolav
-    :exp
-    |valor
-    |obj
+    : exp | valor | obj
     ;
-    
+
 valor
-    : VAR
-    | BOOL
-    | INT
-    | FLOAT
-    | aritp
-    | arraysolto
+    : VAR | BOOL | INT | FLOAT | aritp | arraysolto
     ;
-    
-//POO
+
 objeto
-    : 'obj' VAR '{' (decobj|comando)* '}'
+    : 'obj' TIPO '{' (decobj | comando)* '}'
     ;
 
 decobj
-    : VAR':'class
+    : VAR ':' tipo
     ;
 
 atrobj
     : obj ('=' rolav)?
     ;
-    
+
 obj
-    :VAR'.'(funcaoD|VAR)+
+    : VAR '.' membro ('.' membro)*
     ;
 
+membro
+    : funcaoD | VAR
+    ;
 
 STRING
     : '"' (~["\\] | '\\' .)* '"'
     ;
 
 INT
-    : '-'?[0-9]+
+    : '-'? [0-9]+
     ;
 
 FLOAT
-    : '-'?[0-9]+ '.' [0-9]+
+    : '-'? [0-9]+ '.' [0-9]+
     ;
-
 
 VAR
     : [a-zA-Z_][a-zA-Z_0-9]*
     ;
-    
-    
+
+TIPO
+    : [A-Z][a-zA-Z_0-9]*
+    ;
+
 DUPONT
     : '::'
     ;
 
 BOOL
-    :'True'
-    | 'False'
+    : 'True' | 'False'
     ;
-    
-ANY :  [#^&!?%~`]+ ;
 
-COMENTARIO: '//' ~[\r\n]* -> skip;
+ANY
+    : [#^&!?%~`]+
+    ;
 
+COMENTARIO
+    : '//' ~[\r\n]* -> skip
+    ;
 
 WS
     : [ \t\r\n]+ -> skip
