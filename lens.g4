@@ -1,225 +1,249 @@
 grammar lens;
 
+//---------------------------------
+// 1. PROGRAM ROOT
+//---------------------------------
 lens
-    : '@start' comando* '@end'
+    : START bloco* END
     ;
 
-comando
-    : imprime
-    | atrsolta
-    | dec
-    | ler
-    | condicao
-    | lacofor
-    | lacowhile
-    | funcaoW
-    | funcaoD
-    | opper
-    | arraysdec
-    | setarray
+bloco
+    : stmt
     | objeto
-    | atrobj
     ;
 
-opper
-    : 'op' ANY '('VAR ':' tipo (','VAR ':' tipo)*')' '->' tipo '{' comando* 'return' exp '}'
+//---------------------------------
+// 2. STATEMENTS (stmts)
+//---------------------------------
+stmt
+    : declaracao                   #stmtDeclaracao
+    | atribuicao                   #stmtAtribuicao
+    | imprime                      #stmtImprime
+    | leitura                      #stmtLeitura
+    | condicao                     #stmtCondicao
+    | lacofor                      #stmtLacofor
+    | lacowhile                    #stmtLacowhile
+    | funcDef                      #stmtFuncDef
+    | chamadaFuncao                #stmtCall
+    | opperDef                     #stmtOpper
+    | arrayDecl                    #stmtArrayDecl
+    | setarray                     #stmtSetarray
+    | retorno                      #stmtRetorno
     ;
 
-expop
-    : expTemplate (ANY expTemplate)+
+retorno
+    : RETURN expr
     ;
 
-imprime
-    : 'print' DUPONT concat
-    ;
-
-concat
-    : rolav (',' rolav)*
-    ;
-
-ler
-    : 'input' '(' VAR ')'
-    ;
-
-funcaoW
-    : 'func' VAR '(' parametros? ')' '->' tipo '{' comando* ('return' concat)? '}'
-    ;
-
-parametros
-    : VAR ':' tipo (',' VAR ':' tipo)*
-    ;
-
-funcaoD
-    : VAR '(' exp? ')'
-    ;
-
-condicao
-    : ifcond elifcond* elcond?
-    ;
-
-ifcond
-    : 'if' expcond '{' comando* '}'
-    ;
-
-elifcond
-    : 'elseif' expcond '{' comando* '}'
-    ;
-
-elcond
-    : 'else' '{' comando* '}'
-    ;
-
-lacofor
-    : 'for' VAR 'in' INT '..' (VAR | INT) '{' comando* '}'
-    ;
-
-lacowhile
-    : 'while' VAR comparacao (VAR | INT) '{' comando* '}'
-    ;
-
-arit
-    : valor (oparit valor)*
-    ;
-
-aritp
-    : '(' arit ')'
-    ;
-
-oparit
-    : '*' | '/' | '+' | '-'
-    ;
-
-opalogi
-    : '&&' | '||'
-    ;
-
-comparacao
-    : '!=' | '<' | '>' | '<=' | '>=' | '=='
-    ;
-
-expcomp
-    : valor (comparacao valor)*
-    ;
-
-explogi
-    : VAR (opalogi VAR)*
-    ;
-
-expTemplate
-    : STRING | INT | VAR | BOOL | arit | explogi | expcomp | funcaoD
-    ;
-
-exp
-    : expTemplate | expop
-    ;
-
-expcond
-    : explogi | expcomp | expop
-    ;
-
-dec
-    : letvar tipo
-    | letvar tipo atr
+//---------------------------------
+// 3. DECLARATIONS
+//---------------------------------
+declaracao
+    : LET VAR COLON tipo (ASSIGN expr)?
     ;
 
 tipo
-    : 'int' | 'bool' | 'String' | 'float' | TIPO
+    : INT_T
+    | BOOL_T
+    | STRING_T
+    | FLOAT_T
+    | VAR              // User‑defined class
     ;
 
-atray
-    : '=' '[' (valor | STRING) (',' (valor | STRING))* ']'
-    ;
-
-arraysdec
-    : letvar '[' tipo ']' '[' INT ']' 
-    | letvar '[' tipo ']' '[' INT ']' atray
-    ;
-
-letvar
-    : 'let' VAR ':'
-    ;
-
-arraysolto
-    : VAR '[' (INT | VAR) ']'
+//---------------------------------
+// 4. ASSIGNMENTS
+//---------------------------------
+atribuicao
+    : VAR ASSIGN expr                        #simpleAssign
+    | VAR opArit ASSIGN expr                 #opAssign
+    | setarray                                    #arrayAssign
+    | atrobj                                      #objAssign
     ;
 
 setarray
-    : VAR '[' INT ']' '=' rolav
+    : VAR LBRACK INT RBRACK ASSIGN expr 
     ;
 
-atrsolta
-    : VAR '=' rolav
-    | VAR oparit '=' rolav
+//---------------------------------
+// 5. ARRAY DECLARATION
+//---------------------------------
+arrayDecl
+    : LET VAR COLON LBRACK tipo RBRACK LBRACK INT RBRACK (ASSIGN arrayLiteral)?
     ;
 
-atr
-    : '=' rolav
+arrayLiteral
+    : LBRACK expr (COMMA expr)* RBRACK
     ;
 
-rolav
-    : exp | valor | obj
-    ;
-
-valor
-    : VAR | BOOL | INT | FLOAT | aritp | arraysolto
-    ;
-
+//---------------------------------
+// 6. OBJECTS
+//---------------------------------
 objeto
-    : 'obj' TIPO '{' (decobj | comando)* '}'
+    : OBJ VAR LBRACE (objMember)* RBRACE
     ;
 
-decobj
-    : VAR ':' tipo
+objMember
+    : declaracao
+    | funcDef
     ;
 
-atrobj
-    : obj ('=' rolav)?
-    ;
-
-obj
-    : VAR '.' membro ('.' membro)*
+objAccess
+    : VAR (DOT membro)+
     ;
 
 membro
-    : funcaoD | VAR
+    : chamadaFuncao
+    | VAR
+    | arrayAccess
     ;
 
-STRING
-    : '"' (~["\\] | '\\' .)* '"'
+atrobj
+    : objAccess ASSIGN expr
     ;
 
-INT
-    : '-'? [0-9]+
+//---------------------------------
+// 7. FUNCTIONS & OPERATORS
+//---------------------------------
+funcDef
+    : FUNC VAR LPAREN parametros? RPAREN ARROW tipo LBRACE stmt* retorno? RBRACE
     ;
 
-FLOAT
-    : '-'? [0-9]+ '.' [0-9]+
+opperDef
+    : OP ANY LPAREN parametros? RPAREN ARROW tipo LBRACE stmt* retorno RBRACE
     ;
 
-VAR
-    : [a-zA-Z_][a-zA-Z_0-9]*
+parametros
+    : VAR COLON tipo (COMMA VAR COLON tipo)*
     ;
 
-TIPO
-    : [A-Z][a-zA-Z_0-9]*
+// Function call usable in expressions or as statement
+chamadaFuncao
+    : VAR LPAREN argList? RPAREN
     ;
 
-DUPONT
-    : '::'
+argList
+    : expr (COMMA expr)*
     ;
 
-BOOL
-    : 'True' | 'False'
+//---------------------------------
+// 8. I/O
+//---------------------------------
+imprime
+    : PRINT DUPONT concat
     ;
 
-ANY
-    : [#^&!?%~`]+
+concat
+    : expr (COMMA expr)*
     ;
 
-COMENTARIO
-    : '//' ~[\r\n]* -> skip
+leitura
+    : INPUT LPAREN VAR RPAREN
     ;
 
-WS
-    : [ \t\r\n]+ -> skip
+//---------------------------------
+// 9. CONTROL FLOW
+//---------------------------------
+condicao
+    : IF exprCond blocoBraces (ELSEIF exprCond blocoBraces)* (ELSE blocoBraces)?
     ;
+
+blocoBraces
+    : LBRACE stmt* RBRACE
+    ;
+
+lacofor
+    : FOR VAR IN INT RANGE INT blocoBraces
+    ;
+
+lacowhile
+    : WHILE exprCond blocoBraces
+    ;
+
+//---------------------------------
+// 10. EXPRESSIONS (with precedence)
+//---------------------------------
+expr
+    : logicExpr
+    ;
+
+logicExpr
+    : compExpr (opalogi compExpr)*
+    ;
+
+compExpr
+    : arithExpr ((comparacao) arithExpr)?
+    ;
+
+arithExpr
+    : term ((ADD | SUB) term)*
+    ;
+
+term
+    : factor ((MUL | DIV) factor)*
+    ;
+
+factor
+    : LPAREN expr RPAREN
+    | chamadaFuncao
+    | arrayAccess
+    | objAccess
+    | literal
+    | VAR
+    ;
+
+arrayAccess
+    : VAR LBRACK expr RBRACK
+    ;
+
+literal
+    : STRING
+    | INT
+    | FLOAT
+    | BOOL
+    ;
+
+exprCond
+    : logicExpr
+    ;
+
+//---------------------------------
+// 11. OPERATORS TOKEN RULES
+//---------------------------------
+opArit  : ADD | SUB | MUL | DIV ;   // used for +=, etc.
+opalogic: AND | OR ;
+comparacao: NEQ | EQ | LT | GT | LTE | GTE ;
+opalogi   : AND | OR ;
+
+//---------------------------------
+// 12. LEXER RULES
+//---------------------------------
+STRING : '"' (~["\\] | '\\' .)* '"';
+INT    : '-'? [0-9]+;
+FLOAT  : '-'? [0-9]+ '.' [0-9]+;
+BOOL   : 'true' | 'false';
+VAR    : [a-z][a-zA-Z_0-9]*;
+
+// Keywords
+START : '@start';   END : '@end';
+LET : 'let';        PRINT : 'print';     INPUT : 'input';
+FUNC : 'func';      OP : 'op';           OBJ : 'obj';
+RETURN : 'return';  IF : 'if';           ELSEIF : 'elseif';
+ELSE : 'else';      FOR : 'for';         IN : 'in';
+RANGE : '..';       WHILE : 'while';
+
+// Types
+INT_T : 'int';   BOOL_T : 'bool';   STRING_T : 'String';   FLOAT_T : 'float';
+
+// Symbols & Operators
+ARROW : '->'; DUPONT : '::'; AND : '&&'; OR : '||';
+NEQ : '!='; EQ  : '=='; LT  : '<'; GT  : '>'; LTE : '<='; GTE : '>=';
+ASSIGN : '=';  COMMA : ','; COLON : ':';
+LPAREN : '(';  RPAREN : ')';
+LBRACE : '{';  RBRACE : '}';
+LBRACK : '[';  RBRACK : ']';
+DOT    : '.';  MUL : '*'; DIV : '/'; ADD : '+'; SUB : '-';
+ANY    : [#^&!?%~`]+;  // keep last in list
+
+// Ignored
+LINE_COMMENT: '//' ~[\r\n]* -> skip;
+WS           : [ \t\r\n]+  -> skip;

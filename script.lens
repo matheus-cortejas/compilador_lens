@@ -5,6 +5,6 @@ let idade: int = 20
 let saldo: float = 500.75
 let ativo: bool = True
 
-print:: "Ola mundo";
+print:: "Ola mundo"
 
 @end

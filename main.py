@@ -30,6 +30,6 @@ def analisar_arquivo(caminho_arquivo):
 
 # Execução
 if __name__ == "__main__":
-    caminho = input("Digite o caminho do arquivo .lens a ser analisado: ").strip()
+    caminho = "script.lens"
     analisar_arquivo(caminho)
 
