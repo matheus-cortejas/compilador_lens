@@ -1,4 +1,4 @@
-# 📘 Documentação da Linguagem Lens (Versão Simples - Baseada na Nova Gramática)
+# 📘 Documentação da Linguagem Lens
 
 **Lens** é uma linguagem de programação fictícia, com tipagem estática e sintaxe simplificada, ideal para fins didáticos e acadêmicos. Esta versão da documentação foi gerada a partir da gramática atualizada, incluindo apenas as funcionalidades básicas da linguagem.
 
