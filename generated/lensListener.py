@@ -26,24 +26,6 @@ class lensListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by lensParser#opper.
-    def enterOpper(self, ctx:lensParser.OpperContext):
-        pass
-
-    # Exit a parse tree produced by lensParser#opper.
-    def exitOpper(self, ctx:lensParser.OpperContext):
-        pass
-
-
-    # Enter a parse tree produced by lensParser#expop.
-    def enterExpop(self, ctx:lensParser.ExpopContext):
-        pass
-
-    # Exit a parse tree produced by lensParser#expop.
-    def exitExpop(self, ctx:lensParser.ExpopContext):
-        pass
-
-
     # Enter a parse tree produced by lensParser#imprime.
     def enterImprime(self, ctx:lensParser.ImprimeContext):
         pass
@@ -68,33 +50,6 @@ class lensListener(ParseTreeListener):
 
     # Exit a parse tree produced by lensParser#ler.
     def exitLer(self, ctx:lensParser.LerContext):
-        pass
-
-
-    # Enter a parse tree produced by lensParser#funcaoW.
-    def enterFuncaoW(self, ctx:lensParser.FuncaoWContext):
-        pass
-
-    # Exit a parse tree produced by lensParser#funcaoW.
-    def exitFuncaoW(self, ctx:lensParser.FuncaoWContext):
-        pass
-
-
-    # Enter a parse tree produced by lensParser#parametros.
-    def enterParametros(self, ctx:lensParser.ParametrosContext):
-        pass
-
-    # Exit a parse tree produced by lensParser#parametros.
-    def exitParametros(self, ctx:lensParser.ParametrosContext):
-        pass
-
-
-    # Enter a parse tree produced by lensParser#funcaoD.
-    def enterFuncaoD(self, ctx:lensParser.FuncaoDContext):
-        pass
-
-    # Exit a parse tree produced by lensParser#funcaoD.
-    def exitFuncaoD(self, ctx:lensParser.FuncaoDContext):
         pass
 
 
@@ -251,30 +206,12 @@ class lensListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by lensParser#tipo.
-    def enterTipo(self, ctx:lensParser.TipoContext):
+    # Enter a parse tree produced by lensParser#class.
+    def enterClass(self, ctx:lensParser.ClassContext):
         pass
 
-    # Exit a parse tree produced by lensParser#tipo.
-    def exitTipo(self, ctx:lensParser.TipoContext):
-        pass
-
-
-    # Enter a parse tree produced by lensParser#atray.
-    def enterAtray(self, ctx:lensParser.AtrayContext):
-        pass
-
-    # Exit a parse tree produced by lensParser#atray.
-    def exitAtray(self, ctx:lensParser.AtrayContext):
-        pass
-
-
-    # Enter a parse tree produced by lensParser#arraysdec.
-    def enterArraysdec(self, ctx:lensParser.ArraysdecContext):
-        pass
-
-    # Exit a parse tree produced by lensParser#arraysdec.
-    def exitArraysdec(self, ctx:lensParser.ArraysdecContext):
+    # Exit a parse tree produced by lensParser#class.
+    def exitClass(self, ctx:lensParser.ClassContext):
         pass
 
 
@@ -284,24 +221,6 @@ class lensListener(ParseTreeListener):
 
     # Exit a parse tree produced by lensParser#letvar.
     def exitLetvar(self, ctx:lensParser.LetvarContext):
-        pass
-
-
-    # Enter a parse tree produced by lensParser#arraysolto.
-    def enterArraysolto(self, ctx:lensParser.ArraysoltoContext):
-        pass
-
-    # Exit a parse tree produced by lensParser#arraysolto.
-    def exitArraysolto(self, ctx:lensParser.ArraysoltoContext):
-        pass
-
-
-    # Enter a parse tree produced by lensParser#setarray.
-    def enterSetarray(self, ctx:lensParser.SetarrayContext):
-        pass
-
-    # Exit a parse tree produced by lensParser#setarray.
-    def exitSetarray(self, ctx:lensParser.SetarrayContext):
         pass
 
 
@@ -338,51 +257,6 @@ class lensListener(ParseTreeListener):
 
     # Exit a parse tree produced by lensParser#valor.
     def exitValor(self, ctx:lensParser.ValorContext):
-        pass
-
-
-    # Enter a parse tree produced by lensParser#objeto.
-    def enterObjeto(self, ctx:lensParser.ObjetoContext):
-        pass
-
-    # Exit a parse tree produced by lensParser#objeto.
-    def exitObjeto(self, ctx:lensParser.ObjetoContext):
-        pass
-
-
-    # Enter a parse tree produced by lensParser#decobj.
-    def enterDecobj(self, ctx:lensParser.DecobjContext):
-        pass
-
-    # Exit a parse tree produced by lensParser#decobj.
-    def exitDecobj(self, ctx:lensParser.DecobjContext):
-        pass
-
-
-    # Enter a parse tree produced by lensParser#atrobj.
-    def enterAtrobj(self, ctx:lensParser.AtrobjContext):
-        pass
-
-    # Exit a parse tree produced by lensParser#atrobj.
-    def exitAtrobj(self, ctx:lensParser.AtrobjContext):
-        pass
-
-
-    # Enter a parse tree produced by lensParser#obj.
-    def enterObj(self, ctx:lensParser.ObjContext):
-        pass
-
-    # Exit a parse tree produced by lensParser#obj.
-    def exitObj(self, ctx:lensParser.ObjContext):
-        pass
-
-
-    # Enter a parse tree produced by lensParser#membro.
-    def enterMembro(self, ctx:lensParser.MembroContext):
-        pass
-
-    # Exit a parse tree produced by lensParser#membro.
-    def exitMembro(self, ctx:lensParser.MembroContext):
         pass
 
 
