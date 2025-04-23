@@ -163,8 +163,7 @@ expcond
     ;
     
 dec
-    : letvar class 
-    | letvar class atr
+    : letvar class (atr)?
     ;
     
 class

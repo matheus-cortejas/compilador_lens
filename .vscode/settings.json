@@ -4,5 +4,8 @@
         "mode": "internal",
         "listeners": true,
         "visitors": false
-    }
+    },
+    "python.analysis.extraPaths": [
+        "./generated"
+    ]
 }

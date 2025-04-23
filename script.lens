@@ -1,4 +1,4 @@
 @start
-let nome: String = "Augusto";
+let nome: String =
 print:: "Oi"
 @end
