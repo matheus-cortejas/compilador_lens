@@ -1,18 +1,16 @@
-# 📘 Documentação da Linguagem Lens (Com Suporte a Objetos)
+# 📘 Documentação da Linguagem Lens
 
-**Lens** é uma linguagem de programação fictícia, estaticamente tipada e projetada com foco em clareza, simplicidade e flexibilidade. Agora com suporte a orientação a objetos, a linguagem permite a definição de estruturas semelhantes a classes, encapsulando dados e comportamentos.
-
-Esta documentação reflete a versão mais atual da gramática Lens, incluindo recursos como arrays, funções, operadores personalizados e objetos.
+**Lens** é uma linguagem de programação fictícia, com tipagem estática e sintaxe simplificada, ideal para fins didáticos e acadêmicos. Esta versão da documentação foi gerada a partir da gramática atualizada, incluindo apenas as funcionalidades básicas da linguagem.
 
 ---
 
-## 🧱 Estrutura Geral do Programa
+## 🧱 Estrutura do Programa
 
-Todo programa Lens deve estar contido entre `@start` e `@end`:
+Um programa Lens inicia com `@start` e finaliza com `@end`:
 
 ```lens
 @start
-    print:: "Hello, World!"
+    print:: "Olá, mundo!"
 @end
 ```
 
@@ -20,53 +18,59 @@ Todo programa Lens deve estar contido entre `@start` e `@end`:
 
 ## 📥 Entrada e 📤 Saída
 
-### Impressão:
-
+### Impressão
 ```lens
 print:: "Nome:", nome, idade
 ```
+Concatena múltiplos valores com vírgulas.
 
-### Leitura de Entrada:
-
+### Leitura
 ```lens
-input(variavel)
+input(nome)
 ```
+Lê um valor digitado pelo usuário e armazena em uma variável previamente declarada.
 
 ---
 
-## 🔢 Declaração e Atribuição
+## 🔢 Declaração e Atribuição de Variáveis
 
+### Declaração
 ```lens
 let idade: int
-let nome: String = "Lucas"
-idade = 18
-idade += 2
+let nome: String = "João"
 ```
+É obrigatório declarar o tipo da variável (`int`, `float`, `String`, `bool`).
+
+### Atribuição
+```lens
+idade = 20
+idade += 5
+```
+Variáveis podem receber valores diretos ou expressões aritméticas.
 
 ---
 
-## 🎲 Tipos de Dados
+## 🧮 Tipos Suportados
 
-- `int`: números inteiros
-- `float`: números decimais
-- `String`: cadeias de caracteres
-- `bool`: valores lógicos `True` ou `False`
+- `int` → Números inteiros
+- `float` → Números decimais
+- `String` → Texto entre aspas
+- `bool` → `True` ou `False`
 
 ---
 
 ## 🔁 Estruturas de Repetição
 
-### For
-
+### Laço For
 ```lens
 let i: int
 for i in 0..5 {
     print:: i
 }
 ```
+Percorre valores de 0 até 4.
 
-### While
-
+### Laço While
 ```lens
 let i: int = 0
 while i < 3 {
@@ -74,6 +78,7 @@ while i < 3 {
     i += 1
 }
 ```
+Executa enquanto a condição for verdadeira.
 
 ---
 
@@ -90,9 +95,8 @@ if idade >= 18 {
 ```
 
 ### Operadores Lógicos e de Comparação
-
-- Comparação: `==`, `!=`, `<`, `>`, `<=`, `>=`
-- Lógicos: `&&`, `||`
+- `==`, `!=`, `<`, `>`, `<=`, `>=`
+- `&&`, `||`
 
 ---
 
@@ -101,138 +105,38 @@ if idade >= 18 {
 ```lens
 let resultado: int = (10 + 2) * 3
 ```
-
-Operadores: `+`, `-`, `*`, `/`
-
----
-
-## 🧰 Funções
-
-### Definindo Função
-
-```lens
-func saudacao(nome: String) -> String {
-    return "Olá, ", nome
-}
-```
-
-### Chamando Função
-
-```lens
-saudacao("Ana")
-```
+Operadores suportados: `+`, `-`, `*`, `/`
 
 ---
 
-## 🧩 Operadores Personalizados
-
-```lens
-op %% (a: int, b: int) -> int {
-    return (a * b) + (a - b)
-}
-
-print:: 4 %% 2
-```
-
----
-
-## 📦 Arrays
-
-### Declaração
-
-```lens
-let notas: [int][3]
-let nomes: [String][2] = ["Ana", "João"]
-```
-
-### Acesso e Atribuição
-
-```lens
-notas[0] = 10
-print:: nomes[1]
-```
-
----
-
-## 🧱 Orientação a Objetos
-
-### Definição de Objeto
-
-```lens
-obj Pessoa {
-    nome: String
-    idade: int
-}
-```
-
-### Atribuição e Acesso
-
-```lens
-let p: Pessoa
-p.nome = "Carlos"
-p.idade = 22
-print:: p.nome, p.idade
-Pessoa = obj
-Pessoa.nome = "Carlos"
-Pessoa.idade = 22
-print:: Pessoa.nome, Pessoa.idade
-```
-
-### Métodos em Objetos
-
-A linguagem Lens oferece suporte a funções declaradas dentro de objetos. Essas funções são acessadas a partir de instâncias criadas com `let`. Abaixo está um exemplo de objeto com método:
+## 📚 Exemplo Completo
 
 ```lens
 @start
-obj Pessoa {
-    nome: String
-    idade: int
+    let nome: String
+    let idade: int
 
-    func apresentar() -> String {
-        return "Olá, sou ", nome
-    }
-}
+    input(nome)
+    input(idade)
 
-let p1: Pessoa
-p1.nome = "Lucas"
-print:: p1.apresentar()
-@end
-```
-
----
-
-## 🔧 Exemplo Completo
-
-```lens
-@start
-    obj Pessoa {
-    nome: String
-    idade: int
-
-    func apresentar() -> String {
-        return "Olá, sou ", nome
-    }
-}
-
-let p: Pessoa
-p.nome = "Luna"
-p.idade = 21
-
-    if Pessoa.idade >= 18 {
-        print:: p.apresentar(), " e é maior de idade."
+    if idade >= 18 {
+        print:: "Bem-vindo(a),", nome
+    } else {
+        print:: nome, "não pode acessar."
     }
 @end
 ```
 
 ---
 
-## 📚 Considerações Finais
+## 📌 Considerações
 
-- Toda variável ou objeto deve ser declarado com `let` ou `obj`
-- A variável de controle no `for` deve ser declarada previamente
-- A linguagem Lens é didática e não possui interpretador oficial
+- Toda variável deve ser declarada com `let` e tipo explícito
+- O programa sempre deve começar com `@start` e terminar com `@end`
+- Não há suporte a objetos ou funções nesta versão da linguagem
+- A linguagem é ideal para testes de lógica e experimentação com parsers
 
 ---
 
-> Documentação atualizada com base na gramática mais recente da linguagem Lens, incluindo suporte a objetos e sintaxe modular.
+> Documentação baseada na gramática simplificada da linguagem Lens para fins didáticos.
 
