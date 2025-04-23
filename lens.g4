@@ -1,7 +1,7 @@
 grammar lens;
 
 lens
-    : '@start' comando* '@end' 
+    : START comando* END 
     ;
 
 comando
@@ -12,27 +12,11 @@ comando
     | condicao
     | lacofor
     | lacowhile
-    | funcaoW
-    | funcaoD
-    | opper
-    | arraysdec
-    | setarray
-    | objeto
-    | atrobj //atribuicao de objetos
     ;
 
-//DIFERENCIAL
-//Operadores personalizados
-opper
-    : 'op' ANY '('VAR ':' class (','VAR':' class)*')''->'class '{'comando* 'return' exp'}'
-    ;
-    
-expop
-    : expTemplate (ANY expTemplate)+
-    ;
 
 imprime
-    : 'print' DUPONT  concat  
+    : PRINT DUPONT  concat  
     ;
     
 concat //Concatencao
@@ -40,15 +24,7 @@ concat //Concatencao
     ;
     
 ler
-    : 'input' '(' VAR ')'
-    ;
-    
-funcaoW
-    :'func' VAR'('(VAR':' class)? (','VAR':' class)*')' '->' class '{'comando* ('return' concat)?'}'
-    ;
-    
-funcaoD
-    : VAR '('(exp(','exp)*)?')'
+    : INPUT P_N VAR P_I //P_Paranteses nomral/invertido
     ;
     
 condicao
@@ -56,23 +32,23 @@ condicao
     ;
     
 ifcond
-    : 'if' expcond '{' comando* '}'
+    : IF expcond C_N comando* C_I //C_Chaves nomral/invertido
     ;
     
 elifcond
-    :'elseif' expcond '{' comando* '}'
+    : ELSEIF expcond C_N comando* C_I
     ;
     
 elcond
-    :'else' '{' comando* '}'
+    : ELSE C_N comando* C_I
     ;
     
 lacofor
-    : 'for' VAR 'in' INT '..' (VAR|INT) '{'comando*'}'
+    : FOR VAR IN INT DOT2 (VAR|INT) C_N comando* C_I
     ;
 
 lacowhile
-    : 'while' VAR comparacao (VAR|INT) '{' comando* '}'
+    : WHILE VAR comparacao (VAR|INT) C_N comando* C_I
     ;
 
 arit
@@ -80,7 +56,7 @@ arit
     ;
 
 aritp
-    : '(' arit ')'
+    : P_N arit P_I
     ;
 
 oparit
@@ -120,18 +96,15 @@ expTemplate
     | arit
     | explogi
     | expcomp
-    | funcaoD
     ;
     
 exp
     : expTemplate
-    | expop
     ;
     
 expcond
     : explogi
     | expcomp
-    | expop
     ;
     
 dec
@@ -140,45 +113,27 @@ dec
     ;
     
 class
-    : 'int'
-    | 'bool'
-    | 'String'
-    | 'float'
+    : INT_TYPE
+    | BOOL_TYPE
+    | STRING_TYPE
+    | FLOAT_TYPE
     | VAR //Nome de um objeto
     ;
-    
-atray
-    : '=' '['(valor|STRING) (','(valor|STRING))*']'
-    ;
 
-arraysdec
-    : letvar '['class']''['INT']' 
-    | letvar '['class']''['INT']' atray
-    ;
-
-letvar: 'let' VAR':' ;
-
-arraysolto
-    : VAR '['(INT|VAR)']'
-    ;
-
-setarray
-    : VAR '['INT']' '=' rolav
-    ;
+letvar: LET VAR POINT2 ;
 
 atrsolta
-    : VAR '=' rolav
-    | VAR oparit '=' rolav
+    : VAR EQUALS rolav
+    | VAR oparit EQUALS rolav
     ;
     
 atr
-    : '=' rolav 
+    : EQUALS rolav 
     ;
     
 rolav
     : exp
     | valor
-    | obj
     ;
 
 valor
@@ -187,25 +142,24 @@ valor
     | INT
     | FLOAT
     | aritp
-    | arraysolto
     ;
 
-//POO
-objeto
-    : 'obj' VAR '{' (decobj|comando)* '}'
-    ;
+START: '@start';
+END: '@end' ;
+LET: 'let';
+PRINT: 'print';
+INPUT: 'input';
+IF: 'if';
+ELSEIF: 'elseif';
+ELSE: 'else';
+FOR: 'for';
+WHILE: 'while';
+IN: 'in';
 
-decobj
-    : VAR ':' class
-    ;
-
-atrobj
-    : obj ('=' rolav)?
-    ;
-
-obj
-    : VAR '.' (funcaoD | VAR)+
-    ;
+INT_TYPE: 'int';
+FLOAT_TYPE: 'float';
+STRING_TYPE: 'String';
+BOOL_TYPE: 'bool';
 
 STRING
     : '"' (~["\\] | '\\' .)* '"'
@@ -223,16 +177,19 @@ VAR
     : [a-zA-Z_][a-zA-Z_0-9]*
     ;
 
-DUPONT
-    : '::'
-    ;
+DUPONT: '::';
+POINT2: ':';
+DOT2: '..';
+EQUALS: '=';
+P_N: '(';
+P_I: ')';
+C_N: '{';
+C_I: '}';
 
 BOOL
     : 'True'
     | 'False'
     ;
-
-ANY :  [#^&!?%~`]+ ;
 
 COMENTARIO: '//' ~[\r\n]* -> skip;
 
