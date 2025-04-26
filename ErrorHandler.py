@@ -1,3 +1,4 @@
+import logging
 from antlr4.error.ErrorListener import ErrorListener
 
 class CustomErrorListener(ErrorListener):
@@ -9,7 +10,9 @@ class CustomErrorListener(ErrorListener):
         self.tem_erro = True
         if "token recognition error" in msg:  # Erro léxico
             simbolo = offendingSymbol.text if offendingSymbol else msg.split(":")[-1].strip().strip("'")
-            print(f"\033[91mERRO LÉXICO [Linha {line}, Coluna {column}]: Símbolo '{simbolo}' inválido.\033[0m")
+            mensagem = f"ERRO LÉXICO [Linha {line}, Coluna {column}]: Símbolo '{simbolo}' inválido."
+            print(f"\033[91m{mensagem}\033[0m")
+            logging.warning(mensagem)
         else:  # Erro sintático
             esperado = "outro elemento válido"
             encontrado = offendingSymbol.text if offendingSymbol else "EOF"
@@ -26,8 +29,6 @@ class CustomErrorListener(ErrorListener):
                 if esperado_tokens:
                     esperado = "', '".join(esperado_tokens)
 
-            # Agora SEMPRE vai exibir o esperado
-            print(f"\033[91mERRO SINTÁTICO [Linha {line}, Coluna {column}]: Esperado '{esperado}', encontrado '{encontrado}'.\033[0m")
-
-
-
+            mensagem = f"ERRO SINTÁTICO [Linha {line}, Coluna {column}]: Esperado '{esperado}', encontrado '{encontrado}'."
+            print(f"\033[91m{mensagem}\033[0m")
+            logging.warning(mensagem)

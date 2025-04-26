@@ -1,0 +1,6 @@
+2025-04-25 21:14:10,698 - INFO - Iniciando análise do arquivo: script.lens
+2025-04-25 21:14:10,698 - INFO - Código carregado com sucesso.
+2025-04-25 21:14:10,760 - INFO - Tokens analisados com sucesso. Imprimindo tokens:
+2025-04-25 21:14:10,778 - INFO - AST gerada com sucesso.
+2025-04-25 21:14:10,780 - INFO - Arquivo 'ast.dot' salvo com sucesso.
+2025-04-25 21:14:13,111 - INFO - Imagem 'ast.png' gerada com sucesso.
