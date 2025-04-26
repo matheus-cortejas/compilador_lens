@@ -98,11 +98,11 @@ elcond
     ;
     
 lacofor
-    : FOR VAR IN INT DOT2 (VAR|INT) C_N comando* C_I
+    : FOR VAR IN INT DOT2 arit C_N comando* C_I
     ;
 
 lacowhile
-    : WHILE VAR comparacao (VAR|INT) C_N comando* C_I
+    : WHILE VAR comparacao exp C_N comando* C_I
     ;
 
 arit
@@ -110,7 +110,7 @@ arit
     ;
 
 aritp
-    : P_N arit P_I
+    : P_N explogi? P_I
     ;
 
 oparit
@@ -136,11 +136,11 @@ comparacao
     ;
 
 expcomp
-    : valor (comparacao valor)*
+    : arit (comparacao arit)?
     ;    
     
 explogi
-    : VAR (opalogi VAR)*
+    : expcomp (opalogi expcomp)*
     ;
 
 expTemplate
@@ -159,7 +159,6 @@ exp
     
 expcond
     : explogi
-    | expcomp
     ;
     
 dec

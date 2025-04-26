@@ -10,7 +10,7 @@ else:
 
 def serializedATN():
     return [
-        4,1,43,249,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,43,246,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
         7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,
@@ -23,78 +23,77 @@ def serializedATN():
         9,1,9,1,9,1,9,1,9,1,9,1,9,5,9,142,8,9,10,9,12,9,145,9,9,1,9,1,9,
         1,10,1,10,1,10,1,10,1,10,1,10,5,10,155,8,10,10,10,12,10,158,9,10,
         1,10,1,10,1,11,1,11,1,11,1,11,5,11,166,8,11,10,11,12,11,169,9,11,
-        1,12,1,12,1,12,1,12,1,13,1,13,1,14,1,14,1,15,1,15,1,16,1,16,1,16,
-        1,16,5,16,185,8,16,10,16,12,16,188,9,16,1,17,1,17,1,17,1,17,5,17,
-        194,8,17,10,17,12,17,197,9,17,1,18,1,18,1,18,1,18,1,18,1,18,1,18,
-        3,18,206,8,18,1,19,1,19,1,20,1,20,3,20,212,8,20,1,21,1,21,1,21,3,
-        21,217,8,21,1,22,1,22,1,23,1,23,1,23,1,23,1,24,1,24,1,24,1,24,1,
-        24,1,24,1,24,1,24,3,24,233,8,24,1,25,1,25,1,25,1,26,1,26,3,26,240,
-        8,26,1,27,1,27,1,27,1,27,1,27,3,27,247,8,27,1,27,0,0,28,0,2,4,6,
-        8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,
-        52,54,0,5,1,0,40,41,1,0,25,28,1,0,35,36,1,0,29,34,2,0,12,15,41,41,
-        252,0,56,1,0,0,0,2,72,1,0,0,0,4,74,1,0,0,0,6,78,1,0,0,0,8,86,1,0,
-        0,0,10,91,1,0,0,0,12,101,1,0,0,0,14,112,1,0,0,0,16,123,1,0,0,0,18,
-        133,1,0,0,0,20,148,1,0,0,0,22,161,1,0,0,0,24,170,1,0,0,0,26,174,
-        1,0,0,0,28,176,1,0,0,0,30,178,1,0,0,0,32,180,1,0,0,0,34,189,1,0,
-        0,0,36,205,1,0,0,0,38,207,1,0,0,0,40,211,1,0,0,0,42,213,1,0,0,0,
-        44,218,1,0,0,0,46,220,1,0,0,0,48,232,1,0,0,0,50,234,1,0,0,0,52,239,
-        1,0,0,0,54,246,1,0,0,0,56,60,5,1,0,0,57,59,3,2,1,0,58,57,1,0,0,0,
-        59,62,1,0,0,0,60,58,1,0,0,0,60,61,1,0,0,0,61,63,1,0,0,0,62,60,1,
-        0,0,0,63,64,5,2,0,0,64,1,1,0,0,0,65,73,3,4,2,0,66,73,3,48,24,0,67,
-        73,3,42,21,0,68,73,3,8,4,0,69,73,3,10,5,0,70,73,3,18,9,0,71,73,3,
-        20,10,0,72,65,1,0,0,0,72,66,1,0,0,0,72,67,1,0,0,0,72,68,1,0,0,0,
-        72,69,1,0,0,0,72,70,1,0,0,0,72,71,1,0,0,0,73,3,1,0,0,0,74,75,5,4,
-        0,0,75,76,5,16,0,0,76,77,3,6,3,0,77,5,1,0,0,0,78,83,3,52,26,0,79,
-        80,5,19,0,0,80,82,3,52,26,0,81,79,1,0,0,0,82,85,1,0,0,0,83,81,1,
-        0,0,0,83,84,1,0,0,0,84,7,1,0,0,0,85,83,1,0,0,0,86,87,5,5,0,0,87,
-        88,5,21,0,0,88,89,5,41,0,0,89,90,5,22,0,0,90,9,1,0,0,0,91,95,3,12,
-        6,0,92,94,3,14,7,0,93,92,1,0,0,0,94,97,1,0,0,0,95,93,1,0,0,0,95,
-        96,1,0,0,0,96,99,1,0,0,0,97,95,1,0,0,0,98,100,3,16,8,0,99,98,1,0,
-        0,0,99,100,1,0,0,0,100,11,1,0,0,0,101,102,5,6,0,0,102,103,3,40,20,
-        0,103,107,5,23,0,0,104,106,3,2,1,0,105,104,1,0,0,0,106,109,1,0,0,
-        0,107,105,1,0,0,0,107,108,1,0,0,0,108,110,1,0,0,0,109,107,1,0,0,
-        0,110,111,5,24,0,0,111,13,1,0,0,0,112,113,5,7,0,0,113,114,3,40,20,
-        0,114,118,5,23,0,0,115,117,3,2,1,0,116,115,1,0,0,0,117,120,1,0,0,
-        0,118,116,1,0,0,0,118,119,1,0,0,0,119,121,1,0,0,0,120,118,1,0,0,
-        0,121,122,5,24,0,0,122,15,1,0,0,0,123,124,5,8,0,0,124,128,5,23,0,
-        0,125,127,3,2,1,0,126,125,1,0,0,0,127,130,1,0,0,0,128,126,1,0,0,
-        0,128,129,1,0,0,0,129,131,1,0,0,0,130,128,1,0,0,0,131,132,5,24,0,
-        0,132,17,1,0,0,0,133,134,5,9,0,0,134,135,5,41,0,0,135,136,5,11,0,
-        0,136,137,5,40,0,0,137,138,5,18,0,0,138,139,7,0,0,0,139,143,5,23,
-        0,0,140,142,3,2,1,0,141,140,1,0,0,0,142,145,1,0,0,0,143,141,1,0,
-        0,0,143,144,1,0,0,0,144,146,1,0,0,0,145,143,1,0,0,0,146,147,5,24,
-        0,0,147,19,1,0,0,0,148,149,5,10,0,0,149,150,5,41,0,0,150,151,3,30,
-        15,0,151,152,7,0,0,0,152,156,5,23,0,0,153,155,3,2,1,0,154,153,1,
-        0,0,0,155,158,1,0,0,0,156,154,1,0,0,0,156,157,1,0,0,0,157,159,1,
-        0,0,0,158,156,1,0,0,0,159,160,5,24,0,0,160,21,1,0,0,0,161,167,3,
-        54,27,0,162,163,3,26,13,0,163,164,3,54,27,0,164,166,1,0,0,0,165,
-        162,1,0,0,0,166,169,1,0,0,0,167,165,1,0,0,0,167,168,1,0,0,0,168,
-        23,1,0,0,0,169,167,1,0,0,0,170,171,5,21,0,0,171,172,3,22,11,0,172,
-        173,5,22,0,0,173,25,1,0,0,0,174,175,7,1,0,0,175,27,1,0,0,0,176,177,
-        7,2,0,0,177,29,1,0,0,0,178,179,7,3,0,0,179,31,1,0,0,0,180,186,3,
-        54,27,0,181,182,3,30,15,0,182,183,3,54,27,0,183,185,1,0,0,0,184,
-        181,1,0,0,0,185,188,1,0,0,0,186,184,1,0,0,0,186,187,1,0,0,0,187,
-        33,1,0,0,0,188,186,1,0,0,0,189,195,5,41,0,0,190,191,3,28,14,0,191,
-        192,5,41,0,0,192,194,1,0,0,0,193,190,1,0,0,0,194,197,1,0,0,0,195,
-        193,1,0,0,0,195,196,1,0,0,0,196,35,1,0,0,0,197,195,1,0,0,0,198,206,
-        5,38,0,0,199,206,5,40,0,0,200,206,5,41,0,0,201,206,5,37,0,0,202,
-        206,3,22,11,0,203,206,3,34,17,0,204,206,3,32,16,0,205,198,1,0,0,
-        0,205,199,1,0,0,0,205,200,1,0,0,0,205,201,1,0,0,0,205,202,1,0,0,
-        0,205,203,1,0,0,0,205,204,1,0,0,0,206,37,1,0,0,0,207,208,3,36,18,
-        0,208,39,1,0,0,0,209,212,3,34,17,0,210,212,3,32,16,0,211,209,1,0,
-        0,0,211,210,1,0,0,0,212,41,1,0,0,0,213,214,3,46,23,0,214,216,3,44,
-        22,0,215,217,3,50,25,0,216,215,1,0,0,0,216,217,1,0,0,0,217,43,1,
-        0,0,0,218,219,7,4,0,0,219,45,1,0,0,0,220,221,5,3,0,0,221,222,5,41,
-        0,0,222,223,5,17,0,0,223,47,1,0,0,0,224,225,5,41,0,0,225,226,5,20,
-        0,0,226,233,3,52,26,0,227,228,5,41,0,0,228,229,3,26,13,0,229,230,
-        5,20,0,0,230,231,3,52,26,0,231,233,1,0,0,0,232,224,1,0,0,0,232,227,
-        1,0,0,0,233,49,1,0,0,0,234,235,5,20,0,0,235,236,3,52,26,0,236,51,
-        1,0,0,0,237,240,3,38,19,0,238,240,3,54,27,0,239,237,1,0,0,0,239,
-        238,1,0,0,0,240,53,1,0,0,0,241,247,5,41,0,0,242,247,5,37,0,0,243,
-        247,5,40,0,0,244,247,5,39,0,0,245,247,3,24,12,0,246,241,1,0,0,0,
-        246,242,1,0,0,0,246,243,1,0,0,0,246,244,1,0,0,0,246,245,1,0,0,0,
-        247,55,1,0,0,0,19,60,72,83,95,99,107,118,128,143,156,167,186,195,
-        205,211,216,232,239,246
+        1,12,1,12,3,12,173,8,12,1,12,1,12,1,13,1,13,1,14,1,14,1,15,1,15,
+        1,16,1,16,1,16,1,16,3,16,187,8,16,1,17,1,17,1,17,1,17,5,17,193,8,
+        17,10,17,12,17,196,9,17,1,18,1,18,1,18,1,18,1,18,1,18,1,18,3,18,
+        205,8,18,1,19,1,19,1,20,1,20,1,21,1,21,1,21,3,21,214,8,21,1,22,1,
+        22,1,23,1,23,1,23,1,23,1,24,1,24,1,24,1,24,1,24,1,24,1,24,1,24,3,
+        24,230,8,24,1,25,1,25,1,25,1,26,1,26,3,26,237,8,26,1,27,1,27,1,27,
+        1,27,1,27,3,27,244,8,27,1,27,0,0,28,0,2,4,6,8,10,12,14,16,18,20,
+        22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,0,4,1,0,25,28,
+        1,0,35,36,1,0,29,34,2,0,12,15,41,41,249,0,56,1,0,0,0,2,72,1,0,0,
+        0,4,74,1,0,0,0,6,78,1,0,0,0,8,86,1,0,0,0,10,91,1,0,0,0,12,101,1,
+        0,0,0,14,112,1,0,0,0,16,123,1,0,0,0,18,133,1,0,0,0,20,148,1,0,0,
+        0,22,161,1,0,0,0,24,170,1,0,0,0,26,176,1,0,0,0,28,178,1,0,0,0,30,
+        180,1,0,0,0,32,182,1,0,0,0,34,188,1,0,0,0,36,204,1,0,0,0,38,206,
+        1,0,0,0,40,208,1,0,0,0,42,210,1,0,0,0,44,215,1,0,0,0,46,217,1,0,
+        0,0,48,229,1,0,0,0,50,231,1,0,0,0,52,236,1,0,0,0,54,243,1,0,0,0,
+        56,60,5,1,0,0,57,59,3,2,1,0,58,57,1,0,0,0,59,62,1,0,0,0,60,58,1,
+        0,0,0,60,61,1,0,0,0,61,63,1,0,0,0,62,60,1,0,0,0,63,64,5,2,0,0,64,
+        1,1,0,0,0,65,73,3,4,2,0,66,73,3,48,24,0,67,73,3,42,21,0,68,73,3,
+        8,4,0,69,73,3,10,5,0,70,73,3,18,9,0,71,73,3,20,10,0,72,65,1,0,0,
+        0,72,66,1,0,0,0,72,67,1,0,0,0,72,68,1,0,0,0,72,69,1,0,0,0,72,70,
+        1,0,0,0,72,71,1,0,0,0,73,3,1,0,0,0,74,75,5,4,0,0,75,76,5,16,0,0,
+        76,77,3,6,3,0,77,5,1,0,0,0,78,83,3,52,26,0,79,80,5,19,0,0,80,82,
+        3,52,26,0,81,79,1,0,0,0,82,85,1,0,0,0,83,81,1,0,0,0,83,84,1,0,0,
+        0,84,7,1,0,0,0,85,83,1,0,0,0,86,87,5,5,0,0,87,88,5,21,0,0,88,89,
+        5,41,0,0,89,90,5,22,0,0,90,9,1,0,0,0,91,95,3,12,6,0,92,94,3,14,7,
+        0,93,92,1,0,0,0,94,97,1,0,0,0,95,93,1,0,0,0,95,96,1,0,0,0,96,99,
+        1,0,0,0,97,95,1,0,0,0,98,100,3,16,8,0,99,98,1,0,0,0,99,100,1,0,0,
+        0,100,11,1,0,0,0,101,102,5,6,0,0,102,103,3,40,20,0,103,107,5,23,
+        0,0,104,106,3,2,1,0,105,104,1,0,0,0,106,109,1,0,0,0,107,105,1,0,
+        0,0,107,108,1,0,0,0,108,110,1,0,0,0,109,107,1,0,0,0,110,111,5,24,
+        0,0,111,13,1,0,0,0,112,113,5,7,0,0,113,114,3,40,20,0,114,118,5,23,
+        0,0,115,117,3,2,1,0,116,115,1,0,0,0,117,120,1,0,0,0,118,116,1,0,
+        0,0,118,119,1,0,0,0,119,121,1,0,0,0,120,118,1,0,0,0,121,122,5,24,
+        0,0,122,15,1,0,0,0,123,124,5,8,0,0,124,128,5,23,0,0,125,127,3,2,
+        1,0,126,125,1,0,0,0,127,130,1,0,0,0,128,126,1,0,0,0,128,129,1,0,
+        0,0,129,131,1,0,0,0,130,128,1,0,0,0,131,132,5,24,0,0,132,17,1,0,
+        0,0,133,134,5,9,0,0,134,135,5,41,0,0,135,136,5,11,0,0,136,137,5,
+        40,0,0,137,138,5,18,0,0,138,139,3,22,11,0,139,143,5,23,0,0,140,142,
+        3,2,1,0,141,140,1,0,0,0,142,145,1,0,0,0,143,141,1,0,0,0,143,144,
+        1,0,0,0,144,146,1,0,0,0,145,143,1,0,0,0,146,147,5,24,0,0,147,19,
+        1,0,0,0,148,149,5,10,0,0,149,150,5,41,0,0,150,151,3,30,15,0,151,
+        152,3,38,19,0,152,156,5,23,0,0,153,155,3,2,1,0,154,153,1,0,0,0,155,
+        158,1,0,0,0,156,154,1,0,0,0,156,157,1,0,0,0,157,159,1,0,0,0,158,
+        156,1,0,0,0,159,160,5,24,0,0,160,21,1,0,0,0,161,167,3,54,27,0,162,
+        163,3,26,13,0,163,164,3,54,27,0,164,166,1,0,0,0,165,162,1,0,0,0,
+        166,169,1,0,0,0,167,165,1,0,0,0,167,168,1,0,0,0,168,23,1,0,0,0,169,
+        167,1,0,0,0,170,172,5,21,0,0,171,173,3,34,17,0,172,171,1,0,0,0,172,
+        173,1,0,0,0,173,174,1,0,0,0,174,175,5,22,0,0,175,25,1,0,0,0,176,
+        177,7,0,0,0,177,27,1,0,0,0,178,179,7,1,0,0,179,29,1,0,0,0,180,181,
+        7,2,0,0,181,31,1,0,0,0,182,186,3,22,11,0,183,184,3,30,15,0,184,185,
+        3,22,11,0,185,187,1,0,0,0,186,183,1,0,0,0,186,187,1,0,0,0,187,33,
+        1,0,0,0,188,194,3,32,16,0,189,190,3,28,14,0,190,191,3,32,16,0,191,
+        193,1,0,0,0,192,189,1,0,0,0,193,196,1,0,0,0,194,192,1,0,0,0,194,
+        195,1,0,0,0,195,35,1,0,0,0,196,194,1,0,0,0,197,205,5,38,0,0,198,
+        205,5,40,0,0,199,205,5,41,0,0,200,205,5,37,0,0,201,205,3,22,11,0,
+        202,205,3,34,17,0,203,205,3,32,16,0,204,197,1,0,0,0,204,198,1,0,
+        0,0,204,199,1,0,0,0,204,200,1,0,0,0,204,201,1,0,0,0,204,202,1,0,
+        0,0,204,203,1,0,0,0,205,37,1,0,0,0,206,207,3,36,18,0,207,39,1,0,
+        0,0,208,209,3,34,17,0,209,41,1,0,0,0,210,211,3,46,23,0,211,213,3,
+        44,22,0,212,214,3,50,25,0,213,212,1,0,0,0,213,214,1,0,0,0,214,43,
+        1,0,0,0,215,216,7,3,0,0,216,45,1,0,0,0,217,218,5,3,0,0,218,219,5,
+        41,0,0,219,220,5,17,0,0,220,47,1,0,0,0,221,222,5,41,0,0,222,223,
+        5,20,0,0,223,230,3,52,26,0,224,225,5,41,0,0,225,226,3,26,13,0,226,
+        227,5,20,0,0,227,228,3,52,26,0,228,230,1,0,0,0,229,221,1,0,0,0,229,
+        224,1,0,0,0,230,49,1,0,0,0,231,232,5,20,0,0,232,233,3,52,26,0,233,
+        51,1,0,0,0,234,237,3,38,19,0,235,237,3,54,27,0,236,234,1,0,0,0,236,
+        235,1,0,0,0,237,53,1,0,0,0,238,244,5,41,0,0,239,244,5,37,0,0,240,
+        244,5,40,0,0,241,244,5,39,0,0,242,244,3,24,12,0,243,238,1,0,0,0,
+        243,239,1,0,0,0,243,240,1,0,0,0,243,241,1,0,0,0,243,242,1,0,0,0,
+        244,55,1,0,0,0,19,60,72,83,95,99,107,118,128,143,156,167,172,186,
+        194,204,213,229,236,243
     ]
 
 class lensParser ( Parser ):
@@ -906,23 +905,21 @@ class lensParser ( Parser ):
         def FOR(self):
             return self.getToken(lensParser.FOR, 0)
 
-        def VAR(self, i:int=None):
-            if i is None:
-                return self.getTokens(lensParser.VAR)
-            else:
-                return self.getToken(lensParser.VAR, i)
+        def VAR(self):
+            return self.getToken(lensParser.VAR, 0)
 
         def IN(self):
             return self.getToken(lensParser.IN, 0)
 
-        def INT(self, i:int=None):
-            if i is None:
-                return self.getTokens(lensParser.INT)
-            else:
-                return self.getToken(lensParser.INT, i)
+        def INT(self):
+            return self.getToken(lensParser.INT, 0)
 
         def DOT2(self):
             return self.getToken(lensParser.DOT2, 0)
+
+        def arit(self):
+            return self.getTypedRuleContext(lensParser.AritContext,0)
+
 
         def C_N(self):
             return self.getToken(lensParser.C_N, 0)
@@ -975,12 +972,7 @@ class lensParser ( Parser ):
             self.state = 137
             self.match(lensParser.DOT2)
             self.state = 138
-            _la = self._input.LA(1)
-            if not(_la==40 or _la==41):
-                self._errHandler.recoverInline(self)
-            else:
-                self._errHandler.reportMatch(self)
-                self.consume()
+            self.arit()
             self.state = 139
             self.match(lensParser.C_N)
             self.state = 143
@@ -1014,14 +1006,15 @@ class lensParser ( Parser ):
         def WHILE(self):
             return self.getToken(lensParser.WHILE, 0)
 
-        def VAR(self, i:int=None):
-            if i is None:
-                return self.getTokens(lensParser.VAR)
-            else:
-                return self.getToken(lensParser.VAR, i)
+        def VAR(self):
+            return self.getToken(lensParser.VAR, 0)
 
         def comparacao(self):
             return self.getTypedRuleContext(lensParser.ComparacaoContext,0)
+
+
+        def exp(self):
+            return self.getTypedRuleContext(lensParser.ExpContext,0)
 
 
         def C_N(self):
@@ -1029,9 +1022,6 @@ class lensParser ( Parser ):
 
         def C_I(self):
             return self.getToken(lensParser.C_I, 0)
-
-        def INT(self):
-            return self.getToken(lensParser.INT, 0)
 
         def comando(self, i:int=None):
             if i is None:
@@ -1074,12 +1064,7 @@ class lensParser ( Parser ):
             self.state = 150
             self.comparacao()
             self.state = 151
-            _la = self._input.LA(1)
-            if not(_la==40 or _la==41):
-                self._errHandler.recoverInline(self)
-            else:
-                self._errHandler.reportMatch(self)
-                self.consume()
+            self.exp()
             self.state = 152
             self.match(lensParser.C_N)
             self.state = 156
@@ -1184,12 +1169,12 @@ class lensParser ( Parser ):
         def P_N(self):
             return self.getToken(lensParser.P_N, 0)
 
-        def arit(self):
-            return self.getTypedRuleContext(lensParser.AritContext,0)
-
-
         def P_I(self):
             return self.getToken(lensParser.P_I, 0)
+
+        def explogi(self):
+            return self.getTypedRuleContext(lensParser.ExplogiContext,0)
+
 
         def getRuleIndex(self):
             return lensParser.RULE_aritp
@@ -1215,13 +1200,20 @@ class lensParser ( Parser ):
 
         localctx = lensParser.AritpContext(self, self._ctx, self.state)
         self.enterRule(localctx, 24, self.RULE_aritp)
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 170
             self.match(lensParser.P_N)
-            self.state = 171
-            self.arit()
             self.state = 172
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 3985731747840) != 0):
+                self.state = 171
+                self.explogi()
+
+
+            self.state = 174
             self.match(lensParser.P_I)
         except RecognitionException as re:
             localctx.exception = re
@@ -1278,7 +1270,7 @@ class lensParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 174
+            self.state = 176
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 503316480) != 0)):
                 self._errHandler.recoverInline(self)
@@ -1334,7 +1326,7 @@ class lensParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 176
+            self.state = 178
             _la = self._input.LA(1)
             if not(_la==35 or _la==36):
                 self._errHandler.recoverInline(self)
@@ -1402,7 +1394,7 @@ class lensParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 178
+            self.state = 180
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 33822867456) != 0)):
                 self._errHandler.recoverInline(self)
@@ -1425,18 +1417,15 @@ class lensParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def valor(self, i:int=None):
+        def arit(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(lensParser.ValorContext)
+                return self.getTypedRuleContexts(lensParser.AritContext)
             else:
-                return self.getTypedRuleContext(lensParser.ValorContext,i)
+                return self.getTypedRuleContext(lensParser.AritContext,i)
 
 
-        def comparacao(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(lensParser.ComparacaoContext)
-            else:
-                return self.getTypedRuleContext(lensParser.ComparacaoContext,i)
+        def comparacao(self):
+            return self.getTypedRuleContext(lensParser.ComparacaoContext,0)
 
 
         def getRuleIndex(self):
@@ -1466,19 +1455,17 @@ class lensParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 180
-            self.valor()
+            self.state = 182
+            self.arit()
             self.state = 186
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 33822867456) != 0):
-                self.state = 181
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 33822867456) != 0):
+                self.state = 183
                 self.comparacao()
-                self.state = 182
-                self.valor()
-                self.state = 188
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
+                self.state = 184
+                self.arit()
+
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1496,11 +1483,12 @@ class lensParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def VAR(self, i:int=None):
+        def expcomp(self, i:int=None):
             if i is None:
-                return self.getTokens(lensParser.VAR)
+                return self.getTypedRuleContexts(lensParser.ExpcompContext)
             else:
-                return self.getToken(lensParser.VAR, i)
+                return self.getTypedRuleContext(lensParser.ExpcompContext,i)
+
 
         def opalogi(self, i:int=None):
             if i is None:
@@ -1536,17 +1524,17 @@ class lensParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 189
-            self.match(lensParser.VAR)
-            self.state = 195
+            self.state = 188
+            self.expcomp()
+            self.state = 194
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==35 or _la==36:
-                self.state = 190
+                self.state = 189
                 self.opalogi()
-                self.state = 191
-                self.match(lensParser.VAR)
-                self.state = 197
+                self.state = 190
+                self.expcomp()
+                self.state = 196
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1615,48 +1603,48 @@ class lensParser ( Parser ):
         localctx = lensParser.ExpTemplateContext(self, self._ctx, self.state)
         self.enterRule(localctx, 36, self.RULE_expTemplate)
         try:
-            self.state = 205
+            self.state = 204
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,13,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,14,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 198
+                self.state = 197
                 self.match(lensParser.STRING)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 199
+                self.state = 198
                 self.match(lensParser.INT)
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 200
+                self.state = 199
                 self.match(lensParser.VAR)
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 201
+                self.state = 200
                 self.match(lensParser.BOOL)
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 202
+                self.state = 201
                 self.arit()
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 203
+                self.state = 202
                 self.explogi()
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 204
+                self.state = 203
                 self.expcomp()
                 pass
 
@@ -1707,7 +1695,7 @@ class lensParser ( Parser ):
         self.enterRule(localctx, 38, self.RULE_exp)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 207
+            self.state = 206
             self.expTemplate()
         except RecognitionException as re:
             localctx.exception = re
@@ -1727,10 +1715,6 @@ class lensParser ( Parser ):
 
         def explogi(self):
             return self.getTypedRuleContext(lensParser.ExplogiContext,0)
-
-
-        def expcomp(self):
-            return self.getTypedRuleContext(lensParser.ExpcompContext,0)
 
 
         def getRuleIndex(self):
@@ -1758,22 +1742,9 @@ class lensParser ( Parser ):
         localctx = lensParser.ExpcondContext(self, self._ctx, self.state)
         self.enterRule(localctx, 40, self.RULE_expcond)
         try:
-            self.state = 211
-            self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,14,self._ctx)
-            if la_ == 1:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 209
-                self.explogi()
-                pass
-
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 210
-                self.expcomp()
-                pass
-
-
+            self.enterOuterAlt(localctx, 1)
+            self.state = 208
+            self.explogi()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1829,15 +1800,15 @@ class lensParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 213
+            self.state = 210
             self.letvar()
-            self.state = 214
+            self.state = 211
             self.class_()
-            self.state = 216
+            self.state = 213
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==20:
-                self.state = 215
+                self.state = 212
                 self.atr()
 
 
@@ -1899,7 +1870,7 @@ class lensParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 218
+            self.state = 215
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 2199023316992) != 0)):
                 self._errHandler.recoverInline(self)
@@ -1957,11 +1928,11 @@ class lensParser ( Parser ):
         self.enterRule(localctx, 46, self.RULE_letvar)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 220
+            self.state = 217
             self.match(lensParser.LET)
-            self.state = 221
+            self.state = 218
             self.match(lensParser.VAR)
-            self.state = 222
+            self.state = 219
             self.match(lensParser.POINT2)
         except RecognitionException as re:
             localctx.exception = re
@@ -2018,28 +1989,28 @@ class lensParser ( Parser ):
         localctx = lensParser.AtrsoltaContext(self, self._ctx, self.state)
         self.enterRule(localctx, 48, self.RULE_atrsolta)
         try:
-            self.state = 232
+            self.state = 229
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 224
+                self.state = 221
                 self.match(lensParser.VAR)
-                self.state = 225
+                self.state = 222
                 self.match(lensParser.EQUALS)
-                self.state = 226
+                self.state = 223
                 self.rolav()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 227
+                self.state = 224
                 self.match(lensParser.VAR)
-                self.state = 228
+                self.state = 225
                 self.oparit()
-                self.state = 229
+                self.state = 226
                 self.match(lensParser.EQUALS)
-                self.state = 230
+                self.state = 227
                 self.rolav()
                 pass
 
@@ -2093,9 +2064,9 @@ class lensParser ( Parser ):
         self.enterRule(localctx, 50, self.RULE_atr)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 234
+            self.state = 231
             self.match(lensParser.EQUALS)
-            self.state = 235
+            self.state = 232
             self.rolav()
         except RecognitionException as re:
             localctx.exception = re
@@ -2146,18 +2117,18 @@ class lensParser ( Parser ):
         localctx = lensParser.RolavContext(self, self._ctx, self.state)
         self.enterRule(localctx, 52, self.RULE_rolav)
         try:
-            self.state = 239
+            self.state = 236
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 237
+                self.state = 234
                 self.exp()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 238
+                self.state = 235
                 self.valor()
                 pass
 
@@ -2219,32 +2190,32 @@ class lensParser ( Parser ):
         localctx = lensParser.ValorContext(self, self._ctx, self.state)
         self.enterRule(localctx, 54, self.RULE_valor)
         try:
-            self.state = 246
+            self.state = 243
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [41]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 241
+                self.state = 238
                 self.match(lensParser.VAR)
                 pass
             elif token in [37]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 242
+                self.state = 239
                 self.match(lensParser.BOOL)
                 pass
             elif token in [40]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 243
+                self.state = 240
                 self.match(lensParser.INT)
                 pass
             elif token in [39]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 244
+                self.state = 241
                 self.match(lensParser.FLOAT)
                 pass
             elif token in [21]:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 245
+                self.state = 242
                 self.aritp()
                 pass
             else:
