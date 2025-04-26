@@ -6,6 +6,8 @@ from ErrorHandler import CustomErrorListener
 from ASTDotVisitor import ASTDotVisitor
 import subprocess
 
+#java -jar antlr-4.13.0-complete.jar -Dlanguage=Python3 -visitor -o generated Lens.g4
+
 # Configuração do logging
 logging.basicConfig(
     filename='analisador.log',  # Arquivo onde os logs serão salvos
