@@ -1,12 +1,25 @@
-# 📘 Documentação da Linguagem Lens
+# Lens — Lightweight Efficient Neutral Syntax
 
-**Lens** é uma linguagem de programação fictícia, com tipagem estática e sintaxe simplificada, ideal para fins didáticos e acadêmicos. Esta versão da documentação foi gerada a partir da gramática atualizada, incluindo apenas as funcionalidades básicas da linguagem.
+> Uma linguagem de programação leve, eficiente, neutra e de sintaxe simples.
 
 ---
 
-## 🧱 Estrutura do Programa
+## ✨ Sobre a Lens
 
-Um programa Lens inicia com `@start` e finaliza com `@end`:
+**Lens** é uma linguagem de programação fictícia, criada com o objetivo de ser:
+
+- **Lightweight** — Estrutura minimalista e rápida de entender
+- **Efficient** — Operações básicas feitas de forma direta e objetiva
+- **Neutral** — Sem impor estilos de programação complexos ou paradigmas específicos
+- **Syntax** — Focada em uma sintaxe intuitiva e limpa
+
+Com **tipagem estática** e sem suporte a funções ou objetos nesta versão, a Lens é perfeita para **fins didáticos**: desde o ensino de lógica de programação até a criação de parsers e analisadores sintáticos.
+
+---
+
+## 📦 Estrutura do Programa
+
+Todo código Lens começa com `@start` e termina com `@end`:
 
 ```lens
 @start
@@ -18,59 +31,56 @@ Um programa Lens inicia com `@start` e finaliza com `@end`:
 
 ## 📥 Entrada e 📤 Saída
 
-### Impressão
+### Saída (print)
+
 ```lens
 print:: "Nome:", nome, idade
 ```
-Concatena múltiplos valores com vírgulas.
+- Imprime múltiplos valores separados por vírgula.
 
-### Leitura
+### Entrada (input)
+
 ```lens
 input(nome)
 ```
-Lê um valor digitado pelo usuário e armazena em uma variável previamente declarada.
+- Lê o valor digitado e armazena em uma variável previamente declarada.
 
 ---
 
-## 🔢 Declaração e Atribuição de Variáveis
+## 🧮 Variáveis
 
 ### Declaração
+
 ```lens
 let idade: int
 let nome: String = "João"
 ```
-É obrigatório declarar o tipo da variável (`int`, `float`, `String`, `bool`).
+- Sempre exige tipo explícito (`int`, `float`, `String`, `bool`).
 
-### Atribuição
+### Atribuição e Operações
+
 ```lens
 idade = 20
 idade += 5
 ```
-Variáveis podem receber valores diretos ou expressões aritméticas.
-
----
-
-## 🧮 Tipos Suportados
-
-- `int` → Números inteiros
-- `float` → Números decimais
-- `String` → Texto entre aspas
-- `bool` → `True` ou `False`
+- Operadores suportados: `+`, `-`, `*`, `/`
 
 ---
 
 ## 🔁 Estruturas de Repetição
 
-### Laço For
+### Laço `for`
+
 ```lens
 let i: int
 for i in 0..5 {
     print:: i
 }
 ```
-Percorre valores de 0 até 4.
+- Itera de 0 até 4.
 
-### Laço While
+### Laço `while`
+
 ```lens
 let i: int = 0
 while i < 3 {
@@ -78,7 +88,6 @@ while i < 3 {
     i += 1
 }
 ```
-Executa enquanto a condição for verdadeira.
 
 ---
 
@@ -94,18 +103,8 @@ if idade >= 18 {
 }
 ```
 
-### Operadores Lógicos e de Comparação
-- `==`, `!=`, `<`, `>`, `<=`, `>=`
-- `&&`, `||`
-
----
-
-## 🧮 Expressões Aritméticas
-
-```lens
-let resultado: int = (10 + 2) * 3
-```
-Operadores suportados: `+`, `-`, `*`, `/`
+- Operadores lógicos: `&&`, `||`
+- Operadores de comparação: `==`, `!=`, `<`, `>`, `<=`, `>=`
 
 ---
 
@@ -120,7 +119,7 @@ Operadores suportados: `+`, `-`, `*`, `/`
     input(idade)
 
     if idade >= 18 {
-        print:: "Bem-vindo(a),", nome
+        print:: "Bem-vindo(a)", nome
     } else {
         print:: nome, "não pode acessar."
     }
@@ -129,14 +128,14 @@ Operadores suportados: `+`, `-`, `*`, `/`
 
 ---
 
-## 📌 Considerações
+## 📌 Características da Lens
 
-- Toda variável deve ser declarada com `let` e tipo explícito
-- O programa sempre deve começar com `@start` e terminar com `@end`
-- Não há suporte a objetos ou funções nesta versão da linguagem
-- A linguagem é ideal para testes de lógica e experimentação com parsers
+- Tipagem **explícita e obrigatória** nas variáveis
+- Estrutura de programa fixa com `@start` e `@end`
+- **Sem** funções, procedimentos ou objetos nesta versão
+- Projeto ideal para **estudo de lógica**, **criação de parsers** e **análise sintática**
+- Foco total na **simplicidade** e **clareza**
 
 ---
 
-> Documentação baseada na gramática simplificada da linguagem Lens para fins didáticos.
-
+> 🚀 Lens é mais do que uma linguagem: é uma porta de entrada para o estudo de como linguagens são construídas!
