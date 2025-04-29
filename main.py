@@ -63,7 +63,7 @@ def analisar_arquivo(caminho_arquivo):
             if token.type != Token.EOF:
                 nome = lexer.symbolicNames[token.type] if token.type < len(lexer.symbolicNames) and lexer.symbolicNames[token.type] else f"TOKEN_{token.type}"
                 print(f"<{nome}, {token.text}, Linha {token.line}, Coluna {token.column}>;")
-                logging.debug(f"Token: <{nome}, {token.text}, Linha {token.line}, Coluna {token.column}>")
+                logging.info(f"Token: <{nome}, {token.text}, Linha {token.line}, Coluna {token.column}>")
 
         visitor = ASTDotVisitor()
         visitor.visit(arvore)
