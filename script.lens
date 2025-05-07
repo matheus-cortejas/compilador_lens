@@ -32,7 +32,6 @@ for linha in 0..n {    // Laço externo para percorrer cada linha do triângulo
     }
     print::""    // Após terminar uma linha, imprime uma linha em branco para mudar de linha
 }
-
 // -------------------------------------------
 // Classificação de Triângulos
 // -------------------------------------------
