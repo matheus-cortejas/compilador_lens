@@ -3,6 +3,8 @@ from antlr4 import *
 from generated.lensLexer import lensLexer
 from generated.lensParser import lensParser
 from ErrorHandler import CustomErrorListener
+from SemanticAnalyzer import SemanticAnalyzer
+
 from ASTDotVisitor import ASTDotVisitor
 import subprocess
 
@@ -56,6 +58,18 @@ def analisar_arquivo(caminho_arquivo):
             logging.warning("Erro sintático detectado. Encerrando análise.")
             print("❌ Erros sintáticos encontrados. Encerrando análise.")
             return
+        
+        # Análise semântica
+        logging.info("Iniciando análise semântica.")
+        semantic = SemanticAnalyzer()
+        semantic.visit(arvore)
+        semantic.report()
+
+        if semantic.errors_found:
+            print("❌ Erros semânticos encontrados. Consulte 'analisador.log'.")
+            return
+        else:
+            print("✅ Análise semântica concluída sem erros.")
 
         logging.info("Tokens analisados com sucesso. Imprimindo tokens:")
         print("\n🔎 Tokens formatados:")

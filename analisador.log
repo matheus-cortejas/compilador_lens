@@ -1,4 +1,129 @@
-2025-05-07 15:15:30,645 - INFO - Iniciando análise do arquivo: script.lens
-2025-05-07 15:15:30,670 - INFO - Código carregado com sucesso.
-2025-05-07 15:15:30,684 - WARNING - ERRO LÉXICO [Linha 35, Coluna 0]: Símbolo '#' inválido.
-2025-05-07 15:15:30,693 - WARNING - Erro léxico detectado. Encerrando análise.
+2025-05-20 15:48:40,410 - INFO - Iniciando análise do arquivo: script.lens
+2025-05-20 15:48:40,411 - INFO - Código carregado com sucesso.
+2025-05-20 15:48:40,508 - INFO - Iniciando análise semântica.
+2025-05-20 15:48:40,508 - INFO - [Semântico] Declarada variável 'contador' do tipo 'int'.
+2025-05-20 15:48:40,508 - INFO - [Semântico] Declarada variável 'limite' do tipo 'int'.
+2025-05-20 15:48:40,508 - INFO - [Semântico] Declarada variável 'ativo' do tipo 'bool'.
+2025-05-20 15:48:40,508 - INFO - [Semântico] Declarada variável 'saldo' do tipo 'float'.
+2025-05-20 15:48:40,508 - INFO - [Semântico] Declarada variável 'nome' do tipo 'String'.
+2025-05-20 15:48:40,508 - INFO - [Semântico] Atribuição para variável 'contador'.
+2025-05-20 15:48:40,509 - INFO - [Semântico] Declarada variável 'mensagem' do tipo 'String'.
+2025-05-20 15:48:40,509 - INFO - [Semântico] Declarada variável 'total' do tipo 'float'.
+2025-05-20 15:48:40,509 - INFO - [Semântico] Declarada variável 'texto' do tipo 'String'.
+2025-05-20 15:48:40,509 - INFO - Análise semântica concluída sem erros.
+2025-05-20 15:48:40,509 - INFO - Tokens analisados com sucesso. Imprimindo tokens:
+2025-05-20 15:48:40,510 - INFO - Token: <START, @start, Linha 1, Coluna 0>
+2025-05-20 15:48:40,510 - INFO - Token: <LET, let, Linha 2, Coluna 4>
+2025-05-20 15:48:40,510 - INFO - Token: <VAR, contador, Linha 2, Coluna 8>
+2025-05-20 15:48:40,511 - INFO - Token: <POINT2, :, Linha 2, Coluna 16>
+2025-05-20 15:48:40,511 - INFO - Token: <INT_TYPE, int, Linha 2, Coluna 18>
+2025-05-20 15:48:40,512 - INFO - Token: <EQUALS, =, Linha 2, Coluna 22>
+2025-05-20 15:48:40,512 - INFO - Token: <INT, 0, Linha 2, Coluna 24>
+2025-05-20 15:48:40,512 - INFO - Token: <LET, let, Linha 3, Coluna 4>
+2025-05-20 15:48:40,513 - INFO - Token: <VAR, limite, Linha 3, Coluna 8>
+2025-05-20 15:48:40,513 - INFO - Token: <POINT2, :, Linha 3, Coluna 14>
+2025-05-20 15:48:40,514 - INFO - Token: <INT_TYPE, int, Linha 3, Coluna 16>
+2025-05-20 15:48:40,514 - INFO - Token: <EQUALS, =, Linha 3, Coluna 20>
+2025-05-20 15:48:40,514 - INFO - Token: <INT, 5, Linha 3, Coluna 22>
+2025-05-20 15:48:40,514 - INFO - Token: <LET, let, Linha 4, Coluna 4>
+2025-05-20 15:48:40,515 - INFO - Token: <VAR, ativo, Linha 4, Coluna 8>
+2025-05-20 15:48:40,515 - INFO - Token: <POINT2, :, Linha 4, Coluna 13>
+2025-05-20 15:48:40,515 - INFO - Token: <BOOL_TYPE, bool, Linha 4, Coluna 15>
+2025-05-20 15:48:40,516 - INFO - Token: <EQUALS, =, Linha 4, Coluna 20>
+2025-05-20 15:48:40,516 - INFO - Token: <BOOL, True, Linha 4, Coluna 22>
+2025-05-20 15:48:40,516 - INFO - Token: <LET, let, Linha 5, Coluna 4>
+2025-05-20 15:48:40,517 - INFO - Token: <VAR, saldo, Linha 5, Coluna 8>
+2025-05-20 15:48:40,517 - INFO - Token: <POINT2, :, Linha 5, Coluna 13>
+2025-05-20 15:48:40,517 - INFO - Token: <FLOAT_TYPE, float, Linha 5, Coluna 15>
+2025-05-20 15:48:40,518 - INFO - Token: <EQUALS, =, Linha 5, Coluna 21>
+2025-05-20 15:48:40,518 - INFO - Token: <FLOAT, 10.5, Linha 5, Coluna 23>
+2025-05-20 15:48:40,518 - INFO - Token: <LET, let, Linha 6, Coluna 4>
+2025-05-20 15:48:40,519 - INFO - Token: <VAR, nome, Linha 6, Coluna 8>
+2025-05-20 15:48:40,519 - INFO - Token: <POINT2, :, Linha 6, Coluna 12>
+2025-05-20 15:48:40,519 - INFO - Token: <STRING_TYPE, String, Linha 6, Coluna 14>
+2025-05-20 15:48:40,520 - INFO - Token: <EQUALS, =, Linha 6, Coluna 21>
+2025-05-20 15:48:40,520 - INFO - Token: <STRING, "Ana", Linha 6, Coluna 23>
+2025-05-20 15:48:40,520 - INFO - Token: <PRINT, print, Linha 8, Coluna 4>
+2025-05-20 15:48:40,520 - INFO - Token: <DUPONT, ::, Linha 8, Coluna 10>
+2025-05-20 15:48:40,521 - INFO - Token: <STRING, "Iniciando loop", Linha 8, Coluna 13>
+2025-05-20 15:48:40,521 - INFO - Token: <WHILE, while, Linha 10, Coluna 4>
+2025-05-20 15:48:40,521 - INFO - Token: <VAR, contador, Linha 10, Coluna 10>
+2025-05-20 15:48:40,522 - INFO - Token: <LT, <, Linha 10, Coluna 19>
+2025-05-20 15:48:40,522 - INFO - Token: <VAR, limite, Linha 10, Coluna 21>
+2025-05-20 15:48:40,523 - INFO - Token: <C_N, {, Linha 10, Coluna 28>
+2025-05-20 15:48:40,523 - INFO - Token: <PRINT, print, Linha 11, Coluna 8>
+2025-05-20 15:48:40,524 - INFO - Token: <DUPONT, ::, Linha 11, Coluna 14>
+2025-05-20 15:48:40,524 - INFO - Token: <STRING, "Contador:", Linha 11, Coluna 17>
+2025-05-20 15:48:40,524 - INFO - Token: <VIRG, ,, Linha 11, Coluna 29>
+2025-05-20 15:48:40,525 - INFO - Token: <VAR, contador, Linha 11, Coluna 31>
+2025-05-20 15:48:40,525 - INFO - Token: <VAR, contador, Linha 12, Coluna 8>
+2025-05-20 15:48:40,525 - INFO - Token: <EQUALS, =, Linha 12, Coluna 17>
+2025-05-20 15:48:40,525 - INFO - Token: <VAR, contador, Linha 12, Coluna 19>
+2025-05-20 15:48:40,526 - INFO - Token: <ADD, +, Linha 12, Coluna 28>
+2025-05-20 15:48:40,526 - INFO - Token: <INT, 1, Linha 12, Coluna 30>
+2025-05-20 15:48:40,526 - INFO - Token: <C_I, }, Linha 13, Coluna 4>
+2025-05-20 15:48:40,527 - INFO - Token: <IF, if, Linha 15, Coluna 4>
+2025-05-20 15:48:40,527 - INFO - Token: <P_N, (, Linha 15, Coluna 7>
+2025-05-20 15:48:40,527 - INFO - Token: <VAR, ativo, Linha 15, Coluna 8>
+2025-05-20 15:48:40,528 - INFO - Token: <P_I, ), Linha 15, Coluna 13>
+2025-05-20 15:48:40,528 - INFO - Token: <AND, &&, Linha 15, Coluna 15>
+2025-05-20 15:48:40,528 - INFO - Token: <P_N, (, Linha 15, Coluna 18>
+2025-05-20 15:48:40,529 - INFO - Token: <VAR, contador, Linha 15, Coluna 19>
+2025-05-20 15:48:40,529 - INFO - Token: <EQ, ==, Linha 15, Coluna 28>
+2025-05-20 15:48:40,530 - INFO - Token: <INT, 5, Linha 15, Coluna 31>
+2025-05-20 15:48:40,530 - INFO - Token: <P_I, ), Linha 15, Coluna 32>
+2025-05-20 15:48:40,531 - INFO - Token: <C_N, {, Linha 15, Coluna 34>
+2025-05-20 15:48:40,531 - INFO - Token: <LET, let, Linha 16, Coluna 8>
+2025-05-20 15:48:40,531 - INFO - Token: <VAR, mensagem, Linha 16, Coluna 12>
+2025-05-20 15:48:40,531 - INFO - Token: <POINT2, :, Linha 16, Coluna 20>
+2025-05-20 15:48:40,532 - INFO - Token: <STRING_TYPE, String, Linha 16, Coluna 22>
+2025-05-20 15:48:40,532 - INFO - Token: <EQUALS, =, Linha 16, Coluna 29>
+2025-05-20 15:48:40,533 - INFO - Token: <STRING, "Tudo certo!", Linha 16, Coluna 31>
+2025-05-20 15:48:40,533 - INFO - Token: <PRINT, print, Linha 17, Coluna 8>
+2025-05-20 15:48:40,533 - INFO - Token: <DUPONT, ::, Linha 17, Coluna 14>
+2025-05-20 15:48:40,533 - INFO - Token: <VAR, mensagem, Linha 17, Coluna 17>
+2025-05-20 15:48:40,534 - INFO - Token: <VIRG, ,, Linha 17, Coluna 26>
+2025-05-20 15:48:40,534 - INFO - Token: <VAR, nome, Linha 17, Coluna 28>
+2025-05-20 15:48:40,534 - INFO - Token: <C_I, }, Linha 18, Coluna 4>
+2025-05-20 15:48:40,535 - INFO - Token: <ELSE, else, Linha 18, Coluna 6>
+2025-05-20 15:48:40,535 - INFO - Token: <C_N, {, Linha 18, Coluna 11>
+2025-05-20 15:48:40,535 - INFO - Token: <PRINT, print, Linha 19, Coluna 8>
+2025-05-20 15:48:40,535 - INFO - Token: <DUPONT, ::, Linha 19, Coluna 14>
+2025-05-20 15:48:40,536 - INFO - Token: <STRING, "Algo deu errado", Linha 19, Coluna 17>
+2025-05-20 15:48:40,536 - INFO - Token: <C_I, }, Linha 20, Coluna 4>
+2025-05-20 15:48:40,536 - INFO - Token: <LET, let, Linha 22, Coluna 4>
+2025-05-20 15:48:40,537 - INFO - Token: <VAR, total, Linha 22, Coluna 8>
+2025-05-20 15:48:40,537 - INFO - Token: <POINT2, :, Linha 22, Coluna 13>
+2025-05-20 15:48:40,537 - INFO - Token: <FLOAT_TYPE, float, Linha 22, Coluna 15>
+2025-05-20 15:48:40,538 - INFO - Token: <EQUALS, =, Linha 22, Coluna 21>
+2025-05-20 15:48:40,538 - INFO - Token: <VAR, saldo, Linha 22, Coluna 23>
+2025-05-20 15:48:40,538 - INFO - Token: <ADD, +, Linha 22, Coluna 29>
+2025-05-20 15:48:40,539 - INFO - Token: <VAR, contador, Linha 22, Coluna 31>
+2025-05-20 15:48:40,539 - INFO - Token: <PRINT, print, Linha 23, Coluna 4>
+2025-05-20 15:48:40,539 - INFO - Token: <DUPONT, ::, Linha 23, Coluna 10>
+2025-05-20 15:48:40,540 - INFO - Token: <STRING, "Total atualizado:", Linha 23, Coluna 13>
+2025-05-20 15:48:40,540 - INFO - Token: <VIRG, ,, Linha 23, Coluna 32>
+2025-05-20 15:48:40,540 - INFO - Token: <VAR, total, Linha 23, Coluna 34>
+2025-05-20 15:48:40,541 - INFO - Token: <FOR, for, Linha 25, Coluna 4>
+2025-05-20 15:48:40,541 - INFO - Token: <VAR, i, Linha 25, Coluna 8>
+2025-05-20 15:48:40,541 - INFO - Token: <IN, in, Linha 25, Coluna 10>
+2025-05-20 15:48:40,542 - INFO - Token: <INT, 0, Linha 25, Coluna 13>
+2025-05-20 15:48:40,542 - INFO - Token: <DOT2, .., Linha 25, Coluna 14>
+2025-05-20 15:48:40,542 - INFO - Token: <INT, 3, Linha 25, Coluna 16>
+2025-05-20 15:48:40,543 - INFO - Token: <C_N, {, Linha 25, Coluna 18>
+2025-05-20 15:48:40,543 - INFO - Token: <LET, let, Linha 26, Coluna 8>
+2025-05-20 15:48:40,544 - INFO - Token: <VAR, texto, Linha 26, Coluna 12>
+2025-05-20 15:48:40,544 - INFO - Token: <POINT2, :, Linha 26, Coluna 17>
+2025-05-20 15:48:40,544 - INFO - Token: <STRING_TYPE, String, Linha 26, Coluna 19>
+2025-05-20 15:48:40,545 - INFO - Token: <EQUALS, =, Linha 26, Coluna 26>
+2025-05-20 15:48:40,546 - INFO - Token: <STRING, "Loop interno", Linha 26, Coluna 28>
+2025-05-20 15:48:40,546 - INFO - Token: <PRINT, print, Linha 27, Coluna 8>
+2025-05-20 15:48:40,546 - INFO - Token: <DUPONT, ::, Linha 27, Coluna 14>
+2025-05-20 15:48:40,547 - INFO - Token: <VAR, texto, Linha 27, Coluna 17>
+2025-05-20 15:48:40,547 - INFO - Token: <VIRG, ,, Linha 27, Coluna 23>
+2025-05-20 15:48:40,547 - INFO - Token: <VAR, i, Linha 27, Coluna 25>
+2025-05-20 15:48:40,548 - INFO - Token: <C_I, }, Linha 28, Coluna 4>
+2025-05-20 15:48:40,548 - INFO - Token: <END, @end, Linha 30, Coluna 0>
+2025-05-20 15:48:40,549 - INFO - AST gerada com sucesso.
+2025-05-20 15:48:40,550 - INFO - Arquivo 'ast.dot' salvo com sucesso.
+2025-05-20 15:48:42,165 - INFO - Imagem 'ast.png' gerada com sucesso.

@@ -1,68 +1,30 @@
 @start
-// -------------------------------
-// Geração do Triângulo de Pascal
-// -------------------------------
-let n: int = 5    // Define o número de linhas do Triângulo de Pascal (n = 5)
-let linha: int    // Variável para percorrer as linhas
-let col: int      // Variável para percorrer as colunas
-let valor: int    // Variável para armazenar o valor de cada elemento do triângulo
+    let contador: int = 0
+    let limite: int = 5
+    let ativo: bool = True
+    let saldo: float = 10.5
+    let nome: String = "Ana"
 
-for linha in 0..n {    // Laço externo para percorrer cada linha do triângulo
-    for col in 0..linha {    // Laço interno para percorrer cada coluna da linha atual
-        // Cálculo do coeficiente binomial linha! / (col! * (linha - col)!)
-        let numerador: int = 1    // Inicializa o numerador como 1 (será linha!)
-        let i: int    // Variável auxiliar para o cálculo fatorial
+    print :: "Iniciando loop"
 
-        for i in 1..linha + 1 {    // Calcula linha! (fatorial de linha)
-            numerador = numerador * i
-        }
-
-        let denom1: int = 1    // Inicializa o primeiro denominador (col!)
-        for i in 1..col + 1 {   // Calcula col! (fatorial da coluna)
-            denom1 = denom1 * i
-        }
-
-        let denom2: int = 1    // Inicializa o segundo denominador ((linha - col)!)
-        for i in 1..(linha - col) + 1 {   // Calcula (linha - col)! (fatorial da diferença)
-            denom2 = denom2 * i
-        }
-
-        valor = numerador / (denom1 * denom2)    // Calcula o valor do coeficiente binomial
-        print::valor    // Imprime o valor calculado na mesma linha
+    while contador < limite {
+        print :: "Contador:" , contador
+        contador = contador + 1
     }
-    print::""    // Após terminar uma linha, imprime uma linha em branco para mudar de linha
-}
-// -------------------------------------------
-// Classificação de Triângulos
-// -------------------------------------------
 
-// Definimos os três lados do triângulo
-let a: float = 3.0    // Primeiro lado
-let b: float = 4.0    // Segundo lado
-let c: float = 5.0    // Terceiro lado
-
-// Primeiro teste: verificar se algum valor é zero ou negativo
-if (a <= 0 || b <= 0 || c <= 0) {
-    print::"Erro: valores negativos ou zero não formam triângulo"
-} else {
-    // Segundo teste: verificar se as medidas formam um triângulo válido
-    if ((a + b > c) && (a + c > b) && (b + c > a)) {
-        // Se passou, classificar o tipo de triângulo
-        if (a == b && b == c) {
-            // Todos os lados são iguais
-            print::"Triângulo equilátero válido"
-        } else {
-            if (a == b || a == c || b == c) {
-                // Dois lados são iguais
-                print::"Triângulo isósceles válido"
-            } else {
-                // Todos os lados são diferentes
-                print::"Triângulo escaleno válido"
-            }
-        }
+    if (ativo) && (contador == 5) {
+        let mensagem: String = "Tudo certo!"
+        print :: mensagem , nome
     } else {
-        // Não satisfaz a desigualdade triangular, não forma triângulo
-        print::"Medidas inválidas: não formam triângulo"
+        print :: "Algo deu errado"
     }
-}
+
+    let total: float = saldo + contador  // coerção int -> float
+    print :: "Total atualizado:", total
+
+    for i in 0..3 {
+        let texto: String = "Loop interno"
+        print :: texto , i
+    }
+
 @end
