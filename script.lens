@@ -1,4 +1,5 @@
 @start
+    // ✅ Declarações e inicializações válidas
     let contador: int = 0
     let limite: int = 5
     let ativo: bool = True
@@ -7,11 +8,13 @@
 
     print :: "Iniciando loop"
 
+    // ✅ While com comparação válida entre inteiros
     while contador < limite {
         print :: "Contador:" , contador
-        contador = contador + 1
+        contador = contador + 1         // OK: int + int
     }
 
+    // ✅ Condicional com operação lógica entre bools
     if (ativo) && (contador == 5) {
         let mensagem: String = "Tudo certo!"
         print :: mensagem , nome
@@ -19,12 +22,30 @@
         print :: "Algo deu errado"
     }
 
-    let total: float = saldo + contador  // coerção int -> float
+    // ✅ Coerção implícita de int para float
+    let total: float = saldo + contador
     print :: "Total atualizado:", total
 
+    // ✅ Escopo do for: declaração e uso interno
     for i in 0..3 {
         let texto: String = "Loop interno"
         print :: texto , i
     }
+
+    // 🔽🔽🔽 ERROS PROPOSITAIS ABAIXO 🔽🔽🔽
+
+    // ❌ ERRO: uso de variável não atribuída
+    //let x: int
+    //print :: x  // [Erro Semântico] Linha __: Variável 'x' usada antes de ser atribuída.
+
+    // ❌ ERRO: atribuição de tipo incompatível
+    //let nome2: String = 10
+    // [Erro Semântico] Linha __: Atribuição incompatível: 'nome2' é 'String', mas recebeu 'int'.
+
+    // ❌ ERRO: uso de variável fora do escopo
+    //for j in 0..2 {
+    //    let temp: int = j
+    //}
+    //print :: temp  // [Erro Semântico] Linha __: Variável 'temp' usada sem declaração.
 
 @end
