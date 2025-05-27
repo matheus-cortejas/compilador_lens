@@ -1,3 +1,38 @@
 @start
-    let nome: String = 1
+
+    // 🔍 1. Verificação de variável usada sem declaração
+    // Esperado: Erro semântico — variável 'naoDeclarada' usada sem declaração
+    // print :: naoDeclarada
+
+
+    // 🔍 2. Verificação de variável duplicada
+    // Esperado: Erro semântico — variável 'x' já declarada neste escopo
+    // let x: int = 10
+    // let x: int = 20
+
+
+    // 🔍 3. Verificação de divisão por zero
+    // Esperado: Erro semântico — divisão por zero
+    //let a: int = 10
+    //let resultado: int = a / 0
+
+
+    // 🔍 4. Verificação de operação inválida entre tipos: string + int
+    // Esperado: Erro semântico — operação aritmética inválida
+    // let nome: String = "João"
+    // let idade: int = 20
+    // let soma: int = nome + idade
+
+
+    // 🔍 5. Verificação de operação lógica inválida: bool && int
+    // Esperado: Erro semântico — expressão lógica requer booleanos
+    // let ativo: bool = True
+    // let total: int = 3
+    // let logico: bool = ativo && total
+
+
+    // ✅ 6. Exemplo válido (só para referência)
+    let valido: int = 1 + 2
+    print :: "Resultado válido:", valido
+
 @end

@@ -1,5 +1,8 @@
-2025-05-27 13:51:38,607 - INFO - Iniciando análise do arquivo: script.lens
-2025-05-27 13:51:38,625 - INFO - Código carregado com sucesso.
-2025-05-27 13:51:38,643 - INFO - Iniciando análise semântica.
-2025-05-27 13:51:38,643 - INFO - [Semântico] Declarada variável 'nome' do tipo 'String'.
-2025-05-27 13:51:38,643 - ERROR - [Erro Semântico] Linha 2: Atribuição incompatível: 'nome' é 'String', mas recebeu 'int'.
+2025-05-27 14:21:57,688 - INFO - Iniciando análise do arquivo: script.lens
+2025-05-27 14:21:57,690 - INFO - Código carregado com sucesso.
+2025-05-27 14:21:57,739 - INFO - Iniciando análise semântica.
+2025-05-27 14:21:57,739 - INFO - [Semântico] Declarada variável 'nome' do tipo 'String'.
+2025-05-27 14:21:57,739 - ERROR - [Erro Semântico] Linha 22: Atribuição incompatível: 'nome' é 'String', mas recebeu 'string'.
+2025-05-27 14:21:57,739 - INFO - [Semântico] Declarada variável 'idade' do tipo 'int'.
+2025-05-27 14:21:57,740 - INFO - [Semântico] Declarada variável 'soma' do tipo 'int'.
+2025-05-27 14:21:57,740 - INFO - [Semântico] Declarada variável 'valido' do tipo 'int'.
