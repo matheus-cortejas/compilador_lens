@@ -1,8 +1,9 @@
 import logging
+from colorama import init, Fore, Style
 from generated.lensVisitor import lensVisitor
 from generated.lensParser import lensParser
-from colorama import init, Fore, Style
-init(autoreset=True)
+
+init(autoreset=True)  # Ativa cores no terminal automaticamente
 
 class SemanticAnalyzer(lensVisitor):
     """
@@ -21,7 +22,6 @@ class SemanticAnalyzer(lensVisitor):
         logging.error(mensagem)
         print(Fore.RED + mensagem)
         self.errors_found = True
-
 
     def log_action(self, msg):
         """Registra uma ação semântica bem-sucedida no log."""
@@ -48,7 +48,6 @@ class SemanticAnalyzer(lensVisitor):
         return None
 
     def visitDec(self, ctx: lensParser.DecContext):
-        """Visita declaração com 'let', atribui tipo e valor se houver."""
         var_name = ctx.letvar().VAR().getText()
         var_type = ctx.class_().getText()
         line = ctx.start.line
@@ -63,7 +62,6 @@ class SemanticAnalyzer(lensVisitor):
         return None
 
     def visitAtrsolta(self, ctx: lensParser.AtrsoltaContext):
-        """Visita atribuição solta: VAR = valor"""
         var_name = ctx.VAR().getText()
         line = ctx.start.line
 
@@ -77,8 +75,25 @@ class SemanticAnalyzer(lensVisitor):
                 self.error(line, f"Atribuição incompatível: '{var_name}' é '{simbolo['type']}', mas recebeu '{valor_tipo}'.")
         return None
 
+    def visitAtr(self, ctx: lensParser.AtrContext):
+        return self.visit(ctx.rolav())
+
+    def visitRolav(self, ctx: lensParser.RolavContext):
+        if ctx.exp():
+            return self.visit(ctx.exp())
+        return self.visit(ctx.valor())
+
+    def visitConcat(self, ctx: lensParser.ConcatContext):
+        for item in ctx.rolav():
+            self.visit(item)
+        return None
+
+    def visitImprime(self, ctx: lensParser.ImprimeContext):
+        self.visit(ctx.concat())
+        return None
+
+
     def visitArit(self, ctx: lensParser.AritContext):
-        """Verifica operações aritméticas, coerções e divisão por zero."""
         valores = ctx.valor()
         operadores = ctx.oparit()
         tipos = [self.visit(v) for v in valores]
@@ -95,8 +110,10 @@ class SemanticAnalyzer(lensVisitor):
         else:
             return tipos[0] if tipos else "indefinido"
 
+    def visitExpcond(self, ctx: lensParser.ExpcondContext):
+        return self.visit(ctx.explogi())
+
     def visitExplogi(self, ctx: lensParser.ExplogiContext):
-        """Valida expressões lógicas: todos os termos devem ser booleanos."""
         exp_list = ctx.expcomp()
         for exp in exp_list:
             tipo = self.visit(exp)
@@ -104,8 +121,8 @@ class SemanticAnalyzer(lensVisitor):
                 self.error(ctx.start.line, f"Expressão lógica requer booleanos, mas obteve '{tipo}'.")
         return "bool"
 
+
     def visitExpcomp(self, ctx: lensParser.ExpcompContext):
-        """Valida comparações. Aceita coerção implícita entre int/float."""
         left = self.visit(ctx.arit(0))
         right = self.visit(ctx.arit(1)) if len(ctx.arit()) > 1 else None
 
@@ -117,73 +134,94 @@ class SemanticAnalyzer(lensVisitor):
                 return "erro"
             return "bool"
         return "bool" if left in ["bool"] else left
+    
+
+    def visitExp(self, ctx: lensParser.ExpContext):
+        return self.visit(ctx.expTemplate())
+
+    def visitExpTemplate(self, ctx: lensParser.ExpTemplateContext):
+        if ctx.getToken(lensParser.VAR, 0):
+            return self.visitValor(ctx)
+        if ctx.getToken(lensParser.INT, 0):
+            return "int"
+        if ctx.getToken(lensParser.FLOAT, 0):
+            return "float"
+        if ctx.getToken(lensParser.STRING, 0):
+            return "string"
+        if ctx.getToken(lensParser.BOOL, 0):
+            return "bool"
+        if ctx.arit():
+            return self.visit(ctx.arit())
+        if ctx.explogi():
+            return self.visit(ctx.explogi())
+        if ctx.expcomp():
+            return self.visit(ctx.expcomp())
+        return "indefinido"
+
 
     def visitValor(self, ctx: lensParser.ValorContext):
-        """Retorna o tipo de um valor literal ou variável."""
-        if ctx.INT(): return "int"
-        if ctx.FLOAT(): return "float"
-        if ctx.BOOL(): return "bool"
-        if ctx.VAR():
-            var_name = ctx.VAR().getText()
+        if ctx.getToken(lensParser.INT, 0): return "int"
+        if ctx.getToken(lensParser.FLOAT, 0): return "float"
+        if ctx.getToken(lensParser.BOOL, 0): return "bool"
+        if ctx.getToken(lensParser.STRING, 0): return "string"
+        if ctx.getToken(lensParser.VAR, 0):
+            var_name = ctx.getToken(lensParser.VAR, 0).getText()
             simbolo = self.buscar_var(var_name, ctx.start.line)
             if simbolo:
                 if not simbolo.get("atribuida", False):
                     self.error(ctx.start.line, f"Variável '{var_name}' usada antes de ser atribuída.")
                 return simbolo["type"]
+            else:
+                return "indefinido"
         if ctx.aritp():
             return self.visit(ctx.aritp())
         return "indefinido"
 
+
+
     def visitAritp(self, ctx: lensParser.AritpContext):
-        """Avalia uma subexpressão entre parênteses."""
         if ctx.explogi():
             return self.visit(ctx.explogi())
         return "indefinido"
 
     def visitIfcond(self, ctx: lensParser.IfcondContext):
-        """Cria escopo para o bloco if."""
         self.scope_stack.append({})
         self.visitChildren(ctx)
         self.scope_stack.pop()
         return None
 
     def visitElifcond(self, ctx: lensParser.ElifcondContext):
-        """Cria escopo para o bloco elseif."""
         self.scope_stack.append({})
         self.visitChildren(ctx)
         self.scope_stack.pop()
         return None
 
     def visitElcond(self, ctx: lensParser.ElcondContext):
-        """Cria escopo para o bloco else."""
         self.scope_stack.append({})
         self.visitChildren(ctx)
         self.scope_stack.pop()
         return None
 
     def visitLacofor(self, ctx: lensParser.LacoforContext):
-        """Cria escopo para o laço for."""
         self.scope_stack.append({})
         self.visitChildren(ctx)
         self.scope_stack.pop()
         return None
 
     def visitLacowhile(self, ctx: lensParser.LacowhileContext):
-        """Cria escopo para o laço while."""
         self.scope_stack.append({})
         self.visitChildren(ctx)
         self.scope_stack.pop()
         return None
 
     def comparar_tipos(self, tipo_destino, tipo_origem):
-        """Compara tipos permitindo coerção implícita entre int e float."""
         if tipo_destino == tipo_origem:
             return True
         if {tipo_destino, tipo_origem} <= {"int", "float"}:
             return True  # coerção permitida
         return False
 
+
     def report(self):
-        """Imprime no log se não houve erro semântico."""
         if not self.errors_found:
             logging.info("Análise semântica concluída sem erros.")
