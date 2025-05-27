@@ -8,46 +8,71 @@
 
 **Lens** é uma linguagem de programação fictícia, criada com o objetivo de ser:
 
-- **Lightweight** — Estrutura minimalista e rápida de entender
-- **Efficient** — Operações básicas feitas de forma direta e objetiva
-- **Neutral** — Sem impor estilos de programação complexos ou paradigmas específicos
-- **Syntax** — Focada em uma sintaxe intuitiva e limpa
+* **Lightweight** — Estrutura minimalista e rápida de entender
+* **Efficient** — Operações básicas feitas de forma direta e objetiva
+* **Neutral** — Sem impor estilos de programação complexos ou paradigmas específicos
+* **Syntax** — Focada em uma sintaxe intuitiva e limpa
 
-Com **tipagem estática** e sem suporte a funções ou objetos nesta versão, a Lens é perfeita para **fins didáticos**: desde o ensino de lógica de programação até a criação de parsers e analisadores sintáticos.
+A Lens possui **tipagem estática obrigatória**, e não possui funções ou objetos nesta versão. É ideal para fins **didáticos**, como ensino de lógica, criação de compiladores e exploradores de gramáticas com ANTLR.
 
 ---
 
-## 📦 Estrutura do Programa
+## ⚙️ Analisador Semântico
 
-Todo código Lens começa com `@start` e termina com `@end`:
+Este repositório implementa um **Analisador Semântico** completo para programas Lens, com base no parser gerado pelo ANTLR4.
 
-```lens
-@start
-    print:: "Olá, mundo!"
-@end
+Ele realiza as seguintes validações:
+
+| Verificação semântica                          | Suporte |
+| ---------------------------------------------- | ------- |
+| Uso de variáveis sem declaração                | ✔️      |
+| Uso de variáveis antes de atribuição           | ✔️      |
+| Declaração duplicada de variáveis              | ✔️      |
+| Tipos incompatíveis em atribuições             | ✔️      |
+| Operações aritméticas entre tipos inválidos    | ✔️      |
+| Operações lógicas com não-booleanos            | ✔️      |
+| Divisão por zero                               | ✔️      |
+| Coerção implícita entre `int` e `float`        | ✔️      |
+| Escopo correto em `if`, `else`, `for`, `while` | ✔️      |
+
+---
+
+## 📦 Estrutura de Arquivos
+
+```
+project/
+├── main.py                  # Executa o analisador
+├── SemanticAnalyzer.py      # Lógica do analisador semântico
+├── ErrorHandler.py          # Tratamento de erros léxicos/sintáticos
+├── lens.g4                  # Gramática ANTLR da linguagem Lens
+├── generated/               # Arquivos gerados pelo ANTLR
+│   ├── lensLexer.py
+│   ├── lensParser.py
+│   ├── lensVisitor.py
+├── script.lens              # Código de teste
+├── analisador.log           # Log da análise semântica
+└── ast.png                  # Visualização da AST (opcional)
 ```
 
 ---
 
-## 📥 Entrada e 📤 Saída
+## 📅 Entrada e 📄 Saída na Lens
 
-### Saída (print)
+### 📄 print
 
 ```lens
 print:: "Nome:", nome, idade
 ```
-- Imprime múltiplos valores separados por vírgula.
 
-### Entrada (input)
+### 📅 input
 
 ```lens
 input(nome)
 ```
-- Lê o valor digitado e armazena em uma variável previamente declarada.
 
 ---
 
-## 🧮 Variáveis
+## 🧬 Variáveis na Lens
 
 ### Declaração
 
@@ -55,46 +80,40 @@ input(nome)
 let idade: int
 let nome: String = "João"
 ```
-- Sempre exige tipo explícito (`int`, `float`, `String`, `bool`).
 
 ### Atribuição e Operações
 
 ```lens
 idade = 20
-idade += 5
+idade = idade + 5
 ```
-- Operadores suportados: `+`, `-`, `*`, `/`
 
 ---
 
-## 🔁 Estruturas de Repetição
+## 🔁 Laços
 
-### Laço `for`
+### `for`
 
 ```lens
-let i: int
 for i in 0..5 {
     print:: i
 }
 ```
-- Itera de 0 até 4.
 
-### Laço `while`
+### `while`
 
 ```lens
-let i: int = 0
-while i < 3 {
+while i < 10 {
     print:: i
-    i += 1
 }
 ```
 
 ---
 
-## 🔀 Estruturas Condicionais
+## 🔀 Condicionais
 
 ```lens
-if idade >= 18 {
+if ativo && idade >= 18 {
     print:: "Maior de idade"
 } elseif idade == 17 {
     print:: "Quase lá"
@@ -103,38 +122,64 @@ if idade >= 18 {
 }
 ```
 
-- Operadores lógicos: `&&`, `||`
-- Operadores de comparação: `==`, `!=`, `<`, `>`, `<=`, `>=`
-
 ---
 
-## 📚 Exemplo Completo
+## ✅ Exemplo de Análise semântica com erro
 
 ```lens
 @start
     let nome: String
-    let idade: int
-
-    input(nome)
-    input(idade)
-
-    if idade >= 18 {
-        print:: "Bem-vindo(a)", nome
-    } else {
-        print:: nome, "não pode acessar."
-    }
+    print:: nome, idade
 @end
+```
+
+Saída esperada:
+
+```bash
+[Erro Semântico] Linha 3: Variável 'idade' usada sem declaração.
 ```
 
 ---
 
-## 📌 Características da Lens
+## 🛠️ Como usar
 
-- Tipagem **explícita e obrigatória** nas variáveis
-- Estrutura de programa fixa com `@start` e `@end`
-- **Sem** funções, procedimentos ou objetos nesta versão
-- Projeto ideal para **estudo de lógica**, **criação de parsers** e **análise sintática**
-- Foco total na **simplicidade** e **clareza**
+1. Gere os arquivos do ANTLR:
+
+```bash
+antlr4 -Dlanguage=Python3 -visitor lens.g4 -o generated
+```
+
+2. Execute o analisador:
+
+```bash
+python main.py
+```
+
+3. Veja o log gerado:
+
+* Terminal colorido com `colorama`
+* Log salvo em `analisador.log`
+* AST gerada com Graphviz (opcional)
+
+---
+
+## 📌 Requisitos
+
+* Python 3.10+
+* `colorama` (para mensagens coloridas)
+
+```bash
+pip install colorama
+```
+
+* ANTLR 4.13+
+* (Opcional) Graphviz para visualização da AST
+
+---
+
+## 💡 Contribuições e Licença
+
+Este projeto tem fins educacionais. Sinta-se livre para explorar, adaptar e estender para estudos de compiladores.
 
 ---
 
