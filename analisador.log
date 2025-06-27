@@ -1,8 +1,29 @@
-2025-05-27 14:21:57,688 - INFO - Iniciando análise do arquivo: script.lens
-2025-05-27 14:21:57,690 - INFO - Código carregado com sucesso.
-2025-05-27 14:21:57,739 - INFO - Iniciando análise semântica.
-2025-05-27 14:21:57,739 - INFO - [Semântico] Declarada variável 'nome' do tipo 'String'.
-2025-05-27 14:21:57,739 - ERROR - [Erro Semântico] Linha 22: Atribuição incompatível: 'nome' é 'String', mas recebeu 'string'.
-2025-05-27 14:21:57,739 - INFO - [Semântico] Declarada variável 'idade' do tipo 'int'.
-2025-05-27 14:21:57,740 - INFO - [Semântico] Declarada variável 'soma' do tipo 'int'.
-2025-05-27 14:21:57,740 - INFO - [Semântico] Declarada variável 'valido' do tipo 'int'.
+2025-06-27 13:47:05,606 - INFO - Iniciando análise do arquivo: script.lens
+2025-06-27 13:47:05,606 - INFO - Código carregado com sucesso.
+2025-06-27 13:47:05,615 - INFO - Tokens analisados com sucesso. Imprimindo tokens:
+2025-06-27 13:47:05,616 - INFO - Token: <START, @start, Linha 1, Coluna 0>
+2025-06-27 13:47:05,616 - INFO - Token: <LET, let, Linha 35, Coluna 6>
+2025-06-27 13:47:05,616 - INFO - Token: <VAR, valido, Linha 35, Coluna 10>
+2025-06-27 13:47:05,617 - INFO - Token: <POINT2, :, Linha 35, Coluna 16>
+2025-06-27 13:47:05,618 - INFO - Token: <INT_TYPE, int, Linha 35, Coluna 18>
+2025-06-27 13:47:05,618 - INFO - Token: <EQUALS, =, Linha 35, Coluna 22>
+2025-06-27 13:47:05,618 - INFO - Token: <INT, 1, Linha 35, Coluna 24>
+2025-06-27 13:47:05,619 - INFO - Token: <ADD, +, Linha 35, Coluna 26>
+2025-06-27 13:47:05,619 - INFO - Token: <INT, 2, Linha 35, Coluna 28>
+2025-06-27 13:47:05,619 - INFO - Token: <PRINT, print, Linha 36, Coluna 6>
+2025-06-27 13:47:05,619 - INFO - Token: <DUPONT, ::, Linha 36, Coluna 12>
+2025-06-27 13:47:05,619 - INFO - Token: <STRING, "Resultado válido:", Linha 36, Coluna 15>
+2025-06-27 13:47:05,620 - INFO - Token: <VIRG, ,, Linha 36, Coluna 34>
+2025-06-27 13:47:05,620 - INFO - Token: <VAR, valido, Linha 36, Coluna 36>
+2025-06-27 13:47:05,620 - INFO - Token: <END, @end, Linha 38, Coluna 0>
+2025-06-27 13:47:05,622 - INFO - AST gerada com sucesso.
+2025-06-27 13:47:05,623 - INFO - Arquivo 'ast.dot' salvo com sucesso.
+2025-06-27 13:47:05,629 - INFO - Iniciando análise semântica.
+2025-06-27 13:47:05,629 - INFO - [Semântico] Declarada variável 'valido' do tipo 'int'.
+2025-06-27 13:47:05,629 - INFO - Análise semântica concluída sem erros.
+2025-06-27 13:47:05,630 - INFO - Iniciando geração de código TAC.
+2025-06-27 13:47:05,630 - INFO - TAC: t1 = 1 + 2
+2025-06-27 13:47:05,630 - INFO - TAC: valido = t1
+2025-06-27 13:47:05,630 - INFO - TAC: print "Resultado válido:", valido
+2025-06-27 13:47:05,632 - INFO - Iniciando geração de código Assembly x86-64.
+2025-06-27 13:47:05,635 - INFO - Assembly x86-64 salvo em 'output.s'

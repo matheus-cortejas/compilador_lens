@@ -32,7 +32,7 @@
 
 
     // ✅ 6. Exemplo válido (só para referência)
-    let valido: int = 1 + 2
-    print :: "Resultado válido:", valido
+      let valido: int = 1 + 2
+      print :: "Resultado válido:", valido
 
 @end
