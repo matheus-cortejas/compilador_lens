@@ -120,51 +120,129 @@ class SemanticAnalyzer(lensVisitor):
     def visitEntrada(self, ctx: lensParser.EntradaContext):
         var_name = ctx.VAR().getText()
         line = ctx.start.line
+        
         # Verificar se a variável existe
-        self.buscar_var(var_name, line)
+        simbolo = self.buscar_var(var_name, line)
+        
+        # CORREÇÃO: input() atribui valor à variável
+        if simbolo:
+            simbolo["atribuida"] = True  # ← LINHA ADICIONADA
+            self.log_action(f"Variável '{var_name}' recebeu valor via input().")
+        
         return None
 
     # MUDANÇA: condicao → condicional
     def visitCondicional(self, ctx: lensParser.CondicionalContext):
-        for if_stmt in ctx.if_stmt():
-            self.visit(if_stmt)
-        for elseif_stmt in ctx.elseif_stmt():
-            self.visit(elseif_stmt)
+        # Visitar if obrigatório
+        if ctx.if_stmt():
+            self.visit(ctx.if_stmt())
+        
+        # Visitar elseifs (pode ter zero ou mais)
+        if hasattr(ctx, 'elseif_stmt'):
+            elseifs = ctx.elseif_stmt()
+            if elseifs:
+                if isinstance(elseifs, list):
+                    for elseif_stmt in elseifs:
+                        self.visit(elseif_stmt)
+                else:
+                    self.visit(elseifs)
+        
+        # Visitar else opcional
         if ctx.else_stmt():
             self.visit(ctx.else_stmt())
         return None
 
     def visitIf_stmt(self, ctx: lensParser.If_stmtContext):
         self.scope_stack.append({})
+        
         # Visitar condição
-        self.visit(ctx.condicao())
+        if ctx.condicao():
+            self.visit(ctx.condicao())
+        
         # Visitar comandos
-        for comando in ctx.comando():
-            self.visit(comando)
+        if hasattr(ctx, 'comando'):
+            comandos = ctx.comando()
+            if comandos:
+                if isinstance(comandos, list):
+                    for comando in comandos:
+                        self.visit(comando)
+                else:
+                    self.visit(comandos)
+        
         self.scope_stack.pop()
         return None
 
     def visitElseif_stmt(self, ctx: lensParser.Elseif_stmtContext):
         self.scope_stack.append({})
+        
         # Visitar condição
-        self.visit(ctx.condicao())
+        if ctx.condicao():
+            self.visit(ctx.condicao())
+        
         # Visitar comandos
-        for comando in ctx.comando():
-            self.visit(comando)
+        if hasattr(ctx, 'comando'):
+            comandos = ctx.comando()
+            if comandos:
+                if isinstance(comandos, list):
+                    for comando in comandos:
+                        self.visit(comando)
+                else:
+                    self.visit(comandos)
+        
         self.scope_stack.pop()
         return None
 
     def visitElse_stmt(self, ctx: lensParser.Else_stmtContext):
         self.scope_stack.append({})
+        
         # Visitar comandos
-        for comando in ctx.comando():
-            self.visit(comando)
+        if hasattr(ctx, 'comando'):
+            comandos = ctx.comando()
+            if comandos:
+                if isinstance(comandos, list):
+                    for comando in comandos:
+                        self.visit(comando)
+                else:
+                    self.visit(comandos)
+        
         self.scope_stack.pop()
         return None
 
     def visitLacofor(self, ctx: lensParser.LacoforContext):
+        # Criar novo escopo para o for
         self.scope_stack.append({})
-        self.visitChildren(ctx)
+        
+        # CORREÇÃO: Declarar automaticamente a variável de iteração
+        if hasattr(ctx, 'VAR') and ctx.VAR():
+            var_name = ctx.VAR().getText()
+            line = ctx.start.line
+            
+            # Declarar variável de iteração como int (sempre é int nos ranges)
+            self.scope_stack[-1][var_name] = {
+                "type": "int",
+                "line": line,
+                "atribuida": True  # Já está atribuída pelo for
+            }
+            self.log_action(f"Variável de iteração '{var_name}' declarada automaticamente no for.")
+        
+        # Visitar as expressões do range (início..fim)
+        if hasattr(ctx, 'expressao'):
+            expressoes = ctx.expressao()
+            if expressoes:
+                for expr in expressoes:
+                    self.visit(expr)
+        
+        # Visitar comandos dentro do for
+        if hasattr(ctx, 'comando'):
+            comandos = ctx.comando()
+            if comandos:
+                if isinstance(comandos, list):
+                    for comando in comandos:
+                        self.visit(comando)
+                else:
+                    self.visit(comandos)
+        
+        # Remover escopo do for
         self.scope_stack.pop()
         return None
 
@@ -219,7 +297,17 @@ class SemanticAnalyzer(lensVisitor):
             for i in range(1, len(ctx.termo_arit())):
                 tipos.append(self.visit(ctx.termo_arit(i)))
             
-            if "String" in tipos or "bool" in tipos:
+            # CORREÇÃO: Permitir concatenação de strings com operador +
+            if "String" in tipos:
+                # Se tem String, só permite + para concatenação
+                if hasattr(ctx, 'op_adicao'):
+                    for op in ctx.op_adicao():
+                        if op.getText() != '+':
+                            self.error(ctx.start.line, f"Operação '{op.getText()}' inválida com String. Use apenas '+'.")
+                            return "erro"
+                return "String"  # Resultado da concatenação é String
+            
+            if "bool" in tipos:
                 self.error(ctx.start.line, f"Operação aritmética inválida com tipos: {tipos}")
                 return "erro"
             
@@ -235,7 +323,12 @@ class SemanticAnalyzer(lensVisitor):
             for i in range(1, len(ctx.fator())):
                 tipos.append(self.visit(ctx.fator(i)))
             
-            if "String" in tipos or "bool" in tipos:
+            # String não pode usar * ou /
+            if "String" in tipos:
+                self.error(ctx.start.line, f"Operação multiplicação/divisão inválida com String.")
+                return "erro"
+                
+            if "bool" in tipos:
                 self.error(ctx.start.line, f"Operação aritmética inválida com tipos: {tipos}")
                 return "erro"
                 

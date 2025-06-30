@@ -54,7 +54,7 @@ class TACGenerator(lensVisitor):
             if arg2:
                 return f"print {arg1}, {arg2}"
             return f"print {arg1}"
-        elif op == 'READ':
+        elif op == 'read':
             return f"read {result}"
         elif op == 'LABEL':
             return f"{result}:"
@@ -112,34 +112,85 @@ class TACGenerator(lensVisitor):
         return var_name
 
     def visitAtribuicao(self, ctx: lensParser.AtribuicaoContext):
-        """Gera TAC para atribuição."""
+        """Gera TAC para atribuição simples e composta."""
         var_name = ctx.VAR().getText()
-        expr_result = self.visit(ctx.expressao())
         
-        self.emit('ASSIGN', expr_result, None, var_name)
+        # CORREÇÃO: Verificar qual tipo de atribuição baseado na estrutura
+        children_count = ctx.getChildCount()
+        
+        if children_count == 3:
+            # ATRIBUIÇÃO SIMPLES: VAR EQUALS expressao (3 filhos)
+            # Exemplo: x = 5
+            expr_result = self.visit(ctx.expressao())
+            self.emit('ASSIGN', expr_result, None, var_name)
+            
+        elif children_count == 4:
+            # ATRIBUIÇÃO COMPOSTA: VAR op EQUALS expressao (4 filhos)
+            # Exemplo: x += 5, x *= 3
+            
+            # Identificar o operador composto
+            op_compound = None
+            for child in ctx.children:
+                child_text = child.getText()
+                if child_text in ['+', '-', '*', '/']:
+                    op_compound = child_text
+                    break
+            
+            if op_compound:
+                # Gerar TAC para atribuição composta
+                expr_result = self.visit(ctx.expressao())
+                temp = self.new_temp()
+                
+                # temp = var op expr
+                self.emit(op_compound, var_name, expr_result, temp)
+                # var = temp
+                self.emit('ASSIGN', temp, None, var_name)
+                
+                print(f"✅ Atribuição composta: {var_name} {op_compound}= {expr_result}")
+            else:
+                # Fallback para atribuição simples
+                expr_result = self.visit(ctx.expressao())
+                self.emit('ASSIGN', expr_result, None, var_name)
+        else:
+            # Fallback: assumir atribuição simples
+            expr_result = self.visit(ctx.expressao())
+            self.emit('ASSIGN', expr_result, None, var_name)
+        
         return var_name
 
     def visitImpressao(self, ctx: lensParser.ImpressaoContext):
         """Gera TAC para comando print."""
-        expressions = ctx.expressao()
-        
-        if len(expressions) == 1:
-            # print :: expressao
-            expr_result = self.visit(expressions[0])
-            self.emit('PRINT', expr_result, None, None)
-        elif len(expressions) == 2:
-            # print :: "string", expressao
-            string_result = self.visit(expressions[0])
-            expr_result = self.visit(expressions[1])
-            self.emit('PRINT', string_result, expr_result, None)
+        if hasattr(ctx, 'expressao') and ctx.expressao():
+            expressions = ctx.expressao()
+            
+            # CORREÇÃO: Verificar se é lista ou objeto único
+            if isinstance(expressions, list):
+                if len(expressions) == 1:
+                    # print :: expressao
+                    expr_result = self.visit(expressions[0])
+                    self.emit('PRINT', expr_result, None, None)
+                elif len(expressions) >= 2:
+                    # print :: expr1, expr2, ...
+                    for i, expr in enumerate(expressions):
+                        expr_result = self.visit(expr)
+                        if i == 0:
+                            # Primeira expressão
+                            self.emit('PRINT', expr_result, None, None)
+                        else:
+                            # Expressões subsequentes (separadas por vírgula)
+                            self.emit('PRINT', expr_result, None, None)
+            else:
+                # Objeto único
+                expr_result = self.visit(expressions)
+                self.emit('PRINT', expr_result, None, None)
         
         return None
 
     def visitEntrada(self, ctx: lensParser.EntradaContext):
-        """Gera TAC para comando read."""
+        """Gera TAC para comando input."""
         var_name = ctx.VAR().getText()
-        self.emit('READ', None, None, var_name)
-        return None
+        self.emit('read', None, None, var_name)
+        return var_name
 
     # ========================================
     # EXPRESSÕES ARITMÉTICAS
@@ -230,7 +281,7 @@ class TACGenerator(lensVisitor):
         result = self.visit(ctx.expressao_arit(0))
         
         if len(ctx.expressao_arit()) > 1:
-            op = ctx.op_comparacao(0).getText()  # <, >, ==, !=, <=, >=
+            op = ctx.op_comparacao().getText()  # <, >, ==, !=, <=, >=
             right = self.visit(ctx.expressao_arit(1))
             temp = self.new_temp()
             
@@ -255,15 +306,20 @@ class TACGenerator(lensVisitor):
         """Gera TAC para estruturas condicionais."""
         end_label = self.new_label()
         
-        # IF
-        for if_stmt in ctx.if_stmt():
-            self.visit_if_statement(if_stmt, end_label)
+        # CORREÇÃO: IF é um objeto único, não uma lista
+        if ctx.if_stmt():
+            self.visit_if_statement(ctx.if_stmt(), end_label)
         
-        # ELSEIF
-        for elseif_stmt in ctx.elseif_stmt():
-            self.visit_elseif_statement(elseif_stmt, end_label)
+        # CORREÇÃO: ELSEIF pode ser lista ou objeto único
+        if hasattr(ctx, 'elseif_stmt') and ctx.elseif_stmt():
+            elseifs = ctx.elseif_stmt()
+            if isinstance(elseifs, list):
+                for elseif_stmt in elseifs:
+                    self.visit_elseif_statement(elseif_stmt, end_label)
+            else:
+                self.visit_elseif_statement(elseifs, end_label)
         
-        # ELSE
+        # CORREÇÃO: ELSE é um objeto único, não uma lista
         if ctx.else_stmt():
             self.visit_else_statement(ctx.else_stmt())
         
@@ -278,9 +334,14 @@ class TACGenerator(lensVisitor):
         condition = self.visit(ctx.condicao())
         self.emit('IF_FALSE', condition, None, else_label)
         
-        # Comandos do IF
-        for comando in ctx.comando():
-            self.visit(comando)
+        # CORREÇÃO: Comandos podem ser lista ou objeto único
+        if hasattr(ctx, 'comando') and ctx.comando():
+            comandos = ctx.comando()
+            if isinstance(comandos, list):
+                for comando in comandos:
+                    self.visit(comando)
+            else:
+                self.visit(comandos)
         
         self.emit('GOTO', None, None, end_label)
         self.emit('LABEL', None, None, else_label)
@@ -293,21 +354,31 @@ class TACGenerator(lensVisitor):
         condition = self.visit(ctx.condicao())
         self.emit('IF_FALSE', condition, None, else_label)
         
-        # Comandos do ELSEIF
-        for comando in ctx.comando():
-            self.visit(comando)
+        # CORREÇÃO: Comandos podem ser lista ou objeto único
+        if hasattr(ctx, 'comando') and ctx.comando():
+            comandos = ctx.comando()
+            if isinstance(comandos, list):
+                for comando in comandos:
+                    self.visit(comando)
+            else:
+                self.visit(comandos)
         
         self.emit('GOTO', None, None, end_label)
         self.emit('LABEL', None, None, else_label)
 
     def visit_else_statement(self, ctx):
         """Processa statement ELSE."""
-        # Comandos do ELSE
-        for comando in ctx.comando():
-            self.visit(comando)
+        # CORREÇÃO: Comandos podem ser lista ou objeto único
+        if hasattr(ctx, 'comando') and ctx.comando():
+            comandos = ctx.comando()
+            if isinstance(comandos, list):
+                for comando in comandos:
+                    self.visit(comando)
+            else:
+                self.visit(comandos)
 
     def visitLacowhile(self, ctx: lensParser.LacowhileContext):
-        """Gera TAC para laço while."""
+        """Gera TAC para laço while (versão corrigida)."""
         start_label = self.new_label()
         end_label = self.new_label()
         
@@ -317,9 +388,14 @@ class TACGenerator(lensVisitor):
         condition = self.visit(ctx.condicao())
         self.emit('IF_FALSE', condition, None, end_label)
         
-        # Comandos do while
-        for comando in ctx.comando():
-            self.visit(comando)
+        # CORREÇÃO: Comandos podem ser lista ou objeto único
+        if hasattr(ctx, 'comando') and ctx.comando():
+            comandos = ctx.comando()
+            if isinstance(comandos, list):
+                for comando in comandos:
+                    self.visit(comando)
+            else:
+                self.visit(comandos)
         
         self.emit('GOTO', None, None, start_label)
         self.emit('LABEL', None, None, end_label)
@@ -327,30 +403,135 @@ class TACGenerator(lensVisitor):
         return None
 
     def visitLacofor(self, ctx: lensParser.LacoforContext):
-        """Gera TAC para laço for."""
-        start_label = self.new_label()
-        end_label = self.new_label()
+        """Gera TAC para laço for do zero - baseado na gramática."""
         
-        # Inicialização (se houver)
-        if hasattr(ctx, 'declaracao') and ctx.declaracao():
-            self.visit(ctx.declaracao())
+        # =====================================
+        # 1. SETUP INICIAL
+        # =====================================
+        start_label = self.new_label()  # Label para início do loop
+        end_label = self.new_label()    # Label para fim do loop
         
+        # Extrair nome da variável de controle
+        var_name = ctx.VAR().getText()
+        print(f"🔍 FOR: Variável de controle = '{var_name}'")
+        
+        # =====================================
+        # 2. EXTRAIR EXPRESSÕES DO RANGE
+        # =====================================
+        
+        # A gramática define: expressao_arit DOT2 expressao_arit
+        # Então temos 2 expressões aritméticas
+        
+        # Primeira expressão (início do range)
+        start_expr_ctx = ctx.expressao_arit(0)  # Primeiro expressao_arit
+        start_expr = self.visit(start_expr_ctx)
+        
+        # Segunda expressão (fim do range) 
+        end_expr_ctx = ctx.expressao_arit(1)    # Segundo expressao_arit
+        end_expr = self.visit(end_expr_ctx)
+        
+        print(f"✅ Range extraído: {start_expr} até {end_expr}")
+        
+        # =====================================
+        # 3. DETECTAR DIREÇÃO DO LOOP
+        # =====================================
+        
+        is_decreasing = False
+        
+        # Tentar determinar se é progressivo ou regressivo
+        try:
+            # Se ambas são literais numéricas, comparar
+            start_text = start_expr_ctx.getText()
+            end_text = end_expr_ctx.getText()
+            
+            if (start_text.replace('-', '').isdigit() and 
+                end_text.replace('-', '').isdigit()):
+                start_val = int(start_text)
+                end_val = int(end_text)
+                is_decreasing = start_val > end_val
+                
+                print(f"🔍 Direção detectada: {'REGRESSIVO' if is_decreasing else 'PROGRESSIVO'}")
+        except:
+            # Se não conseguir determinar, assumir progressivo
+            is_decreasing = False
+            print(f"⚠️  Assumindo direção PROGRESSIVA")
+        
+        # =====================================
+        # 4. GERAR TAC - INICIALIZAÇÃO
+        # =====================================
+        
+        # Inicializar variável de controle: var = start_expr
+        self.emit('ASSIGN', start_expr, None, var_name)
+        
+        # =====================================
+        # 5. GERAR TAC - INÍCIO DO LOOP
+        # =====================================
+        
+        # Label para início do loop
         self.emit('LABEL', None, None, start_label)
         
-        # Condição (se houver)
-        if hasattr(ctx, 'condicao') and ctx.condicao():
-            condition = self.visit(ctx.condicao())
-            self.emit('IF_FALSE', condition, None, end_label)
+        # =====================================
+        # 6. GERAR TAC - CONDIÇÃO DE PARADA
+        # =====================================
         
-        # Comandos do for
-        for comando in ctx.comando():
-            self.visit(comando)
+        # Gerar condição baseada na direção
+        temp_cond = self.new_temp()
         
-        # Incremento (se houver)
-        if hasattr(ctx, 'atribuicao') and ctx.atribuicao():
-            self.visit(ctx.atribuicao())
+        if is_decreasing:
+            # For regressivo: continuar enquanto var >= end_expr
+            self.emit('>=', var_name, end_expr, temp_cond)
+        else:
+            # For progressivo: continuar enquanto var <= end_expr
+            self.emit('<=', var_name, end_expr, temp_cond)
         
+        # Se condição for falsa, sair do loop
+        self.emit('IF_FALSE', temp_cond, None, end_label)
+        
+        # =====================================
+        # 7. GERAR TAC - CORPO DO LOOP
+        # =====================================
+        
+        # Visitar todos os comandos dentro do for
+        # A gramática define: comando*
+        if hasattr(ctx, 'comando') and ctx.comando():
+            comandos = ctx.comando()
+            
+            # ANTLR pode retornar lista ou objeto único
+            if isinstance(comandos, list):
+                for comando in comandos:
+                    print(f"🔄 Visitando comando no for: {comando.getText()}")
+                    self.visit(comando)
+            else:
+                print(f"🔄 Visitando comando único no for: {comandos.getText()}")
+                self.visit(comandos)
+        
+        # =====================================
+        # 8. GERAR TAC - INCREMENTO/DECREMENTO
+        # =====================================
+        
+        # Atualizar variável de controle
+        temp_inc = self.new_temp()
+        
+        if is_decreasing:
+            # Decrementar: var = var - 1
+            self.emit('-', var_name, '1', temp_inc)
+        else:
+            # Incrementar: var = var + 1
+            self.emit('+', var_name, '1', temp_inc)
+        
+        # Atribuir novo valor à variável
+        self.emit('ASSIGN', temp_inc, None, var_name)
+        
+        # =====================================
+        # 9. GERAR TAC - VOLTA E FIM
+        # =====================================
+        
+        # Voltar para o início do loop
         self.emit('GOTO', None, None, start_label)
+        
+        # Label para fim do loop
         self.emit('LABEL', None, None, end_label)
+        
+        print(f"✅ FOR completo para '{var_name}' gerado com sucesso!")
         
         return None

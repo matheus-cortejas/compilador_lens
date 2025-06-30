@@ -1,29 +1,1397 @@
-2025-06-27 13:47:05,606 - INFO - Iniciando análise do arquivo: script.lens
-2025-06-27 13:47:05,606 - INFO - Código carregado com sucesso.
-2025-06-27 13:47:05,615 - INFO - Tokens analisados com sucesso. Imprimindo tokens:
-2025-06-27 13:47:05,616 - INFO - Token: <START, @start, Linha 1, Coluna 0>
-2025-06-27 13:47:05,616 - INFO - Token: <LET, let, Linha 35, Coluna 6>
-2025-06-27 13:47:05,616 - INFO - Token: <VAR, valido, Linha 35, Coluna 10>
-2025-06-27 13:47:05,617 - INFO - Token: <POINT2, :, Linha 35, Coluna 16>
-2025-06-27 13:47:05,618 - INFO - Token: <INT_TYPE, int, Linha 35, Coluna 18>
-2025-06-27 13:47:05,618 - INFO - Token: <EQUALS, =, Linha 35, Coluna 22>
-2025-06-27 13:47:05,618 - INFO - Token: <INT, 1, Linha 35, Coluna 24>
-2025-06-27 13:47:05,619 - INFO - Token: <ADD, +, Linha 35, Coluna 26>
-2025-06-27 13:47:05,619 - INFO - Token: <INT, 2, Linha 35, Coluna 28>
-2025-06-27 13:47:05,619 - INFO - Token: <PRINT, print, Linha 36, Coluna 6>
-2025-06-27 13:47:05,619 - INFO - Token: <DUPONT, ::, Linha 36, Coluna 12>
-2025-06-27 13:47:05,619 - INFO - Token: <STRING, "Resultado válido:", Linha 36, Coluna 15>
-2025-06-27 13:47:05,620 - INFO - Token: <VIRG, ,, Linha 36, Coluna 34>
-2025-06-27 13:47:05,620 - INFO - Token: <VAR, valido, Linha 36, Coluna 36>
-2025-06-27 13:47:05,620 - INFO - Token: <END, @end, Linha 38, Coluna 0>
-2025-06-27 13:47:05,622 - INFO - AST gerada com sucesso.
-2025-06-27 13:47:05,623 - INFO - Arquivo 'ast.dot' salvo com sucesso.
-2025-06-27 13:47:05,629 - INFO - Iniciando análise semântica.
-2025-06-27 13:47:05,629 - INFO - [Semântico] Declarada variável 'valido' do tipo 'int'.
-2025-06-27 13:47:05,629 - INFO - Análise semântica concluída sem erros.
-2025-06-27 13:47:05,630 - INFO - Iniciando geração de código TAC.
-2025-06-27 13:47:05,630 - INFO - TAC: t1 = 1 + 2
-2025-06-27 13:47:05,630 - INFO - TAC: valido = t1
-2025-06-27 13:47:05,630 - INFO - TAC: print "Resultado válido:", valido
-2025-06-27 13:47:05,632 - INFO - Iniciando geração de código Assembly x86-64.
-2025-06-27 13:47:05,635 - INFO - Assembly x86-64 salvo em 'output.s'
+2025-06-30 13:23:45,093 - INFO - Iniciando análise do arquivo: script.lens
+2025-06-30 13:23:45,110 - INFO - Código carregado com sucesso.
+2025-06-30 13:23:45,152 - INFO - Tokens analisados com sucesso. Imprimindo tokens:
+2025-06-30 13:23:45,154 - INFO - Token: <START, @start, Linha 1, Coluna 0>
+2025-06-30 13:23:45,154 - INFO - Token: <LET, let, Linha 11, Coluna 4>
+2025-06-30 13:23:45,155 - INFO - Token: <VAR, idade, Linha 11, Coluna 8>
+2025-06-30 13:23:45,155 - INFO - Token: <POINT2, :, Linha 11, Coluna 13>
+2025-06-30 13:23:45,155 - INFO - Token: <INT_TYPE, int, Linha 11, Coluna 15>
+2025-06-30 13:23:45,155 - INFO - Token: <EQUALS, =, Linha 11, Coluna 19>
+2025-06-30 13:23:45,156 - INFO - Token: <INT, 25, Linha 11, Coluna 21>
+2025-06-30 13:23:45,156 - INFO - Token: <LET, let, Linha 12, Coluna 4>
+2025-06-30 13:23:45,156 - INFO - Token: <VAR, altura, Linha 12, Coluna 8>
+2025-06-30 13:23:45,156 - INFO - Token: <POINT2, :, Linha 12, Coluna 14>
+2025-06-30 13:23:45,156 - INFO - Token: <FLOAT_TYPE, float, Linha 12, Coluna 16>
+2025-06-30 13:23:45,157 - INFO - Token: <EQUALS, =, Linha 12, Coluna 22>
+2025-06-30 13:23:45,157 - INFO - Token: <FLOAT, 1.75, Linha 12, Coluna 24>
+2025-06-30 13:23:45,157 - INFO - Token: <LET, let, Linha 13, Coluna 4>
+2025-06-30 13:23:45,157 - INFO - Token: <VAR, nome, Linha 13, Coluna 8>
+2025-06-30 13:23:45,158 - INFO - Token: <POINT2, :, Linha 13, Coluna 12>
+2025-06-30 13:23:45,158 - INFO - Token: <STRING_TYPE, String, Linha 13, Coluna 14>
+2025-06-30 13:23:45,158 - INFO - Token: <EQUALS, =, Linha 13, Coluna 21>
+2025-06-30 13:23:45,158 - INFO - Token: <STRING, "João Silva", Linha 13, Coluna 23>
+2025-06-30 13:23:45,158 - INFO - Token: <LET, let, Linha 14, Coluna 4>
+2025-06-30 13:23:45,159 - INFO - Token: <VAR, ativo, Linha 14, Coluna 8>
+2025-06-30 13:23:45,159 - INFO - Token: <POINT2, :, Linha 14, Coluna 13>
+2025-06-30 13:23:45,159 - INFO - Token: <BOOL_TYPE, bool, Linha 14, Coluna 15>
+2025-06-30 13:23:45,159 - INFO - Token: <EQUALS, =, Linha 14, Coluna 20>
+2025-06-30 13:23:45,159 - INFO - Token: <BOOL, True, Linha 14, Coluna 22>
+2025-06-30 13:23:45,160 - INFO - Token: <LET, let, Linha 17, Coluna 4>
+2025-06-30 13:23:45,160 - INFO - Token: <VAR, contador, Linha 17, Coluna 8>
+2025-06-30 13:23:45,160 - INFO - Token: <POINT2, :, Linha 17, Coluna 16>
+2025-06-30 13:23:45,160 - INFO - Token: <INT_TYPE, int, Linha 17, Coluna 18>
+2025-06-30 13:23:45,160 - INFO - Token: <LET, let, Linha 18, Coluna 4>
+2025-06-30 13:23:45,161 - INFO - Token: <VAR, peso, Linha 18, Coluna 8>
+2025-06-30 13:23:45,161 - INFO - Token: <POINT2, :, Linha 18, Coluna 12>
+2025-06-30 13:23:45,161 - INFO - Token: <FLOAT_TYPE, float, Linha 18, Coluna 14>
+2025-06-30 13:23:45,161 - INFO - Token: <LET, let, Linha 19, Coluna 4>
+2025-06-30 13:23:45,161 - INFO - Token: <VAR, sobrenome, Linha 19, Coluna 8>
+2025-06-30 13:23:45,162 - INFO - Token: <POINT2, :, Linha 19, Coluna 17>
+2025-06-30 13:23:45,162 - INFO - Token: <STRING_TYPE, String, Linha 19, Coluna 19>
+2025-06-30 13:23:45,162 - INFO - Token: <LET, let, Linha 20, Coluna 4>
+2025-06-30 13:23:45,162 - INFO - Token: <VAR, aprovado, Linha 20, Coluna 8>
+2025-06-30 13:23:45,163 - INFO - Token: <POINT2, :, Linha 20, Coluna 16>
+2025-06-30 13:23:45,163 - INFO - Token: <BOOL_TYPE, bool, Linha 20, Coluna 18>
+2025-06-30 13:23:45,163 - INFO - Token: <VAR, contador, Linha 27, Coluna 4>
+2025-06-30 13:23:45,163 - INFO - Token: <EQUALS, =, Linha 27, Coluna 13>
+2025-06-30 13:23:45,163 - INFO - Token: <INT, 0, Linha 27, Coluna 15>
+2025-06-30 13:23:45,164 - INFO - Token: <VAR, peso, Linha 28, Coluna 4>
+2025-06-30 13:23:45,164 - INFO - Token: <EQUALS, =, Linha 28, Coluna 9>
+2025-06-30 13:23:45,164 - INFO - Token: <FLOAT, 70.5, Linha 28, Coluna 11>
+2025-06-30 13:23:45,164 - INFO - Token: <VAR, sobrenome, Linha 29, Coluna 4>
+2025-06-30 13:23:45,164 - INFO - Token: <EQUALS, =, Linha 29, Coluna 14>
+2025-06-30 13:23:45,165 - INFO - Token: <STRING, "Santos", Linha 29, Coluna 16>
+2025-06-30 13:23:45,165 - INFO - Token: <VAR, aprovado, Linha 30, Coluna 4>
+2025-06-30 13:23:45,165 - INFO - Token: <EQUALS, =, Linha 30, Coluna 13>
+2025-06-30 13:23:45,165 - INFO - Token: <BOOL, False, Linha 30, Coluna 15>
+2025-06-30 13:23:45,166 - INFO - Token: <VAR, idade, Linha 33, Coluna 4>
+2025-06-30 13:23:45,166 - INFO - Token: <ADD, +, Linha 33, Coluna 10>
+2025-06-30 13:23:45,166 - INFO - Token: <EQUALS, =, Linha 33, Coluna 11>
+2025-06-30 13:23:45,166 - INFO - Token: <INT, 5, Linha 33, Coluna 13>
+2025-06-30 13:23:45,167 - INFO - Token: <VAR, altura, Linha 34, Coluna 4>
+2025-06-30 13:23:45,167 - INFO - Token: <SUB, -, Linha 34, Coluna 11>
+2025-06-30 13:23:45,167 - INFO - Token: <EQUALS, =, Linha 34, Coluna 12>
+2025-06-30 13:23:45,167 - INFO - Token: <FLOAT, 0.05, Linha 34, Coluna 14>
+2025-06-30 13:23:45,168 - INFO - Token: <VAR, contador, Linha 35, Coluna 4>
+2025-06-30 13:23:45,168 - INFO - Token: <MUL, *, Linha 35, Coluna 13>
+2025-06-30 13:23:45,168 - INFO - Token: <EQUALS, =, Linha 35, Coluna 14>
+2025-06-30 13:23:45,168 - INFO - Token: <INT, 2, Linha 35, Coluna 16>
+2025-06-30 13:23:45,168 - INFO - Token: <VAR, peso, Linha 36, Coluna 4>
+2025-06-30 13:23:45,169 - INFO - Token: <DIV, /, Linha 36, Coluna 9>
+2025-06-30 13:23:45,169 - INFO - Token: <EQUALS, =, Linha 36, Coluna 10>
+2025-06-30 13:23:45,169 - INFO - Token: <INT, 2, Linha 36, Coluna 12>
+2025-06-30 13:23:45,170 - INFO - Token: <PRINT, print, Linha 43, Coluna 4>
+2025-06-30 13:23:45,170 - INFO - Token: <DUPONT, ::, Linha 43, Coluna 10>
+2025-06-30 13:23:45,170 - INFO - Token: <STRING, "=== DEMONSTRAÇÃO LENS ===", Linha 43, Coluna 13>
+2025-06-30 13:23:45,170 - INFO - Token: <PRINT, print, Linha 44, Coluna 4>
+2025-06-30 13:23:45,171 - INFO - Token: <DUPONT, ::, Linha 44, Coluna 10>
+2025-06-30 13:23:45,171 - INFO - Token: <VAR, nome, Linha 44, Coluna 13>
+2025-06-30 13:23:45,171 - INFO - Token: <PRINT, print, Linha 45, Coluna 4>
+2025-06-30 13:23:45,171 - INFO - Token: <DUPONT, ::, Linha 45, Coluna 10>
+2025-06-30 13:23:45,172 - INFO - Token: <VAR, idade, Linha 45, Coluna 13>
+2025-06-30 13:23:45,172 - INFO - Token: <PRINT, print, Linha 48, Coluna 4>
+2025-06-30 13:23:45,172 - INFO - Token: <DUPONT, ::, Linha 48, Coluna 10>
+2025-06-30 13:23:45,172 - INFO - Token: <STRING, "Nome completo:", Linha 48, Coluna 13>
+2025-06-30 13:23:45,173 - INFO - Token: <VIRG, ,, Linha 48, Coluna 29>
+2025-06-30 13:23:45,173 - INFO - Token: <VAR, nome, Linha 48, Coluna 31>
+2025-06-30 13:23:45,173 - INFO - Token: <VIRG, ,, Linha 48, Coluna 35>
+2025-06-30 13:23:45,173 - INFO - Token: <VAR, sobrenome, Linha 48, Coluna 37>
+2025-06-30 13:23:45,174 - INFO - Token: <PRINT, print, Linha 49, Coluna 4>
+2025-06-30 13:23:45,174 - INFO - Token: <DUPONT, ::, Linha 49, Coluna 10>
+2025-06-30 13:23:45,174 - INFO - Token: <STRING, "Idade atual:", Linha 49, Coluna 13>
+2025-06-30 13:23:45,174 - INFO - Token: <VIRG, ,, Linha 49, Coluna 27>
+2025-06-30 13:23:45,175 - INFO - Token: <VAR, idade, Linha 49, Coluna 29>
+2025-06-30 13:23:45,175 - INFO - Token: <PRINT, print, Linha 50, Coluna 4>
+2025-06-30 13:23:45,175 - INFO - Token: <DUPONT, ::, Linha 50, Coluna 10>
+2025-06-30 13:23:45,175 - INFO - Token: <STRING, "Altura:", Linha 50, Coluna 13>
+2025-06-30 13:23:45,175 - INFO - Token: <VIRG, ,, Linha 50, Coluna 22>
+2025-06-30 13:23:45,176 - INFO - Token: <VAR, altura, Linha 50, Coluna 24>
+2025-06-30 13:23:45,176 - INFO - Token: <PRINT, print, Linha 51, Coluna 4>
+2025-06-30 13:23:45,176 - INFO - Token: <DUPONT, ::, Linha 51, Coluna 10>
+2025-06-30 13:23:45,176 - INFO - Token: <STRING, "Peso:", Linha 51, Coluna 13>
+2025-06-30 13:23:45,176 - INFO - Token: <VIRG, ,, Linha 51, Coluna 20>
+2025-06-30 13:23:45,177 - INFO - Token: <VAR, peso, Linha 51, Coluna 22>
+2025-06-30 13:23:45,177 - INFO - Token: <PRINT, print, Linha 52, Coluna 4>
+2025-06-30 13:23:45,177 - INFO - Token: <DUPONT, ::, Linha 52, Coluna 10>
+2025-06-30 13:23:45,177 - INFO - Token: <STRING, "Status ativo:", Linha 52, Coluna 13>
+2025-06-30 13:23:45,177 - INFO - Token: <VIRG, ,, Linha 52, Coluna 28>
+2025-06-30 13:23:45,178 - INFO - Token: <VAR, ativo, Linha 52, Coluna 30>
+2025-06-30 13:23:45,178 - INFO - Token: <PRINT, print, Linha 53, Coluna 4>
+2025-06-30 13:23:45,178 - INFO - Token: <DUPONT, ::, Linha 53, Coluna 10>
+2025-06-30 13:23:45,178 - INFO - Token: <STRING, "Aprovado:", Linha 53, Coluna 13>
+2025-06-30 13:23:45,179 - INFO - Token: <VIRG, ,, Linha 53, Coluna 24>
+2025-06-30 13:23:45,179 - INFO - Token: <VAR, aprovado, Linha 53, Coluna 26>
+2025-06-30 13:23:45,179 - INFO - Token: <LET, let, Linha 59, Coluna 4>
+2025-06-30 13:23:45,179 - INFO - Token: <VAR, a, Linha 59, Coluna 8>
+2025-06-30 13:23:45,179 - INFO - Token: <POINT2, :, Linha 59, Coluna 9>
+2025-06-30 13:23:45,179 - INFO - Token: <INT_TYPE, int, Linha 59, Coluna 11>
+2025-06-30 13:23:45,180 - INFO - Token: <EQUALS, =, Linha 59, Coluna 15>
+2025-06-30 13:23:45,180 - INFO - Token: <INT, 10, Linha 59, Coluna 17>
+2025-06-30 13:23:45,180 - INFO - Token: <LET, let, Linha 60, Coluna 4>
+2025-06-30 13:23:45,180 - INFO - Token: <VAR, b, Linha 60, Coluna 8>
+2025-06-30 13:23:45,180 - INFO - Token: <POINT2, :, Linha 60, Coluna 9>
+2025-06-30 13:23:45,181 - INFO - Token: <INT_TYPE, int, Linha 60, Coluna 11>
+2025-06-30 13:23:45,181 - INFO - Token: <EQUALS, =, Linha 60, Coluna 15>
+2025-06-30 13:23:45,181 - INFO - Token: <INT, 3, Linha 60, Coluna 17>
+2025-06-30 13:23:45,181 - INFO - Token: <LET, let, Linha 62, Coluna 4>
+2025-06-30 13:23:45,181 - INFO - Token: <VAR, soma, Linha 62, Coluna 8>
+2025-06-30 13:23:45,182 - INFO - Token: <POINT2, :, Linha 62, Coluna 12>
+2025-06-30 13:23:45,182 - INFO - Token: <INT_TYPE, int, Linha 62, Coluna 14>
+2025-06-30 13:23:45,182 - INFO - Token: <EQUALS, =, Linha 62, Coluna 18>
+2025-06-30 13:23:45,182 - INFO - Token: <VAR, a, Linha 62, Coluna 20>
+2025-06-30 13:23:45,183 - INFO - Token: <ADD, +, Linha 62, Coluna 22>
+2025-06-30 13:23:45,183 - INFO - Token: <VAR, b, Linha 62, Coluna 24>
+2025-06-30 13:23:45,183 - INFO - Token: <LET, let, Linha 63, Coluna 4>
+2025-06-30 13:23:45,183 - INFO - Token: <VAR, subtracao, Linha 63, Coluna 8>
+2025-06-30 13:23:45,183 - INFO - Token: <POINT2, :, Linha 63, Coluna 17>
+2025-06-30 13:23:45,184 - INFO - Token: <INT_TYPE, int, Linha 63, Coluna 19>
+2025-06-30 13:23:45,184 - INFO - Token: <EQUALS, =, Linha 63, Coluna 23>
+2025-06-30 13:23:45,184 - INFO - Token: <VAR, a, Linha 63, Coluna 25>
+2025-06-30 13:23:45,184 - INFO - Token: <SUB, -, Linha 63, Coluna 27>
+2025-06-30 13:23:45,184 - INFO - Token: <VAR, b, Linha 63, Coluna 29>
+2025-06-30 13:23:45,185 - INFO - Token: <LET, let, Linha 64, Coluna 4>
+2025-06-30 13:23:45,185 - INFO - Token: <VAR, multiplicacao, Linha 64, Coluna 8>
+2025-06-30 13:23:45,185 - INFO - Token: <POINT2, :, Linha 64, Coluna 21>
+2025-06-30 13:23:45,185 - INFO - Token: <INT_TYPE, int, Linha 64, Coluna 23>
+2025-06-30 13:23:45,186 - INFO - Token: <EQUALS, =, Linha 64, Coluna 27>
+2025-06-30 13:23:45,186 - INFO - Token: <VAR, a, Linha 64, Coluna 29>
+2025-06-30 13:23:45,186 - INFO - Token: <MUL, *, Linha 64, Coluna 31>
+2025-06-30 13:23:45,186 - INFO - Token: <VAR, b, Linha 64, Coluna 33>
+2025-06-30 13:23:45,187 - INFO - Token: <LET, let, Linha 65, Coluna 4>
+2025-06-30 13:23:45,187 - INFO - Token: <VAR, divisao, Linha 65, Coluna 8>
+2025-06-30 13:23:45,187 - INFO - Token: <POINT2, :, Linha 65, Coluna 15>
+2025-06-30 13:23:45,188 - INFO - Token: <INT_TYPE, int, Linha 65, Coluna 17>
+2025-06-30 13:23:45,188 - INFO - Token: <EQUALS, =, Linha 65, Coluna 21>
+2025-06-30 13:23:45,188 - INFO - Token: <VAR, a, Linha 65, Coluna 23>
+2025-06-30 13:23:45,188 - INFO - Token: <DIV, /, Linha 65, Coluna 25>
+2025-06-30 13:23:45,189 - INFO - Token: <VAR, b, Linha 65, Coluna 27>
+2025-06-30 13:23:45,189 - INFO - Token: <PRINT, print, Linha 67, Coluna 4>
+2025-06-30 13:23:45,189 - INFO - Token: <DUPONT, ::, Linha 67, Coluna 10>
+2025-06-30 13:23:45,189 - INFO - Token: <STRING, "Operações com", Linha 67, Coluna 13>
+2025-06-30 13:23:45,189 - INFO - Token: <VIRG, ,, Linha 67, Coluna 28>
+2025-06-30 13:23:45,190 - INFO - Token: <VAR, a, Linha 67, Coluna 30>
+2025-06-30 13:23:45,190 - INFO - Token: <VIRG, ,, Linha 67, Coluna 31>
+2025-06-30 13:23:45,190 - INFO - Token: <STRING, "e", Linha 67, Coluna 33>
+2025-06-30 13:23:45,190 - INFO - Token: <VIRG, ,, Linha 67, Coluna 36>
+2025-06-30 13:23:45,190 - INFO - Token: <VAR, b, Linha 67, Coluna 38>
+2025-06-30 13:23:45,190 - INFO - Token: <PRINT, print, Linha 68, Coluna 4>
+2025-06-30 13:23:45,191 - INFO - Token: <DUPONT, ::, Linha 68, Coluna 10>
+2025-06-30 13:23:45,191 - INFO - Token: <STRING, "Soma:", Linha 68, Coluna 13>
+2025-06-30 13:23:45,191 - INFO - Token: <VIRG, ,, Linha 68, Coluna 20>
+2025-06-30 13:23:45,191 - INFO - Token: <VAR, soma, Linha 68, Coluna 22>
+2025-06-30 13:23:45,191 - INFO - Token: <PRINT, print, Linha 69, Coluna 4>
+2025-06-30 13:23:45,192 - INFO - Token: <DUPONT, ::, Linha 69, Coluna 10>
+2025-06-30 13:23:45,192 - INFO - Token: <STRING, "Subtração:", Linha 69, Coluna 13>
+2025-06-30 13:23:45,192 - INFO - Token: <VIRG, ,, Linha 69, Coluna 25>
+2025-06-30 13:23:45,192 - INFO - Token: <VAR, subtracao, Linha 69, Coluna 27>
+2025-06-30 13:23:45,192 - INFO - Token: <PRINT, print, Linha 70, Coluna 4>
+2025-06-30 13:23:45,193 - INFO - Token: <DUPONT, ::, Linha 70, Coluna 10>
+2025-06-30 13:23:45,193 - INFO - Token: <STRING, "Multiplicação:", Linha 70, Coluna 13>
+2025-06-30 13:23:45,193 - INFO - Token: <VIRG, ,, Linha 70, Coluna 29>
+2025-06-30 13:23:45,193 - INFO - Token: <VAR, multiplicacao, Linha 70, Coluna 31>
+2025-06-30 13:23:45,193 - INFO - Token: <PRINT, print, Linha 71, Coluna 4>
+2025-06-30 13:23:45,194 - INFO - Token: <DUPONT, ::, Linha 71, Coluna 10>
+2025-06-30 13:23:45,194 - INFO - Token: <STRING, "Divisão:", Linha 71, Coluna 13>
+2025-06-30 13:23:45,194 - INFO - Token: <VIRG, ,, Linha 71, Coluna 23>
+2025-06-30 13:23:45,194 - INFO - Token: <VAR, divisao, Linha 71, Coluna 25>
+2025-06-30 13:23:45,195 - INFO - Token: <LET, let, Linha 74, Coluna 4>
+2025-06-30 13:23:45,195 - INFO - Token: <VAR, resultado, Linha 74, Coluna 8>
+2025-06-30 13:23:45,195 - INFO - Token: <POINT2, :, Linha 74, Coluna 17>
+2025-06-30 13:23:45,195 - INFO - Token: <INT_TYPE, int, Linha 74, Coluna 19>
+2025-06-30 13:23:45,195 - INFO - Token: <EQUALS, =, Linha 74, Coluna 23>
+2025-06-30 13:23:45,196 - INFO - Token: <VAR, a, Linha 74, Coluna 25>
+2025-06-30 13:23:45,196 - INFO - Token: <ADD, +, Linha 74, Coluna 27>
+2025-06-30 13:23:45,196 - INFO - Token: <VAR, b, Linha 74, Coluna 29>
+2025-06-30 13:23:45,196 - INFO - Token: <MUL, *, Linha 74, Coluna 31>
+2025-06-30 13:23:45,197 - INFO - Token: <INT, 2, Linha 74, Coluna 33>
+2025-06-30 13:23:45,197 - INFO - Token: <SUB, -, Linha 74, Coluna 35>
+2025-06-30 13:23:45,197 - INFO - Token: <INT, 1, Linha 74, Coluna 37>
+2025-06-30 13:23:45,197 - INFO - Token: <LET, let, Linha 75, Coluna 4>
+2025-06-30 13:23:45,197 - INFO - Token: <VAR, complexo, Linha 75, Coluna 8>
+2025-06-30 13:23:45,198 - INFO - Token: <POINT2, :, Linha 75, Coluna 16>
+2025-06-30 13:23:45,198 - INFO - Token: <INT_TYPE, int, Linha 75, Coluna 18>
+2025-06-30 13:23:45,198 - INFO - Token: <EQUALS, =, Linha 75, Coluna 22>
+2025-06-30 13:23:45,198 - INFO - Token: <P_N, (, Linha 75, Coluna 24>
+2025-06-30 13:23:45,198 - INFO - Token: <VAR, a, Linha 75, Coluna 25>
+2025-06-30 13:23:45,199 - INFO - Token: <ADD, +, Linha 75, Coluna 27>
+2025-06-30 13:23:45,199 - INFO - Token: <VAR, b, Linha 75, Coluna 29>
+2025-06-30 13:23:45,199 - INFO - Token: <P_I, ), Linha 75, Coluna 30>
+2025-06-30 13:23:45,199 - INFO - Token: <MUL, *, Linha 75, Coluna 32>
+2025-06-30 13:23:45,199 - INFO - Token: <INT, 2, Linha 75, Coluna 34>
+2025-06-30 13:23:45,200 - INFO - Token: <PRINT, print, Linha 77, Coluna 4>
+2025-06-30 13:23:45,200 - INFO - Token: <DUPONT, ::, Linha 77, Coluna 10>
+2025-06-30 13:23:45,200 - INFO - Token: <STRING, "Resultado complexo:", Linha 77, Coluna 13>
+2025-06-30 13:23:45,200 - INFO - Token: <VIRG, ,, Linha 77, Coluna 34>
+2025-06-30 13:23:45,200 - INFO - Token: <VAR, resultado, Linha 77, Coluna 36>
+2025-06-30 13:23:45,200 - INFO - Token: <PRINT, print, Linha 78, Coluna 4>
+2025-06-30 13:23:45,201 - INFO - Token: <DUPONT, ::, Linha 78, Coluna 10>
+2025-06-30 13:23:45,201 - INFO - Token: <STRING, "Com parênteses:", Linha 78, Coluna 13>
+2025-06-30 13:23:45,201 - INFO - Token: <VIRG, ,, Linha 78, Coluna 30>
+2025-06-30 13:23:45,201 - INFO - Token: <VAR, complexo, Linha 78, Coluna 32>
+2025-06-30 13:23:45,202 - INFO - Token: <LET, let, Linha 84, Coluna 4>
+2025-06-30 13:23:45,202 - INFO - Token: <VAR, igual, Linha 84, Coluna 8>
+2025-06-30 13:23:45,202 - INFO - Token: <POINT2, :, Linha 84, Coluna 13>
+2025-06-30 13:23:45,202 - INFO - Token: <BOOL_TYPE, bool, Linha 84, Coluna 15>
+2025-06-30 13:23:45,203 - INFO - Token: <EQUALS, =, Linha 84, Coluna 20>
+2025-06-30 13:23:45,203 - INFO - Token: <VAR, a, Linha 84, Coluna 22>
+2025-06-30 13:23:45,203 - INFO - Token: <EQ, ==, Linha 84, Coluna 24>
+2025-06-30 13:23:45,204 - INFO - Token: <VAR, b, Linha 84, Coluna 27>
+2025-06-30 13:23:45,204 - INFO - Token: <LET, let, Linha 85, Coluna 4>
+2025-06-30 13:23:45,204 - INFO - Token: <VAR, diferente, Linha 85, Coluna 8>
+2025-06-30 13:23:45,204 - INFO - Token: <POINT2, :, Linha 85, Coluna 17>
+2025-06-30 13:23:45,205 - INFO - Token: <BOOL_TYPE, bool, Linha 85, Coluna 19>
+2025-06-30 13:23:45,205 - INFO - Token: <EQUALS, =, Linha 85, Coluna 24>
+2025-06-30 13:23:45,205 - INFO - Token: <VAR, a, Linha 85, Coluna 26>
+2025-06-30 13:23:45,205 - INFO - Token: <NEQ, !=, Linha 85, Coluna 28>
+2025-06-30 13:23:45,205 - INFO - Token: <VAR, b, Linha 85, Coluna 31>
+2025-06-30 13:23:45,206 - INFO - Token: <LET, let, Linha 86, Coluna 4>
+2025-06-30 13:23:45,206 - INFO - Token: <VAR, menor, Linha 86, Coluna 8>
+2025-06-30 13:23:45,206 - INFO - Token: <POINT2, :, Linha 86, Coluna 13>
+2025-06-30 13:23:45,206 - INFO - Token: <BOOL_TYPE, bool, Linha 86, Coluna 15>
+2025-06-30 13:23:45,206 - INFO - Token: <EQUALS, =, Linha 86, Coluna 20>
+2025-06-30 13:23:45,207 - INFO - Token: <VAR, a, Linha 86, Coluna 22>
+2025-06-30 13:23:45,207 - INFO - Token: <LT, <, Linha 86, Coluna 24>
+2025-06-30 13:23:45,207 - INFO - Token: <VAR, b, Linha 86, Coluna 26>
+2025-06-30 13:23:45,207 - INFO - Token: <LET, let, Linha 87, Coluna 4>
+2025-06-30 13:23:45,208 - INFO - Token: <VAR, maior, Linha 87, Coluna 8>
+2025-06-30 13:23:45,208 - INFO - Token: <POINT2, :, Linha 87, Coluna 13>
+2025-06-30 13:23:45,208 - INFO - Token: <BOOL_TYPE, bool, Linha 87, Coluna 15>
+2025-06-30 13:23:45,208 - INFO - Token: <EQUALS, =, Linha 87, Coluna 20>
+2025-06-30 13:23:45,208 - INFO - Token: <VAR, a, Linha 87, Coluna 22>
+2025-06-30 13:23:45,209 - INFO - Token: <GT, >, Linha 87, Coluna 24>
+2025-06-30 13:23:45,209 - INFO - Token: <VAR, b, Linha 87, Coluna 26>
+2025-06-30 13:23:45,209 - INFO - Token: <LET, let, Linha 88, Coluna 4>
+2025-06-30 13:23:45,209 - INFO - Token: <VAR, menorIgual, Linha 88, Coluna 8>
+2025-06-30 13:23:45,209 - INFO - Token: <POINT2, :, Linha 88, Coluna 18>
+2025-06-30 13:23:45,210 - INFO - Token: <BOOL_TYPE, bool, Linha 88, Coluna 20>
+2025-06-30 13:23:45,210 - INFO - Token: <EQUALS, =, Linha 88, Coluna 25>
+2025-06-30 13:23:45,210 - INFO - Token: <VAR, a, Linha 88, Coluna 27>
+2025-06-30 13:23:45,210 - INFO - Token: <LTE, <=, Linha 88, Coluna 29>
+2025-06-30 13:23:45,210 - INFO - Token: <VAR, b, Linha 88, Coluna 32>
+2025-06-30 13:23:45,211 - INFO - Token: <LET, let, Linha 89, Coluna 4>
+2025-06-30 13:23:45,211 - INFO - Token: <VAR, maiorIgual, Linha 89, Coluna 8>
+2025-06-30 13:23:45,211 - INFO - Token: <POINT2, :, Linha 89, Coluna 18>
+2025-06-30 13:23:45,211 - INFO - Token: <BOOL_TYPE, bool, Linha 89, Coluna 20>
+2025-06-30 13:23:45,211 - INFO - Token: <EQUALS, =, Linha 89, Coluna 25>
+2025-06-30 13:23:45,212 - INFO - Token: <VAR, a, Linha 89, Coluna 27>
+2025-06-30 13:23:45,212 - INFO - Token: <GTE, >=, Linha 89, Coluna 29>
+2025-06-30 13:23:45,212 - INFO - Token: <VAR, b, Linha 89, Coluna 32>
+2025-06-30 13:23:45,212 - INFO - Token: <PRINT, print, Linha 91, Coluna 4>
+2025-06-30 13:23:45,213 - INFO - Token: <DUPONT, ::, Linha 91, Coluna 10>
+2025-06-30 13:23:45,213 - INFO - Token: <STRING, "=== COMPARAÇÕES ===", Linha 91, Coluna 13>
+2025-06-30 13:23:45,213 - INFO - Token: <PRINT, print, Linha 92, Coluna 4>
+2025-06-30 13:23:45,213 - INFO - Token: <DUPONT, ::, Linha 92, Coluna 10>
+2025-06-30 13:23:45,213 - INFO - Token: <STRING, "10 == 3:", Linha 92, Coluna 13>
+2025-06-30 13:23:45,214 - INFO - Token: <VIRG, ,, Linha 92, Coluna 23>
+2025-06-30 13:23:45,214 - INFO - Token: <VAR, igual, Linha 92, Coluna 25>
+2025-06-30 13:23:45,214 - INFO - Token: <PRINT, print, Linha 93, Coluna 4>
+2025-06-30 13:23:45,214 - INFO - Token: <DUPONT, ::, Linha 93, Coluna 10>
+2025-06-30 13:23:45,214 - INFO - Token: <STRING, "10 != 3:", Linha 93, Coluna 13>
+2025-06-30 13:23:45,215 - INFO - Token: <VIRG, ,, Linha 93, Coluna 23>
+2025-06-30 13:23:45,215 - INFO - Token: <VAR, diferente, Linha 93, Coluna 25>
+2025-06-30 13:23:45,215 - INFO - Token: <PRINT, print, Linha 94, Coluna 4>
+2025-06-30 13:23:45,215 - INFO - Token: <DUPONT, ::, Linha 94, Coluna 10>
+2025-06-30 13:23:45,215 - INFO - Token: <STRING, "10 < 3:", Linha 94, Coluna 13>
+2025-06-30 13:23:45,216 - INFO - Token: <VIRG, ,, Linha 94, Coluna 22>
+2025-06-30 13:23:45,216 - INFO - Token: <VAR, menor, Linha 94, Coluna 24>
+2025-06-30 13:23:45,216 - INFO - Token: <PRINT, print, Linha 95, Coluna 4>
+2025-06-30 13:23:45,216 - INFO - Token: <DUPONT, ::, Linha 95, Coluna 10>
+2025-06-30 13:23:45,216 - INFO - Token: <STRING, "10 > 3:", Linha 95, Coluna 13>
+2025-06-30 13:23:45,217 - INFO - Token: <VIRG, ,, Linha 95, Coluna 22>
+2025-06-30 13:23:45,217 - INFO - Token: <VAR, maior, Linha 95, Coluna 24>
+2025-06-30 13:23:45,217 - INFO - Token: <PRINT, print, Linha 96, Coluna 4>
+2025-06-30 13:23:45,217 - INFO - Token: <DUPONT, ::, Linha 96, Coluna 10>
+2025-06-30 13:23:45,217 - INFO - Token: <STRING, "10 <= 3:", Linha 96, Coluna 13>
+2025-06-30 13:23:45,218 - INFO - Token: <VIRG, ,, Linha 96, Coluna 23>
+2025-06-30 13:23:45,218 - INFO - Token: <VAR, menorIgual, Linha 96, Coluna 25>
+2025-06-30 13:23:45,218 - INFO - Token: <PRINT, print, Linha 97, Coluna 4>
+2025-06-30 13:23:45,218 - INFO - Token: <DUPONT, ::, Linha 97, Coluna 10>
+2025-06-30 13:23:45,218 - INFO - Token: <STRING, "10 >= 3:", Linha 97, Coluna 13>
+2025-06-30 13:23:45,219 - INFO - Token: <VIRG, ,, Linha 97, Coluna 23>
+2025-06-30 13:23:45,219 - INFO - Token: <VAR, maiorIgual, Linha 97, Coluna 25>
+2025-06-30 13:23:45,219 - INFO - Token: <LET, let, Linha 103, Coluna 4>
+2025-06-30 13:23:45,219 - INFO - Token: <VAR, condicao1, Linha 103, Coluna 8>
+2025-06-30 13:23:45,220 - INFO - Token: <POINT2, :, Linha 103, Coluna 17>
+2025-06-30 13:23:45,220 - INFO - Token: <BOOL_TYPE, bool, Linha 103, Coluna 19>
+2025-06-30 13:23:45,220 - INFO - Token: <EQUALS, =, Linha 103, Coluna 24>
+2025-06-30 13:23:45,221 - INFO - Token: <BOOL, True, Linha 103, Coluna 26>
+2025-06-30 13:23:45,221 - INFO - Token: <LET, let, Linha 104, Coluna 4>
+2025-06-30 13:23:45,221 - INFO - Token: <VAR, condicao2, Linha 104, Coluna 8>
+2025-06-30 13:23:45,221 - INFO - Token: <POINT2, :, Linha 104, Coluna 17>
+2025-06-30 13:23:45,221 - INFO - Token: <BOOL_TYPE, bool, Linha 104, Coluna 19>
+2025-06-30 13:23:45,222 - INFO - Token: <EQUALS, =, Linha 104, Coluna 24>
+2025-06-30 13:23:45,222 - INFO - Token: <BOOL, False, Linha 104, Coluna 26>
+2025-06-30 13:23:45,222 - INFO - Token: <LET, let, Linha 106, Coluna 4>
+2025-06-30 13:23:45,222 - INFO - Token: <VAR, e_logico, Linha 106, Coluna 8>
+2025-06-30 13:23:45,223 - INFO - Token: <POINT2, :, Linha 106, Coluna 16>
+2025-06-30 13:23:45,223 - INFO - Token: <BOOL_TYPE, bool, Linha 106, Coluna 18>
+2025-06-30 13:23:45,223 - INFO - Token: <EQUALS, =, Linha 106, Coluna 23>
+2025-06-30 13:23:45,223 - INFO - Token: <VAR, condicao1, Linha 106, Coluna 25>
+2025-06-30 13:23:45,224 - INFO - Token: <AND, &&, Linha 106, Coluna 35>
+2025-06-30 13:23:45,224 - INFO - Token: <VAR, condicao2, Linha 106, Coluna 38>
+2025-06-30 13:23:45,224 - INFO - Token: <LET, let, Linha 107, Coluna 4>
+2025-06-30 13:23:45,224 - INFO - Token: <VAR, ou_logico, Linha 107, Coluna 8>
+2025-06-30 13:23:45,224 - INFO - Token: <POINT2, :, Linha 107, Coluna 17>
+2025-06-30 13:23:45,225 - INFO - Token: <BOOL_TYPE, bool, Linha 107, Coluna 19>
+2025-06-30 13:23:45,225 - INFO - Token: <EQUALS, =, Linha 107, Coluna 24>
+2025-06-30 13:23:45,225 - INFO - Token: <VAR, condicao1, Linha 107, Coluna 26>
+2025-06-30 13:23:45,225 - INFO - Token: <OR, ||, Linha 107, Coluna 36>
+2025-06-30 13:23:45,225 - INFO - Token: <VAR, condicao2, Linha 107, Coluna 39>
+2025-06-30 13:23:45,226 - INFO - Token: <PRINT, print, Linha 109, Coluna 4>
+2025-06-30 13:23:45,226 - INFO - Token: <DUPONT, ::, Linha 109, Coluna 10>
+2025-06-30 13:23:45,226 - INFO - Token: <STRING, "=== OPERAÇÕES LÓGICAS ===", Linha 109, Coluna 13>
+2025-06-30 13:23:45,226 - INFO - Token: <PRINT, print, Linha 110, Coluna 4>
+2025-06-30 13:23:45,226 - INFO - Token: <DUPONT, ::, Linha 110, Coluna 10>
+2025-06-30 13:23:45,227 - INFO - Token: <STRING, "True && False:", Linha 110, Coluna 13>
+2025-06-30 13:23:45,227 - INFO - Token: <VIRG, ,, Linha 110, Coluna 29>
+2025-06-30 13:23:45,227 - INFO - Token: <VAR, e_logico, Linha 110, Coluna 31>
+2025-06-30 13:23:45,227 - INFO - Token: <PRINT, print, Linha 111, Coluna 4>
+2025-06-30 13:23:45,228 - INFO - Token: <DUPONT, ::, Linha 111, Coluna 10>
+2025-06-30 13:23:45,228 - INFO - Token: <STRING, "True || False:", Linha 111, Coluna 13>
+2025-06-30 13:23:45,228 - INFO - Token: <VIRG, ,, Linha 111, Coluna 29>
+2025-06-30 13:23:45,228 - INFO - Token: <VAR, ou_logico, Linha 111, Coluna 31>
+2025-06-30 13:23:45,228 - INFO - Token: <LET, let, Linha 114, Coluna 4>
+2025-06-30 13:23:45,229 - INFO - Token: <VAR, complexa, Linha 114, Coluna 8>
+2025-06-30 13:23:45,229 - INFO - Token: <POINT2, :, Linha 114, Coluna 16>
+2025-06-30 13:23:45,229 - INFO - Token: <BOOL_TYPE, bool, Linha 114, Coluna 18>
+2025-06-30 13:23:45,229 - INFO - Token: <EQUALS, =, Linha 114, Coluna 23>
+2025-06-30 13:23:45,229 - INFO - Token: <P_N, (, Linha 114, Coluna 25>
+2025-06-30 13:23:45,230 - INFO - Token: <VAR, a, Linha 114, Coluna 26>
+2025-06-30 13:23:45,230 - INFO - Token: <GT, >, Linha 114, Coluna 28>
+2025-06-30 13:23:45,230 - INFO - Token: <VAR, b, Linha 114, Coluna 30>
+2025-06-30 13:23:45,230 - INFO - Token: <P_I, ), Linha 114, Coluna 31>
+2025-06-30 13:23:45,231 - INFO - Token: <AND, &&, Linha 114, Coluna 33>
+2025-06-30 13:23:45,231 - INFO - Token: <P_N, (, Linha 114, Coluna 36>
+2025-06-30 13:23:45,231 - INFO - Token: <VAR, soma, Linha 114, Coluna 37>
+2025-06-30 13:23:45,231 - INFO - Token: <GT, >, Linha 114, Coluna 42>
+2025-06-30 13:23:45,231 - INFO - Token: <INT, 10, Linha 114, Coluna 44>
+2025-06-30 13:23:45,232 - INFO - Token: <P_I, ), Linha 114, Coluna 46>
+2025-06-30 13:23:45,232 - INFO - Token: <PRINT, print, Linha 115, Coluna 4>
+2025-06-30 13:23:45,232 - INFO - Token: <DUPONT, ::, Linha 115, Coluna 10>
+2025-06-30 13:23:45,232 - INFO - Token: <STRING, "Expressão complexa:", Linha 115, Coluna 13>
+2025-06-30 13:23:45,233 - INFO - Token: <VIRG, ,, Linha 115, Coluna 34>
+2025-06-30 13:23:45,233 - INFO - Token: <VAR, complexa, Linha 115, Coluna 36>
+2025-06-30 13:23:45,233 - INFO - Token: <LET, let, Linha 121, Coluna 4>
+2025-06-30 13:23:45,233 - INFO - Token: <VAR, entrada_usuario, Linha 121, Coluna 8>
+2025-06-30 13:23:45,233 - INFO - Token: <POINT2, :, Linha 121, Coluna 23>
+2025-06-30 13:23:45,234 - INFO - Token: <INT_TYPE, int, Linha 121, Coluna 25>
+2025-06-30 13:23:45,234 - INFO - Token: <PRINT, print, Linha 122, Coluna 4>
+2025-06-30 13:23:45,234 - INFO - Token: <DUPONT, ::, Linha 122, Coluna 10>
+2025-06-30 13:23:45,234 - INFO - Token: <STRING, "Digite um número:", Linha 122, Coluna 13>
+2025-06-30 13:23:45,234 - INFO - Token: <INPUT, input, Linha 123, Coluna 4>
+2025-06-30 13:23:45,235 - INFO - Token: <P_N, (, Linha 123, Coluna 9>
+2025-06-30 13:23:45,235 - INFO - Token: <VAR, entrada_usuario, Linha 123, Coluna 10>
+2025-06-30 13:23:45,235 - INFO - Token: <P_I, ), Linha 123, Coluna 25>
+2025-06-30 13:23:45,235 - INFO - Token: <PRINT, print, Linha 125, Coluna 4>
+2025-06-30 13:23:45,236 - INFO - Token: <DUPONT, ::, Linha 125, Coluna 10>
+2025-06-30 13:23:45,236 - INFO - Token: <STRING, "Você digitou:", Linha 125, Coluna 13>
+2025-06-30 13:23:45,236 - INFO - Token: <VIRG, ,, Linha 125, Coluna 28>
+2025-06-30 13:23:45,236 - INFO - Token: <VAR, entrada_usuario, Linha 125, Coluna 30>
+2025-06-30 13:23:45,237 - INFO - Token: <PRINT, print, Linha 131, Coluna 4>
+2025-06-30 13:23:45,237 - INFO - Token: <DUPONT, ::, Linha 131, Coluna 10>
+2025-06-30 13:23:45,237 - INFO - Token: <STRING, "=== ESTRUTURAS CONDICIONAIS ===", Linha 131, Coluna 13>
+2025-06-30 13:23:45,238 - INFO - Token: <IF, if, Linha 134, Coluna 4>
+2025-06-30 13:23:45,238 - INFO - Token: <P_N, (, Linha 134, Coluna 7>
+2025-06-30 13:23:45,238 - INFO - Token: <VAR, idade, Linha 134, Coluna 8>
+2025-06-30 13:23:45,238 - INFO - Token: <GTE, >=, Linha 134, Coluna 14>
+2025-06-30 13:23:45,238 - INFO - Token: <INT, 18, Linha 134, Coluna 17>
+2025-06-30 13:23:45,239 - INFO - Token: <P_I, ), Linha 134, Coluna 19>
+2025-06-30 13:23:45,239 - INFO - Token: <C_N, {, Linha 134, Coluna 21>
+2025-06-30 13:23:45,239 - INFO - Token: <PRINT, print, Linha 135, Coluna 8>
+2025-06-30 13:23:45,239 - INFO - Token: <DUPONT, ::, Linha 135, Coluna 14>
+2025-06-30 13:23:45,240 - INFO - Token: <STRING, "Maior de idade", Linha 135, Coluna 17>
+2025-06-30 13:23:45,240 - INFO - Token: <C_I, }, Linha 136, Coluna 4>
+2025-06-30 13:23:45,240 - INFO - Token: <IF, if, Linha 139, Coluna 4>
+2025-06-30 13:23:45,240 - INFO - Token: <P_N, (, Linha 139, Coluna 7>
+2025-06-30 13:23:45,240 - INFO - Token: <VAR, idade, Linha 139, Coluna 8>
+2025-06-30 13:23:45,241 - INFO - Token: <LT, <, Linha 139, Coluna 14>
+2025-06-30 13:23:45,241 - INFO - Token: <INT, 13, Linha 139, Coluna 16>
+2025-06-30 13:23:45,241 - INFO - Token: <P_I, ), Linha 139, Coluna 18>
+2025-06-30 13:23:45,241 - INFO - Token: <C_N, {, Linha 139, Coluna 20>
+2025-06-30 13:23:45,241 - INFO - Token: <PRINT, print, Linha 140, Coluna 8>
+2025-06-30 13:23:45,242 - INFO - Token: <DUPONT, ::, Linha 140, Coluna 14>
+2025-06-30 13:23:45,242 - INFO - Token: <STRING, "Criança", Linha 140, Coluna 17>
+2025-06-30 13:23:45,242 - INFO - Token: <C_I, }, Linha 141, Coluna 4>
+2025-06-30 13:23:45,242 - INFO - Token: <ELSEIF, elseif, Linha 141, Coluna 6>
+2025-06-30 13:23:45,242 - INFO - Token: <P_N, (, Linha 141, Coluna 13>
+2025-06-30 13:23:45,243 - INFO - Token: <VAR, idade, Linha 141, Coluna 14>
+2025-06-30 13:23:45,243 - INFO - Token: <LT, <, Linha 141, Coluna 20>
+2025-06-30 13:23:45,243 - INFO - Token: <INT, 18, Linha 141, Coluna 22>
+2025-06-30 13:23:45,243 - INFO - Token: <P_I, ), Linha 141, Coluna 24>
+2025-06-30 13:23:45,243 - INFO - Token: <C_N, {, Linha 141, Coluna 26>
+2025-06-30 13:23:45,244 - INFO - Token: <PRINT, print, Linha 142, Coluna 8>
+2025-06-30 13:23:45,244 - INFO - Token: <DUPONT, ::, Linha 142, Coluna 14>
+2025-06-30 13:23:45,244 - INFO - Token: <STRING, "Adolescente", Linha 142, Coluna 17>
+2025-06-30 13:23:45,244 - INFO - Token: <C_I, }, Linha 143, Coluna 4>
+2025-06-30 13:23:45,244 - INFO - Token: <ELSEIF, elseif, Linha 143, Coluna 6>
+2025-06-30 13:23:45,245 - INFO - Token: <P_N, (, Linha 143, Coluna 13>
+2025-06-30 13:23:45,245 - INFO - Token: <VAR, idade, Linha 143, Coluna 14>
+2025-06-30 13:23:45,245 - INFO - Token: <LT, <, Linha 143, Coluna 20>
+2025-06-30 13:23:45,245 - INFO - Token: <INT, 60, Linha 143, Coluna 22>
+2025-06-30 13:23:45,245 - INFO - Token: <P_I, ), Linha 143, Coluna 24>
+2025-06-30 13:23:45,246 - INFO - Token: <C_N, {, Linha 143, Coluna 26>
+2025-06-30 13:23:45,246 - INFO - Token: <PRINT, print, Linha 144, Coluna 8>
+2025-06-30 13:23:45,246 - INFO - Token: <DUPONT, ::, Linha 144, Coluna 14>
+2025-06-30 13:23:45,246 - INFO - Token: <STRING, "Adulto", Linha 144, Coluna 17>
+2025-06-30 13:23:45,246 - INFO - Token: <C_I, }, Linha 145, Coluna 4>
+2025-06-30 13:23:45,247 - INFO - Token: <ELSE, else, Linha 145, Coluna 6>
+2025-06-30 13:23:45,247 - INFO - Token: <C_N, {, Linha 145, Coluna 11>
+2025-06-30 13:23:45,247 - INFO - Token: <PRINT, print, Linha 146, Coluna 8>
+2025-06-30 13:23:45,247 - INFO - Token: <DUPONT, ::, Linha 146, Coluna 14>
+2025-06-30 13:23:45,247 - INFO - Token: <STRING, "Idoso", Linha 146, Coluna 17>
+2025-06-30 13:23:45,247 - INFO - Token: <C_I, }, Linha 147, Coluna 4>
+2025-06-30 13:23:45,248 - INFO - Token: <IF, if, Linha 150, Coluna 4>
+2025-06-30 13:23:45,248 - INFO - Token: <P_N, (, Linha 150, Coluna 7>
+2025-06-30 13:23:45,248 - INFO - Token: <VAR, ativo, Linha 150, Coluna 8>
+2025-06-30 13:23:45,248 - INFO - Token: <EQ, ==, Linha 150, Coluna 14>
+2025-06-30 13:23:45,249 - INFO - Token: <BOOL, True, Linha 150, Coluna 17>
+2025-06-30 13:23:45,249 - INFO - Token: <P_I, ), Linha 150, Coluna 21>
+2025-06-30 13:23:45,249 - INFO - Token: <C_N, {, Linha 150, Coluna 23>
+2025-06-30 13:23:45,249 - INFO - Token: <PRINT, print, Linha 151, Coluna 8>
+2025-06-30 13:23:45,250 - INFO - Token: <DUPONT, ::, Linha 151, Coluna 14>
+2025-06-30 13:23:45,250 - INFO - Token: <STRING, "Usuário ativo", Linha 151, Coluna 17>
+2025-06-30 13:23:45,250 - INFO - Token: <IF, if, Linha 152, Coluna 8>
+2025-06-30 13:23:45,250 - INFO - Token: <P_N, (, Linha 152, Coluna 11>
+2025-06-30 13:23:45,250 - INFO - Token: <VAR, aprovado, Linha 152, Coluna 12>
+2025-06-30 13:23:45,251 - INFO - Token: <EQ, ==, Linha 152, Coluna 21>
+2025-06-30 13:23:45,251 - INFO - Token: <BOOL, True, Linha 152, Coluna 24>
+2025-06-30 13:23:45,251 - INFO - Token: <P_I, ), Linha 152, Coluna 28>
+2025-06-30 13:23:45,251 - INFO - Token: <C_N, {, Linha 152, Coluna 30>
+2025-06-30 13:23:45,251 - INFO - Token: <PRINT, print, Linha 153, Coluna 12>
+2025-06-30 13:23:45,252 - INFO - Token: <DUPONT, ::, Linha 153, Coluna 18>
+2025-06-30 13:23:45,252 - INFO - Token: <STRING, "E está aprovado!", Linha 153, Coluna 21>
+2025-06-30 13:23:45,252 - INFO - Token: <C_I, }, Linha 154, Coluna 8>
+2025-06-30 13:23:45,252 - INFO - Token: <ELSE, else, Linha 154, Coluna 10>
+2025-06-30 13:23:45,253 - INFO - Token: <C_N, {, Linha 154, Coluna 15>
+2025-06-30 13:23:45,253 - INFO - Token: <PRINT, print, Linha 155, Coluna 12>
+2025-06-30 13:23:45,253 - INFO - Token: <DUPONT, ::, Linha 155, Coluna 18>
+2025-06-30 13:23:45,254 - INFO - Token: <STRING, "Mas não está aprovado", Linha 155, Coluna 21>
+2025-06-30 13:23:45,254 - INFO - Token: <C_I, }, Linha 156, Coluna 8>
+2025-06-30 13:23:45,254 - INFO - Token: <C_I, }, Linha 157, Coluna 4>
+2025-06-30 13:23:45,254 - INFO - Token: <ELSE, else, Linha 157, Coluna 6>
+2025-06-30 13:23:45,254 - INFO - Token: <C_N, {, Linha 157, Coluna 11>
+2025-06-30 13:23:45,255 - INFO - Token: <PRINT, print, Linha 158, Coluna 8>
+2025-06-30 13:23:45,255 - INFO - Token: <DUPONT, ::, Linha 158, Coluna 14>
+2025-06-30 13:23:45,255 - INFO - Token: <STRING, "Usuário inativo", Linha 158, Coluna 17>
+2025-06-30 13:23:45,255 - INFO - Token: <C_I, }, Linha 159, Coluna 4>
+2025-06-30 13:23:45,255 - INFO - Token: <PRINT, print, Linha 165, Coluna 4>
+2025-06-30 13:23:45,256 - INFO - Token: <DUPONT, ::, Linha 165, Coluna 10>
+2025-06-30 13:23:45,256 - INFO - Token: <STRING, "=== LAÇOS FOR ===", Linha 165, Coluna 13>
+2025-06-30 13:23:45,256 - INFO - Token: <PRINT, print, Linha 168, Coluna 4>
+2025-06-30 13:23:45,256 - INFO - Token: <DUPONT, ::, Linha 168, Coluna 10>
+2025-06-30 13:23:45,256 - INFO - Token: <STRING, "Contagem de 1 a 5:", Linha 168, Coluna 13>
+2025-06-30 13:23:45,257 - INFO - Token: <FOR, for, Linha 169, Coluna 4>
+2025-06-30 13:23:45,257 - INFO - Token: <VAR, i, Linha 169, Coluna 8>
+2025-06-30 13:23:45,257 - INFO - Token: <IN, in, Linha 169, Coluna 10>
+2025-06-30 13:23:45,257 - INFO - Token: <INT, 1, Linha 169, Coluna 13>
+2025-06-30 13:23:45,258 - INFO - Token: <DOT2, .., Linha 169, Coluna 14>
+2025-06-30 13:23:45,258 - INFO - Token: <INT, 5, Linha 169, Coluna 16>
+2025-06-30 13:23:45,258 - INFO - Token: <C_N, {, Linha 169, Coluna 18>
+2025-06-30 13:23:45,258 - INFO - Token: <PRINT, print, Linha 170, Coluna 8>
+2025-06-30 13:23:45,258 - INFO - Token: <DUPONT, ::, Linha 170, Coluna 14>
+2025-06-30 13:23:45,259 - INFO - Token: <STRING, "Número:", Linha 170, Coluna 17>
+2025-06-30 13:23:45,259 - INFO - Token: <VIRG, ,, Linha 170, Coluna 26>
+2025-06-30 13:23:45,259 - INFO - Token: <VAR, i, Linha 170, Coluna 28>
+2025-06-30 13:23:45,259 - INFO - Token: <C_I, }, Linha 171, Coluna 4>
+2025-06-30 13:23:45,259 - INFO - Token: <PRINT, print, Linha 174, Coluna 4>
+2025-06-30 13:23:45,260 - INFO - Token: <DUPONT, ::, Linha 174, Coluna 10>
+2025-06-30 13:23:45,260 - INFO - Token: <STRING, "Contagem regressiva:", Linha 174, Coluna 13>
+2025-06-30 13:23:45,260 - INFO - Token: <FOR, for, Linha 175, Coluna 4>
+2025-06-30 13:23:45,260 - INFO - Token: <VAR, j, Linha 175, Coluna 8>
+2025-06-30 13:23:45,260 - INFO - Token: <IN, in, Linha 175, Coluna 10>
+2025-06-30 13:23:45,261 - INFO - Token: <INT, 10, Linha 175, Coluna 13>
+2025-06-30 13:23:45,261 - INFO - Token: <DOT2, .., Linha 175, Coluna 15>
+2025-06-30 13:23:45,261 - INFO - Token: <INT, 7, Linha 175, Coluna 17>
+2025-06-30 13:23:45,261 - INFO - Token: <C_N, {, Linha 175, Coluna 19>
+2025-06-30 13:23:45,261 - INFO - Token: <PRINT, print, Linha 176, Coluna 8>
+2025-06-30 13:23:45,262 - INFO - Token: <DUPONT, ::, Linha 176, Coluna 14>
+2025-06-30 13:23:45,262 - INFO - Token: <STRING, "Contagem:", Linha 176, Coluna 17>
+2025-06-30 13:23:45,262 - INFO - Token: <VIRG, ,, Linha 176, Coluna 28>
+2025-06-30 13:23:45,262 - INFO - Token: <VAR, j, Linha 176, Coluna 30>
+2025-06-30 13:23:45,262 - INFO - Token: <C_I, }, Linha 177, Coluna 4>
+2025-06-30 13:23:45,263 - INFO - Token: <LET, let, Linha 180, Coluna 4>
+2025-06-30 13:23:45,263 - INFO - Token: <VAR, inicio, Linha 180, Coluna 8>
+2025-06-30 13:23:45,263 - INFO - Token: <POINT2, :, Linha 180, Coluna 14>
+2025-06-30 13:23:45,263 - INFO - Token: <INT_TYPE, int, Linha 180, Coluna 16>
+2025-06-30 13:23:45,263 - INFO - Token: <EQUALS, =, Linha 180, Coluna 20>
+2025-06-30 13:23:45,264 - INFO - Token: <INT, 0, Linha 180, Coluna 22>
+2025-06-30 13:23:45,264 - INFO - Token: <LET, let, Linha 181, Coluna 4>
+2025-06-30 13:23:45,264 - INFO - Token: <VAR, fim, Linha 181, Coluna 8>
+2025-06-30 13:23:45,264 - INFO - Token: <POINT2, :, Linha 181, Coluna 11>
+2025-06-30 13:23:45,265 - INFO - Token: <INT_TYPE, int, Linha 181, Coluna 13>
+2025-06-30 13:23:45,265 - INFO - Token: <EQUALS, =, Linha 181, Coluna 17>
+2025-06-30 13:23:45,265 - INFO - Token: <INT, 3, Linha 181, Coluna 19>
+2025-06-30 13:23:45,265 - INFO - Token: <PRINT, print, Linha 182, Coluna 4>
+2025-06-30 13:23:45,265 - INFO - Token: <DUPONT, ::, Linha 182, Coluna 10>
+2025-06-30 13:23:45,266 - INFO - Token: <STRING, "Range dinâmico:", Linha 182, Coluna 13>
+2025-06-30 13:23:45,266 - INFO - Token: <FOR, for, Linha 183, Coluna 4>
+2025-06-30 13:23:45,266 - INFO - Token: <VAR, k, Linha 183, Coluna 8>
+2025-06-30 13:23:45,266 - INFO - Token: <IN, in, Linha 183, Coluna 10>
+2025-06-30 13:23:45,266 - INFO - Token: <VAR, inicio, Linha 183, Coluna 13>
+2025-06-30 13:23:45,267 - INFO - Token: <DOT2, .., Linha 183, Coluna 19>
+2025-06-30 13:23:45,267 - INFO - Token: <VAR, fim, Linha 183, Coluna 21>
+2025-06-30 13:23:45,267 - INFO - Token: <C_N, {, Linha 183, Coluna 25>
+2025-06-30 13:23:45,267 - INFO - Token: <PRINT, print, Linha 184, Coluna 8>
+2025-06-30 13:23:45,268 - INFO - Token: <DUPONT, ::, Linha 184, Coluna 14>
+2025-06-30 13:23:45,268 - INFO - Token: <STRING, "Valor de k:", Linha 184, Coluna 17>
+2025-06-30 13:23:45,268 - INFO - Token: <VIRG, ,, Linha 184, Coluna 30>
+2025-06-30 13:23:45,268 - INFO - Token: <VAR, k, Linha 184, Coluna 32>
+2025-06-30 13:23:45,268 - INFO - Token: <LET, let, Linha 185, Coluna 8>
+2025-06-30 13:23:45,268 - INFO - Token: <VAR, quadrado, Linha 185, Coluna 12>
+2025-06-30 13:23:45,269 - INFO - Token: <POINT2, :, Linha 185, Coluna 20>
+2025-06-30 13:23:45,269 - INFO - Token: <INT_TYPE, int, Linha 185, Coluna 22>
+2025-06-30 13:23:45,269 - INFO - Token: <EQUALS, =, Linha 185, Coluna 26>
+2025-06-30 13:23:45,270 - INFO - Token: <VAR, k, Linha 185, Coluna 28>
+2025-06-30 13:23:45,270 - INFO - Token: <MUL, *, Linha 185, Coluna 30>
+2025-06-30 13:23:45,270 - INFO - Token: <VAR, k, Linha 185, Coluna 32>
+2025-06-30 13:23:45,270 - INFO - Token: <PRINT, print, Linha 186, Coluna 8>
+2025-06-30 13:23:45,271 - INFO - Token: <DUPONT, ::, Linha 186, Coluna 14>
+2025-06-30 13:23:45,271 - INFO - Token: <STRING, "Quadrado:", Linha 186, Coluna 17>
+2025-06-30 13:23:45,271 - INFO - Token: <VIRG, ,, Linha 186, Coluna 28>
+2025-06-30 13:23:45,271 - INFO - Token: <VAR, quadrado, Linha 186, Coluna 30>
+2025-06-30 13:23:45,271 - INFO - Token: <C_I, }, Linha 187, Coluna 4>
+2025-06-30 13:23:45,272 - INFO - Token: <PRINT, print, Linha 193, Coluna 4>
+2025-06-30 13:23:45,272 - INFO - Token: <DUPONT, ::, Linha 193, Coluna 10>
+2025-06-30 13:23:45,272 - INFO - Token: <STRING, "=== LAÇOS WHILE ===", Linha 193, Coluna 13>
+2025-06-30 13:23:45,272 - INFO - Token: <LET, let, Linha 196, Coluna 4>
+2025-06-30 13:23:45,273 - INFO - Token: <VAR, cont, Linha 196, Coluna 8>
+2025-06-30 13:23:45,273 - INFO - Token: <POINT2, :, Linha 196, Coluna 12>
+2025-06-30 13:23:45,273 - INFO - Token: <INT_TYPE, int, Linha 196, Coluna 14>
+2025-06-30 13:23:45,273 - INFO - Token: <EQUALS, =, Linha 196, Coluna 18>
+2025-06-30 13:23:45,273 - INFO - Token: <INT, 0, Linha 196, Coluna 20>
+2025-06-30 13:23:45,274 - INFO - Token: <PRINT, print, Linha 197, Coluna 4>
+2025-06-30 13:23:45,274 - INFO - Token: <DUPONT, ::, Linha 197, Coluna 10>
+2025-06-30 13:23:45,274 - INFO - Token: <STRING, "Contagem while até 3:", Linha 197, Coluna 13>
+2025-06-30 13:23:45,274 - INFO - Token: <WHILE, while, Linha 198, Coluna 4>
+2025-06-30 13:23:45,274 - INFO - Token: <P_N, (, Linha 198, Coluna 10>
+2025-06-30 13:23:45,274 - INFO - Token: <VAR, cont, Linha 198, Coluna 11>
+2025-06-30 13:23:45,275 - INFO - Token: <LT, <, Linha 198, Coluna 16>
+2025-06-30 13:23:45,275 - INFO - Token: <INT, 3, Linha 198, Coluna 18>
+2025-06-30 13:23:45,275 - INFO - Token: <P_I, ), Linha 198, Coluna 19>
+2025-06-30 13:23:45,275 - INFO - Token: <C_N, {, Linha 198, Coluna 21>
+2025-06-30 13:23:45,275 - INFO - Token: <PRINT, print, Linha 199, Coluna 8>
+2025-06-30 13:23:45,276 - INFO - Token: <DUPONT, ::, Linha 199, Coluna 14>
+2025-06-30 13:23:45,276 - INFO - Token: <STRING, "Contador:", Linha 199, Coluna 17>
+2025-06-30 13:23:45,276 - INFO - Token: <VIRG, ,, Linha 199, Coluna 28>
+2025-06-30 13:23:45,276 - INFO - Token: <VAR, cont, Linha 199, Coluna 30>
+2025-06-30 13:23:45,276 - INFO - Token: <VAR, cont, Linha 200, Coluna 8>
+2025-06-30 13:23:45,276 - INFO - Token: <ADD, +, Linha 200, Coluna 13>
+2025-06-30 13:23:45,277 - INFO - Token: <EQUALS, =, Linha 200, Coluna 14>
+2025-06-30 13:23:45,277 - INFO - Token: <INT, 1, Linha 200, Coluna 16>
+2025-06-30 13:23:45,277 - INFO - Token: <C_I, }, Linha 201, Coluna 4>
+2025-06-30 13:23:45,277 - INFO - Token: <LET, let, Linha 204, Coluna 4>
+2025-06-30 13:23:45,277 - INFO - Token: <VAR, x, Linha 204, Coluna 8>
+2025-06-30 13:23:45,278 - INFO - Token: <POINT2, :, Linha 204, Coluna 9>
+2025-06-30 13:23:45,278 - INFO - Token: <INT_TYPE, int, Linha 204, Coluna 11>
+2025-06-30 13:23:45,278 - INFO - Token: <EQUALS, =, Linha 204, Coluna 15>
+2025-06-30 13:23:45,278 - INFO - Token: <INT, 10, Linha 204, Coluna 17>
+2025-06-30 13:23:45,278 - INFO - Token: <LET, let, Linha 205, Coluna 4>
+2025-06-30 13:23:45,279 - INFO - Token: <VAR, y, Linha 205, Coluna 8>
+2025-06-30 13:23:45,279 - INFO - Token: <POINT2, :, Linha 205, Coluna 9>
+2025-06-30 13:23:45,279 - INFO - Token: <INT_TYPE, int, Linha 205, Coluna 11>
+2025-06-30 13:23:45,279 - INFO - Token: <EQUALS, =, Linha 205, Coluna 15>
+2025-06-30 13:23:45,279 - INFO - Token: <INT, 1, Linha 205, Coluna 17>
+2025-06-30 13:23:45,280 - INFO - Token: <PRINT, print, Linha 206, Coluna 4>
+2025-06-30 13:23:45,280 - INFO - Token: <DUPONT, ::, Linha 206, Coluna 10>
+2025-06-30 13:23:45,280 - INFO - Token: <STRING, "While com condição complexa:", Linha 206, Coluna 13>
+2025-06-30 13:23:45,280 - INFO - Token: <WHILE, while, Linha 207, Coluna 4>
+2025-06-30 13:23:45,280 - INFO - Token: <P_N, (, Linha 207, Coluna 10>
+2025-06-30 13:23:45,281 - INFO - Token: <VAR, x, Linha 207, Coluna 11>
+2025-06-30 13:23:45,281 - INFO - Token: <GT, >, Linha 207, Coluna 13>
+2025-06-30 13:23:45,281 - INFO - Token: <VAR, y, Linha 207, Coluna 15>
+2025-06-30 13:23:45,281 - INFO - Token: <AND, &&, Linha 207, Coluna 17>
+2025-06-30 13:23:45,282 - INFO - Token: <VAR, y, Linha 207, Coluna 20>
+2025-06-30 13:23:45,282 - INFO - Token: <LT, <, Linha 207, Coluna 22>
+2025-06-30 13:23:45,282 - INFO - Token: <INT, 5, Linha 207, Coluna 24>
+2025-06-30 13:23:45,282 - INFO - Token: <P_I, ), Linha 207, Coluna 25>
+2025-06-30 13:23:45,282 - INFO - Token: <C_N, {, Linha 207, Coluna 27>
+2025-06-30 13:23:45,283 - INFO - Token: <PRINT, print, Linha 208, Coluna 8>
+2025-06-30 13:23:45,283 - INFO - Token: <DUPONT, ::, Linha 208, Coluna 14>
+2025-06-30 13:23:45,283 - INFO - Token: <STRING, "x =", Linha 208, Coluna 17>
+2025-06-30 13:23:45,283 - INFO - Token: <VIRG, ,, Linha 208, Coluna 22>
+2025-06-30 13:23:45,283 - INFO - Token: <VAR, x, Linha 208, Coluna 24>
+2025-06-30 13:23:45,284 - INFO - Token: <VIRG, ,, Linha 208, Coluna 25>
+2025-06-30 13:23:45,284 - INFO - Token: <STRING, "y =", Linha 208, Coluna 27>
+2025-06-30 13:23:45,284 - INFO - Token: <VIRG, ,, Linha 208, Coluna 32>
+2025-06-30 13:23:45,284 - INFO - Token: <VAR, y, Linha 208, Coluna 34>
+2025-06-30 13:23:45,284 - INFO - Token: <VAR, x, Linha 209, Coluna 8>
+2025-06-30 13:23:45,285 - INFO - Token: <SUB, -, Linha 209, Coluna 10>
+2025-06-30 13:23:45,285 - INFO - Token: <EQUALS, =, Linha 209, Coluna 11>
+2025-06-30 13:23:45,285 - INFO - Token: <INT, 2, Linha 209, Coluna 13>
+2025-06-30 13:23:45,285 - INFO - Token: <VAR, y, Linha 210, Coluna 8>
+2025-06-30 13:23:45,286 - INFO - Token: <ADD, +, Linha 210, Coluna 10>
+2025-06-30 13:23:45,286 - INFO - Token: <EQUALS, =, Linha 210, Coluna 11>
+2025-06-30 13:23:45,286 - INFO - Token: <INT, 1, Linha 210, Coluna 13>
+2025-06-30 13:23:45,286 - INFO - Token: <C_I, }, Linha 211, Coluna 4>
+2025-06-30 13:23:45,287 - INFO - Token: <PRINT, print, Linha 217, Coluna 4>
+2025-06-30 13:23:45,287 - INFO - Token: <DUPONT, ::, Linha 217, Coluna 10>
+2025-06-30 13:23:45,287 - INFO - Token: <STRING, "=== CASOS AVANÇADOS ===", Linha 217, Coluna 13>
+2025-06-30 13:23:45,287 - INFO - Token: <LET, let, Linha 220, Coluna 4>
+2025-06-30 13:23:45,288 - INFO - Token: <VAR, num1, Linha 220, Coluna 8>
+2025-06-30 13:23:45,288 - INFO - Token: <POINT2, :, Linha 220, Coluna 12>
+2025-06-30 13:23:45,288 - INFO - Token: <INT_TYPE, int, Linha 220, Coluna 14>
+2025-06-30 13:23:45,288 - INFO - Token: <EQUALS, =, Linha 220, Coluna 18>
+2025-06-30 13:23:45,288 - INFO - Token: <INT, 15, Linha 220, Coluna 20>
+2025-06-30 13:23:45,289 - INFO - Token: <LET, let, Linha 221, Coluna 4>
+2025-06-30 13:23:45,289 - INFO - Token: <VAR, num2, Linha 221, Coluna 8>
+2025-06-30 13:23:45,289 - INFO - Token: <POINT2, :, Linha 221, Coluna 12>
+2025-06-30 13:23:45,289 - INFO - Token: <INT_TYPE, int, Linha 221, Coluna 14>
+2025-06-30 13:23:45,289 - INFO - Token: <EQUALS, =, Linha 221, Coluna 18>
+2025-06-30 13:23:45,290 - INFO - Token: <INT, 4, Linha 221, Coluna 20>
+2025-06-30 13:23:45,290 - INFO - Token: <LET, let, Linha 222, Coluna 4>
+2025-06-30 13:23:45,290 - INFO - Token: <VAR, operacao, Linha 222, Coluna 8>
+2025-06-30 13:23:45,290 - INFO - Token: <POINT2, :, Linha 222, Coluna 16>
+2025-06-30 13:23:45,290 - INFO - Token: <INT_TYPE, int, Linha 222, Coluna 18>
+2025-06-30 13:23:45,291 - INFO - Token: <EQUALS, =, Linha 222, Coluna 22>
+2025-06-30 13:23:45,291 - INFO - Token: <INT, 1, Linha 222, Coluna 24>
+2025-06-30 13:23:45,291 - INFO - Token: <IF, if, Linha 224, Coluna 4>
+2025-06-30 13:23:45,291 - INFO - Token: <P_N, (, Linha 224, Coluna 7>
+2025-06-30 13:23:45,291 - INFO - Token: <VAR, operacao, Linha 224, Coluna 8>
+2025-06-30 13:23:45,291 - INFO - Token: <EQ, ==, Linha 224, Coluna 17>
+2025-06-30 13:23:45,292 - INFO - Token: <INT, 1, Linha 224, Coluna 20>
+2025-06-30 13:23:45,292 - INFO - Token: <P_I, ), Linha 224, Coluna 21>
+2025-06-30 13:23:45,292 - INFO - Token: <C_N, {, Linha 224, Coluna 23>
+2025-06-30 13:23:45,293 - INFO - Token: <LET, let, Linha 225, Coluna 8>
+2025-06-30 13:23:45,293 - INFO - Token: <VAR, result, Linha 225, Coluna 12>
+2025-06-30 13:23:45,293 - INFO - Token: <POINT2, :, Linha 225, Coluna 18>
+2025-06-30 13:23:45,293 - INFO - Token: <INT_TYPE, int, Linha 225, Coluna 20>
+2025-06-30 13:23:45,294 - INFO - Token: <EQUALS, =, Linha 225, Coluna 24>
+2025-06-30 13:23:45,294 - INFO - Token: <VAR, num1, Linha 225, Coluna 26>
+2025-06-30 13:23:45,294 - INFO - Token: <ADD, +, Linha 225, Coluna 31>
+2025-06-30 13:23:45,294 - INFO - Token: <VAR, num2, Linha 225, Coluna 33>
+2025-06-30 13:23:45,294 - INFO - Token: <PRINT, print, Linha 226, Coluna 8>
+2025-06-30 13:23:45,295 - INFO - Token: <DUPONT, ::, Linha 226, Coluna 14>
+2025-06-30 13:23:45,295 - INFO - Token: <STRING, "Soma:", Linha 226, Coluna 17>
+2025-06-30 13:23:45,295 - INFO - Token: <VIRG, ,, Linha 226, Coluna 24>
+2025-06-30 13:23:45,295 - INFO - Token: <VAR, num1, Linha 226, Coluna 26>
+2025-06-30 13:23:45,295 - INFO - Token: <VIRG, ,, Linha 226, Coluna 30>
+2025-06-30 13:23:45,295 - INFO - Token: <STRING, "+", Linha 226, Coluna 32>
+2025-06-30 13:23:45,296 - INFO - Token: <VIRG, ,, Linha 226, Coluna 35>
+2025-06-30 13:23:45,296 - INFO - Token: <VAR, num2, Linha 226, Coluna 37>
+2025-06-30 13:23:45,296 - INFO - Token: <VIRG, ,, Linha 226, Coluna 41>
+2025-06-30 13:23:45,296 - INFO - Token: <STRING, "=", Linha 226, Coluna 43>
+2025-06-30 13:23:45,296 - INFO - Token: <VIRG, ,, Linha 226, Coluna 46>
+2025-06-30 13:23:45,297 - INFO - Token: <VAR, result, Linha 226, Coluna 48>
+2025-06-30 13:23:45,297 - INFO - Token: <C_I, }, Linha 227, Coluna 4>
+2025-06-30 13:23:45,297 - INFO - Token: <ELSEIF, elseif, Linha 227, Coluna 6>
+2025-06-30 13:23:45,297 - INFO - Token: <P_N, (, Linha 227, Coluna 13>
+2025-06-30 13:23:45,297 - INFO - Token: <VAR, operacao, Linha 227, Coluna 14>
+2025-06-30 13:23:45,298 - INFO - Token: <EQ, ==, Linha 227, Coluna 23>
+2025-06-30 13:23:45,298 - INFO - Token: <INT, 2, Linha 227, Coluna 26>
+2025-06-30 13:23:45,298 - INFO - Token: <P_I, ), Linha 227, Coluna 27>
+2025-06-30 13:23:45,298 - INFO - Token: <C_N, {, Linha 227, Coluna 29>
+2025-06-30 13:23:45,298 - INFO - Token: <LET, let, Linha 228, Coluna 8>
+2025-06-30 13:23:45,299 - INFO - Token: <VAR, result, Linha 228, Coluna 12>
+2025-06-30 13:23:45,299 - INFO - Token: <POINT2, :, Linha 228, Coluna 18>
+2025-06-30 13:23:45,299 - INFO - Token: <INT_TYPE, int, Linha 228, Coluna 20>
+2025-06-30 13:23:45,299 - INFO - Token: <EQUALS, =, Linha 228, Coluna 24>
+2025-06-30 13:23:45,299 - INFO - Token: <VAR, num1, Linha 228, Coluna 26>
+2025-06-30 13:23:45,299 - INFO - Token: <SUB, -, Linha 228, Coluna 31>
+2025-06-30 13:23:45,300 - INFO - Token: <VAR, num2, Linha 228, Coluna 33>
+2025-06-30 13:23:45,300 - INFO - Token: <PRINT, print, Linha 229, Coluna 8>
+2025-06-30 13:23:45,300 - INFO - Token: <DUPONT, ::, Linha 229, Coluna 14>
+2025-06-30 13:23:45,300 - INFO - Token: <STRING, "Subtração:", Linha 229, Coluna 17>
+2025-06-30 13:23:45,300 - INFO - Token: <VIRG, ,, Linha 229, Coluna 29>
+2025-06-30 13:23:45,301 - INFO - Token: <VAR, num1, Linha 229, Coluna 31>
+2025-06-30 13:23:45,301 - INFO - Token: <VIRG, ,, Linha 229, Coluna 35>
+2025-06-30 13:23:45,301 - INFO - Token: <STRING, "-", Linha 229, Coluna 37>
+2025-06-30 13:23:45,301 - INFO - Token: <VIRG, ,, Linha 229, Coluna 40>
+2025-06-30 13:23:45,301 - INFO - Token: <VAR, num2, Linha 229, Coluna 42>
+2025-06-30 13:23:45,302 - INFO - Token: <VIRG, ,, Linha 229, Coluna 46>
+2025-06-30 13:23:45,302 - INFO - Token: <STRING, "=", Linha 229, Coluna 48>
+2025-06-30 13:23:45,302 - INFO - Token: <VIRG, ,, Linha 229, Coluna 51>
+2025-06-30 13:23:45,302 - INFO - Token: <VAR, result, Linha 229, Coluna 53>
+2025-06-30 13:23:45,303 - INFO - Token: <C_I, }, Linha 230, Coluna 4>
+2025-06-30 13:23:45,303 - INFO - Token: <ELSEIF, elseif, Linha 230, Coluna 6>
+2025-06-30 13:23:45,303 - INFO - Token: <P_N, (, Linha 230, Coluna 13>
+2025-06-30 13:23:45,304 - INFO - Token: <VAR, operacao, Linha 230, Coluna 14>
+2025-06-30 13:23:45,304 - INFO - Token: <EQ, ==, Linha 230, Coluna 23>
+2025-06-30 13:23:45,304 - INFO - Token: <INT, 3, Linha 230, Coluna 26>
+2025-06-30 13:23:45,304 - INFO - Token: <P_I, ), Linha 230, Coluna 27>
+2025-06-30 13:23:45,305 - INFO - Token: <C_N, {, Linha 230, Coluna 29>
+2025-06-30 13:23:45,305 - INFO - Token: <LET, let, Linha 231, Coluna 8>
+2025-06-30 13:23:45,305 - INFO - Token: <VAR, result, Linha 231, Coluna 12>
+2025-06-30 13:23:45,305 - INFO - Token: <POINT2, :, Linha 231, Coluna 18>
+2025-06-30 13:23:45,305 - INFO - Token: <INT_TYPE, int, Linha 231, Coluna 20>
+2025-06-30 13:23:45,306 - INFO - Token: <EQUALS, =, Linha 231, Coluna 24>
+2025-06-30 13:23:45,306 - INFO - Token: <VAR, num1, Linha 231, Coluna 26>
+2025-06-30 13:23:45,306 - INFO - Token: <MUL, *, Linha 231, Coluna 31>
+2025-06-30 13:23:45,306 - INFO - Token: <VAR, num2, Linha 231, Coluna 33>
+2025-06-30 13:23:45,306 - INFO - Token: <PRINT, print, Linha 232, Coluna 8>
+2025-06-30 13:23:45,307 - INFO - Token: <DUPONT, ::, Linha 232, Coluna 14>
+2025-06-30 13:23:45,307 - INFO - Token: <STRING, "Multiplicação:", Linha 232, Coluna 17>
+2025-06-30 13:23:45,307 - INFO - Token: <VIRG, ,, Linha 232, Coluna 33>
+2025-06-30 13:23:45,307 - INFO - Token: <VAR, num1, Linha 232, Coluna 35>
+2025-06-30 13:23:45,307 - INFO - Token: <VIRG, ,, Linha 232, Coluna 39>
+2025-06-30 13:23:45,308 - INFO - Token: <STRING, "*", Linha 232, Coluna 41>
+2025-06-30 13:23:45,308 - INFO - Token: <VIRG, ,, Linha 232, Coluna 44>
+2025-06-30 13:23:45,308 - INFO - Token: <VAR, num2, Linha 232, Coluna 46>
+2025-06-30 13:23:45,308 - INFO - Token: <VIRG, ,, Linha 232, Coluna 50>
+2025-06-30 13:23:45,308 - INFO - Token: <STRING, "=", Linha 232, Coluna 52>
+2025-06-30 13:23:45,309 - INFO - Token: <VIRG, ,, Linha 232, Coluna 55>
+2025-06-30 13:23:45,309 - INFO - Token: <VAR, result, Linha 232, Coluna 57>
+2025-06-30 13:23:45,309 - INFO - Token: <C_I, }, Linha 233, Coluna 4>
+2025-06-30 13:23:45,309 - INFO - Token: <ELSEIF, elseif, Linha 233, Coluna 6>
+2025-06-30 13:23:45,309 - INFO - Token: <P_N, (, Linha 233, Coluna 13>
+2025-06-30 13:23:45,309 - INFO - Token: <VAR, operacao, Linha 233, Coluna 14>
+2025-06-30 13:23:45,310 - INFO - Token: <EQ, ==, Linha 233, Coluna 23>
+2025-06-30 13:23:45,310 - INFO - Token: <INT, 4, Linha 233, Coluna 26>
+2025-06-30 13:23:45,310 - INFO - Token: <P_I, ), Linha 233, Coluna 27>
+2025-06-30 13:23:45,310 - INFO - Token: <C_N, {, Linha 233, Coluna 29>
+2025-06-30 13:23:45,311 - INFO - Token: <IF, if, Linha 234, Coluna 8>
+2025-06-30 13:23:45,311 - INFO - Token: <P_N, (, Linha 234, Coluna 11>
+2025-06-30 13:23:45,311 - INFO - Token: <VAR, num2, Linha 234, Coluna 12>
+2025-06-30 13:23:45,311 - INFO - Token: <NEQ, !=, Linha 234, Coluna 17>
+2025-06-30 13:23:45,311 - INFO - Token: <INT, 0, Linha 234, Coluna 20>
+2025-06-30 13:23:45,311 - INFO - Token: <P_I, ), Linha 234, Coluna 21>
+2025-06-30 13:23:45,312 - INFO - Token: <C_N, {, Linha 234, Coluna 23>
+2025-06-30 13:23:45,312 - INFO - Token: <LET, let, Linha 235, Coluna 12>
+2025-06-30 13:23:45,312 - INFO - Token: <VAR, result, Linha 235, Coluna 16>
+2025-06-30 13:23:45,312 - INFO - Token: <POINT2, :, Linha 235, Coluna 22>
+2025-06-30 13:23:45,313 - INFO - Token: <INT_TYPE, int, Linha 235, Coluna 24>
+2025-06-30 13:23:45,313 - INFO - Token: <EQUALS, =, Linha 235, Coluna 28>
+2025-06-30 13:23:45,313 - INFO - Token: <VAR, num1, Linha 235, Coluna 30>
+2025-06-30 13:23:45,313 - INFO - Token: <DIV, /, Linha 235, Coluna 35>
+2025-06-30 13:23:45,313 - INFO - Token: <VAR, num2, Linha 235, Coluna 37>
+2025-06-30 13:23:45,314 - INFO - Token: <PRINT, print, Linha 236, Coluna 12>
+2025-06-30 13:23:45,314 - INFO - Token: <DUPONT, ::, Linha 236, Coluna 18>
+2025-06-30 13:23:45,314 - INFO - Token: <STRING, "Divisão:", Linha 236, Coluna 21>
+2025-06-30 13:23:45,314 - INFO - Token: <VIRG, ,, Linha 236, Coluna 31>
+2025-06-30 13:23:45,314 - INFO - Token: <VAR, num1, Linha 236, Coluna 33>
+2025-06-30 13:23:45,315 - INFO - Token: <VIRG, ,, Linha 236, Coluna 37>
+2025-06-30 13:23:45,315 - INFO - Token: <STRING, "/", Linha 236, Coluna 39>
+2025-06-30 13:23:45,315 - INFO - Token: <VIRG, ,, Linha 236, Coluna 42>
+2025-06-30 13:23:45,315 - INFO - Token: <VAR, num2, Linha 236, Coluna 44>
+2025-06-30 13:23:45,315 - INFO - Token: <VIRG, ,, Linha 236, Coluna 48>
+2025-06-30 13:23:45,316 - INFO - Token: <STRING, "=", Linha 236, Coluna 50>
+2025-06-30 13:23:45,316 - INFO - Token: <VIRG, ,, Linha 236, Coluna 53>
+2025-06-30 13:23:45,316 - INFO - Token: <VAR, result, Linha 236, Coluna 55>
+2025-06-30 13:23:45,316 - INFO - Token: <C_I, }, Linha 237, Coluna 8>
+2025-06-30 13:23:45,317 - INFO - Token: <ELSE, else, Linha 237, Coluna 10>
+2025-06-30 13:23:45,317 - INFO - Token: <C_N, {, Linha 237, Coluna 15>
+2025-06-30 13:23:45,317 - INFO - Token: <PRINT, print, Linha 238, Coluna 12>
+2025-06-30 13:23:45,317 - INFO - Token: <DUPONT, ::, Linha 238, Coluna 18>
+2025-06-30 13:23:45,317 - INFO - Token: <STRING, "Erro: Divisão por zero!", Linha 238, Coluna 21>
+2025-06-30 13:23:45,318 - INFO - Token: <C_I, }, Linha 239, Coluna 8>
+2025-06-30 13:23:45,318 - INFO - Token: <C_I, }, Linha 240, Coluna 4>
+2025-06-30 13:23:45,318 - INFO - Token: <LET, let, Linha 243, Coluna 4>
+2025-06-30 13:23:45,318 - INFO - Token: <VAR, n, Linha 243, Coluna 8>
+2025-06-30 13:23:45,319 - INFO - Token: <POINT2, :, Linha 243, Coluna 9>
+2025-06-30 13:23:45,319 - INFO - Token: <INT_TYPE, int, Linha 243, Coluna 11>
+2025-06-30 13:23:45,319 - INFO - Token: <EQUALS, =, Linha 243, Coluna 15>
+2025-06-30 13:23:45,319 - INFO - Token: <INT, 5, Linha 243, Coluna 17>
+2025-06-30 13:23:45,320 - INFO - Token: <LET, let, Linha 244, Coluna 4>
+2025-06-30 13:23:45,320 - INFO - Token: <VAR, fatorial, Linha 244, Coluna 8>
+2025-06-30 13:23:45,320 - INFO - Token: <POINT2, :, Linha 244, Coluna 16>
+2025-06-30 13:23:45,320 - INFO - Token: <INT_TYPE, int, Linha 244, Coluna 18>
+2025-06-30 13:23:45,321 - INFO - Token: <EQUALS, =, Linha 244, Coluna 22>
+2025-06-30 13:23:45,321 - INFO - Token: <INT, 1, Linha 244, Coluna 24>
+2025-06-30 13:23:45,321 - INFO - Token: <PRINT, print, Linha 245, Coluna 4>
+2025-06-30 13:23:45,321 - INFO - Token: <DUPONT, ::, Linha 245, Coluna 10>
+2025-06-30 13:23:45,322 - INFO - Token: <STRING, "Calculando fatorial de", Linha 245, Coluna 13>
+2025-06-30 13:23:45,322 - INFO - Token: <VIRG, ,, Linha 245, Coluna 37>
+2025-06-30 13:23:45,322 - INFO - Token: <VAR, n, Linha 245, Coluna 39>
+2025-06-30 13:23:45,322 - INFO - Token: <FOR, for, Linha 247, Coluna 4>
+2025-06-30 13:23:45,322 - INFO - Token: <VAR, f, Linha 247, Coluna 8>
+2025-06-30 13:23:45,323 - INFO - Token: <IN, in, Linha 247, Coluna 10>
+2025-06-30 13:23:45,323 - INFO - Token: <INT, 1, Linha 247, Coluna 13>
+2025-06-30 13:23:45,323 - INFO - Token: <DOT2, .., Linha 247, Coluna 14>
+2025-06-30 13:23:45,323 - INFO - Token: <VAR, n, Linha 247, Coluna 16>
+2025-06-30 13:23:45,323 - INFO - Token: <C_N, {, Linha 247, Coluna 18>
+2025-06-30 13:23:45,324 - INFO - Token: <VAR, fatorial, Linha 248, Coluna 8>
+2025-06-30 13:23:45,324 - INFO - Token: <MUL, *, Linha 248, Coluna 17>
+2025-06-30 13:23:45,324 - INFO - Token: <EQUALS, =, Linha 248, Coluna 18>
+2025-06-30 13:23:45,324 - INFO - Token: <VAR, f, Linha 248, Coluna 20>
+2025-06-30 13:23:45,324 - INFO - Token: <PRINT, print, Linha 249, Coluna 8>
+2025-06-30 13:23:45,325 - INFO - Token: <DUPONT, ::, Linha 249, Coluna 14>
+2025-06-30 13:23:45,325 - INFO - Token: <STRING, "Passo", Linha 249, Coluna 17>
+2025-06-30 13:23:45,325 - INFO - Token: <VIRG, ,, Linha 249, Coluna 24>
+2025-06-30 13:23:45,325 - INFO - Token: <VAR, f, Linha 249, Coluna 26>
+2025-06-30 13:23:45,325 - INFO - Token: <VIRG, ,, Linha 249, Coluna 27>
+2025-06-30 13:23:45,326 - INFO - Token: <STRING, ":", Linha 249, Coluna 29>
+2025-06-30 13:23:45,326 - INFO - Token: <VIRG, ,, Linha 249, Coluna 32>
+2025-06-30 13:23:45,326 - INFO - Token: <VAR, fatorial, Linha 249, Coluna 34>
+2025-06-30 13:23:45,326 - INFO - Token: <C_I, }, Linha 250, Coluna 4>
+2025-06-30 13:23:45,326 - INFO - Token: <PRINT, print, Linha 251, Coluna 4>
+2025-06-30 13:23:45,327 - INFO - Token: <DUPONT, ::, Linha 251, Coluna 10>
+2025-06-30 13:23:45,327 - INFO - Token: <STRING, "Fatorial final:", Linha 251, Coluna 13>
+2025-06-30 13:23:45,327 - INFO - Token: <VIRG, ,, Linha 251, Coluna 30>
+2025-06-30 13:23:45,327 - INFO - Token: <VAR, fatorial, Linha 251, Coluna 32>
+2025-06-30 13:23:45,328 - INFO - Token: <LET, let, Linha 254, Coluna 4>
+2025-06-30 13:23:45,328 - INFO - Token: <VAR, fib1, Linha 254, Coluna 8>
+2025-06-30 13:23:45,328 - INFO - Token: <POINT2, :, Linha 254, Coluna 12>
+2025-06-30 13:23:45,328 - INFO - Token: <INT_TYPE, int, Linha 254, Coluna 14>
+2025-06-30 13:23:45,329 - INFO - Token: <EQUALS, =, Linha 254, Coluna 18>
+2025-06-30 13:23:45,329 - INFO - Token: <INT, 0, Linha 254, Coluna 20>
+2025-06-30 13:23:45,329 - INFO - Token: <LET, let, Linha 255, Coluna 4>
+2025-06-30 13:23:45,329 - INFO - Token: <VAR, fib2, Linha 255, Coluna 8>
+2025-06-30 13:23:45,329 - INFO - Token: <POINT2, :, Linha 255, Coluna 12>
+2025-06-30 13:23:45,330 - INFO - Token: <INT_TYPE, int, Linha 255, Coluna 14>
+2025-06-30 13:23:45,330 - INFO - Token: <EQUALS, =, Linha 255, Coluna 18>
+2025-06-30 13:23:45,330 - INFO - Token: <INT, 1, Linha 255, Coluna 20>
+2025-06-30 13:23:45,330 - INFO - Token: <LET, let, Linha 256, Coluna 4>
+2025-06-30 13:23:45,331 - INFO - Token: <VAR, fib_count, Linha 256, Coluna 8>
+2025-06-30 13:23:45,331 - INFO - Token: <POINT2, :, Linha 256, Coluna 17>
+2025-06-30 13:23:45,331 - INFO - Token: <INT_TYPE, int, Linha 256, Coluna 19>
+2025-06-30 13:23:45,331 - INFO - Token: <EQUALS, =, Linha 256, Coluna 23>
+2025-06-30 13:23:45,331 - INFO - Token: <INT, 0, Linha 256, Coluna 25>
+2025-06-30 13:23:45,331 - INFO - Token: <PRINT, print, Linha 258, Coluna 4>
+2025-06-30 13:23:45,332 - INFO - Token: <DUPONT, ::, Linha 258, Coluna 10>
+2025-06-30 13:23:45,332 - INFO - Token: <STRING, "Sequência de Fibonacci:", Linha 258, Coluna 13>
+2025-06-30 13:23:45,332 - INFO - Token: <PRINT, print, Linha 259, Coluna 4>
+2025-06-30 13:23:45,332 - INFO - Token: <DUPONT, ::, Linha 259, Coluna 10>
+2025-06-30 13:23:45,333 - INFO - Token: <STRING, "F(0) =", Linha 259, Coluna 13>
+2025-06-30 13:23:45,333 - INFO - Token: <VIRG, ,, Linha 259, Coluna 21>
+2025-06-30 13:23:45,333 - INFO - Token: <VAR, fib1, Linha 259, Coluna 23>
+2025-06-30 13:23:45,333 - INFO - Token: <PRINT, print, Linha 260, Coluna 4>
+2025-06-30 13:23:45,334 - INFO - Token: <DUPONT, ::, Linha 260, Coluna 10>
+2025-06-30 13:23:45,334 - INFO - Token: <STRING, "F(1) =", Linha 260, Coluna 13>
+2025-06-30 13:23:45,334 - INFO - Token: <VIRG, ,, Linha 260, Coluna 21>
+2025-06-30 13:23:45,334 - INFO - Token: <VAR, fib2, Linha 260, Coluna 23>
+2025-06-30 13:23:45,334 - INFO - Token: <WHILE, while, Linha 262, Coluna 4>
+2025-06-30 13:23:45,334 - INFO - Token: <P_N, (, Linha 262, Coluna 10>
+2025-06-30 13:23:45,335 - INFO - Token: <VAR, fib_count, Linha 262, Coluna 11>
+2025-06-30 13:23:45,335 - INFO - Token: <LT, <, Linha 262, Coluna 21>
+2025-06-30 13:23:45,335 - INFO - Token: <INT, 8, Linha 262, Coluna 23>
+2025-06-30 13:23:45,335 - INFO - Token: <P_I, ), Linha 262, Coluna 24>
+2025-06-30 13:23:45,335 - INFO - Token: <C_N, {, Linha 262, Coluna 26>
+2025-06-30 13:23:45,336 - INFO - Token: <LET, let, Linha 263, Coluna 8>
+2025-06-30 13:23:45,336 - INFO - Token: <VAR, proximo, Linha 263, Coluna 12>
+2025-06-30 13:23:45,336 - INFO - Token: <POINT2, :, Linha 263, Coluna 19>
+2025-06-30 13:23:45,336 - INFO - Token: <INT_TYPE, int, Linha 263, Coluna 21>
+2025-06-30 13:23:45,337 - INFO - Token: <EQUALS, =, Linha 263, Coluna 25>
+2025-06-30 13:23:45,337 - INFO - Token: <VAR, fib1, Linha 263, Coluna 27>
+2025-06-30 13:23:45,337 - INFO - Token: <ADD, +, Linha 263, Coluna 32>
+2025-06-30 13:23:45,338 - INFO - Token: <VAR, fib2, Linha 263, Coluna 34>
+2025-06-30 13:23:45,338 - INFO - Token: <VAR, fib_count, Linha 264, Coluna 8>
+2025-06-30 13:23:45,338 - INFO - Token: <ADD, +, Linha 264, Coluna 18>
+2025-06-30 13:23:45,338 - INFO - Token: <EQUALS, =, Linha 264, Coluna 19>
+2025-06-30 13:23:45,338 - INFO - Token: <INT, 1, Linha 264, Coluna 21>
+2025-06-30 13:23:45,339 - INFO - Token: <PRINT, print, Linha 265, Coluna 8>
+2025-06-30 13:23:45,339 - INFO - Token: <DUPONT, ::, Linha 265, Coluna 14>
+2025-06-30 13:23:45,339 - INFO - Token: <STRING, "F(", Linha 265, Coluna 17>
+2025-06-30 13:23:45,339 - INFO - Token: <VIRG, ,, Linha 265, Coluna 22>
+2025-06-30 13:23:45,339 - INFO - Token: <VAR, fib_count, Linha 265, Coluna 24>
+2025-06-30 13:23:45,339 - INFO - Token: <ADD, +, Linha 265, Coluna 34>
+2025-06-30 13:23:45,340 - INFO - Token: <INT, 1, Linha 265, Coluna 36>
+2025-06-30 13:23:45,340 - INFO - Token: <VIRG, ,, Linha 265, Coluna 37>
+2025-06-30 13:23:45,340 - INFO - Token: <STRING, ") =", Linha 265, Coluna 39>
+2025-06-30 13:23:45,340 - INFO - Token: <VIRG, ,, Linha 265, Coluna 44>
+2025-06-30 13:23:45,340 - INFO - Token: <VAR, proximo, Linha 265, Coluna 46>
+2025-06-30 13:23:45,341 - INFO - Token: <VAR, fib1, Linha 266, Coluna 8>
+2025-06-30 13:23:45,341 - INFO - Token: <EQUALS, =, Linha 266, Coluna 13>
+2025-06-30 13:23:45,341 - INFO - Token: <VAR, fib2, Linha 266, Coluna 15>
+2025-06-30 13:23:45,341 - INFO - Token: <VAR, fib2, Linha 267, Coluna 8>
+2025-06-30 13:23:45,341 - INFO - Token: <EQUALS, =, Linha 267, Coluna 13>
+2025-06-30 13:23:45,342 - INFO - Token: <VAR, proximo, Linha 267, Coluna 15>
+2025-06-30 13:23:45,342 - INFO - Token: <C_I, }, Linha 268, Coluna 4>
+2025-06-30 13:23:45,342 - INFO - Token: <LET, let, Linha 271, Coluna 4>
+2025-06-30 13:23:45,342 - INFO - Token: <VAR, nota, Linha 271, Coluna 8>
+2025-06-30 13:23:45,343 - INFO - Token: <POINT2, :, Linha 271, Coluna 12>
+2025-06-30 13:23:45,343 - INFO - Token: <FLOAT_TYPE, float, Linha 271, Coluna 14>
+2025-06-30 13:23:45,343 - INFO - Token: <EQUALS, =, Linha 271, Coluna 20>
+2025-06-30 13:23:45,343 - INFO - Token: <FLOAT, 8.5, Linha 271, Coluna 22>
+2025-06-30 13:23:45,343 - INFO - Token: <LET, let, Linha 272, Coluna 4>
+2025-06-30 13:23:45,344 - INFO - Token: <VAR, frequencia, Linha 272, Coluna 8>
+2025-06-30 13:23:45,344 - INFO - Token: <POINT2, :, Linha 272, Coluna 18>
+2025-06-30 13:23:45,344 - INFO - Token: <FLOAT_TYPE, float, Linha 272, Coluna 20>
+2025-06-30 13:23:45,344 - INFO - Token: <EQUALS, =, Linha 272, Coluna 26>
+2025-06-30 13:23:45,344 - INFO - Token: <FLOAT, 85.0, Linha 272, Coluna 28>
+2025-06-30 13:23:45,345 - INFO - Token: <PRINT, print, Linha 274, Coluna 4>
+2025-06-30 13:23:45,345 - INFO - Token: <DUPONT, ::, Linha 274, Coluna 10>
+2025-06-30 13:23:45,345 - INFO - Token: <STRING, "=== VALIDAÇÃO DE APROVAÇÃO ===", Linha 274, Coluna 13>
+2025-06-30 13:23:45,345 - INFO - Token: <PRINT, print, Linha 275, Coluna 4>
+2025-06-30 13:23:45,345 - INFO - Token: <DUPONT, ::, Linha 275, Coluna 10>
+2025-06-30 13:23:45,346 - INFO - Token: <STRING, "Nota:", Linha 275, Coluna 13>
+2025-06-30 13:23:45,346 - INFO - Token: <VIRG, ,, Linha 275, Coluna 20>
+2025-06-30 13:23:45,346 - INFO - Token: <VAR, nota, Linha 275, Coluna 22>
+2025-06-30 13:23:45,346 - INFO - Token: <PRINT, print, Linha 276, Coluna 4>
+2025-06-30 13:23:45,346 - INFO - Token: <DUPONT, ::, Linha 276, Coluna 10>
+2025-06-30 13:23:45,347 - INFO - Token: <STRING, "Frequência:", Linha 276, Coluna 13>
+2025-06-30 13:23:45,347 - INFO - Token: <VIRG, ,, Linha 276, Coluna 26>
+2025-06-30 13:23:45,347 - INFO - Token: <VAR, frequencia, Linha 276, Coluna 28>
+2025-06-30 13:23:45,347 - INFO - Token: <IF, if, Linha 278, Coluna 4>
+2025-06-30 13:23:45,348 - INFO - Token: <P_N, (, Linha 278, Coluna 7>
+2025-06-30 13:23:45,348 - INFO - Token: <VAR, nota, Linha 278, Coluna 8>
+2025-06-30 13:23:45,348 - INFO - Token: <GTE, >=, Linha 278, Coluna 13>
+2025-06-30 13:23:45,348 - INFO - Token: <FLOAT, 7.0, Linha 278, Coluna 16>
+2025-06-30 13:23:45,348 - INFO - Token: <AND, &&, Linha 278, Coluna 20>
+2025-06-30 13:23:45,349 - INFO - Token: <VAR, frequencia, Linha 278, Coluna 23>
+2025-06-30 13:23:45,349 - INFO - Token: <GTE, >=, Linha 278, Coluna 34>
+2025-06-30 13:23:45,349 - INFO - Token: <FLOAT, 75.0, Linha 278, Coluna 37>
+2025-06-30 13:23:45,349 - INFO - Token: <P_I, ), Linha 278, Coluna 41>
+2025-06-30 13:23:45,349 - INFO - Token: <C_N, {, Linha 278, Coluna 43>
+2025-06-30 13:23:45,350 - INFO - Token: <PRINT, print, Linha 279, Coluna 8>
+2025-06-30 13:23:45,350 - INFO - Token: <DUPONT, ::, Linha 279, Coluna 14>
+2025-06-30 13:23:45,350 - INFO - Token: <STRING, "APROVADO! ✓", Linha 279, Coluna 17>
+2025-06-30 13:23:45,350 - INFO - Token: <C_I, }, Linha 280, Coluna 4>
+2025-06-30 13:23:45,350 - INFO - Token: <ELSEIF, elseif, Linha 280, Coluna 6>
+2025-06-30 13:23:45,351 - INFO - Token: <P_N, (, Linha 280, Coluna 13>
+2025-06-30 13:23:45,351 - INFO - Token: <VAR, nota, Linha 280, Coluna 14>
+2025-06-30 13:23:45,351 - INFO - Token: <GTE, >=, Linha 280, Coluna 19>
+2025-06-30 13:23:45,351 - INFO - Token: <FLOAT, 5.0, Linha 280, Coluna 22>
+2025-06-30 13:23:45,351 - INFO - Token: <AND, &&, Linha 280, Coluna 26>
+2025-06-30 13:23:45,352 - INFO - Token: <VAR, frequencia, Linha 280, Coluna 29>
+2025-06-30 13:23:45,352 - INFO - Token: <GTE, >=, Linha 280, Coluna 40>
+2025-06-30 13:23:45,352 - INFO - Token: <FLOAT, 75.0, Linha 280, Coluna 43>
+2025-06-30 13:23:45,352 - INFO - Token: <P_I, ), Linha 280, Coluna 47>
+2025-06-30 13:23:45,353 - INFO - Token: <C_N, {, Linha 280, Coluna 49>
+2025-06-30 13:23:45,353 - INFO - Token: <PRINT, print, Linha 281, Coluna 8>
+2025-06-30 13:23:45,353 - INFO - Token: <DUPONT, ::, Linha 281, Coluna 14>
+2025-06-30 13:23:45,354 - INFO - Token: <STRING, "RECUPERAÇÃO", Linha 281, Coluna 17>
+2025-06-30 13:23:45,354 - INFO - Token: <C_I, }, Linha 282, Coluna 4>
+2025-06-30 13:23:45,354 - INFO - Token: <ELSE, else, Linha 282, Coluna 6>
+2025-06-30 13:23:45,354 - INFO - Token: <C_N, {, Linha 282, Coluna 11>
+2025-06-30 13:23:45,355 - INFO - Token: <PRINT, print, Linha 283, Coluna 8>
+2025-06-30 13:23:45,355 - INFO - Token: <DUPONT, ::, Linha 283, Coluna 14>
+2025-06-30 13:23:45,355 - INFO - Token: <STRING, "REPROVADO ✗", Linha 283, Coluna 17>
+2025-06-30 13:23:45,355 - INFO - Token: <C_I, }, Linha 284, Coluna 4>
+2025-06-30 13:23:45,356 - INFO - Token: <PRINT, print, Linha 290, Coluna 4>
+2025-06-30 13:23:45,356 - INFO - Token: <DUPONT, ::, Linha 290, Coluna 10>
+2025-06-30 13:23:45,356 - INFO - Token: <STRING, "==========================", Linha 290, Coluna 13>
+2025-06-30 13:23:45,356 - INFO - Token: <PRINT, print, Linha 291, Coluna 4>
+2025-06-30 13:23:45,356 - INFO - Token: <DUPONT, ::, Linha 291, Coluna 10>
+2025-06-30 13:23:45,357 - INFO - Token: <STRING, "Demonstração finalizada!", Linha 291, Coluna 13>
+2025-06-30 13:23:45,357 - INFO - Token: <PRINT, print, Linha 292, Coluna 4>
+2025-06-30 13:23:45,357 - INFO - Token: <DUPONT, ::, Linha 292, Coluna 10>
+2025-06-30 13:23:45,357 - INFO - Token: <STRING, "Todas as funcionalidades foram testadas:", Linha 292, Coluna 13>
+2025-06-30 13:23:45,358 - INFO - Token: <PRINT, print, Linha 293, Coluna 4>
+2025-06-30 13:23:45,358 - INFO - Token: <DUPONT, ::, Linha 293, Coluna 10>
+2025-06-30 13:23:45,358 - INFO - Token: <STRING, "✓ Tipos: int, float, String, bool", Linha 293, Coluna 13>
+2025-06-30 13:23:45,358 - INFO - Token: <PRINT, print, Linha 294, Coluna 4>
+2025-06-30 13:23:45,358 - INFO - Token: <DUPONT, ::, Linha 294, Coluna 10>
+2025-06-30 13:23:45,359 - INFO - Token: <STRING, "✓ Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||", Linha 294, Coluna 13>
+2025-06-30 13:23:45,359 - INFO - Token: <PRINT, print, Linha 295, Coluna 4>
+2025-06-30 13:23:45,359 - INFO - Token: <DUPONT, ::, Linha 295, Coluna 10>
+2025-06-30 13:23:45,359 - INFO - Token: <STRING, "✓ Estruturas: if/elseif/else, for, while", Linha 295, Coluna 13>
+2025-06-30 13:23:45,359 - INFO - Token: <PRINT, print, Linha 296, Coluna 4>
+2025-06-30 13:23:45,360 - INFO - Token: <DUPONT, ::, Linha 296, Coluna 10>
+2025-06-30 13:23:45,360 - INFO - Token: <STRING, "✓ E/S: print, input", Linha 296, Coluna 13>
+2025-06-30 13:23:45,360 - INFO - Token: <PRINT, print, Linha 297, Coluna 4>
+2025-06-30 13:23:45,360 - INFO - Token: <DUPONT, ::, Linha 297, Coluna 10>
+2025-06-30 13:23:45,360 - INFO - Token: <STRING, "✓ Expressões complexas e precedência", Linha 297, Coluna 13>
+2025-06-30 13:23:45,360 - INFO - Token: <PRINT, print, Linha 298, Coluna 4>
+2025-06-30 13:23:45,361 - INFO - Token: <DUPONT, ::, Linha 298, Coluna 10>
+2025-06-30 13:23:45,361 - INFO - Token: <STRING, "==========================", Linha 298, Coluna 13>
+2025-06-30 13:23:45,361 - INFO - Token: <END, @end, Linha 300, Coluna 0>
+2025-06-30 13:23:45,384 - INFO - AST gerada com sucesso.
+2025-06-30 13:23:45,385 - INFO - Arquivo 'ast.dot' salvo com sucesso.
+2025-06-30 13:23:47,562 - INFO - Imagem 'ast.png' gerada com sucesso.
+2025-06-30 13:23:47,562 - INFO - Iniciando análise semântica.
+2025-06-30 13:23:47,562 - INFO - [Semântico] Declarada variável 'idade' do tipo 'int'.
+2025-06-30 13:23:47,563 - INFO - [Semântico] Declarada variável 'altura' do tipo 'float'.
+2025-06-30 13:23:47,563 - INFO - [Semântico] Declarada variável 'nome' do tipo 'String'.
+2025-06-30 13:23:47,563 - INFO - [Semântico] Declarada variável 'ativo' do tipo 'bool'.
+2025-06-30 13:23:47,563 - INFO - [Semântico] Declarada variável 'contador' do tipo 'int'.
+2025-06-30 13:23:47,563 - INFO - [Semântico] Declarada variável 'peso' do tipo 'float'.
+2025-06-30 13:23:47,563 - INFO - [Semântico] Declarada variável 'sobrenome' do tipo 'String'.
+2025-06-30 13:23:47,563 - INFO - [Semântico] Declarada variável 'aprovado' do tipo 'bool'.
+2025-06-30 13:23:47,563 - INFO - [Semântico] Atribuição para variável 'contador'.
+2025-06-30 13:23:47,563 - INFO - [Semântico] Atribuição para variável 'peso'.
+2025-06-30 13:23:47,563 - INFO - [Semântico] Atribuição para variável 'sobrenome'.
+2025-06-30 13:23:47,563 - INFO - [Semântico] Atribuição para variável 'aprovado'.
+2025-06-30 13:23:47,563 - INFO - [Semântico] Atribuição para variável 'idade'.
+2025-06-30 13:23:47,563 - INFO - [Semântico] Atribuição para variável 'altura'.
+2025-06-30 13:23:47,564 - INFO - [Semântico] Atribuição para variável 'contador'.
+2025-06-30 13:23:47,564 - INFO - [Semântico] Atribuição para variável 'peso'.
+2025-06-30 13:23:47,564 - INFO - [Semântico] Declarada variável 'a' do tipo 'int'.
+2025-06-30 13:23:47,564 - INFO - [Semântico] Declarada variável 'b' do tipo 'int'.
+2025-06-30 13:23:47,564 - INFO - [Semântico] Declarada variável 'soma' do tipo 'int'.
+2025-06-30 13:23:47,564 - INFO - [Semântico] Declarada variável 'subtracao' do tipo 'int'.
+2025-06-30 13:23:47,564 - INFO - [Semântico] Declarada variável 'multiplicacao' do tipo 'int'.
+2025-06-30 13:23:47,564 - INFO - [Semântico] Declarada variável 'divisao' do tipo 'int'.
+2025-06-30 13:23:47,565 - INFO - [Semântico] Declarada variável 'resultado' do tipo 'int'.
+2025-06-30 13:23:47,565 - INFO - [Semântico] Declarada variável 'complexo' do tipo 'int'.
+2025-06-30 13:23:47,565 - INFO - [Semântico] Declarada variável 'igual' do tipo 'bool'.
+2025-06-30 13:23:47,565 - INFO - [Semântico] Declarada variável 'diferente' do tipo 'bool'.
+2025-06-30 13:23:47,565 - INFO - [Semântico] Declarada variável 'menor' do tipo 'bool'.
+2025-06-30 13:23:47,565 - INFO - [Semântico] Declarada variável 'maior' do tipo 'bool'.
+2025-06-30 13:23:47,565 - INFO - [Semântico] Declarada variável 'menorIgual' do tipo 'bool'.
+2025-06-30 13:23:47,565 - INFO - [Semântico] Declarada variável 'maiorIgual' do tipo 'bool'.
+2025-06-30 13:23:47,566 - INFO - [Semântico] Declarada variável 'condicao1' do tipo 'bool'.
+2025-06-30 13:23:47,566 - INFO - [Semântico] Declarada variável 'condicao2' do tipo 'bool'.
+2025-06-30 13:23:47,566 - INFO - [Semântico] Declarada variável 'e_logico' do tipo 'bool'.
+2025-06-30 13:23:47,566 - INFO - [Semântico] Declarada variável 'ou_logico' do tipo 'bool'.
+2025-06-30 13:23:47,566 - INFO - [Semântico] Declarada variável 'complexa' do tipo 'bool'.
+2025-06-30 13:23:47,566 - INFO - [Semântico] Declarada variável 'entrada_usuario' do tipo 'int'.
+2025-06-30 13:23:47,566 - INFO - [Semântico] Variável 'entrada_usuario' recebeu valor via input().
+2025-06-30 13:23:47,567 - INFO - [Semântico] Variável de iteração 'i' declarada automaticamente no for.
+2025-06-30 13:23:47,567 - INFO - [Semântico] Variável de iteração 'j' declarada automaticamente no for.
+2025-06-30 13:23:47,567 - INFO - [Semântico] Declarada variável 'inicio' do tipo 'int'.
+2025-06-30 13:23:47,567 - INFO - [Semântico] Declarada variável 'fim' do tipo 'int'.
+2025-06-30 13:23:47,567 - INFO - [Semântico] Variável de iteração 'k' declarada automaticamente no for.
+2025-06-30 13:23:47,567 - INFO - [Semântico] Declarada variável 'quadrado' do tipo 'int'.
+2025-06-30 13:23:47,567 - INFO - [Semântico] Declarada variável 'cont' do tipo 'int'.
+2025-06-30 13:23:47,567 - INFO - [Semântico] Atribuição para variável 'cont'.
+2025-06-30 13:23:47,567 - INFO - [Semântico] Declarada variável 'x' do tipo 'int'.
+2025-06-30 13:23:47,567 - INFO - [Semântico] Declarada variável 'y' do tipo 'int'.
+2025-06-30 13:23:47,568 - INFO - [Semântico] Atribuição para variável 'x'.
+2025-06-30 13:23:47,568 - INFO - [Semântico] Atribuição para variável 'y'.
+2025-06-30 13:23:47,568 - INFO - [Semântico] Declarada variável 'num1' do tipo 'int'.
+2025-06-30 13:23:47,568 - INFO - [Semântico] Declarada variável 'num2' do tipo 'int'.
+2025-06-30 13:23:47,568 - INFO - [Semântico] Declarada variável 'operacao' do tipo 'int'.
+2025-06-30 13:23:47,568 - INFO - [Semântico] Declarada variável 'result' do tipo 'int'.
+2025-06-30 13:23:47,568 - INFO - [Semântico] Declarada variável 'result' do tipo 'int'.
+2025-06-30 13:23:47,568 - INFO - [Semântico] Declarada variável 'result' do tipo 'int'.
+2025-06-30 13:23:47,569 - INFO - [Semântico] Declarada variável 'result' do tipo 'int'.
+2025-06-30 13:23:47,569 - INFO - [Semântico] Declarada variável 'n' do tipo 'int'.
+2025-06-30 13:23:47,569 - INFO - [Semântico] Declarada variável 'fatorial' do tipo 'int'.
+2025-06-30 13:23:47,569 - INFO - [Semântico] Variável de iteração 'f' declarada automaticamente no for.
+2025-06-30 13:23:47,569 - INFO - [Semântico] Atribuição para variável 'fatorial'.
+2025-06-30 13:23:47,569 - INFO - [Semântico] Declarada variável 'fib1' do tipo 'int'.
+2025-06-30 13:23:47,569 - INFO - [Semântico] Declarada variável 'fib2' do tipo 'int'.
+2025-06-30 13:23:47,569 - INFO - [Semântico] Declarada variável 'fib_count' do tipo 'int'.
+2025-06-30 13:23:47,569 - INFO - [Semântico] Declarada variável 'proximo' do tipo 'int'.
+2025-06-30 13:23:47,570 - INFO - [Semântico] Atribuição para variável 'fib_count'.
+2025-06-30 13:23:47,570 - INFO - [Semântico] Atribuição para variável 'fib1'.
+2025-06-30 13:23:47,570 - INFO - [Semântico] Atribuição para variável 'fib2'.
+2025-06-30 13:23:47,570 - INFO - [Semântico] Declarada variável 'nota' do tipo 'float'.
+2025-06-30 13:23:47,570 - INFO - [Semântico] Declarada variável 'frequencia' do tipo 'float'.
+2025-06-30 13:23:47,571 - INFO - Análise semântica concluída sem erros.
+2025-06-30 13:23:47,572 - INFO - Iniciando geração de código TAC.
+2025-06-30 13:23:47,572 - INFO - TAC: idade = 25
+2025-06-30 13:23:47,572 - INFO - TAC: altura = 1.75
+2025-06-30 13:23:47,572 - INFO - TAC: nome = "João Silva"
+2025-06-30 13:23:47,572 - INFO - TAC: ativo = True
+2025-06-30 13:23:47,572 - INFO - TAC: contador = 0
+2025-06-30 13:23:47,572 - INFO - TAC: peso = 70.5
+2025-06-30 13:23:47,572 - INFO - TAC: sobrenome = "Santos"
+2025-06-30 13:23:47,572 - INFO - TAC: aprovado = False
+2025-06-30 13:23:47,572 - INFO - TAC: t1 = idade + 5
+2025-06-30 13:23:47,572 - INFO - TAC: idade = t1
+2025-06-30 13:23:47,573 - INFO - TAC: t2 = altura - 0.05
+2025-06-30 13:23:47,573 - INFO - TAC: altura = t2
+2025-06-30 13:23:47,573 - INFO - TAC: t3 = contador * 2
+2025-06-30 13:23:47,573 - INFO - TAC: contador = t3
+2025-06-30 13:23:47,573 - INFO - TAC: t4 = peso / 2
+2025-06-30 13:23:47,573 - INFO - TAC: peso = t4
+2025-06-30 13:23:47,573 - INFO - TAC: print "=== DEMONSTRAÇÃO LENS ==="
+2025-06-30 13:23:47,573 - INFO - TAC: print nome
+2025-06-30 13:23:47,573 - INFO - TAC: print idade
+2025-06-30 13:23:47,574 - INFO - TAC: print "Nome completo:"
+2025-06-30 13:23:47,574 - INFO - TAC: print nome
+2025-06-30 13:23:47,574 - INFO - TAC: print sobrenome
+2025-06-30 13:23:47,574 - INFO - TAC: print "Idade atual:"
+2025-06-30 13:23:47,574 - INFO - TAC: print idade
+2025-06-30 13:23:47,574 - INFO - TAC: print "Altura:"
+2025-06-30 13:23:47,574 - INFO - TAC: print altura
+2025-06-30 13:23:47,574 - INFO - TAC: print "Peso:"
+2025-06-30 13:23:47,574 - INFO - TAC: print peso
+2025-06-30 13:23:47,574 - INFO - TAC: print "Status ativo:"
+2025-06-30 13:23:47,574 - INFO - TAC: print ativo
+2025-06-30 13:23:47,574 - INFO - TAC: print "Aprovado:"
+2025-06-30 13:23:47,574 - INFO - TAC: print aprovado
+2025-06-30 13:23:47,574 - INFO - TAC: a = 10
+2025-06-30 13:23:47,574 - INFO - TAC: b = 3
+2025-06-30 13:23:47,574 - INFO - TAC: t5 = a + b
+2025-06-30 13:23:47,574 - INFO - TAC: soma = t5
+2025-06-30 13:23:47,575 - INFO - TAC: t6 = a - b
+2025-06-30 13:23:47,575 - INFO - TAC: subtracao = t6
+2025-06-30 13:23:47,575 - INFO - TAC: t7 = a * b
+2025-06-30 13:23:47,575 - INFO - TAC: multiplicacao = t7
+2025-06-30 13:23:47,575 - INFO - TAC: t8 = a / b
+2025-06-30 13:23:47,575 - INFO - TAC: divisao = t8
+2025-06-30 13:23:47,575 - INFO - TAC: print "Operações com"
+2025-06-30 13:23:47,575 - INFO - TAC: print a
+2025-06-30 13:23:47,575 - INFO - TAC: print "e"
+2025-06-30 13:23:47,575 - INFO - TAC: print b
+2025-06-30 13:23:47,575 - INFO - TAC: print "Soma:"
+2025-06-30 13:23:47,575 - INFO - TAC: print soma
+2025-06-30 13:23:47,575 - INFO - TAC: print "Subtração:"
+2025-06-30 13:23:47,575 - INFO - TAC: print subtracao
+2025-06-30 13:23:47,575 - INFO - TAC: print "Multiplicação:"
+2025-06-30 13:23:47,575 - INFO - TAC: print multiplicacao
+2025-06-30 13:23:47,575 - INFO - TAC: print "Divisão:"
+2025-06-30 13:23:47,575 - INFO - TAC: print divisao
+2025-06-30 13:23:47,576 - INFO - TAC: t9 = b * 2
+2025-06-30 13:23:47,576 - INFO - TAC: t10 = a + t9
+2025-06-30 13:23:47,576 - INFO - TAC: t11 = t10 - 1
+2025-06-30 13:23:47,576 - INFO - TAC: resultado = t11
+2025-06-30 13:23:47,576 - INFO - TAC: t12 = a + b
+2025-06-30 13:23:47,576 - INFO - TAC: t13 = t12 * 2
+2025-06-30 13:23:47,576 - INFO - TAC: complexo = t13
+2025-06-30 13:23:47,576 - INFO - TAC: print "Resultado complexo:"
+2025-06-30 13:23:47,576 - INFO - TAC: print resultado
+2025-06-30 13:23:47,576 - INFO - TAC: print "Com parênteses:"
+2025-06-30 13:23:47,576 - INFO - TAC: print complexo
+2025-06-30 13:23:47,576 - INFO - TAC: t14 = a == b
+2025-06-30 13:23:47,576 - INFO - TAC: igual = t14
+2025-06-30 13:23:47,576 - INFO - TAC: t15 = a != b
+2025-06-30 13:23:47,576 - INFO - TAC: diferente = t15
+2025-06-30 13:23:47,576 - INFO - TAC: t16 = a < b
+2025-06-30 13:23:47,576 - INFO - TAC: menor = t16
+2025-06-30 13:23:47,577 - INFO - TAC: t17 = a > b
+2025-06-30 13:23:47,577 - INFO - TAC: maior = t17
+2025-06-30 13:23:47,577 - INFO - TAC: t18 = a <= b
+2025-06-30 13:23:47,577 - INFO - TAC: menorIgual = t18
+2025-06-30 13:23:47,577 - INFO - TAC: t19 = a >= b
+2025-06-30 13:23:47,577 - INFO - TAC: maiorIgual = t19
+2025-06-30 13:23:47,577 - INFO - TAC: print "=== COMPARAÇÕES ==="
+2025-06-30 13:23:47,577 - INFO - TAC: print "10 == 3:"
+2025-06-30 13:23:47,577 - INFO - TAC: print igual
+2025-06-30 13:23:47,577 - INFO - TAC: print "10 != 3:"
+2025-06-30 13:23:47,577 - INFO - TAC: print diferente
+2025-06-30 13:23:47,577 - INFO - TAC: print "10 < 3:"
+2025-06-30 13:23:47,577 - INFO - TAC: print menor
+2025-06-30 13:23:47,577 - INFO - TAC: print "10 > 3:"
+2025-06-30 13:23:47,577 - INFO - TAC: print maior
+2025-06-30 13:23:47,577 - INFO - TAC: print "10 <= 3:"
+2025-06-30 13:23:47,577 - INFO - TAC: print menorIgual
+2025-06-30 13:23:47,577 - INFO - TAC: print "10 >= 3:"
+2025-06-30 13:23:47,578 - INFO - TAC: print maiorIgual
+2025-06-30 13:23:47,578 - INFO - TAC: condicao1 = True
+2025-06-30 13:23:47,578 - INFO - TAC: condicao2 = False
+2025-06-30 13:23:47,578 - INFO - TAC: t20 = condicao1 && condicao2
+2025-06-30 13:23:47,578 - INFO - TAC: e_logico = t20
+2025-06-30 13:23:47,578 - INFO - TAC: t21 = condicao1 || condicao2
+2025-06-30 13:23:47,578 - INFO - TAC: ou_logico = t21
+2025-06-30 13:23:47,578 - INFO - TAC: print "=== OPERAÇÕES LÓGICAS ==="
+2025-06-30 13:23:47,578 - INFO - TAC: print "True && False:"
+2025-06-30 13:23:47,578 - INFO - TAC: print e_logico
+2025-06-30 13:23:47,578 - INFO - TAC: print "True || False:"
+2025-06-30 13:23:47,578 - INFO - TAC: print ou_logico
+2025-06-30 13:23:47,578 - INFO - TAC: t22 = a > b
+2025-06-30 13:23:47,578 - INFO - TAC: t23 = soma > 10
+2025-06-30 13:23:47,578 - INFO - TAC: t24 = t22 && t23
+2025-06-30 13:23:47,578 - INFO - TAC: complexa = t24
+2025-06-30 13:23:47,578 - INFO - TAC: print "Expressão complexa:"
+2025-06-30 13:23:47,579 - INFO - TAC: print complexa
+2025-06-30 13:23:47,579 - INFO - TAC: print "Digite um número:"
+2025-06-30 13:23:47,579 - INFO - TAC: read entrada_usuario
+2025-06-30 13:23:47,579 - INFO - TAC: print "Você digitou:"
+2025-06-30 13:23:47,579 - INFO - TAC: print entrada_usuario
+2025-06-30 13:23:47,579 - INFO - TAC: print "=== ESTRUTURAS CONDICIONAIS ==="
+2025-06-30 13:23:47,579 - INFO - TAC: t25 = idade >= 18
+2025-06-30 13:23:47,579 - INFO - TAC: if_false t25 goto L2
+2025-06-30 13:23:47,579 - INFO - TAC: print "Maior de idade"
+2025-06-30 13:23:47,579 - INFO - TAC: goto L1
+2025-06-30 13:23:47,579 - INFO - TAC: L2:
+2025-06-30 13:23:47,579 - INFO - TAC: L1:
+2025-06-30 13:23:47,579 - INFO - TAC: t26 = idade < 13
+2025-06-30 13:23:47,579 - INFO - TAC: if_false t26 goto L4
+2025-06-30 13:23:47,579 - INFO - TAC: print "Criança"
+2025-06-30 13:23:47,579 - INFO - TAC: goto L3
+2025-06-30 13:23:47,579 - INFO - TAC: L4:
+2025-06-30 13:23:47,579 - INFO - TAC: t27 = idade < 18
+2025-06-30 13:23:47,579 - INFO - TAC: if_false t27 goto L5
+2025-06-30 13:23:47,580 - INFO - TAC: print "Adolescente"
+2025-06-30 13:23:47,580 - INFO - TAC: goto L3
+2025-06-30 13:23:47,580 - INFO - TAC: L5:
+2025-06-30 13:23:47,580 - INFO - TAC: t28 = idade < 60
+2025-06-30 13:23:47,580 - INFO - TAC: if_false t28 goto L6
+2025-06-30 13:23:47,580 - INFO - TAC: print "Adulto"
+2025-06-30 13:23:47,580 - INFO - TAC: goto L3
+2025-06-30 13:23:47,580 - INFO - TAC: L6:
+2025-06-30 13:23:47,580 - INFO - TAC: print "Idoso"
+2025-06-30 13:23:47,580 - INFO - TAC: L3:
+2025-06-30 13:23:47,580 - INFO - TAC: t29 = ativo == True
+2025-06-30 13:23:47,580 - INFO - TAC: if_false t29 goto L8
+2025-06-30 13:23:47,580 - INFO - TAC: print "Usuário ativo"
+2025-06-30 13:23:47,580 - INFO - TAC: t30 = aprovado == True
+2025-06-30 13:23:47,580 - INFO - TAC: if_false t30 goto L10
+2025-06-30 13:23:47,580 - INFO - TAC: print "E está aprovado!"
+2025-06-30 13:23:47,580 - INFO - TAC: goto L9
+2025-06-30 13:23:47,580 - INFO - TAC: L10:
+2025-06-30 13:23:47,580 - INFO - TAC: print "Mas não está aprovado"
+2025-06-30 13:23:47,580 - INFO - TAC: L9:
+2025-06-30 13:23:47,581 - INFO - TAC: goto L7
+2025-06-30 13:23:47,581 - INFO - TAC: L8:
+2025-06-30 13:23:47,581 - INFO - TAC: print "Usuário inativo"
+2025-06-30 13:23:47,581 - INFO - TAC: L7:
+2025-06-30 13:23:47,581 - INFO - TAC: print "=== LAÇOS FOR ==="
+2025-06-30 13:23:47,581 - INFO - TAC: print "Contagem de 1 a 5:"
+2025-06-30 13:23:47,582 - INFO - TAC: i = 1
+2025-06-30 13:23:47,582 - INFO - TAC: L11:
+2025-06-30 13:23:47,582 - INFO - TAC: t31 = i <= 5
+2025-06-30 13:23:47,582 - INFO - TAC: if_false t31 goto L12
+2025-06-30 13:23:47,582 - INFO - TAC: print "Número:"
+2025-06-30 13:23:47,582 - INFO - TAC: print i
+2025-06-30 13:23:47,582 - INFO - TAC: t32 = i + 1
+2025-06-30 13:23:47,582 - INFO - TAC: i = t32
+2025-06-30 13:23:47,582 - INFO - TAC: goto L11
+2025-06-30 13:23:47,582 - INFO - TAC: L12:
+2025-06-30 13:23:47,582 - INFO - TAC: print "Contagem regressiva:"
+2025-06-30 13:23:47,583 - INFO - TAC: j = 10
+2025-06-30 13:23:47,583 - INFO - TAC: L13:
+2025-06-30 13:23:47,583 - INFO - TAC: t33 = j >= 7
+2025-06-30 13:23:47,583 - INFO - TAC: if_false t33 goto L14
+2025-06-30 13:23:47,583 - INFO - TAC: print "Contagem:"
+2025-06-30 13:23:47,584 - INFO - TAC: print j
+2025-06-30 13:23:47,584 - INFO - TAC: t34 = j - 1
+2025-06-30 13:23:47,584 - INFO - TAC: j = t34
+2025-06-30 13:23:47,584 - INFO - TAC: goto L13
+2025-06-30 13:23:47,584 - INFO - TAC: L14:
+2025-06-30 13:23:47,584 - INFO - TAC: inicio = 0
+2025-06-30 13:23:47,584 - INFO - TAC: fim = 3
+2025-06-30 13:23:47,584 - INFO - TAC: print "Range dinâmico:"
+2025-06-30 13:23:47,584 - INFO - TAC: k = inicio
+2025-06-30 13:23:47,584 - INFO - TAC: L15:
+2025-06-30 13:23:47,585 - INFO - TAC: t35 = k <= fim
+2025-06-30 13:23:47,585 - INFO - TAC: if_false t35 goto L16
+2025-06-30 13:23:47,585 - INFO - TAC: print "Valor de k:"
+2025-06-30 13:23:47,585 - INFO - TAC: print k
+2025-06-30 13:23:47,585 - INFO - TAC: t36 = k * k
+2025-06-30 13:23:47,585 - INFO - TAC: quadrado = t36
+2025-06-30 13:23:47,585 - INFO - TAC: print "Quadrado:"
+2025-06-30 13:23:47,585 - INFO - TAC: print quadrado
+2025-06-30 13:23:47,586 - INFO - TAC: t37 = k + 1
+2025-06-30 13:23:47,586 - INFO - TAC: k = t37
+2025-06-30 13:23:47,586 - INFO - TAC: goto L15
+2025-06-30 13:23:47,586 - INFO - TAC: L16:
+2025-06-30 13:23:47,586 - INFO - TAC: print "=== LAÇOS WHILE ==="
+2025-06-30 13:23:47,586 - INFO - TAC: cont = 0
+2025-06-30 13:23:47,586 - INFO - TAC: print "Contagem while até 3:"
+2025-06-30 13:23:47,586 - INFO - TAC: L17:
+2025-06-30 13:23:47,586 - INFO - TAC: t38 = cont < 3
+2025-06-30 13:23:47,586 - INFO - TAC: if_false t38 goto L18
+2025-06-30 13:23:47,586 - INFO - TAC: print "Contador:"
+2025-06-30 13:23:47,586 - INFO - TAC: print cont
+2025-06-30 13:23:47,586 - INFO - TAC: t39 = cont + 1
+2025-06-30 13:23:47,586 - INFO - TAC: cont = t39
+2025-06-30 13:23:47,587 - INFO - TAC: goto L17
+2025-06-30 13:23:47,587 - INFO - TAC: L18:
+2025-06-30 13:23:47,587 - INFO - TAC: x = 10
+2025-06-30 13:23:47,587 - INFO - TAC: y = 1
+2025-06-30 13:23:47,587 - INFO - TAC: print "While com condição complexa:"
+2025-06-30 13:23:47,587 - INFO - TAC: L19:
+2025-06-30 13:23:47,587 - INFO - TAC: t40 = x > y
+2025-06-30 13:23:47,587 - INFO - TAC: t41 = y < 5
+2025-06-30 13:23:47,587 - INFO - TAC: t42 = t40 && t41
+2025-06-30 13:23:47,587 - INFO - TAC: if_false t42 goto L20
+2025-06-30 13:23:47,587 - INFO - TAC: print "x ="
+2025-06-30 13:23:47,587 - INFO - TAC: print x
+2025-06-30 13:23:47,587 - INFO - TAC: print "y ="
+2025-06-30 13:23:47,588 - INFO - TAC: print y
+2025-06-30 13:23:47,588 - INFO - TAC: t43 = x - 2
+2025-06-30 13:23:47,588 - INFO - TAC: x = t43
+2025-06-30 13:23:47,588 - INFO - TAC: t44 = y + 1
+2025-06-30 13:23:47,588 - INFO - TAC: y = t44
+2025-06-30 13:23:47,588 - INFO - TAC: goto L19
+2025-06-30 13:23:47,588 - INFO - TAC: L20:
+2025-06-30 13:23:47,588 - INFO - TAC: print "=== CASOS AVANÇADOS ==="
+2025-06-30 13:23:47,588 - INFO - TAC: num1 = 15
+2025-06-30 13:23:47,588 - INFO - TAC: num2 = 4
+2025-06-30 13:23:47,589 - INFO - TAC: operacao = 1
+2025-06-30 13:23:47,589 - INFO - TAC: t45 = operacao == 1
+2025-06-30 13:23:47,589 - INFO - TAC: if_false t45 goto L22
+2025-06-30 13:23:47,589 - INFO - TAC: t46 = num1 + num2
+2025-06-30 13:23:47,589 - INFO - TAC: result = t46
+2025-06-30 13:23:47,589 - INFO - TAC: print "Soma:"
+2025-06-30 13:23:47,589 - INFO - TAC: print num1
+2025-06-30 13:23:47,589 - INFO - TAC: print "+"
+2025-06-30 13:23:47,589 - INFO - TAC: print num2
+2025-06-30 13:23:47,589 - INFO - TAC: print "="
+2025-06-30 13:23:47,589 - INFO - TAC: print result
+2025-06-30 13:23:47,589 - INFO - TAC: goto L21
+2025-06-30 13:23:47,589 - INFO - TAC: L22:
+2025-06-30 13:23:47,589 - INFO - TAC: t47 = operacao == 2
+2025-06-30 13:23:47,589 - INFO - TAC: if_false t47 goto L23
+2025-06-30 13:23:47,589 - INFO - TAC: t48 = num1 - num2
+2025-06-30 13:23:47,589 - INFO - TAC: result = t48
+2025-06-30 13:23:47,589 - INFO - TAC: print "Subtração:"
+2025-06-30 13:23:47,590 - INFO - TAC: print num1
+2025-06-30 13:23:47,590 - INFO - TAC: print "-"
+2025-06-30 13:23:47,590 - INFO - TAC: print num2
+2025-06-30 13:23:47,590 - INFO - TAC: print "="
+2025-06-30 13:23:47,590 - INFO - TAC: print result
+2025-06-30 13:23:47,590 - INFO - TAC: goto L21
+2025-06-30 13:23:47,590 - INFO - TAC: L23:
+2025-06-30 13:23:47,590 - INFO - TAC: t49 = operacao == 3
+2025-06-30 13:23:47,590 - INFO - TAC: if_false t49 goto L24
+2025-06-30 13:23:47,590 - INFO - TAC: t50 = num1 * num2
+2025-06-30 13:23:47,590 - INFO - TAC: result = t50
+2025-06-30 13:23:47,590 - INFO - TAC: print "Multiplicação:"
+2025-06-30 13:23:47,590 - INFO - TAC: print num1
+2025-06-30 13:23:47,590 - INFO - TAC: print "*"
+2025-06-30 13:23:47,590 - INFO - TAC: print num2
+2025-06-30 13:23:47,590 - INFO - TAC: print "="
+2025-06-30 13:23:47,590 - INFO - TAC: print result
+2025-06-30 13:23:47,590 - INFO - TAC: goto L21
+2025-06-30 13:23:47,590 - INFO - TAC: L24:
+2025-06-30 13:23:47,590 - INFO - TAC: t51 = operacao == 4
+2025-06-30 13:23:47,591 - INFO - TAC: if_false t51 goto L25
+2025-06-30 13:23:47,591 - INFO - TAC: t52 = num2 != 0
+2025-06-30 13:23:47,591 - INFO - TAC: if_false t52 goto L27
+2025-06-30 13:23:47,591 - INFO - TAC: t53 = num1 / num2
+2025-06-30 13:23:47,591 - INFO - TAC: result = t53
+2025-06-30 13:23:47,591 - INFO - TAC: print "Divisão:"
+2025-06-30 13:23:47,591 - INFO - TAC: print num1
+2025-06-30 13:23:47,591 - INFO - TAC: print "/"
+2025-06-30 13:23:47,591 - INFO - TAC: print num2
+2025-06-30 13:23:47,591 - INFO - TAC: print "="
+2025-06-30 13:23:47,591 - INFO - TAC: print result
+2025-06-30 13:23:47,591 - INFO - TAC: goto L26
+2025-06-30 13:23:47,591 - INFO - TAC: L27:
+2025-06-30 13:23:47,591 - INFO - TAC: print "Erro: Divisão por zero!"
+2025-06-30 13:23:47,591 - INFO - TAC: L26:
+2025-06-30 13:23:47,591 - INFO - TAC: goto L21
+2025-06-30 13:23:47,591 - INFO - TAC: L25:
+2025-06-30 13:23:47,591 - INFO - TAC: L21:
+2025-06-30 13:23:47,591 - INFO - TAC: n = 5
+2025-06-30 13:23:47,592 - INFO - TAC: fatorial = 1
+2025-06-30 13:23:47,592 - INFO - TAC: print "Calculando fatorial de"
+2025-06-30 13:23:47,592 - INFO - TAC: print n
+2025-06-30 13:23:47,592 - INFO - TAC: f = 1
+2025-06-30 13:23:47,592 - INFO - TAC: L28:
+2025-06-30 13:23:47,592 - INFO - TAC: t54 = f <= n
+2025-06-30 13:23:47,592 - INFO - TAC: if_false t54 goto L29
+2025-06-30 13:23:47,592 - INFO - TAC: t55 = fatorial * f
+2025-06-30 13:23:47,592 - INFO - TAC: fatorial = t55
+2025-06-30 13:23:47,593 - INFO - TAC: print "Passo"
+2025-06-30 13:23:47,593 - INFO - TAC: print f
+2025-06-30 13:23:47,593 - INFO - TAC: print ":"
+2025-06-30 13:23:47,593 - INFO - TAC: print fatorial
+2025-06-30 13:23:47,593 - INFO - TAC: t56 = f + 1
+2025-06-30 13:23:47,593 - INFO - TAC: f = t56
+2025-06-30 13:23:47,593 - INFO - TAC: goto L28
+2025-06-30 13:23:47,593 - INFO - TAC: L29:
+2025-06-30 13:23:47,593 - INFO - TAC: print "Fatorial final:"
+2025-06-30 13:23:47,593 - INFO - TAC: print fatorial
+2025-06-30 13:23:47,594 - INFO - TAC: fib1 = 0
+2025-06-30 13:23:47,594 - INFO - TAC: fib2 = 1
+2025-06-30 13:23:47,594 - INFO - TAC: fib_count = 0
+2025-06-30 13:23:47,594 - INFO - TAC: print "Sequência de Fibonacci:"
+2025-06-30 13:23:47,594 - INFO - TAC: print "F(0) ="
+2025-06-30 13:23:47,594 - INFO - TAC: print fib1
+2025-06-30 13:23:47,594 - INFO - TAC: print "F(1) ="
+2025-06-30 13:23:47,594 - INFO - TAC: print fib2
+2025-06-30 13:23:47,594 - INFO - TAC: L30:
+2025-06-30 13:23:47,594 - INFO - TAC: t57 = fib_count < 8
+2025-06-30 13:23:47,594 - INFO - TAC: if_false t57 goto L31
+2025-06-30 13:23:47,594 - INFO - TAC: t58 = fib1 + fib2
+2025-06-30 13:23:47,594 - INFO - TAC: proximo = t58
+2025-06-30 13:23:47,594 - INFO - TAC: t59 = fib_count + 1
+2025-06-30 13:23:47,594 - INFO - TAC: fib_count = t59
+2025-06-30 13:23:47,595 - INFO - TAC: print "F("
+2025-06-30 13:23:47,595 - INFO - TAC: t60 = fib_count + 1
+2025-06-30 13:23:47,595 - INFO - TAC: print t60
+2025-06-30 13:23:47,595 - INFO - TAC: print ") ="
+2025-06-30 13:23:47,595 - INFO - TAC: print proximo
+2025-06-30 13:23:47,595 - INFO - TAC: fib1 = fib2
+2025-06-30 13:23:47,595 - INFO - TAC: fib2 = proximo
+2025-06-30 13:23:47,595 - INFO - TAC: goto L30
+2025-06-30 13:23:47,595 - INFO - TAC: L31:
+2025-06-30 13:23:47,595 - INFO - TAC: nota = 8.5
+2025-06-30 13:23:47,595 - INFO - TAC: frequencia = 85.0
+2025-06-30 13:23:47,595 - INFO - TAC: print "=== VALIDAÇÃO DE APROVAÇÃO ==="
+2025-06-30 13:23:47,595 - INFO - TAC: print "Nota:"
+2025-06-30 13:23:47,595 - INFO - TAC: print nota
+2025-06-30 13:23:47,595 - INFO - TAC: print "Frequência:"
+2025-06-30 13:23:47,595 - INFO - TAC: print frequencia
+2025-06-30 13:23:47,595 - INFO - TAC: t61 = nota >= 7.0
+2025-06-30 13:23:47,595 - INFO - TAC: t62 = frequencia >= 75.0
+2025-06-30 13:23:47,596 - INFO - TAC: t63 = t61 && t62
+2025-06-30 13:23:47,596 - INFO - TAC: if_false t63 goto L33
+2025-06-30 13:23:47,596 - INFO - TAC: print "APROVADO! ✓"
+2025-06-30 13:23:47,596 - INFO - TAC: goto L32
+2025-06-30 13:23:47,596 - INFO - TAC: L33:
+2025-06-30 13:23:47,596 - INFO - TAC: t64 = nota >= 5.0
+2025-06-30 13:23:47,596 - INFO - TAC: t65 = frequencia >= 75.0
+2025-06-30 13:23:47,596 - INFO - TAC: t66 = t64 && t65
+2025-06-30 13:23:47,596 - INFO - TAC: if_false t66 goto L34
+2025-06-30 13:23:47,596 - INFO - TAC: print "RECUPERAÇÃO"
+2025-06-30 13:23:47,596 - INFO - TAC: goto L32
+2025-06-30 13:23:47,596 - INFO - TAC: L34:
+2025-06-30 13:23:47,596 - INFO - TAC: print "REPROVADO ✗"
+2025-06-30 13:23:47,596 - INFO - TAC: L32:
+2025-06-30 13:23:47,596 - INFO - TAC: print "=========================="
+2025-06-30 13:23:47,596 - INFO - TAC: print "Demonstração finalizada!"
+2025-06-30 13:23:47,596 - INFO - TAC: print "Todas as funcionalidades foram testadas:"
+2025-06-30 13:23:47,596 - INFO - TAC: print "✓ Tipos: int, float, String, bool"
+2025-06-30 13:23:47,596 - INFO - TAC: print "✓ Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||"
+2025-06-30 13:23:47,596 - INFO - TAC: print "✓ Estruturas: if/elseif/else, for, while"
+2025-06-30 13:23:47,597 - INFO - TAC: print "✓ E/S: print, input"
+2025-06-30 13:23:47,597 - INFO - TAC: print "✓ Expressões complexas e precedência"
+2025-06-30 13:23:47,597 - INFO - TAC: print "=========================="
+2025-06-30 13:23:47,612 - INFO - Iniciando geração de código Assembly x86-64.
+2025-06-30 13:23:47,869 - INFO - Assembly x86-64 salvo em 'output.s'
