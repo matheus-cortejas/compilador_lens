@@ -164,7 +164,7 @@
     str_78_len = . - str_78 - 1
     str_79: .asciz "Todas as funcionalidades foram testadas:"
     str_79_len = . - str_79 - 1
-    str_80: .asciz "✓ Tipos: int, float, String, bool"
+    str_80: .asciz "✓ Tipos: int, int, String, bool"
     str_80_len = . - str_80 - 1
     str_81: .asciz "✓ Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||"
     str_81_len = . - str_81 - 1
@@ -184,15 +184,15 @@ _start:
 
     # Atribuir 25 para idade
     movq $25, %rbx
-    # Atribuir 1.75 para altura
-    movq $1, %rcx
+    # Atribuir 175 para altura
+    movq $175, %rcx
     # Atribuir string "João Silva" para nome
     leaq str_1(%rip), %r8
     # Atribuir True para ativo
     movq $1, %r9
     # Atribuir 0 para contador
     movq $0, %r10
-    # Atribuir 70.5 para peso
+    # Atribuir 70 para peso
     movq $70, %r11
     # Atribuir string "Santos" para sobrenome
     leaq str_2(%rip), %r12
@@ -204,9 +204,9 @@ _start:
     movq %rax, %r14
     # Atribuir t1 para idade
     movq %r14, %rbx
-    # altura - 0.05 -> t2
+    # altura - 5 -> t2
     movq %rcx, %rax
-    subq $0, %rax
+    subq $5, %rax
     movq %rax, %r15
     # Atribuir t2 para altura
     movq %r15, %rcx
@@ -6649,9 +6649,9 @@ convert_loop_118:
     movq %rax, -360(%rbp)
     jmp L30
 L31:
-    # Atribuir 8.5 para nota
+    # Atribuir 8 para nota
     movq $8, -384(%rbp)
-    # Atribuir 85.0 para frequencia
+    # Atribuir 85 para frequencia
     movq $85, -392(%rbp)
     # PRINT: {'op': 'PRINT', 'arg1': '"=== VALIDAÇÃO DE APROVAÇÃO ==="', 'arg2': None, 'result': None}
     # Imprimir string "=== VALIDAÇÃO DE APROVAÇÃO ==="
@@ -6876,7 +6876,7 @@ convert_loop_120:
     popq %rsi
     popq %rdi
     popq %rax
-    # nota >= 7.0 -> t61
+    # nota >= 7 -> t61
     pushq %rax
     pushq %rbx
     movq -384(%rbp), %rax
@@ -6887,7 +6887,7 @@ convert_loop_120:
     movq %rax, %rcx
     popq %rbx
     popq %rax
-    # frequencia >= 75.0 -> t62
+    # frequencia >= 75 -> t62
     pushq %rax
     pushq %rbx
     movq -392(%rbp), %rax
@@ -6938,7 +6938,7 @@ and_end_121:
     popq %rax
     jmp L32
 L33:
-    # nota >= 5.0 -> t64
+    # nota >= 5 -> t64
     pushq %rax
     pushq %rbx
     movq -384(%rbp), %rax
@@ -6949,7 +6949,7 @@ L33:
     movq %rax, %r10
     popq %rbx
     popq %rax
-    # frequencia >= 75.0 -> t65
+    # frequencia >= 75 -> t65
     pushq %rax
     pushq %rbx
     movq -392(%rbp), %rax
@@ -7117,8 +7117,8 @@ L32:
     popq %rsi
     popq %rdi
     popq %rax
-    # PRINT: {'op': 'PRINT', 'arg1': '"✓ Tipos: int, float, String, bool"', 'arg2': None, 'result': None}
-    # Imprimir string "✓ Tipos: int, float, String, bool"
+    # PRINT: {'op': 'PRINT', 'arg1': '"✓ Tipos: int, int, String, bool"', 'arg2': None, 'result': None}
+    # Imprimir string "✓ Tipos: int, int, String, bool"
     pushq %rax
     pushq %rdi
     pushq %rsi

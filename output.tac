@@ -2,16 +2,16 @@
 // Gerado automaticamente pelo compilador
 
 idade = 25
-altura = 1.75
+altura = 175
 nome = "João Silva"
 ativo = True
 contador = 0
-peso = 70.5
+peso = 70
 sobrenome = "Santos"
 aprovado = False
 t1 = idade + 5
 idade = t1
-t2 = altura - 0.05
+t2 = altura - 5
 altura = t2
 t3 = contador * 2
 contador = t3
@@ -323,22 +323,22 @@ fib1 = fib2
 fib2 = proximo
 goto L30
 L31:
-nota = 8.5
-frequencia = 85.0
+nota = 8
+frequencia = 85
 print "=== VALIDAÇÃO DE APROVAÇÃO ==="
 print "Nota:"
 print nota
 print "Frequência:"
 print frequencia
-t61 = nota >= 7.0
-t62 = frequencia >= 75.0
+t61 = nota >= 7
+t62 = frequencia >= 75
 t63 = t61 && t62
 if_false t63 goto L33
 print "APROVADO! ✓"
 goto L32
 L33:
-t64 = nota >= 5.0
-t65 = frequencia >= 75.0
+t64 = nota >= 5
+t65 = frequencia >= 75
 t66 = t64 && t65
 if_false t66 goto L34
 print "RECUPERAÇÃO"
@@ -349,7 +349,7 @@ L32:
 print "=========================="
 print "Demonstração finalizada!"
 print "Todas as funcionalidades foram testadas:"
-print "✓ Tipos: int, float, String, bool"
+print "✓ Tipos: int, int, String, bool"
 print "✓ Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||"
 print "✓ Estruturas: if/elseif/else, for, while"
 print "✓ E/S: print, input"

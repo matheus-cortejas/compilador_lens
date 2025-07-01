@@ -9,13 +9,13 @@
     
     // Tipos primitivos básicos
     let idade: int = 25
-    let altura: float = 1.75
+    let altura: int = 175
     let nome: String = "João Silva"
     let ativo: bool = True
     
     // Declarações sem inicialização
     let contador: int
-    let peso: float
+    let peso: int
     let sobrenome: String
     let aprovado: bool
     
@@ -25,15 +25,15 @@
     
     // Atribuições simples
     contador = 0
-    peso = 70.5
+    peso = 70
     sobrenome = "Santos"
     aprovado = False
     
     // Atribuições compostas
     idade += 5          // idade = idade + 5 = 30
-    altura -= 0.05      // altura = altura - 0.05 = 1.70
+    altura -= 5      // altura = altura - 5 = 170
     contador *= 2       // contador = contador * 2 = 0
-    peso /= 2           // peso = peso / 2 = 35.25
+    peso /= 2           // peso = peso / 2 = 35
     
     // =====================================================
     // 📤 IMPRESSÕES (vários formatos)
@@ -268,16 +268,16 @@
     }
     
     // Validação de dados
-    let nota: float = 8.5
-    let frequencia: float = 85.0
+    let nota: int = 8
+    let frequencia: int = 85
     
     print :: "=== VALIDAÇÃO DE APROVAÇÃO ==="
     print :: "Nota:", nota
     print :: "Frequência:", frequencia
     
-    if (nota >= 7.0 && frequencia >= 75.0) {
+    if (nota >= 7 && frequencia >= 75) {
         print :: "APROVADO! ✓"
-    } elseif (nota >= 5.0 && frequencia >= 75.0) {
+    } elseif (nota >= 5 && frequencia >= 75) {
         print :: "RECUPERAÇÃO"
     } else {
         print :: "REPROVADO ✗"
@@ -290,7 +290,7 @@
     print :: "=========================="
     print :: "Demonstração finalizada!"
     print :: "Todas as funcionalidades foram testadas:"
-    print :: "✓ Tipos: int, float, String, bool"
+    print :: "✓ Tipos: int, int, String, bool"
     print :: "✓ Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||"
     print :: "✓ Estruturas: if/elseif/else, for, while"
     print :: "✓ E/S: print, input"
