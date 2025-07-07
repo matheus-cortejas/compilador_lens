@@ -61,7 +61,7 @@ class SemanticAnalyzer(lensVisitor):
             var_type = ctx.tipo().getText()
         else:
             # Fallback: buscar token de tipo diretamente
-            for tipo_token in [lensParser.INT_TYPE, lensParser.FLOAT_TYPE, lensParser.STRING_TYPE, lensParser.BOOL_TYPE]:
+            for tipo_token in [lensParser.INT_TYPE, lensParser.STRING_TYPE]:
                 token = ctx.getToken(tipo_token, 0)
                 if token:
                     var_type = token.getText()
@@ -105,7 +105,7 @@ class SemanticAnalyzer(lensVisitor):
             # NOVO: Atualizar valor se for literal
             if ctx.expressao():
                 valor_texto = ctx.expressao().getText()
-                if valor_texto.replace('-', '').replace('.', '').isdigit() or valor_texto in ['True', 'False']:
+                if valor_texto.replace('-', '').isdigit():
                     simbolo["valor"] = valor_texto
         return None   
 
@@ -268,10 +268,11 @@ class SemanticAnalyzer(lensVisitor):
             # Há operações lógicas
             for i in range(1, len(ctx.expressao_comparacao())):
                 tipo_expr = self.visit(ctx.expressao_comparacao(i))
-                if tipo_primeiro != "bool" or tipo_expr != "bool":
-                    self.error(ctx.start.line, f"Operação lógica requer booleanos.")
+                # Permitir apenas int para lógica (0 = falso, !=0 = verdadeiro)
+                if tipo_primeiro != "int" or tipo_expr != "int":
+                    self.error(ctx.start.line, f"Operação lógica requer inteiros (0 ou 1).")
                     return "erro"
-            return "bool"
+            return "int"
         return tipo_primeiro
 
     def visitExpressao_comparacao(self, ctx: lensParser.Expressao_comparacaoContext):
@@ -281,11 +282,9 @@ class SemanticAnalyzer(lensVisitor):
             # Há comparação
             tipo_segundo = self.visit(ctx.expressao_arit(1))
             if tipo_primeiro != tipo_segundo:
-                if {tipo_primeiro, tipo_segundo} <= {"int", "float"}:
-                    return "bool"
                 self.error(ctx.start.line, f"Comparação inválida entre tipos '{tipo_primeiro}' e '{tipo_segundo}'.")
                 return "erro"
-            return "bool"
+            return "int"
         return tipo_primeiro
 
     def visitExpressao_arit(self, ctx: lensParser.Expressao_aritContext):
@@ -307,11 +306,7 @@ class SemanticAnalyzer(lensVisitor):
                             return "erro"
                 return "String"  # Resultado da concatenação é String
             
-            if "bool" in tipos:
-                self.error(ctx.start.line, f"Operação aritmética inválida com tipos: {tipos}")
-                return "erro"
-            
-            return "float" if "float" in tipos else "int"
+            return "int"
         return tipo_primeiro
 
     def visitTermo_arit(self, ctx: lensParser.Termo_aritContext):
@@ -328,31 +323,7 @@ class SemanticAnalyzer(lensVisitor):
                 self.error(ctx.start.line, f"Operação multiplicação/divisão inválida com String.")
                 return "erro"
                 
-            if "bool" in tipos:
-                self.error(ctx.start.line, f"Operação aritmética inválida com tipos: {tipos}")
-                return "erro"
-                
-            # VERIFICAÇÃO MELHORADA: Divisão por zero
-            if hasattr(ctx, 'op_multiplicacao'):
-                for i, op in enumerate(ctx.op_multiplicacao()):
-                    if op.getText() == '/' and i + 1 < len(ctx.fator()):
-                        divisor_fator = ctx.fator(i + 1)
-                        divisor_texto = divisor_fator.getText()
-                        
-                        # Caso 1: Divisão por literal 0
-                        if divisor_texto == "0":
-                            self.error(ctx.start.line, f"Divisão por zero detectada.")
-                            return "erro"
-                        
-                        # Caso 2: Divisão por variável que pode ser 0
-                        if hasattr(divisor_fator, 'VAR') and divisor_fator.VAR():
-                            var_name = divisor_fator.VAR().getText()
-                            simbolo = self.buscar_var_silencioso(var_name)  # Busca sem erro
-                            if simbolo and simbolo.get("valor") == "0":
-                                self.error(ctx.start.line, f"Divisão por zero: variável '{var_name}' tem valor zero.")
-                                return "erro"
-            
-            return "float" if "float" in tipos else "int"
+            return "int"
         return tipo_primeiro
 
     # Método auxiliar para buscar variável sem gerar erro
@@ -367,7 +338,7 @@ class SemanticAnalyzer(lensVisitor):
         # Método alternativo - verificar texto diretamente
         texto = ctx.getText()
         
-        # Verificar se é uma variável (não começa com aspas, não é número, não é True/False)
+        # Verificar se é uma variável (não começa com aspas, não é número)
         if hasattr(ctx, 'VAR') and ctx.VAR():
             var_name = ctx.VAR().getText()
             simbolo = self.buscar_var(var_name, ctx.start.line)
@@ -381,14 +352,6 @@ class SemanticAnalyzer(lensVisitor):
         elif texto.startswith('"') and texto.endswith('"'):
             return "String"
         
-        # Verificar se é booleano
-        elif texto in ["True", "False"]:
-            return "bool"
-        
-        # Verificar se é float (contém ponto)
-        elif '.' in texto and texto.replace('.', '').replace('-', '').isdigit():
-            return "float"
-        
         # Verificar se é inteiro
         elif texto.replace('-', '').isdigit():
             return "int"
@@ -400,12 +363,8 @@ class SemanticAnalyzer(lensVisitor):
         # Tentar métodos alternativos do ANTLR
         elif hasattr(ctx, 'INT') and ctx.INT():
             return "int"
-        elif hasattr(ctx, 'FLOAT') and ctx.FLOAT():
-            return "float"
         elif hasattr(ctx, 'STRING') and ctx.STRING():
             return "String"
-        elif hasattr(ctx, 'BOOL') and ctx.BOOL():
-            return "bool"
         
         print(f"DEBUG: Fator não reconhecido: '{texto}' - Tipo: {type(ctx)}")
         return "indefinido"
@@ -416,8 +375,6 @@ class SemanticAnalyzer(lensVisitor):
     def comparar_tipos(self, tipo_destino, tipo_origem):
         if tipo_destino == tipo_origem:
             return True
-        if {tipo_destino, tipo_origem} <= {"int", "float"}:
-            return True  # coerção permitida
         return False
 
     def report(self):

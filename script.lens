@@ -11,13 +11,11 @@
     let idade: int = 25
     let altura: int = 175
     let nome: String = "João Silva"
-    let ativo: bool = True
     
     // Declarações sem inicialização
     let contador: int
     let peso: int
     let sobrenome: String
-    let aprovado: bool
     
     // =====================================================
     // 🔧 ATRIBUIÇÕES (simples e compostas)
@@ -27,7 +25,6 @@
     contador = 0
     peso = 70
     sobrenome = "Santos"
-    aprovado = False
     
     // Atribuições compostas
     idade += 5          // idade = idade + 5 = 30
@@ -49,8 +46,6 @@
     print :: "Idade atual:", idade
     print :: "Altura:", altura
     print :: "Peso:", peso
-    print :: "Status ativo:", ativo
-    print :: "Aprovado:", aprovado
     
     // =====================================================
     // 🔢 EXPRESSÕES ARITMÉTICAS
@@ -81,13 +76,13 @@
     // 🔍 EXPRESSÕES DE COMPARAÇÃO
     // =====================================================
     
-    let igual: bool = a == b        // False
-    let diferente: bool = a != b    // True
-    let menor: bool = a < b         // False
-    let maior: bool = a > b         // True
-    let menorIgual: bool = a <= b   // False
-    let maiorIgual: bool = a >= b   // True
-    
+    let igual: int = a == b        // 0 (falso)
+    let diferente: int = a != b    // 1 (verdadeiro)
+    let menor: int = a < b         // 0
+    let maior: int = a > b         // 1
+    let menorIgual: int = a <= b   // 0
+    let maiorIgual: int = a >= b   // 1
+
     print :: "=== COMPARAÇÕES ==="
     print :: "10 == 3:", igual
     print :: "10 != 3:", diferente
@@ -100,18 +95,18 @@
     // 🧠 EXPRESSÕES LÓGICAS
     // =====================================================
     
-    let condicao1: bool = True
-    let condicao2: bool = False
-    
-    let e_logico: bool = condicao1 && condicao2     // False
-    let ou_logico: bool = condicao1 || condicao2    // True
-    
+    let condicao1: int = 1      // 1 para verdadeiro
+    let condicao2: int = 0      // 0 para falso
+
+    let e_logico: int = condicao1 && condicao2     // 0
+    let ou_logico: int = condicao1 || condicao2    // 1
+
     print :: "=== OPERAÇÕES LÓGICAS ==="
-    print :: "True && False:", e_logico
-    print :: "True || False:", ou_logico
-    
-    // Expressões lógicas complexas
-    let complexa: bool = (a > b) && (soma > 10)     // True && True = True
+    print :: "1 && 0:", e_logico
+    print :: "1 || 0:", ou_logico
+
+    // Expressão lógica complexa
+    let complexa: int = (a > b) && (soma > 10)     // 1 && 1 = 1
     print :: "Expressão complexa:", complexa
     
     // =====================================================
@@ -144,18 +139,6 @@
         print :: "Adulto"
     } else {
         print :: "Idoso"
-    }
-    
-    // Condicionais aninhadas
-    if (ativo == True) {
-        print :: "Usuário ativo"
-        if (aprovado == True) {
-            print :: "E está aprovado!"
-        } else {
-            print :: "Mas não está aprovado"
-        }
-    } else {
-        print :: "Usuário inativo"
     }
     
     // =====================================================
@@ -290,7 +273,7 @@
     print :: "=========================="
     print :: "Demonstração finalizada!"
     print :: "Todas as funcionalidades foram testadas:"
-    print :: "✓ Tipos: int, int, String, bool"
+    print :: "✓ Tipos: int, String"
     print :: "✓ Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||"
     print :: "✓ Estruturas: if/elseif/else, for, while"
     print :: "✓ E/S: print, input"

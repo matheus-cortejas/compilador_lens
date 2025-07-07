@@ -19,9 +19,7 @@ IN          : 'in';
 
 // Tipos primitivos básicos
 INT_TYPE    : 'int';
-FLOAT_TYPE  : 'float';
 STRING_TYPE : 'String';
-BOOL_TYPE   : 'bool';
 
 // Símbolos e operadores
 DUPONT      : '::';         // print :: "mensagem"
@@ -53,9 +51,7 @@ AND         : '&&';
 OR          : '||';
 
 // Literais e identificadores (sempre por último!)
-BOOL        : 'True' | 'False';
 STRING      : '"' (~["\\] | '\\' .)* '"';   // strings com escape
-FLOAT       : '-'?[0-9]+ '.' [0-9]+;        // números decimais
 INT         : '-'?[0-9]+;                   // números inteiros
 VAR         : [a-zA-Z_][a-zA-Z_0-9]*;       // identificadores
 
@@ -169,10 +165,8 @@ fator
 
 // Valores literais
 literal
-    : INT
-    | FLOAT  
+    : INT 
     | STRING
-    | BOOL
     ;
 
 // Condições (devem retornar boolean)
@@ -211,7 +205,7 @@ declaracao
     
 // Tipos disponíveis
 tipo
-    : INT_TYPE | FLOAT_TYPE | STRING_TYPE | BOOL_TYPE
+    : INT_TYPE | STRING_TYPE
     ;
 
 // Atribuição simples ou composta

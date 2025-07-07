@@ -7,7 +7,6 @@ from SemanticAnalyzer import SemanticAnalyzer
 from ASTDotVisitor import ASTDotVisitor
 from TACGenerator import TACGenerator
 from LLVMIRGenerator import LLVMIRGenerator
-from X86AssemblyGenerator import X86AssemblyGenerator
 import subprocess
 
 # Configuração do logging - APENAS para arquivo
@@ -166,9 +165,7 @@ def analisar_arquivo(caminho_arquivo):
         # 🔧 FASE 5: ESCOLHA DO BACKEND
         # ========================================
         print("\n🔧 FASE 5: Escolha do Backend de Geração")
-        print("1. Assembly x86-64 (.s)")
         print("2. LLVM IR (.ll)")
-        print("3. Ambos")
         
         while True:
             try:
@@ -181,25 +178,6 @@ def analisar_arquivo(caminho_arquivo):
                 return
 
         arquivos_gerados = []
-
-        # ========================================
-        # 🔧 GERAÇÃO DE ASSEMBLY x86-64
-        # ========================================
-        if escolha in ['1', '3']:
-            print("\n💻 Gerando Assembly x86-64...")
-            
-            logging.info("Iniciando geração de código Assembly x86-64.")
-            asm_generator = X86AssemblyGenerator(tac_generator.instructions)
-            
-            print("✅ Código Assembly x86-64 gerado com sucesso.")
-            print("\n💻 Código Assembly x86-64:")
-            print("-" * 60)
-            print(asm_generator.generate())
-            print("-" * 60)
-            
-            if asm_generator.save_to_file("output.s"):
-                print("✅ Código Assembly salvo em 'output.s'.")
-                arquivos_gerados.append("output.s")
 
         # ========================================
         # 🔧 GERAÇÃO DE LLVM IR

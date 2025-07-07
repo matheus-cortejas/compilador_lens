@@ -1,903 +1,1004 @@
-; LLVM IR gerado pelo compilador - Windows
-target triple = "x86_64-pc-windows-msvc"
+; Código LLVM IR gerado para a linguagem Lens
+; Gerado automaticamente pelo compilador
+
 target datalayout = "e-m:w-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-w64-windows-gnu"
 
-; Declarações de funções externas para Windows
-declare dso_local i32 @printf(i8*, ...)
-declare dso_local i32 @scanf(i8*, ...)
-declare dso_local void @exit(i32)
+; Declarações de funções externas
+declare i32 @printf(i8*, ...)
+declare i32 @scanf(i8*, ...)
+declare i32 @puts(i8*)
+declare i8* @malloc(i64)
+declare void @free(i8*)
 
-@.str_int = private constant [4 x i8] c"%d\0A\00", align 1
-@str_1 = private constant [12 x i8] c"João Silva\0A\00", align 1
-@str_2 = private constant [8 x i8] c"Santos\0A\00", align 1
-@str_3 = private constant [27 x i8] c"=== DEMONSTRAÇÃO LENS ===\0A\00", align 1
-@str_4 = private constant [16 x i8] c"Nome completo:\0A\00", align 1
-@str_5 = private constant [14 x i8] c"Idade atual:\0A\00", align 1
-@str_6 = private constant [9 x i8] c"Altura:\0A\00", align 1
-@str_7 = private constant [7 x i8] c"Peso:\0A\00", align 1
-@str_8 = private constant [15 x i8] c"Status ativo:\0A\00", align 1
-@str_9 = private constant [11 x i8] c"Aprovado:\0A\00", align 1
-@str_10 = private constant [15 x i8] c"Operações com\0A\00", align 1
-@str_11 = private constant [3 x i8] c"e\0A\00", align 1
-@str_12 = private constant [7 x i8] c"Soma:\0A\00", align 1
-@str_13 = private constant [12 x i8] c"Subtração:\0A\00", align 1
-@str_14 = private constant [16 x i8] c"Multiplicação:\0A\00", align 1
-@str_15 = private constant [10 x i8] c"Divisão:\0A\00", align 1
-@str_16 = private constant [21 x i8] c"Resultado complexo:\0A\00", align 1
-@str_17 = private constant [17 x i8] c"Com parênteses:\0A\00", align 1
-@str_18 = private constant [21 x i8] c"=== COMPARAÇÕES ===\0A\00", align 1
-@str_19 = private constant [10 x i8] c"10 == 3:\0A\00", align 1
-@str_20 = private constant [10 x i8] c"10 != 3:\0A\00", align 1
-@str_21 = private constant [9 x i8] c"10 < 3:\0A\00", align 1
-@str_22 = private constant [9 x i8] c"10 > 3:\0A\00", align 1
-@str_23 = private constant [10 x i8] c"10 <= 3:\0A\00", align 1
-@str_24 = private constant [10 x i8] c"10 >= 3:\0A\00", align 1
-@str_25 = private constant [27 x i8] c"=== OPERAÇÕES LÓGICAS ===\0A\00", align 1
-@str_26 = private constant [16 x i8] c"True && False:\0A\00", align 1
-@str_27 = private constant [16 x i8] c"True || False:\0A\00", align 1
-@str_28 = private constant [21 x i8] c"Expressão complexa:\0A\00", align 1
-@str_29 = private constant [19 x i8] c"Digite um número:\0A\00", align 1
-@str_30 = private constant [15 x i8] c"Você digitou:\0A\00", align 1
-@str_31 = private constant [33 x i8] c"=== ESTRUTURAS CONDICIONAIS ===\0A\00", align 1
-@str_32 = private constant [16 x i8] c"Maior de idade\0A\00", align 1
-@str_33 = private constant [9 x i8] c"Criança\0A\00", align 1
-@str_34 = private constant [13 x i8] c"Adolescente\0A\00", align 1
-@str_35 = private constant [8 x i8] c"Adulto\0A\00", align 1
-@str_36 = private constant [7 x i8] c"Idoso\0A\00", align 1
-@str_37 = private constant [15 x i8] c"Usuário ativo\0A\00", align 1
-@str_38 = private constant [18 x i8] c"E está aprovado!\0A\00", align 1
-@str_39 = private constant [23 x i8] c"Mas não está aprovado\0A\00", align 1
-@str_40 = private constant [17 x i8] c"Usuário inativo\0A\00", align 1
-@str_41 = private constant [19 x i8] c"=== LAÇOS FOR ===\0A\00", align 1
-@str_42 = private constant [20 x i8] c"Contagem de 1 a 5:\0A\00", align 1
-@str_43 = private constant [9 x i8] c"Número:\0A\00", align 1
-@str_44 = private constant [22 x i8] c"Contagem regressiva:\0A\00", align 1
-@str_45 = private constant [11 x i8] c"Contagem:\0A\00", align 1
-@str_46 = private constant [17 x i8] c"Range dinâmico:\0A\00", align 1
-@str_47 = private constant [13 x i8] c"Valor de k:\0A\00", align 1
-@str_48 = private constant [11 x i8] c"Quadrado:\0A\00", align 1
-@str_49 = private constant [21 x i8] c"=== LAÇOS WHILE ===\0A\00", align 1
-@str_50 = private constant [23 x i8] c"Contagem while até 3:\0A\00", align 1
-@str_51 = private constant [11 x i8] c"Contador:\0A\00", align 1
-@str_52 = private constant [30 x i8] c"While com condição complexa:\0A\00", align 1
-@str_53 = private constant [5 x i8] c"x =\0A\00", align 1
-@str_54 = private constant [5 x i8] c"y =\0A\00", align 1
-@str_55 = private constant [25 x i8] c"=== CASOS AVANÇADOS ===\0A\00", align 1
-@str_56 = private constant [3 x i8] c"+\0A\00", align 1
-@str_57 = private constant [3 x i8] c"=\0A\00", align 1
-@str_58 = private constant [3 x i8] c"-\0A\00", align 1
-@str_59 = private constant [3 x i8] c"*\0A\00", align 1
-@str_60 = private constant [3 x i8] c"/\0A\00", align 1
-@str_61 = private constant [25 x i8] c"Erro: Divisão por zero!\0A\00", align 1
-@str_62 = private constant [24 x i8] c"Calculando fatorial de\0A\00", align 1
-@str_63 = private constant [7 x i8] c"Passo\0A\00", align 1
-@str_64 = private constant [3 x i8] c":\0A\00", align 1
-@str_65 = private constant [17 x i8] c"Fatorial final:\0A\00", align 1
-@str_66 = private constant [25 x i8] c"Sequência de Fibonacci:\0A\00", align 1
-@str_67 = private constant [8 x i8] c"F(0) =\0A\00", align 1
-@str_68 = private constant [8 x i8] c"F(1) =\0A\00", align 1
-@str_69 = private constant [4 x i8] c"F(\0A\00", align 1
-@str_70 = private constant [5 x i8] c") =\0A\00", align 1
-@str_71 = private constant [32 x i8] c"=== VALIDAÇÃO DE APROVAÇÃO ===\0A\00", align 1
-@str_72 = private constant [7 x i8] c"Nota:\0A\00", align 1
-@str_73 = private constant [13 x i8] c"Frequência:\0A\00", align 1
-@str_74 = private constant [13 x i8] c"APROVADO! ✓\0A\00", align 1
-@str_75 = private constant [13 x i8] c"RECUPERAÇÃO\0A\00", align 1
-@str_76 = private constant [13 x i8] c"REPROVADO ✗\0A\00", align 1
-@str_77 = private constant [28 x i8] c"==========================\0A\00", align 1
-@str_78 = private constant [26 x i8] c"Demonstração finalizada!\0A\00", align 1
-@str_79 = private constant [42 x i8] c"Todas as funcionalidades foram testadas:\0A\00", align 1
-@str_80 = private constant [33 x i8] c"✓ Tipos: int, int, String, bool\0A\00", align 1
-@str_81 = private constant [56 x i8] c"✓ Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||\0A\00", align 1
-@str_82 = private constant [42 x i8] c"✓ Estruturas: if/elseif/else, for, while\0A\00", align 1
-@str_83 = private constant [21 x i8] c"✓ E/S: print, input\0A\00", align 1
-@str_84 = private constant [38 x i8] c"✓ Expressões complexas e precedência\0A\00", align 1
+; Strings globais
+@str_1 = private unnamed_addr constant [28 x i8] c"=== DEMONSTRAÇÃO LENS ===\00", align 1
+@str_2 = private unnamed_addr constant [15 x i8] c"Nome completo:\00", align 1
+@str_3 = private unnamed_addr constant [13 x i8] c"Idade atual:\00", align 1
+@str_4 = private unnamed_addr constant [8 x i8] c"Altura:\00", align 1
+@str_5 = private unnamed_addr constant [6 x i8] c"Peso:\00", align 1
+@str_6 = private unnamed_addr constant [16 x i8] c"Operações com\00", align 1
+@str_7 = private unnamed_addr constant [2 x i8] c"e\00", align 1
+@str_8 = private unnamed_addr constant [6 x i8] c"Soma:\00", align 1
+@str_9 = private unnamed_addr constant [13 x i8] c"Subtração:\00", align 1
+@str_10 = private unnamed_addr constant [17 x i8] c"Multiplicação:\00", align 1
+@str_11 = private unnamed_addr constant [10 x i8] c"Divisão:\00", align 1
+@str_12 = private unnamed_addr constant [20 x i8] c"Resultado complexo:\00", align 1
+@str_13 = private unnamed_addr constant [17 x i8] c"Com parênteses:\00", align 1
+@str_14 = private unnamed_addr constant [22 x i8] c"=== COMPARAÇÕES ===\00", align 1
+@str_15 = private unnamed_addr constant [9 x i8] c"10 == 3:\00", align 1
+@str_16 = private unnamed_addr constant [9 x i8] c"10 != 3:\00", align 1
+@str_17 = private unnamed_addr constant [8 x i8] c"10 < 3:\00", align 1
+@str_18 = private unnamed_addr constant [8 x i8] c"10 > 3:\00", align 1
+@str_19 = private unnamed_addr constant [9 x i8] c"10 <= 3:\00", align 1
+@str_20 = private unnamed_addr constant [9 x i8] c"10 >= 3:\00", align 1
+@str_21 = private unnamed_addr constant [29 x i8] c"=== OPERAÇÕES LÓGICAS ===\00", align 1
+@str_22 = private unnamed_addr constant [8 x i8] c"1 && 0:\00", align 1
+@str_23 = private unnamed_addr constant [8 x i8] c"1 || 0:\00", align 1
+@str_24 = private unnamed_addr constant [21 x i8] c"Expressão complexa:\00", align 1
+@str_25 = private unnamed_addr constant [19 x i8] c"Digite um número:\00", align 1
+@str_26 = private unnamed_addr constant [15 x i8] c"Você digitou:\00", align 1
+@str_27 = private unnamed_addr constant [32 x i8] c"=== ESTRUTURAS CONDICIONAIS ===\00", align 1
+@str_28 = private unnamed_addr constant [15 x i8] c"Maior de idade\00", align 1
+@str_29 = private unnamed_addr constant [9 x i8] c"Criança\00", align 1
+@str_30 = private unnamed_addr constant [12 x i8] c"Adolescente\00", align 1
+@str_31 = private unnamed_addr constant [7 x i8] c"Adulto\00", align 1
+@str_32 = private unnamed_addr constant [6 x i8] c"Idoso\00", align 1
+@str_33 = private unnamed_addr constant [19 x i8] c"=== LAÇOS FOR ===\00", align 1
+@str_34 = private unnamed_addr constant [19 x i8] c"Contagem de 1 a 5:\00", align 1
+@str_35 = private unnamed_addr constant [9 x i8] c"Número:\00", align 1
+@str_36 = private unnamed_addr constant [21 x i8] c"Contagem regressiva:\00", align 1
+@str_37 = private unnamed_addr constant [10 x i8] c"Contagem:\00", align 1
+@str_38 = private unnamed_addr constant [17 x i8] c"Range dinâmico:\00", align 1
+@str_39 = private unnamed_addr constant [12 x i8] c"Valor de k:\00", align 1
+@str_40 = private unnamed_addr constant [10 x i8] c"Quadrado:\00", align 1
+@str_41 = private unnamed_addr constant [21 x i8] c"=== LAÇOS WHILE ===\00", align 1
+@str_42 = private unnamed_addr constant [23 x i8] c"Contagem while até 3:\00", align 1
+@str_43 = private unnamed_addr constant [10 x i8] c"Contador:\00", align 1
+@str_44 = private unnamed_addr constant [31 x i8] c"While com condição complexa:\00", align 1
+@str_45 = private unnamed_addr constant [4 x i8] c"x =\00", align 1
+@str_46 = private unnamed_addr constant [4 x i8] c"y =\00", align 1
+@str_47 = private unnamed_addr constant [25 x i8] c"=== CASOS AVANÇADOS ===\00", align 1
+@str_48 = private unnamed_addr constant [2 x i8] c"+\00", align 1
+@str_49 = private unnamed_addr constant [2 x i8] c"=\00", align 1
+@str_50 = private unnamed_addr constant [2 x i8] c"-\00", align 1
+@str_51 = private unnamed_addr constant [2 x i8] c"*\00", align 1
+@str_52 = private unnamed_addr constant [2 x i8] c"/\00", align 1
+@str_53 = private unnamed_addr constant [25 x i8] c"Erro: Divisão por zero!\00", align 1
+@str_54 = private unnamed_addr constant [23 x i8] c"Calculando fatorial de\00", align 1
+@str_55 = private unnamed_addr constant [6 x i8] c"Passo\00", align 1
+@str_56 = private unnamed_addr constant [2 x i8] c":\00", align 1
+@str_57 = private unnamed_addr constant [16 x i8] c"Fatorial final:\00", align 1
+@str_58 = private unnamed_addr constant [25 x i8] c"Sequência de Fibonacci:\00", align 1
+@str_59 = private unnamed_addr constant [7 x i8] c"F(0) =\00", align 1
+@str_60 = private unnamed_addr constant [7 x i8] c"F(1) =\00", align 1
+@str_61 = private unnamed_addr constant [3 x i8] c"F(\00", align 1
+@str_62 = private unnamed_addr constant [4 x i8] c") =\00", align 1
+@str_63 = private unnamed_addr constant [35 x i8] c"=== VALIDAÇÃO DE APROVAÇÃO ===\00", align 1
+@str_64 = private unnamed_addr constant [6 x i8] c"Nota:\00", align 1
+@str_65 = private unnamed_addr constant [13 x i8] c"Frequência:\00", align 1
+@str_66 = private unnamed_addr constant [14 x i8] c"APROVADO! ✓\00", align 1
+@str_67 = private unnamed_addr constant [14 x i8] c"RECUPERAÇÃO\00", align 1
+@str_68 = private unnamed_addr constant [14 x i8] c"REPROVADO ✗\00", align 1
+@str_69 = private unnamed_addr constant [27 x i8] c"==========================\00", align 1
+@str_70 = private unnamed_addr constant [27 x i8] c"Demonstração finalizada!\00", align 1
+@str_71 = private unnamed_addr constant [41 x i8] c"Todas as funcionalidades foram testadas:\00", align 1
+@str_72 = private unnamed_addr constant [23 x i8] c"✓ Tipos: int, String\00", align 1
+@str_73 = private unnamed_addr constant [57 x i8] c"✓ Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||\00", align 1
+@str_74 = private unnamed_addr constant [43 x i8] c"✓ Estruturas: if/elseif/else, for, while\00", align 1
+@str_75 = private unnamed_addr constant [22 x i8] c"✓ E/S: print, input\00", align 1
+@str_76 = private unnamed_addr constant [41 x i8] c"✓ Expressões complexas e precedência\00", align 1
+@int_format = private unnamed_addr constant [3 x i8] c"%d\00", align 1
+@int_format_newline = private unnamed_addr constant [5 x i8] c"%d\n\00", align 1
+@string_format = private unnamed_addr constant [3 x i8] c"%s\00", align 1
+@string_format_newline = private unnamed_addr constant [5 x i8] c"%s\n\00", align 1
+@scanf_int = private unnamed_addr constant [3 x i8] c"%d\00", align 1
+@newline = private unnamed_addr constant [3 x i8] c"\n\00", align 1
+@str_77 = private unnamed_addr constant [12 x i8] c"João Silva\00", align 1
+@str_78 = private unnamed_addr constant [7 x i8] c"Santos\00", align 1
 
-define dso_local i32 @main() {
+; Função principal
+define i32 @main() {
 entry:
-  %1 = add i64 0, 25
-  %2 = add i64 0, 175
-  ; Atribuir string "João Silva" para nome
-  %3 = getelementptr [11 x i8], [11 x i8]* @str_1, i32 0, i32 0
-  %4 = add i64 0, %5
-  %6 = add i64 0, 0
-  %7 = add i64 0, 70
-  ; Atribuir string "Santos" para sobrenome
-  %8 = getelementptr [7 x i8], [7 x i8]* @str_2, i32 0, i32 0
-  %9 = add i64 0, %10
-  ; idade + 5 -> t1
-  %11 = add i64 %1, 5
-  %1 = add i64 0, %11
-  ; altura - 5 -> t2
-  %12 = sub i64 %2, 5
-  %2 = add i64 0, %12
-  ; contador * 2 -> t3
-  %13 = mul i64 %6, 2
-  %6 = add i64 0, %13
-  ; peso / 2 -> t4
-  %14 = sdiv i64 %7, 2
-  %7 = add i64 0, %14
-  ; Imprimir string "=== DEMONSTRAÇÃO LENS ==="
-  %353 = getelementptr [28 x i8], [28 x i8]* @str_3, i32 0, i32 0
-  call i32 @printf(i8* %353)
-  ; Imprimir variável string nome
-  call i32 @printf(i8* %3)
-  ; Imprimir número idade
-  %354 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %354, i64 %1)
-  ; Imprimir string "Nome completo:"
-  %355 = getelementptr [17 x i8], [17 x i8]* @str_4, i32 0, i32 0
-  call i32 @printf(i8* %355)
-  ; Imprimir variável string nome
-  call i32 @printf(i8* %3)
-  ; Imprimir variável string sobrenome
-  call i32 @printf(i8* %8)
-  ; Imprimir string "Idade atual:"
-  %356 = getelementptr [15 x i8], [15 x i8]* @str_5, i32 0, i32 0
-  call i32 @printf(i8* %356)
-  ; Imprimir número idade
-  %357 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %357, i64 %1)
-  ; Imprimir string "Altura:"
-  %358 = getelementptr [10 x i8], [10 x i8]* @str_6, i32 0, i32 0
-  call i32 @printf(i8* %358)
-  ; Imprimir número altura
-  %359 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %359, i64 %2)
-  ; Imprimir string "Peso:"
-  %360 = getelementptr [8 x i8], [8 x i8]* @str_7, i32 0, i32 0
-  call i32 @printf(i8* %360)
-  ; Imprimir número peso
-  %361 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %361, i64 %7)
-  ; Imprimir string "Status ativo:"
-  %362 = getelementptr [16 x i8], [16 x i8]* @str_8, i32 0, i32 0
-  call i32 @printf(i8* %362)
-  ; Imprimir número ativo
-  %363 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %363, i64 %4)
-  ; Imprimir string "Aprovado:"
-  %364 = getelementptr [12 x i8], [12 x i8]* @str_9, i32 0, i32 0
-  call i32 @printf(i8* %364)
-  ; Imprimir número aprovado
-  %365 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %365, i64 %9)
-  %28 = add i64 0, 10
-  %29 = add i64 0, 3
-  ; a + b -> t5
-  %30 = add i64 %28, %29
-  %31 = add i64 0, %30
-  ; a - b -> t6
-  %32 = sub i64 %28, %29
-  %33 = add i64 0, %32
-  ; a * b -> t7
-  %34 = mul i64 %28, %29
-  %35 = add i64 0, %34
-  ; a / b -> t8
-  %36 = sdiv i64 %28, %29
-  %37 = add i64 0, %36
-  ; Imprimir string "Operações com"
-  %366 = getelementptr [16 x i8], [16 x i8]* @str_10, i32 0, i32 0
-  call i32 @printf(i8* %366)
-  ; Imprimir número a
-  %367 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %367, i64 %28)
-  ; Imprimir string "e"
-  %368 = getelementptr [4 x i8], [4 x i8]* @str_11, i32 0, i32 0
-  call i32 @printf(i8* %368)
-  ; Imprimir número b
-  %369 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %369, i64 %29)
-  ; Imprimir string "Soma:"
-  %370 = getelementptr [8 x i8], [8 x i8]* @str_12, i32 0, i32 0
-  call i32 @printf(i8* %370)
-  ; Imprimir número soma
-  %371 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %371, i64 %31)
-  ; Imprimir string "Subtração:"
-  %372 = getelementptr [13 x i8], [13 x i8]* @str_13, i32 0, i32 0
-  call i32 @printf(i8* %372)
-  ; Imprimir número subtracao
-  %373 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %373, i64 %33)
-  ; Imprimir string "Multiplicação:"
-  %374 = getelementptr [17 x i8], [17 x i8]* @str_14, i32 0, i32 0
-  call i32 @printf(i8* %374)
-  ; Imprimir número multiplicacao
-  %375 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %375, i64 %35)
-  ; Imprimir string "Divisão:"
-  %376 = getelementptr [11 x i8], [11 x i8]* @str_15, i32 0, i32 0
-  call i32 @printf(i8* %376)
-  ; Imprimir número divisao
-  %377 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %377, i64 %37)
-  ; b * 2 -> t9
-  %50 = mul i64 %29, 2
-  ; a + t9 -> t10
-  %51 = add i64 %28, %50
-  ; t10 - 1 -> t11
-  %52 = sub i64 %51, 1
-  %53 = add i64 0, %52
-  ; a + b -> t12
-  %54 = add i64 %28, %29
-  ; t12 * 2 -> t13
-  %55 = mul i64 %54, 2
-  %56 = add i64 0, %55
-  ; Imprimir string "Resultado complexo:"
-  %378 = getelementptr [22 x i8], [22 x i8]* @str_16, i32 0, i32 0
-  call i32 @printf(i8* %378)
-  ; Imprimir número resultado
-  %379 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %379, i64 %53)
-  ; Imprimir string "Com parênteses:"
-  %380 = getelementptr [18 x i8], [18 x i8]* @str_17, i32 0, i32 0
-  call i32 @printf(i8* %380)
-  ; Imprimir número complexo
-  %381 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %381, i64 %56)
-  ; a == b -> t14
-  %382 = icmp eq i64 %28, %29
-  %61 = zext i1 %382 to i64
-  %63 = add i64 0, %61
-  ; a != b -> t15
-  %383 = icmp ne i64 %28, %29
-  %64 = zext i1 %383 to i64
-  %66 = add i64 0, %64
-  ; a < b -> t16
-  %384 = icmp slt i64 %28, %29
-  %67 = zext i1 %384 to i64
-  %69 = add i64 0, %67
-  ; a > b -> t17
-  %385 = icmp sgt i64 %28, %29
-  %70 = zext i1 %385 to i64
-  %72 = add i64 0, %70
-  ; a <= b -> t18
-  %386 = icmp sle i64 %28, %29
-  %73 = zext i1 %386 to i64
-  %75 = add i64 0, %73
-  ; a >= b -> t19
-  %387 = icmp sge i64 %28, %29
-  %76 = zext i1 %387 to i64
-  %78 = add i64 0, %76
-  ; Imprimir string "=== COMPARAÇÕES ==="
-  %388 = getelementptr [22 x i8], [22 x i8]* @str_18, i32 0, i32 0
-  call i32 @printf(i8* %388)
-  ; Imprimir string "10 == 3:"
-  %389 = getelementptr [11 x i8], [11 x i8]* @str_19, i32 0, i32 0
-  call i32 @printf(i8* %389)
-  ; Imprimir número igual
-  %390 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %390, i64 %63)
-  ; Imprimir string "10 != 3:"
-  %391 = getelementptr [11 x i8], [11 x i8]* @str_20, i32 0, i32 0
-  call i32 @printf(i8* %391)
-  ; Imprimir número diferente
-  %392 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %392, i64 %66)
-  ; Imprimir string "10 < 3:"
-  %393 = getelementptr [10 x i8], [10 x i8]* @str_21, i32 0, i32 0
-  call i32 @printf(i8* %393)
-  ; Imprimir número menor
-  %394 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %394, i64 %69)
-  ; Imprimir string "10 > 3:"
-  %395 = getelementptr [10 x i8], [10 x i8]* @str_22, i32 0, i32 0
-  call i32 @printf(i8* %395)
-  ; Imprimir número maior
-  %396 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %396, i64 %72)
-  ; Imprimir string "10 <= 3:"
-  %397 = getelementptr [11 x i8], [11 x i8]* @str_23, i32 0, i32 0
-  call i32 @printf(i8* %397)
-  ; Imprimir número menorIgual
-  %398 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %398, i64 %75)
-  ; Imprimir string "10 >= 3:"
-  %399 = getelementptr [11 x i8], [11 x i8]* @str_24, i32 0, i32 0
-  call i32 @printf(i8* %399)
-  ; Imprimir número maiorIgual
-  %400 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %400, i64 %78)
-  %92 = add i64 0, %5
-  %93 = add i64 0, %10
-  ; condicao1 && condicao2 -> t20
-  %401 = icmp ne i64 %92, 0
-  %402 = icmp ne i64 %93, 0
-  %403 = and i1 %401, %402
-  %94 = zext i1 %403 to i64
-  %98 = add i64 0, %94
-  ; condicao1 || condicao2 -> t21
-  %404 = icmp ne i64 %92, 0
-  %405 = icmp ne i64 %93, 0
-  %406 = or i1 %404, %405
-  %99 = zext i1 %406 to i64
-  %103 = add i64 0, %99
-  ; Imprimir string "=== OPERAÇÕES LÓGICAS ==="
-  %407 = getelementptr [28 x i8], [28 x i8]* @str_25, i32 0, i32 0
-  call i32 @printf(i8* %407)
-  ; Imprimir string "True && False:"
-  %408 = getelementptr [17 x i8], [17 x i8]* @str_26, i32 0, i32 0
-  call i32 @printf(i8* %408)
-  ; Imprimir número e_logico
-  %409 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %409, i64 %98)
-  ; Imprimir string "True || False:"
-  %410 = getelementptr [17 x i8], [17 x i8]* @str_27, i32 0, i32 0
-  call i32 @printf(i8* %410)
-  ; Imprimir número ou_logico
-  %411 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %411, i64 %103)
-  ; a > b -> t22
-  %412 = icmp sgt i64 %28, %29
-  %109 = zext i1 %412 to i64
-  ; soma > 10 -> t23
-  %413 = icmp sgt i64 %31, 10
-  %111 = zext i1 %413 to i64
-  ; t22 && t23 -> t24
-  %414 = icmp ne i64 %109, 0
-  %415 = icmp ne i64 %111, 0
-  %416 = and i1 %414, %415
-  %113 = zext i1 %416 to i64
-  %117 = add i64 0, %113
-  ; Imprimir string "Expressão complexa:"
-  %417 = getelementptr [22 x i8], [22 x i8]* @str_28, i32 0, i32 0
-  call i32 @printf(i8* %417)
-  ; Imprimir número complexa
-  %418 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %418, i64 %117)
-  ; Imprimir string "Digite um número:"
-  %419 = getelementptr [20 x i8], [20 x i8]* @str_29, i32 0, i32 0
-  call i32 @printf(i8* %419)
-  ; Ler valor para entrada_usuario
-  %421 = alloca i64, align 8
-  %420 = getelementptr [3 x i8], [3 x i8]* @.str_read, i32 0, i32 0
-  call i32 @scanf(i8* %420, i64* %421)
-  %121 = load i64, i64* %421, align 8
-  ; Imprimir string "Você digitou:"
-  %422 = getelementptr [16 x i8], [16 x i8]* @str_30, i32 0, i32 0
-  call i32 @printf(i8* %422)
-  ; Imprimir número entrada_usuario
-  %423 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %423, i64 %121)
-  ; Imprimir string "=== ESTRUTURAS CONDICIONAIS ==="
-  %424 = getelementptr [34 x i8], [34 x i8]* @str_31, i32 0, i32 0
-  call i32 @printf(i8* %424)
-  ; idade >= 18 -> t25
-  %425 = icmp sge i64 %1, 18
-  %127 = zext i1 %425 to i64
-  ; Se t25 é falso, pular para None
-  %426 = icmp eq i64 %127, 0
-  br i1 %426, label %None, label %label_427
-  ; Imprimir string "Maior de idade"
-  %428 = getelementptr [17 x i8], [17 x i8]* @str_32, i32 0, i32 0
-  call i32 @printf(i8* %428)
-  br label %None
+  %idade = alloca i32
+  %altura = alloca i32
+  %nome = alloca i8*
+  %contador = alloca i32
+  %peso = alloca i32
+  %sobrenome = alloca i8*
+  %t1 = alloca i32
+  %t2 = alloca i32
+  %t3 = alloca i32
+  %t4 = alloca i32
+  %a = alloca i32
+  %b = alloca i32
+  %t5 = alloca i32
+  %soma = alloca i32
+  %t6 = alloca i32
+  %subtracao = alloca i32
+  %t7 = alloca i32
+  %multiplicacao = alloca i32
+  %t8 = alloca i32
+  %divisao = alloca i32
+  %t9 = alloca i32
+  %t10 = alloca i32
+  %t11 = alloca i32
+  %resultado = alloca i32
+  %t12 = alloca i32
+  %t13 = alloca i32
+  %complexo = alloca i32
+  %t14 = alloca i32
+  %igual = alloca i32
+  %t15 = alloca i32
+  %diferente = alloca i32
+  %t16 = alloca i32
+  %menor = alloca i32
+  %t17 = alloca i32
+  %maior = alloca i32
+  %t18 = alloca i32
+  %menorIgual = alloca i32
+  %t19 = alloca i32
+  %maiorIgual = alloca i32
+  %condicao1 = alloca i32
+  %condicao2 = alloca i32
+  %t20 = alloca i32
+  %e_logico = alloca i32
+  %t21 = alloca i32
+  %ou_logico = alloca i32
+  %t22 = alloca i32
+  %t23 = alloca i32
+  %t24 = alloca i32
+  %complexa = alloca i32
+  %entrada_usuario = alloca i32
+  %t25 = alloca i32
+  %t26 = alloca i32
+  %t27 = alloca i32
+  %t28 = alloca i32
+  %i = alloca i32
+  %t29 = alloca i32
+  %t30 = alloca i32
+  %j = alloca i32
+  %t31 = alloca i32
+  %t32 = alloca i32
+  %inicio = alloca i32
+  %fim = alloca i32
+  %k = alloca i32
+  %t33 = alloca i32
+  %t34 = alloca i32
+  %quadrado = alloca i32
+  %t35 = alloca i32
+  %cont = alloca i32
+  %t36 = alloca i32
+  %t37 = alloca i32
+  %x = alloca i32
+  %y = alloca i32
+  %t38 = alloca i32
+  %t39 = alloca i32
+  %t40 = alloca i32
+  %t41 = alloca i32
+  %t42 = alloca i32
+  %num1 = alloca i32
+  %num2 = alloca i32
+  %operacao = alloca i32
+  %t43 = alloca i32
+  %t44 = alloca i32
+  %result = alloca i32
+  %t45 = alloca i32
+  %t46 = alloca i32
+  %t47 = alloca i32
+  %t48 = alloca i32
+  %t49 = alloca i32
+  %t50 = alloca i32
+  %t51 = alloca i32
+  %n = alloca i32
+  %fatorial = alloca i32
+  %f = alloca i32
+  %t52 = alloca i32
+  %t53 = alloca i32
+  %t54 = alloca i32
+  %fib1 = alloca i32
+  %fib2 = alloca i32
+  %fib_count = alloca i32
+  %t55 = alloca i32
+  %t56 = alloca i32
+  %proximo = alloca i32
+  %t57 = alloca i32
+  %t58 = alloca i32
+  %nota = alloca i32
+  %frequencia = alloca i32
+  %t59 = alloca i32
+  %t60 = alloca i32
+  %t61 = alloca i32
+  %t62 = alloca i32
+  %t63 = alloca i32
+  %t64 = alloca i32
+  store i32 25, i32* %idade
+  store i32 175, i32* %altura
+  store i8* getelementptr inbounds ([15 x i8], [15 x i8]* @str_77, i64 0, i64 0), i8** %nome
+  store i32 0, i32* %contador
+  store i32 70, i32* %peso
+  store i8* getelementptr inbounds ([11 x i8], [11 x i8]* @str_78, i64 0, i64 0), i8** %sobrenome
+  %temp_425 = load i32, i32* %idade
+  %temp_426 = load i32, i32* %idade
+  %temp_427 = add i32 %temp_426, 5
+  store i32 %temp_427, i32* %t1
+  %temp_428 = load i32, i32* %t1
+  store i32 %temp_428, i32* %idade
+  %temp_429 = load i32, i32* %altura
+  %temp_430 = load i32, i32* %altura
+  %temp_431 = sub i32 %temp_430, 5
+  store i32 %temp_431, i32* %t2
+  %temp_432 = load i32, i32* %t2
+  store i32 %temp_432, i32* %altura
+  %temp_433 = load i32, i32* %contador
+  %temp_434 = load i32, i32* %contador
+  %temp_435 = mul i32 %temp_434, 2
+  store i32 %temp_435, i32* %t3
+  %temp_436 = load i32, i32* %t3
+  store i32 %temp_436, i32* %contador
+  %temp_437 = load i32, i32* %peso
+  %temp_438 = load i32, i32* %peso
+  %temp_439 = sdiv i32 %temp_438, 2
+  store i32 %temp_439, i32* %t4
+  %temp_440 = load i32, i32* %t4
+  store i32 %temp_440, i32* %peso
+  call i32 @puts(i8* getelementptr inbounds ([30 x i8], [30 x i8]* @str_1, i64 0, i64 0))
+  %temp_441 = load i8*, i8** %nome
+  call i32 @puts(i8* %temp_441)
+  %temp_442 = load i32, i32* %idade
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_442)
+  call i32 @puts(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @str_2, i64 0, i64 0))
+  %temp_443 = load i8*, i8** %nome
+  call i32 @puts(i8* %temp_443)
+  %temp_444 = load i8*, i8** %sobrenome
+  call i32 @puts(i8* %temp_444)
+  call i32 @puts(i8* getelementptr inbounds ([17 x i8], [17 x i8]* @str_3, i64 0, i64 0))
+  %temp_445 = load i32, i32* %idade
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_445)
+  call i32 @puts(i8* getelementptr inbounds ([12 x i8], [12 x i8]* @str_4, i64 0, i64 0))
+  %temp_446 = load i32, i32* %altura
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_446)
+  call i32 @puts(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @str_5, i64 0, i64 0))
+  %temp_447 = load i32, i32* %peso
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_447)
+  store i32 10, i32* %a
+  store i32 3, i32* %b
+  %temp_448 = load i32, i32* %a
+  %temp_449 = load i32, i32* %b
+  %temp_450 = load i32, i32* %a
+  %temp_451 = load i32, i32* %b
+  %temp_452 = add i32 %temp_450, %temp_451
+  store i32 %temp_452, i32* %t5
+  %temp_453 = load i32, i32* %t5
+  store i32 %temp_453, i32* %soma
+  %temp_454 = load i32, i32* %a
+  %temp_455 = load i32, i32* %b
+  %temp_456 = load i32, i32* %a
+  %temp_457 = load i32, i32* %b
+  %temp_458 = sub i32 %temp_456, %temp_457
+  store i32 %temp_458, i32* %t6
+  %temp_459 = load i32, i32* %t6
+  store i32 %temp_459, i32* %subtracao
+  %temp_460 = load i32, i32* %a
+  %temp_461 = load i32, i32* %b
+  %temp_462 = load i32, i32* %a
+  %temp_463 = load i32, i32* %b
+  %temp_464 = mul i32 %temp_462, %temp_463
+  store i32 %temp_464, i32* %t7
+  %temp_465 = load i32, i32* %t7
+  store i32 %temp_465, i32* %multiplicacao
+  %temp_466 = load i32, i32* %a
+  %temp_467 = load i32, i32* %b
+  %temp_468 = load i32, i32* %a
+  %temp_469 = load i32, i32* %b
+  %temp_470 = sdiv i32 %temp_468, %temp_469
+  store i32 %temp_470, i32* %t8
+  %temp_471 = load i32, i32* %t8
+  store i32 %temp_471, i32* %divisao
+  call i32 @puts(i8* getelementptr inbounds ([18 x i8], [18 x i8]* @str_6, i64 0, i64 0))
+  %temp_472 = load i32, i32* %a
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_472)
+  call i32 @puts(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @str_7, i64 0, i64 0))
+  %temp_473 = load i32, i32* %b
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_473)
+  call i32 @puts(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @str_8, i64 0, i64 0))
+  %temp_474 = load i32, i32* %soma
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_474)
+  call i32 @puts(i8* getelementptr inbounds ([15 x i8], [15 x i8]* @str_9, i64 0, i64 0))
+  %temp_475 = load i32, i32* %subtracao
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_475)
+  call i32 @puts(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @str_10, i64 0, i64 0))
+  %temp_476 = load i32, i32* %multiplicacao
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_476)
+  call i32 @puts(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @str_11, i64 0, i64 0))
+  %temp_477 = load i32, i32* %divisao
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_477)
+  %temp_478 = load i32, i32* %b
+  %temp_479 = load i32, i32* %b
+  %temp_480 = mul i32 %temp_479, 2
+  store i32 %temp_480, i32* %t9
+  %temp_481 = load i32, i32* %a
+  %temp_482 = load i32, i32* %t9
+  %temp_483 = load i32, i32* %a
+  %temp_484 = load i32, i32* %t9
+  %temp_485 = add i32 %temp_483, %temp_484
+  store i32 %temp_485, i32* %t10
+  %temp_486 = load i32, i32* %t10
+  %temp_487 = load i32, i32* %t10
+  %temp_488 = sub i32 %temp_487, 1
+  store i32 %temp_488, i32* %t11
+  %temp_489 = load i32, i32* %t11
+  store i32 %temp_489, i32* %resultado
+  %temp_490 = load i32, i32* %a
+  %temp_491 = load i32, i32* %b
+  %temp_492 = load i32, i32* %a
+  %temp_493 = load i32, i32* %b
+  %temp_494 = add i32 %temp_492, %temp_493
+  store i32 %temp_494, i32* %t12
+  %temp_495 = load i32, i32* %t12
+  %temp_496 = load i32, i32* %t12
+  %temp_497 = mul i32 %temp_496, 2
+  store i32 %temp_497, i32* %t13
+  %temp_498 = load i32, i32* %t13
+  store i32 %temp_498, i32* %complexo
+  call i32 @puts(i8* getelementptr inbounds ([24 x i8], [24 x i8]* @str_12, i64 0, i64 0))
+  %temp_499 = load i32, i32* %resultado
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_499)
+  call i32 @puts(i8* getelementptr inbounds ([20 x i8], [20 x i8]* @str_13, i64 0, i64 0))
+  %temp_500 = load i32, i32* %complexo
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_500)
+  %temp_501 = load i32, i32* %a
+  %temp_502 = load i32, i32* %b
+  %temp_503 = load i32, i32* %a
+  %temp_504 = load i32, i32* %b
+  %temp_505 = icmp eq i32 %temp_503, %temp_504
+  %temp_506 = zext i1 %temp_505 to i32
+  store i32 %temp_506, i32* %t14
+  %temp_507 = load i32, i32* %t14
+  store i32 %temp_507, i32* %igual
+  %temp_508 = load i32, i32* %a
+  %temp_509 = load i32, i32* %b
+  %temp_510 = load i32, i32* %a
+  %temp_511 = load i32, i32* %b
+  %temp_512 = icmp ne i32 %temp_510, %temp_511
+  %temp_513 = zext i1 %temp_512 to i32
+  store i32 %temp_513, i32* %t15
+  %temp_514 = load i32, i32* %t15
+  store i32 %temp_514, i32* %diferente
+  %temp_515 = load i32, i32* %a
+  %temp_516 = load i32, i32* %b
+  %temp_517 = load i32, i32* %a
+  %temp_518 = load i32, i32* %b
+  %temp_519 = icmp slt i32 %temp_517, %temp_518
+  %temp_520 = zext i1 %temp_519 to i32
+  store i32 %temp_520, i32* %t16
+  %temp_521 = load i32, i32* %t16
+  store i32 %temp_521, i32* %menor
+  %temp_522 = load i32, i32* %a
+  %temp_523 = load i32, i32* %b
+  %temp_524 = load i32, i32* %a
+  %temp_525 = load i32, i32* %b
+  %temp_526 = icmp sgt i32 %temp_524, %temp_525
+  %temp_527 = zext i1 %temp_526 to i32
+  store i32 %temp_527, i32* %t17
+  %temp_528 = load i32, i32* %t17
+  store i32 %temp_528, i32* %maior
+  %temp_529 = load i32, i32* %a
+  %temp_530 = load i32, i32* %b
+  %temp_531 = load i32, i32* %a
+  %temp_532 = load i32, i32* %b
+  %temp_533 = icmp sle i32 %temp_531, %temp_532
+  %temp_534 = zext i1 %temp_533 to i32
+  store i32 %temp_534, i32* %t18
+  %temp_535 = load i32, i32* %t18
+  store i32 %temp_535, i32* %menorIgual
+  %temp_536 = load i32, i32* %a
+  %temp_537 = load i32, i32* %b
+  %temp_538 = load i32, i32* %a
+  %temp_539 = load i32, i32* %b
+  %temp_540 = icmp sge i32 %temp_538, %temp_539
+  %temp_541 = zext i1 %temp_540 to i32
+  store i32 %temp_541, i32* %t19
+  %temp_542 = load i32, i32* %t19
+  store i32 %temp_542, i32* %maiorIgual
+  call i32 @puts(i8* getelementptr inbounds ([24 x i8], [24 x i8]* @str_14, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @str_15, i64 0, i64 0))
+  %temp_543 = load i32, i32* %igual
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_543)
+  call i32 @puts(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @str_16, i64 0, i64 0))
+  %temp_544 = load i32, i32* %diferente
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_544)
+  call i32 @puts(i8* getelementptr inbounds ([12 x i8], [12 x i8]* @str_17, i64 0, i64 0))
+  %temp_545 = load i32, i32* %menor
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_545)
+  call i32 @puts(i8* getelementptr inbounds ([12 x i8], [12 x i8]* @str_18, i64 0, i64 0))
+  %temp_546 = load i32, i32* %maior
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_546)
+  call i32 @puts(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @str_19, i64 0, i64 0))
+  %temp_547 = load i32, i32* %menorIgual
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_547)
+  call i32 @puts(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @str_20, i64 0, i64 0))
+  %temp_548 = load i32, i32* %maiorIgual
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_548)
+  store i32 1, i32* %condicao1
+  store i32 0, i32* %condicao2
+  %temp_549 = load i32, i32* %condicao1
+  %temp_550 = load i32, i32* %condicao2
+  %temp_551 = load i32, i32* %condicao1
+  %temp_552 = load i32, i32* %condicao2
+  %temp_553 = icmp ne i32 %temp_551, 0
+  %temp_554 = icmp ne i32 %temp_552, 0
+  %temp_555 = and i1 %temp_553, %temp_554
+  %temp_556 = zext i1 %temp_555 to i32
+  store i32 %temp_556, i32* %t20
+  %temp_557 = load i32, i32* %t20
+  store i32 %temp_557, i32* %e_logico
+  %temp_558 = load i32, i32* %condicao1
+  %temp_559 = load i32, i32* %condicao2
+  %temp_560 = load i32, i32* %condicao1
+  %temp_561 = load i32, i32* %condicao2
+  %temp_562 = icmp ne i32 %temp_560, 0
+  %temp_563 = icmp ne i32 %temp_561, 0
+  %temp_564 = or i1 %temp_562, %temp_563
+  %temp_565 = zext i1 %temp_564 to i32
+  store i32 %temp_565, i32* %t21
+  %temp_566 = load i32, i32* %t21
+  store i32 %temp_566, i32* %ou_logico
+  call i32 @puts(i8* getelementptr inbounds ([30 x i8], [30 x i8]* @str_21, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([12 x i8], [12 x i8]* @str_22, i64 0, i64 0))
+  %temp_567 = load i32, i32* %e_logico
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_567)
+  call i32 @puts(i8* getelementptr inbounds ([12 x i8], [12 x i8]* @str_23, i64 0, i64 0))
+  %temp_568 = load i32, i32* %ou_logico
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_568)
+  %temp_569 = load i32, i32* %a
+  %temp_570 = load i32, i32* %b
+  %temp_571 = load i32, i32* %a
+  %temp_572 = load i32, i32* %b
+  %temp_573 = icmp sgt i32 %temp_571, %temp_572
+  %temp_574 = zext i1 %temp_573 to i32
+  store i32 %temp_574, i32* %t22
+  %temp_575 = load i32, i32* %soma
+  %temp_576 = load i32, i32* %soma
+  %temp_577 = icmp sgt i32 %temp_576, 10
+  %temp_578 = zext i1 %temp_577 to i32
+  store i32 %temp_578, i32* %t23
+  %temp_579 = load i32, i32* %t22
+  %temp_580 = load i32, i32* %t23
+  %temp_581 = load i32, i32* %t22
+  %temp_582 = load i32, i32* %t23
+  %temp_583 = icmp ne i32 %temp_581, 0
+  %temp_584 = icmp ne i32 %temp_582, 0
+  %temp_585 = and i1 %temp_583, %temp_584
+  %temp_586 = zext i1 %temp_585 to i32
+  store i32 %temp_586, i32* %t24
+  %temp_587 = load i32, i32* %t24
+  store i32 %temp_587, i32* %complexa
+  call i32 @puts(i8* getelementptr inbounds ([24 x i8], [24 x i8]* @str_24, i64 0, i64 0))
+  %temp_588 = load i32, i32* %complexa
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_588)
+  call i32 @puts(i8* getelementptr inbounds ([22 x i8], [22 x i8]* @str_25, i64 0, i64 0))
+  call i32 (i8*, ...) @scanf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @scanf_int, i64 0, i64 0), i32* %entrada_usuario)
+  call i32 @puts(i8* getelementptr inbounds ([18 x i8], [18 x i8]* @str_26, i64 0, i64 0))
+  %temp_589 = load i32, i32* %entrada_usuario
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_589)
+  call i32 @puts(i8* getelementptr inbounds ([36 x i8], [36 x i8]* @str_27, i64 0, i64 0))
+  %temp_590 = load i32, i32* %idade
+  %temp_591 = load i32, i32* %idade
+  %temp_592 = icmp sge i32 %temp_591, 18
+  %temp_593 = zext i1 %temp_592 to i32
+  store i32 %temp_593, i32* %t25
+  %temp_594 = load i32, i32* %t25
+  %temp_595 = icmp eq i32 %temp_594, 0
+  br i1 %temp_595, label %L2, label %label_19
+label_19:
+  call i32 @puts(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @str_28, i64 0, i64 0))
+  br label %L1
 L2:
+  br label %L1
 L1:
-  ; idade < 13 -> t26
-  %429 = icmp slt i64 %1, 13
-  %132 = zext i1 %429 to i64
-  ; Se t26 é falso, pular para None
-  %430 = icmp eq i64 %132, 0
-  br i1 %430, label %None, label %label_431
-  ; Imprimir string "Criança"
-  %432 = getelementptr [10 x i8], [10 x i8]* @str_33, i32 0, i32 0
-  call i32 @printf(i8* %432)
-  br label %None
+  %temp_596 = load i32, i32* %idade
+  %temp_597 = load i32, i32* %idade
+  %temp_598 = icmp slt i32 %temp_597, 13
+  %temp_599 = zext i1 %temp_598 to i32
+  store i32 %temp_599, i32* %t26
+  %temp_600 = load i32, i32* %t26
+  %temp_601 = icmp eq i32 %temp_600, 0
+  br i1 %temp_601, label %L4, label %label_20
+label_20:
+  call i32 @puts(i8* getelementptr inbounds ([12 x i8], [12 x i8]* @str_29, i64 0, i64 0))
+  br label %L3
 L4:
-  ; idade < 18 -> t27
-  %433 = icmp slt i64 %1, 18
-  %137 = zext i1 %433 to i64
-  ; Se t27 é falso, pular para None
-  %434 = icmp eq i64 %137, 0
-  br i1 %434, label %None, label %label_435
-  ; Imprimir string "Adolescente"
-  %436 = getelementptr [14 x i8], [14 x i8]* @str_34, i32 0, i32 0
-  call i32 @printf(i8* %436)
-  br label %None
+  %temp_602 = load i32, i32* %idade
+  %temp_603 = load i32, i32* %idade
+  %temp_604 = icmp slt i32 %temp_603, 18
+  %temp_605 = zext i1 %temp_604 to i32
+  store i32 %temp_605, i32* %t27
+  %temp_606 = load i32, i32* %t27
+  %temp_607 = icmp eq i32 %temp_606, 0
+  br i1 %temp_607, label %L5, label %label_21
+label_21:
+  call i32 @puts(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @str_30, i64 0, i64 0))
+  br label %L3
 L5:
-  ; idade < 60 -> t28
-  %437 = icmp slt i64 %1, 60
-  %142 = zext i1 %437 to i64
-  ; Se t28 é falso, pular para None
-  %438 = icmp eq i64 %142, 0
-  br i1 %438, label %None, label %label_439
-  ; Imprimir string "Adulto"
-  %440 = getelementptr [9 x i8], [9 x i8]* @str_35, i32 0, i32 0
-  call i32 @printf(i8* %440)
-  br label %None
+  %temp_608 = load i32, i32* %idade
+  %temp_609 = load i32, i32* %idade
+  %temp_610 = icmp slt i32 %temp_609, 60
+  %temp_611 = zext i1 %temp_610 to i32
+  store i32 %temp_611, i32* %t28
+  %temp_612 = load i32, i32* %t28
+  %temp_613 = icmp eq i32 %temp_612, 0
+  br i1 %temp_613, label %L6, label %label_22
+label_22:
+  call i32 @puts(i8* getelementptr inbounds ([11 x i8], [11 x i8]* @str_31, i64 0, i64 0))
+  br label %L3
 L6:
-  ; Imprimir string "Idoso"
-  %441 = getelementptr [8 x i8], [8 x i8]* @str_36, i32 0, i32 0
-  call i32 @printf(i8* %441)
+  call i32 @puts(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @str_32, i64 0, i64 0))
+  br label %L3
 L3:
-  ; ativo == True -> t29
-  %442 = icmp eq i64 %4, %5
-  %148 = zext i1 %442 to i64
-  ; Se t29 é falso, pular para None
-  %443 = icmp eq i64 %148, 0
-  br i1 %443, label %None, label %label_444
-  ; Imprimir string "Usuário ativo"
-  %445 = getelementptr [16 x i8], [16 x i8]* @str_37, i32 0, i32 0
-  call i32 @printf(i8* %445)
-  ; aprovado == True -> t30
-  %446 = icmp eq i64 %9, %5
-  %153 = zext i1 %446 to i64
-  ; Se t30 é falso, pular para None
-  %447 = icmp eq i64 %153, 0
-  br i1 %447, label %None, label %label_448
-  ; Imprimir string "E está aprovado!"
-  %449 = getelementptr [19 x i8], [19 x i8]* @str_38, i32 0, i32 0
-  call i32 @printf(i8* %449)
-  br label %None
-L10:
-  ; Imprimir string "Mas não está aprovado"
-  %450 = getelementptr [24 x i8], [24 x i8]* @str_39, i32 0, i32 0
-  call i32 @printf(i8* %450)
-L9:
-  br label %None
-L8:
-  ; Imprimir string "Usuário inativo"
-  %451 = getelementptr [18 x i8], [18 x i8]* @str_40, i32 0, i32 0
-  call i32 @printf(i8* %451)
+  call i32 @puts(i8* getelementptr inbounds ([22 x i8], [22 x i8]* @str_33, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([23 x i8], [23 x i8]* @str_34, i64 0, i64 0))
+  store i32 1, i32* %i
+  br label %L7
 L7:
-  ; Imprimir string "=== LAÇOS FOR ==="
-  %452 = getelementptr [20 x i8], [20 x i8]* @str_41, i32 0, i32 0
-  call i32 @printf(i8* %452)
-  ; Imprimir string "Contagem de 1 a 5:"
-  %453 = getelementptr [21 x i8], [21 x i8]* @str_42, i32 0, i32 0
-  call i32 @printf(i8* %453)
-  %162 = add i64 0, 1
+  %temp_614 = load i32, i32* %i
+  %temp_615 = load i32, i32* %i
+  %temp_616 = icmp sle i32 %temp_615, 5
+  %temp_617 = zext i1 %temp_616 to i32
+  store i32 %temp_617, i32* %t29
+  %temp_618 = load i32, i32* %t29
+  %temp_619 = icmp eq i32 %temp_618, 0
+  br i1 %temp_619, label %L8, label %label_23
+label_23:
+  call i32 @puts(i8* getelementptr inbounds ([12 x i8], [12 x i8]* @str_35, i64 0, i64 0))
+  %temp_620 = load i32, i32* %i
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_620)
+  %temp_621 = load i32, i32* %i
+  %temp_622 = load i32, i32* %i
+  %temp_623 = add i32 %temp_622, 1
+  store i32 %temp_623, i32* %t30
+  %temp_624 = load i32, i32* %t30
+  store i32 %temp_624, i32* %i
+  br label %L7
+L8:
+  call i32 @puts(i8* getelementptr inbounds ([25 x i8], [25 x i8]* @str_36, i64 0, i64 0))
+  store i32 10, i32* %j
+  br label %L9
+L9:
+  %temp_625 = load i32, i32* %j
+  %temp_626 = load i32, i32* %j
+  %temp_627 = icmp sge i32 %temp_626, 7
+  %temp_628 = zext i1 %temp_627 to i32
+  store i32 %temp_628, i32* %t31
+  %temp_629 = load i32, i32* %t31
+  %temp_630 = icmp eq i32 %temp_629, 0
+  br i1 %temp_630, label %L10, label %label_24
+label_24:
+  call i32 @puts(i8* getelementptr inbounds ([14 x i8], [14 x i8]* @str_37, i64 0, i64 0))
+  %temp_631 = load i32, i32* %j
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_631)
+  %temp_632 = load i32, i32* %j
+  %temp_633 = load i32, i32* %j
+  %temp_634 = sub i32 %temp_633, 1
+  store i32 %temp_634, i32* %t32
+  %temp_635 = load i32, i32* %t32
+  store i32 %temp_635, i32* %j
+  br label %L9
+L10:
+  store i32 0, i32* %inicio
+  store i32 3, i32* %fim
+  call i32 @puts(i8* getelementptr inbounds ([20 x i8], [20 x i8]* @str_38, i64 0, i64 0))
+  %temp_636 = load i32, i32* %inicio
+  store i32 %temp_636, i32* %k
+  br label %L11
 L11:
-  ; i <= 5 -> t31
-  %454 = icmp sle i64 %162, 5
-  %163 = zext i1 %454 to i64
-  ; Se t31 é falso, pular para None
-  %455 = icmp eq i64 %163, 0
-  br i1 %455, label %None, label %label_456
-  ; Imprimir string "Número:"
-  %457 = getelementptr [10 x i8], [10 x i8]* @str_43, i32 0, i32 0
-  call i32 @printf(i8* %457)
-  ; Imprimir número i
-  %458 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %458, i64 %162)
-  ; i + 1 -> t32
-  %169 = add i64 %162, 1
-  %162 = add i64 0, %169
-  br label %None
+  %temp_637 = load i32, i32* %k
+  %temp_638 = load i32, i32* %fim
+  %temp_639 = load i32, i32* %k
+  %temp_640 = load i32, i32* %fim
+  %temp_641 = icmp sle i32 %temp_639, %temp_640
+  %temp_642 = zext i1 %temp_641 to i32
+  store i32 %temp_642, i32* %t33
+  %temp_643 = load i32, i32* %t33
+  %temp_644 = icmp eq i32 %temp_643, 0
+  br i1 %temp_644, label %L12, label %label_25
+label_25:
+  call i32 @puts(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @str_39, i64 0, i64 0))
+  %temp_645 = load i32, i32* %k
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_645)
+  %temp_646 = load i32, i32* %k
+  %temp_647 = load i32, i32* %k
+  %temp_648 = load i32, i32* %k
+  %temp_649 = load i32, i32* %k
+  %temp_650 = mul i32 %temp_648, %temp_649
+  store i32 %temp_650, i32* %t34
+  %temp_651 = load i32, i32* %t34
+  store i32 %temp_651, i32* %quadrado
+  call i32 @puts(i8* getelementptr inbounds ([14 x i8], [14 x i8]* @str_40, i64 0, i64 0))
+  %temp_652 = load i32, i32* %quadrado
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_652)
+  %temp_653 = load i32, i32* %k
+  %temp_654 = load i32, i32* %k
+  %temp_655 = add i32 %temp_654, 1
+  store i32 %temp_655, i32* %t35
+  %temp_656 = load i32, i32* %t35
+  store i32 %temp_656, i32* %k
+  br label %L11
 L12:
-  ; Imprimir string "Contagem regressiva:"
-  %459 = getelementptr [23 x i8], [23 x i8]* @str_44, i32 0, i32 0
-  call i32 @printf(i8* %459)
-  %171 = add i64 0, 10
+  call i32 @puts(i8* getelementptr inbounds ([24 x i8], [24 x i8]* @str_41, i64 0, i64 0))
+  store i32 0, i32* %cont
+  call i32 @puts(i8* getelementptr inbounds ([26 x i8], [26 x i8]* @str_42, i64 0, i64 0))
+  br label %L13
 L13:
-  ; j >= 7 -> t33
-  %460 = icmp sge i64 %171, 7
-  %172 = zext i1 %460 to i64
-  ; Se t33 é falso, pular para None
-  %461 = icmp eq i64 %172, 0
-  br i1 %461, label %None, label %label_462
-  ; Imprimir string "Contagem:"
-  %463 = getelementptr [12 x i8], [12 x i8]* @str_45, i32 0, i32 0
-  call i32 @printf(i8* %463)
-  ; Imprimir número j
-  %464 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %464, i64 %171)
-  ; j - 1 -> t34
-  %178 = sub i64 %171, 1
-  %171 = add i64 0, %178
-  br label %None
+  %temp_657 = load i32, i32* %cont
+  %temp_658 = load i32, i32* %cont
+  %temp_659 = icmp slt i32 %temp_658, 3
+  %temp_660 = zext i1 %temp_659 to i32
+  store i32 %temp_660, i32* %t36
+  %temp_661 = load i32, i32* %t36
+  %temp_662 = icmp eq i32 %temp_661, 0
+  br i1 %temp_662, label %L14, label %label_26
+label_26:
+  call i32 @puts(i8* getelementptr inbounds ([14 x i8], [14 x i8]* @str_43, i64 0, i64 0))
+  %temp_663 = load i32, i32* %cont
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_663)
+  %temp_664 = load i32, i32* %cont
+  %temp_665 = load i32, i32* %cont
+  %temp_666 = add i32 %temp_665, 1
+  store i32 %temp_666, i32* %t37
+  %temp_667 = load i32, i32* %t37
+  store i32 %temp_667, i32* %cont
+  br label %L13
 L14:
-  %179 = add i64 0, 0
-  %180 = add i64 0, 3
-  ; Imprimir string "Range dinâmico:"
-  %465 = getelementptr [18 x i8], [18 x i8]* @str_46, i32 0, i32 0
-  call i32 @printf(i8* %465)
-  %182 = add i64 0, %179
+  store i32 10, i32* %x
+  store i32 1, i32* %y
+  call i32 @puts(i8* getelementptr inbounds ([33 x i8], [33 x i8]* @str_44, i64 0, i64 0))
+  br label %L15
 L15:
-  ; k <= fim -> t35
-  %466 = icmp sle i64 %182, %180
-  %183 = zext i1 %466 to i64
-  ; Se t35 é falso, pular para None
-  %467 = icmp eq i64 %183, 0
-  br i1 %467, label %None, label %label_468
-  ; Imprimir string "Valor de k:"
-  %469 = getelementptr [14 x i8], [14 x i8]* @str_47, i32 0, i32 0
-  call i32 @printf(i8* %469)
-  ; Imprimir número k
-  %470 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %470, i64 %182)
-  ; k * k -> t36
-  %189 = mul i64 %182, %182
-  %190 = add i64 0, %189
-  ; Imprimir string "Quadrado:"
-  %471 = getelementptr [12 x i8], [12 x i8]* @str_48, i32 0, i32 0
-  call i32 @printf(i8* %471)
-  ; Imprimir número quadrado
-  %472 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %472, i64 %190)
-  ; k + 1 -> t37
-  %193 = add i64 %182, 1
-  %182 = add i64 0, %193
-  br label %None
+  %temp_668 = load i32, i32* %x
+  %temp_669 = load i32, i32* %y
+  %temp_670 = load i32, i32* %x
+  %temp_671 = load i32, i32* %y
+  %temp_672 = icmp sgt i32 %temp_670, %temp_671
+  %temp_673 = zext i1 %temp_672 to i32
+  store i32 %temp_673, i32* %t38
+  %temp_674 = load i32, i32* %y
+  %temp_675 = load i32, i32* %y
+  %temp_676 = icmp slt i32 %temp_675, 5
+  %temp_677 = zext i1 %temp_676 to i32
+  store i32 %temp_677, i32* %t39
+  %temp_678 = load i32, i32* %t38
+  %temp_679 = load i32, i32* %t39
+  %temp_680 = load i32, i32* %t38
+  %temp_681 = load i32, i32* %t39
+  %temp_682 = icmp ne i32 %temp_680, 0
+  %temp_683 = icmp ne i32 %temp_681, 0
+  %temp_684 = and i1 %temp_682, %temp_683
+  %temp_685 = zext i1 %temp_684 to i32
+  store i32 %temp_685, i32* %t40
+  %temp_686 = load i32, i32* %t40
+  %temp_687 = icmp eq i32 %temp_686, 0
+  br i1 %temp_687, label %L16, label %label_27
+label_27:
+  call i32 @puts(i8* getelementptr inbounds ([8 x i8], [8 x i8]* @str_45, i64 0, i64 0))
+  %temp_688 = load i32, i32* %x
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_688)
+  call i32 @puts(i8* getelementptr inbounds ([8 x i8], [8 x i8]* @str_46, i64 0, i64 0))
+  %temp_689 = load i32, i32* %y
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_689)
+  %temp_690 = load i32, i32* %x
+  %temp_691 = load i32, i32* %x
+  %temp_692 = sub i32 %temp_691, 2
+  store i32 %temp_692, i32* %t41
+  %temp_693 = load i32, i32* %t41
+  store i32 %temp_693, i32* %x
+  %temp_694 = load i32, i32* %y
+  %temp_695 = load i32, i32* %y
+  %temp_696 = add i32 %temp_695, 1
+  store i32 %temp_696, i32* %t42
+  %temp_697 = load i32, i32* %t42
+  store i32 %temp_697, i32* %y
+  br label %L15
 L16:
-  ; Imprimir string "=== LAÇOS WHILE ==="
-  %473 = getelementptr [22 x i8], [22 x i8]* @str_49, i32 0, i32 0
-  call i32 @printf(i8* %473)
-  %195 = add i64 0, 0
-  ; Imprimir string "Contagem while até 3:"
-  %474 = getelementptr [24 x i8], [24 x i8]* @str_50, i32 0, i32 0
-  call i32 @printf(i8* %474)
-L17:
-  ; cont < 3 -> t38
-  %475 = icmp slt i64 %195, 3
-  %197 = zext i1 %475 to i64
-  ; Se t38 é falso, pular para None
-  %476 = icmp eq i64 %197, 0
-  br i1 %476, label %None, label %label_477
-  ; Imprimir string "Contador:"
-  %478 = getelementptr [12 x i8], [12 x i8]* @str_51, i32 0, i32 0
-  call i32 @printf(i8* %478)
-  ; Imprimir número cont
-  %479 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %479, i64 %195)
-  ; cont + 1 -> t39
-  %203 = add i64 %195, 1
-  %195 = add i64 0, %203
-  br label %None
+  call i32 @puts(i8* getelementptr inbounds ([28 x i8], [28 x i8]* @str_47, i64 0, i64 0))
+  store i32 15, i32* %num1
+  store i32 4, i32* %num2
+  store i32 1, i32* %operacao
+  %temp_698 = load i32, i32* %operacao
+  %temp_699 = load i32, i32* %operacao
+  %temp_700 = icmp eq i32 %temp_699, 1
+  %temp_701 = zext i1 %temp_700 to i32
+  store i32 %temp_701, i32* %t43
+  %temp_702 = load i32, i32* %t43
+  %temp_703 = icmp eq i32 %temp_702, 0
+  br i1 %temp_703, label %L18, label %label_28
+label_28:
+  %temp_704 = load i32, i32* %num1
+  %temp_705 = load i32, i32* %num2
+  %temp_706 = load i32, i32* %num1
+  %temp_707 = load i32, i32* %num2
+  %temp_708 = add i32 %temp_706, %temp_707
+  store i32 %temp_708, i32* %t44
+  %temp_709 = load i32, i32* %t44
+  store i32 %temp_709, i32* %result
+  call i32 @puts(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @str_8, i64 0, i64 0))
+  %temp_710 = load i32, i32* %num1
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_710)
+  call i32 @puts(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @str_48, i64 0, i64 0))
+  %temp_711 = load i32, i32* %num2
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_711)
+  call i32 @puts(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @str_49, i64 0, i64 0))
+  %temp_712 = load i32, i32* %result
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_712)
+  br label %L17
 L18:
-  %204 = add i64 0, 10
-  %205 = add i64 0, 1
-  ; Imprimir string "While com condição complexa:"
-  %480 = getelementptr [31 x i8], [31 x i8]* @str_52, i32 0, i32 0
-  call i32 @printf(i8* %480)
+  %temp_713 = load i32, i32* %operacao
+  %temp_714 = load i32, i32* %operacao
+  %temp_715 = icmp eq i32 %temp_714, 2
+  %temp_716 = zext i1 %temp_715 to i32
+  store i32 %temp_716, i32* %t45
+  %temp_717 = load i32, i32* %t45
+  %temp_718 = icmp eq i32 %temp_717, 0
+  br i1 %temp_718, label %L19, label %label_29
+label_29:
+  %temp_719 = load i32, i32* %num1
+  %temp_720 = load i32, i32* %num2
+  %temp_721 = load i32, i32* %num1
+  %temp_722 = load i32, i32* %num2
+  %temp_723 = sub i32 %temp_721, %temp_722
+  store i32 %temp_723, i32* %t46
+  %temp_724 = load i32, i32* %t46
+  store i32 %temp_724, i32* %result
+  call i32 @puts(i8* getelementptr inbounds ([15 x i8], [15 x i8]* @str_9, i64 0, i64 0))
+  %temp_725 = load i32, i32* %num1
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_725)
+  call i32 @puts(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @str_50, i64 0, i64 0))
+  %temp_726 = load i32, i32* %num2
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_726)
+  call i32 @puts(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @str_49, i64 0, i64 0))
+  %temp_727 = load i32, i32* %result
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_727)
+  br label %L17
 L19:
-  ; x > y -> t40
-  %481 = icmp sgt i64 %204, %205
-  %207 = zext i1 %481 to i64
-  ; y < 5 -> t41
-  %482 = icmp slt i64 %205, 5
-  %209 = zext i1 %482 to i64
-  ; t40 && t41 -> t42
-  %483 = icmp ne i64 %207, 0
-  %484 = icmp ne i64 %209, 0
-  %485 = and i1 %483, %484
-  %211 = zext i1 %485 to i64
-  ; Se t42 é falso, pular para None
-  %486 = icmp eq i64 %211, 0
-  br i1 %486, label %None, label %label_487
-  ; Imprimir string "x ="
-  %488 = getelementptr [6 x i8], [6 x i8]* @str_53, i32 0, i32 0
-  call i32 @printf(i8* %488)
-  ; Imprimir número x
-  %489 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %489, i64 %204)
-  ; Imprimir string "y ="
-  %490 = getelementptr [6 x i8], [6 x i8]* @str_54, i32 0, i32 0
-  call i32 @printf(i8* %490)
-  ; Imprimir número y
-  %491 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %491, i64 %205)
-  ; x - 2 -> t43
-  %221 = sub i64 %204, 2
-  %204 = add i64 0, %221
-  ; y + 1 -> t44
-  %222 = add i64 %205, 1
-  %205 = add i64 0, %222
-  br label %None
+  %temp_728 = load i32, i32* %operacao
+  %temp_729 = load i32, i32* %operacao
+  %temp_730 = icmp eq i32 %temp_729, 3
+  %temp_731 = zext i1 %temp_730 to i32
+  store i32 %temp_731, i32* %t47
+  %temp_732 = load i32, i32* %t47
+  %temp_733 = icmp eq i32 %temp_732, 0
+  br i1 %temp_733, label %L20, label %label_30
+label_30:
+  %temp_734 = load i32, i32* %num1
+  %temp_735 = load i32, i32* %num2
+  %temp_736 = load i32, i32* %num1
+  %temp_737 = load i32, i32* %num2
+  %temp_738 = mul i32 %temp_736, %temp_737
+  store i32 %temp_738, i32* %t48
+  %temp_739 = load i32, i32* %t48
+  store i32 %temp_739, i32* %result
+  call i32 @puts(i8* getelementptr inbounds ([19 x i8], [19 x i8]* @str_10, i64 0, i64 0))
+  %temp_740 = load i32, i32* %num1
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_740)
+  call i32 @puts(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @str_51, i64 0, i64 0))
+  %temp_741 = load i32, i32* %num2
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_741)
+  call i32 @puts(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @str_49, i64 0, i64 0))
+  %temp_742 = load i32, i32* %result
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_742)
+  br label %L17
 L20:
-  ; Imprimir string "=== CASOS AVANÇADOS ==="
-  %492 = getelementptr [26 x i8], [26 x i8]* @str_55, i32 0, i32 0
-  call i32 @printf(i8* %492)
-  %224 = add i64 0, 15
-  %225 = add i64 0, 4
-  %226 = add i64 0, 1
-  ; operacao == 1 -> t45
-  %493 = icmp eq i64 %226, 1
-  %227 = zext i1 %493 to i64
-  ; Se t45 é falso, pular para None
-  %494 = icmp eq i64 %227, 0
-  br i1 %494, label %None, label %label_495
-  ; num1 + num2 -> t46
-  %231 = add i64 %224, %225
-  %232 = add i64 0, %231
-  ; Imprimir string "Soma:"
-  %496 = getelementptr [8 x i8], [8 x i8]* @str_12, i32 0, i32 0
-  call i32 @printf(i8* %496)
-  ; Imprimir número num1
-  %497 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %497, i64 %224)
-  ; Imprimir string "+"
-  %498 = getelementptr [4 x i8], [4 x i8]* @str_56, i32 0, i32 0
-  call i32 @printf(i8* %498)
-  ; Imprimir número num2
-  %499 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %499, i64 %225)
-  ; Imprimir string "="
-  %500 = getelementptr [4 x i8], [4 x i8]* @str_57, i32 0, i32 0
-  call i32 @printf(i8* %500)
-  ; Imprimir número result
-  %501 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %501, i64 %232)
-  br label %None
-L22:
-  ; operacao == 2 -> t47
-  %502 = icmp eq i64 %226, 2
-  %239 = zext i1 %502 to i64
-  ; Se t47 é falso, pular para None
-  %503 = icmp eq i64 %239, 0
-  br i1 %503, label %None, label %label_504
-  ; num1 - num2 -> t48
-  %243 = sub i64 %224, %225
-  %232 = add i64 0, %243
-  ; Imprimir string "Subtração:"
-  %505 = getelementptr [13 x i8], [13 x i8]* @str_13, i32 0, i32 0
-  call i32 @printf(i8* %505)
-  ; Imprimir número num1
-  %506 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %506, i64 %224)
-  ; Imprimir string "-"
-  %507 = getelementptr [4 x i8], [4 x i8]* @str_58, i32 0, i32 0
-  call i32 @printf(i8* %507)
-  ; Imprimir número num2
-  %508 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %508, i64 %225)
-  ; Imprimir string "="
-  %509 = getelementptr [4 x i8], [4 x i8]* @str_57, i32 0, i32 0
-  call i32 @printf(i8* %509)
-  ; Imprimir número result
-  %510 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %510, i64 %232)
-  br label %None
+  %temp_743 = load i32, i32* %operacao
+  %temp_744 = load i32, i32* %operacao
+  %temp_745 = icmp eq i32 %temp_744, 4
+  %temp_746 = zext i1 %temp_745 to i32
+  store i32 %temp_746, i32* %t49
+  %temp_747 = load i32, i32* %t49
+  %temp_748 = icmp eq i32 %temp_747, 0
+  br i1 %temp_748, label %L21, label %label_31
+label_31:
+  %temp_749 = load i32, i32* %num2
+  %temp_750 = load i32, i32* %num2
+  %temp_751 = icmp ne i32 %temp_750, 0
+  %temp_752 = zext i1 %temp_751 to i32
+  store i32 %temp_752, i32* %t50
+  %temp_753 = load i32, i32* %t50
+  %temp_754 = icmp eq i32 %temp_753, 0
+  br i1 %temp_754, label %L23, label %label_32
+label_32:
+  %temp_755 = load i32, i32* %num1
+  %temp_756 = load i32, i32* %num2
+  %temp_757 = load i32, i32* %num1
+  %temp_758 = load i32, i32* %num2
+  %temp_759 = sdiv i32 %temp_757, %temp_758
+  store i32 %temp_759, i32* %t51
+  %temp_760 = load i32, i32* %t51
+  store i32 %temp_760, i32* %result
+  call i32 @puts(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @str_11, i64 0, i64 0))
+  %temp_761 = load i32, i32* %num1
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_761)
+  call i32 @puts(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @str_52, i64 0, i64 0))
+  %temp_762 = load i32, i32* %num2
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_762)
+  call i32 @puts(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @str_49, i64 0, i64 0))
+  %temp_763 = load i32, i32* %result
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_763)
+  br label %L22
 L23:
-  ; operacao == 3 -> t49
-  %511 = icmp eq i64 %226, 3
-  %250 = zext i1 %511 to i64
-  ; Se t49 é falso, pular para None
-  %512 = icmp eq i64 %250, 0
-  br i1 %512, label %None, label %label_513
-  ; num1 * num2 -> t50
-  %254 = mul i64 %224, %225
-  %232 = add i64 0, %254
-  ; Imprimir string "Multiplicação:"
-  %514 = getelementptr [17 x i8], [17 x i8]* @str_14, i32 0, i32 0
-  call i32 @printf(i8* %514)
-  ; Imprimir número num1
-  %515 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %515, i64 %224)
-  ; Imprimir string "*"
-  %516 = getelementptr [4 x i8], [4 x i8]* @str_59, i32 0, i32 0
-  call i32 @printf(i8* %516)
-  ; Imprimir número num2
-  %517 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %517, i64 %225)
-  ; Imprimir string "="
-  %518 = getelementptr [4 x i8], [4 x i8]* @str_57, i32 0, i32 0
-  call i32 @printf(i8* %518)
-  ; Imprimir número result
-  %519 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %519, i64 %232)
-  br label %None
-L24:
-  ; operacao == 4 -> t51
-  %520 = icmp eq i64 %226, 4
-  %261 = zext i1 %520 to i64
-  ; Se t51 é falso, pular para None
-  %521 = icmp eq i64 %261, 0
-  br i1 %521, label %None, label %label_522
-  ; num2 != 0 -> t52
-  %523 = icmp ne i64 %225, 0
-  %265 = zext i1 %523 to i64
-  ; Se t52 é falso, pular para None
-  %524 = icmp eq i64 %265, 0
-  br i1 %524, label %None, label %label_525
-  ; num1 / num2 -> t53
-  %269 = sdiv i64 %224, %225
-  %232 = add i64 0, %269
-  ; Imprimir string "Divisão:"
-  %526 = getelementptr [11 x i8], [11 x i8]* @str_15, i32 0, i32 0
-  call i32 @printf(i8* %526)
-  ; Imprimir número num1
-  %527 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %527, i64 %224)
-  ; Imprimir string "/"
-  %528 = getelementptr [4 x i8], [4 x i8]* @str_60, i32 0, i32 0
-  call i32 @printf(i8* %528)
-  ; Imprimir número num2
-  %529 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %529, i64 %225)
-  ; Imprimir string "="
-  %530 = getelementptr [4 x i8], [4 x i8]* @str_57, i32 0, i32 0
-  call i32 @printf(i8* %530)
-  ; Imprimir número result
-  %531 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %531, i64 %232)
-  br label %None
-L27:
-  ; Imprimir string "Erro: Divisão por zero!"
-  %532 = getelementptr [26 x i8], [26 x i8]* @str_61, i32 0, i32 0
-  call i32 @printf(i8* %532)
-L26:
-  br label %None
-L25:
+  call i32 @puts(i8* getelementptr inbounds ([28 x i8], [28 x i8]* @str_53, i64 0, i64 0))
+  br label %L22
+L22:
+  br label %L17
 L21:
-  %277 = add i64 0, 5
-  %278 = add i64 0, 1
-  ; Imprimir string "Calculando fatorial de"
-  %533 = getelementptr [25 x i8], [25 x i8]* @str_62, i32 0, i32 0
-  call i32 @printf(i8* %533)
-  ; Imprimir número n
-  %534 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %534, i64 %277)
-  %281 = add i64 0, 1
-L28:
-  ; f <= n -> t54
-  %535 = icmp sle i64 %281, %277
-  %282 = zext i1 %535 to i64
-  ; Se t54 é falso, pular para None
-  %536 = icmp eq i64 %282, 0
-  br i1 %536, label %None, label %label_537
-  ; fatorial * f -> t55
-  %286 = mul i64 %278, %281
-  %278 = add i64 0, %286
-  ; Imprimir string "Passo"
-  %538 = getelementptr [8 x i8], [8 x i8]* @str_63, i32 0, i32 0
-  call i32 @printf(i8* %538)
-  ; Imprimir número f
-  %539 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %539, i64 %281)
-  ; Imprimir string ":"
-  %540 = getelementptr [4 x i8], [4 x i8]* @str_64, i32 0, i32 0
-  call i32 @printf(i8* %540)
-  ; Imprimir número fatorial
-  %541 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %541, i64 %278)
-  ; f + 1 -> t56
-  %291 = add i64 %281, 1
-  %281 = add i64 0, %291
-  br label %None
+  br label %L17
+L17:
+  store i32 5, i32* %n
+  store i32 1, i32* %fatorial
+  call i32 @puts(i8* getelementptr inbounds ([27 x i8], [27 x i8]* @str_54, i64 0, i64 0))
+  %temp_764 = load i32, i32* %n
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_764)
+  store i32 1, i32* %f
+  br label %L24
+L24:
+  %temp_765 = load i32, i32* %f
+  %temp_766 = load i32, i32* %n
+  %temp_767 = load i32, i32* %f
+  %temp_768 = load i32, i32* %n
+  %temp_769 = icmp sle i32 %temp_767, %temp_768
+  %temp_770 = zext i1 %temp_769 to i32
+  store i32 %temp_770, i32* %t52
+  %temp_771 = load i32, i32* %t52
+  %temp_772 = icmp eq i32 %temp_771, 0
+  br i1 %temp_772, label %L25, label %label_33
+label_33:
+  %temp_773 = load i32, i32* %fatorial
+  %temp_774 = load i32, i32* %f
+  %temp_775 = load i32, i32* %fatorial
+  %temp_776 = load i32, i32* %f
+  %temp_777 = mul i32 %temp_775, %temp_776
+  store i32 %temp_777, i32* %t53
+  %temp_778 = load i32, i32* %t53
+  store i32 %temp_778, i32* %fatorial
+  call i32 @puts(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @str_55, i64 0, i64 0))
+  %temp_779 = load i32, i32* %f
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_779)
+  call i32 @puts(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @str_56, i64 0, i64 0))
+  %temp_780 = load i32, i32* %fatorial
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_780)
+  %temp_781 = load i32, i32* %f
+  %temp_782 = load i32, i32* %f
+  %temp_783 = add i32 %temp_782, 1
+  store i32 %temp_783, i32* %t54
+  %temp_784 = load i32, i32* %t54
+  store i32 %temp_784, i32* %f
+  br label %L24
+L25:
+  call i32 @puts(i8* getelementptr inbounds ([20 x i8], [20 x i8]* @str_57, i64 0, i64 0))
+  %temp_785 = load i32, i32* %fatorial
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_785)
+  store i32 0, i32* %fib1
+  store i32 1, i32* %fib2
+  store i32 0, i32* %fib_count
+  call i32 @puts(i8* getelementptr inbounds ([28 x i8], [28 x i8]* @str_58, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([11 x i8], [11 x i8]* @str_59, i64 0, i64 0))
+  %temp_786 = load i32, i32* %fib1
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_786)
+  call i32 @puts(i8* getelementptr inbounds ([11 x i8], [11 x i8]* @str_60, i64 0, i64 0))
+  %temp_787 = load i32, i32* %fib2
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_787)
+  br label %L26
+L26:
+  %temp_788 = load i32, i32* %fib_count
+  %temp_789 = load i32, i32* %fib_count
+  %temp_790 = icmp slt i32 %temp_789, 8
+  %temp_791 = zext i1 %temp_790 to i32
+  store i32 %temp_791, i32* %t55
+  %temp_792 = load i32, i32* %t55
+  %temp_793 = icmp eq i32 %temp_792, 0
+  br i1 %temp_793, label %L27, label %label_34
+label_34:
+  %temp_794 = load i32, i32* %fib1
+  %temp_795 = load i32, i32* %fib2
+  %temp_796 = load i32, i32* %fib1
+  %temp_797 = load i32, i32* %fib2
+  %temp_798 = add i32 %temp_796, %temp_797
+  store i32 %temp_798, i32* %t56
+  %temp_799 = load i32, i32* %t56
+  store i32 %temp_799, i32* %proximo
+  %temp_800 = load i32, i32* %fib_count
+  %temp_801 = load i32, i32* %fib_count
+  %temp_802 = add i32 %temp_801, 1
+  store i32 %temp_802, i32* %t57
+  %temp_803 = load i32, i32* %t57
+  store i32 %temp_803, i32* %fib_count
+  call i32 @puts(i8* getelementptr inbounds ([7 x i8], [7 x i8]* @str_61, i64 0, i64 0))
+  %temp_804 = load i32, i32* %fib_count
+  %temp_805 = load i32, i32* %fib_count
+  %temp_806 = add i32 %temp_805, 1
+  store i32 %temp_806, i32* %t58
+  %temp_807 = load i32, i32* %t58
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_807)
+  call i32 @puts(i8* getelementptr inbounds ([8 x i8], [8 x i8]* @str_62, i64 0, i64 0))
+  %temp_808 = load i32, i32* %proximo
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_808)
+  %temp_809 = load i32, i32* %fib2
+  store i32 %temp_809, i32* %fib1
+  %temp_810 = load i32, i32* %proximo
+  store i32 %temp_810, i32* %fib2
+  br label %L26
+L27:
+  store i32 8, i32* %nota
+  store i32 85, i32* %frequencia
+  call i32 @puts(i8* getelementptr inbounds ([35 x i8], [35 x i8]* @str_63, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([10 x i8], [10 x i8]* @str_64, i64 0, i64 0))
+  %temp_811 = load i32, i32* %nota
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_811)
+  call i32 @puts(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @str_65, i64 0, i64 0))
+  %temp_812 = load i32, i32* %frequencia
+  call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([4 x i8], [4 x i8]* @int_format_newline, i64 0, i64 0), i32 %temp_812)
+  %temp_813 = load i32, i32* %nota
+  %temp_814 = load i32, i32* %nota
+  %temp_815 = icmp sge i32 %temp_814, 7
+  %temp_816 = zext i1 %temp_815 to i32
+  store i32 %temp_816, i32* %t59
+  %temp_817 = load i32, i32* %frequencia
+  %temp_818 = load i32, i32* %frequencia
+  %temp_819 = icmp sge i32 %temp_818, 75
+  %temp_820 = zext i1 %temp_819 to i32
+  store i32 %temp_820, i32* %t60
+  %temp_821 = load i32, i32* %t59
+  %temp_822 = load i32, i32* %t60
+  %temp_823 = load i32, i32* %t59
+  %temp_824 = load i32, i32* %t60
+  %temp_825 = icmp ne i32 %temp_823, 0
+  %temp_826 = icmp ne i32 %temp_824, 0
+  %temp_827 = and i1 %temp_825, %temp_826
+  %temp_828 = zext i1 %temp_827 to i32
+  store i32 %temp_828, i32* %t61
+  %temp_829 = load i32, i32* %t61
+  %temp_830 = icmp eq i32 %temp_829, 0
+  br i1 %temp_830, label %L29, label %label_35
+label_35:
+  call i32 @puts(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @str_66, i64 0, i64 0))
+  br label %L28
 L29:
-  ; Imprimir string "Fatorial final:"
-  %542 = getelementptr [18 x i8], [18 x i8]* @str_65, i32 0, i32 0
-  call i32 @printf(i8* %542)
-  ; Imprimir número fatorial
-  %543 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %543, i64 %278)
-  %294 = add i64 0, 0
-  %295 = add i64 0, 1
-  %296 = add i64 0, 0
-  ; Imprimir string "Sequência de Fibonacci:"
-  %544 = getelementptr [26 x i8], [26 x i8]* @str_66, i32 0, i32 0
-  call i32 @printf(i8* %544)
-  ; Imprimir string "F(0) ="
-  %545 = getelementptr [9 x i8], [9 x i8]* @str_67, i32 0, i32 0
-  call i32 @printf(i8* %545)
-  ; Imprimir número fib1
-  %546 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %546, i64 %294)
-  ; Imprimir string "F(1) ="
-  %547 = getelementptr [9 x i8], [9 x i8]* @str_68, i32 0, i32 0
-  call i32 @printf(i8* %547)
-  ; Imprimir número fib2
-  %548 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %548, i64 %295)
+  %temp_831 = load i32, i32* %nota
+  %temp_832 = load i32, i32* %nota
+  %temp_833 = icmp sge i32 %temp_832, 5
+  %temp_834 = zext i1 %temp_833 to i32
+  store i32 %temp_834, i32* %t62
+  %temp_835 = load i32, i32* %frequencia
+  %temp_836 = load i32, i32* %frequencia
+  %temp_837 = icmp sge i32 %temp_836, 75
+  %temp_838 = zext i1 %temp_837 to i32
+  store i32 %temp_838, i32* %t63
+  %temp_839 = load i32, i32* %t62
+  %temp_840 = load i32, i32* %t63
+  %temp_841 = load i32, i32* %t62
+  %temp_842 = load i32, i32* %t63
+  %temp_843 = icmp ne i32 %temp_841, 0
+  %temp_844 = icmp ne i32 %temp_842, 0
+  %temp_845 = and i1 %temp_843, %temp_844
+  %temp_846 = zext i1 %temp_845 to i32
+  store i32 %temp_846, i32* %t64
+  %temp_847 = load i32, i32* %t64
+  %temp_848 = icmp eq i32 %temp_847, 0
+  br i1 %temp_848, label %L30, label %label_36
+label_36:
+  call i32 @puts(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @str_67, i64 0, i64 0))
+  br label %L28
 L30:
-  ; fib_count < 8 -> t57
-  %549 = icmp slt i64 %296, 8
-  %302 = zext i1 %549 to i64
-  ; Se t57 é falso, pular para None
-  %550 = icmp eq i64 %302, 0
-  br i1 %550, label %None, label %label_551
-  ; fib1 + fib2 -> t58
-  %306 = add i64 %294, %295
-  %307 = add i64 0, %306
-  ; fib_count + 1 -> t59
-  %308 = add i64 %296, 1
-  %296 = add i64 0, %308
-  ; Imprimir string "F("
-  %552 = getelementptr [5 x i8], [5 x i8]* @str_69, i32 0, i32 0
-  call i32 @printf(i8* %552)
-  ; fib_count + 1 -> t60
-  %310 = add i64 %296, 1
-  ; Imprimir número t60
-  %553 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %553, i64 %310)
-  ; Imprimir string ") ="
-  %554 = getelementptr [6 x i8], [6 x i8]* @str_70, i32 0, i32 0
-  call i32 @printf(i8* %554)
-  ; Imprimir número proximo
-  %555 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %555, i64 %307)
-  %294 = add i64 0, %295
-  %295 = add i64 0, %307
-  br label %None
-L31:
-  %314 = add i64 0, 8
-  %315 = add i64 0, 85
-  ; Imprimir string "=== VALIDAÇÃO DE APROVAÇÃO ==="
-  %556 = getelementptr [33 x i8], [33 x i8]* @str_71, i32 0, i32 0
-  call i32 @printf(i8* %556)
-  ; Imprimir string "Nota:"
-  %557 = getelementptr [8 x i8], [8 x i8]* @str_72, i32 0, i32 0
-  call i32 @printf(i8* %557)
-  ; Imprimir número nota
-  %558 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %558, i64 %314)
-  ; Imprimir string "Frequência:"
-  %559 = getelementptr [14 x i8], [14 x i8]* @str_73, i32 0, i32 0
-  call i32 @printf(i8* %559)
-  ; Imprimir número frequencia
-  %560 = getelementptr [4 x i8], [4 x i8]* @.str_int, i32 0, i32 0
-  call i32 @printf(i8* %560, i64 %315)
-  ; nota >= 7 -> t61
-  %561 = icmp sge i64 %314, 7
-  %321 = zext i1 %561 to i64
-  ; frequencia >= 75 -> t62
-  %562 = icmp sge i64 %315, 75
-  %323 = zext i1 %562 to i64
-  ; t61 && t62 -> t63
-  %563 = icmp ne i64 %321, 0
-  %564 = icmp ne i64 %323, 0
-  %565 = and i1 %563, %564
-  %325 = zext i1 %565 to i64
-  ; Se t63 é falso, pular para None
-  %566 = icmp eq i64 %325, 0
-  br i1 %566, label %None, label %label_567
-  ; Imprimir string "APROVADO! ✓"
-  %568 = getelementptr [14 x i8], [14 x i8]* @str_74, i32 0, i32 0
-  call i32 @printf(i8* %568)
-  br label %None
-L33:
-  ; nota >= 5 -> t64
-  %569 = icmp sge i64 %314, 5
-  %332 = zext i1 %569 to i64
-  ; frequencia >= 75 -> t65
-  %570 = icmp sge i64 %315, 75
-  %334 = zext i1 %570 to i64
-  ; t64 && t65 -> t66
-  %571 = icmp ne i64 %332, 0
-  %572 = icmp ne i64 %334, 0
-  %573 = and i1 %571, %572
-  %336 = zext i1 %573 to i64
-  ; Se t66 é falso, pular para None
-  %574 = icmp eq i64 %336, 0
-  br i1 %574, label %None, label %label_575
-  ; Imprimir string "RECUPERAÇÃO"
-  %576 = getelementptr [14 x i8], [14 x i8]* @str_75, i32 0, i32 0
-  call i32 @printf(i8* %576)
-  br label %None
-L34:
-  ; Imprimir string "REPROVADO ✗"
-  %577 = getelementptr [14 x i8], [14 x i8]* @str_76, i32 0, i32 0
-  call i32 @printf(i8* %577)
-L32:
-  ; Imprimir string "=========================="
-  %578 = getelementptr [29 x i8], [29 x i8]* @str_77, i32 0, i32 0
-  call i32 @printf(i8* %578)
-  ; Imprimir string "Demonstração finalizada!"
-  %579 = getelementptr [27 x i8], [27 x i8]* @str_78, i32 0, i32 0
-  call i32 @printf(i8* %579)
-  ; Imprimir string "Todas as funcionalidades foram testadas:"
-  %580 = getelementptr [43 x i8], [43 x i8]* @str_79, i32 0, i32 0
-  call i32 @printf(i8* %580)
-  ; Imprimir string "✓ Tipos: int, int, String, bool"
-  %581 = getelementptr [34 x i8], [34 x i8]* @str_80, i32 0, i32 0
-  call i32 @printf(i8* %581)
-  ; Imprimir string "✓ Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||"
-  %582 = getelementptr [57 x i8], [57 x i8]* @str_81, i32 0, i32 0
-  call i32 @printf(i8* %582)
-  ; Imprimir string "✓ Estruturas: if/elseif/else, for, while"
-  %583 = getelementptr [43 x i8], [43 x i8]* @str_82, i32 0, i32 0
-  call i32 @printf(i8* %583)
-  ; Imprimir string "✓ E/S: print, input"
-  %584 = getelementptr [22 x i8], [22 x i8]* @str_83, i32 0, i32 0
-  call i32 @printf(i8* %584)
-  ; Imprimir string "✓ Expressões complexas e precedência"
-  %585 = getelementptr [39 x i8], [39 x i8]* @str_84, i32 0, i32 0
-  call i32 @printf(i8* %585)
-  ; Imprimir string "=========================="
-  %586 = getelementptr [29 x i8], [29 x i8]* @str_77, i32 0, i32 0
-  call i32 @printf(i8* %586)
+  call i32 @puts(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @str_68, i64 0, i64 0))
+  br label %L28
+L28:
+  call i32 @puts(i8* getelementptr inbounds ([31 x i8], [31 x i8]* @str_69, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([29 x i8], [29 x i8]* @str_70, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([45 x i8], [45 x i8]* @str_71, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([25 x i8], [25 x i8]* @str_72, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([59 x i8], [59 x i8]* @str_73, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([45 x i8], [45 x i8]* @str_74, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([24 x i8], [24 x i8]* @str_75, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([41 x i8], [41 x i8]* @str_76, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([31 x i8], [31 x i8]* @str_69, i64 0, i64 0))
   ret i32 0
 }
