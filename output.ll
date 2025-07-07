@@ -2,7 +2,7 @@
 ; Gerado automaticamente pelo compilador
 
 target datalayout = "e-m:w-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
-target triple = "x86_64-w64-windows-gnu"
+target triple = "x86_64-pc-windows-gnu"
 
 ; Declarações de funções externas
 declare i32 @printf(i8*, ...)
@@ -77,17 +77,17 @@ declare void @free(i8*)
 @str_63 = private unnamed_addr constant [35 x i8] c"=== VALIDAÇÃO DE APROVAÇÃO ===\00", align 1
 @str_64 = private unnamed_addr constant [6 x i8] c"Nota:\00", align 1
 @str_65 = private unnamed_addr constant [13 x i8] c"Frequência:\00", align 1
-@str_66 = private unnamed_addr constant [14 x i8] c"APROVADO! ✓\00", align 1
+@str_66 = private unnamed_addr constant [10 x i8] c"APROVADO!\00", align 1
 @str_67 = private unnamed_addr constant [14 x i8] c"RECUPERAÇÃO\00", align 1
-@str_68 = private unnamed_addr constant [14 x i8] c"REPROVADO ✗\00", align 1
+@str_68 = private unnamed_addr constant [11 x i8] c"REPROVADO!\00", align 1
 @str_69 = private unnamed_addr constant [27 x i8] c"==========================\00", align 1
 @str_70 = private unnamed_addr constant [27 x i8] c"Demonstração finalizada!\00", align 1
 @str_71 = private unnamed_addr constant [41 x i8] c"Todas as funcionalidades foram testadas:\00", align 1
-@str_72 = private unnamed_addr constant [23 x i8] c"✓ Tipos: int, String\00", align 1
-@str_73 = private unnamed_addr constant [57 x i8] c"✓ Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||\00", align 1
-@str_74 = private unnamed_addr constant [43 x i8] c"✓ Estruturas: if/elseif/else, for, while\00", align 1
-@str_75 = private unnamed_addr constant [22 x i8] c"✓ E/S: print, input\00", align 1
-@str_76 = private unnamed_addr constant [41 x i8] c"✓ Expressões complexas e precedência\00", align 1
+@str_72 = private unnamed_addr constant [19 x i8] c"Tipos: int, String\00", align 1
+@str_73 = private unnamed_addr constant [53 x i8] c"Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||\00", align 1
+@str_74 = private unnamed_addr constant [39 x i8] c"Estruturas: if/elseif/else, for, while\00", align 1
+@str_75 = private unnamed_addr constant [18 x i8] c"E/S: print, input\00", align 1
+@str_76 = private unnamed_addr constant [37 x i8] c"Expressões complexas e precedência\00", align 1
 @int_format = private unnamed_addr constant [3 x i8] c"%d\00", align 1
 @int_format_newline = private unnamed_addr constant [5 x i8] c"%d\n\00", align 1
 @string_format = private unnamed_addr constant [3 x i8] c"%s\00", align 1
@@ -959,7 +959,7 @@ L27:
   %temp_830 = icmp eq i32 %temp_829, 0
   br i1 %temp_830, label %L29, label %label_35
 label_35:
-  call i32 @puts(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @str_66, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([14 x i8], [14 x i8]* @str_66, i64 0, i64 0))
   br label %L28
 L29:
   %temp_831 = load i32, i32* %nota
@@ -988,17 +988,17 @@ label_36:
   call i32 @puts(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @str_67, i64 0, i64 0))
   br label %L28
 L30:
-  call i32 @puts(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @str_68, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([15 x i8], [15 x i8]* @str_68, i64 0, i64 0))
   br label %L28
 L28:
   call i32 @puts(i8* getelementptr inbounds ([31 x i8], [31 x i8]* @str_69, i64 0, i64 0))
   call i32 @puts(i8* getelementptr inbounds ([29 x i8], [29 x i8]* @str_70, i64 0, i64 0))
   call i32 @puts(i8* getelementptr inbounds ([45 x i8], [45 x i8]* @str_71, i64 0, i64 0))
-  call i32 @puts(i8* getelementptr inbounds ([25 x i8], [25 x i8]* @str_72, i64 0, i64 0))
-  call i32 @puts(i8* getelementptr inbounds ([59 x i8], [59 x i8]* @str_73, i64 0, i64 0))
-  call i32 @puts(i8* getelementptr inbounds ([45 x i8], [45 x i8]* @str_74, i64 0, i64 0))
-  call i32 @puts(i8* getelementptr inbounds ([24 x i8], [24 x i8]* @str_75, i64 0, i64 0))
-  call i32 @puts(i8* getelementptr inbounds ([41 x i8], [41 x i8]* @str_76, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([23 x i8], [23 x i8]* @str_72, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([57 x i8], [57 x i8]* @str_73, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([43 x i8], [43 x i8]* @str_74, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([22 x i8], [22 x i8]* @str_75, i64 0, i64 0))
+  call i32 @puts(i8* getelementptr inbounds ([39 x i8], [39 x i8]* @str_76, i64 0, i64 0))
   call i32 @puts(i8* getelementptr inbounds ([31 x i8], [31 x i8]* @str_69, i64 0, i64 0))
   ret i32 0
 }

@@ -314,7 +314,7 @@ t59 = nota >= 7
 t60 = frequencia >= 75
 t61 = t59 && t60
 if_false t61 goto L29
-print "APROVADO! ✓"
+print "APROVADO!"
 goto L28
 L29:
 t62 = nota >= 5
@@ -324,14 +324,14 @@ if_false t64 goto L30
 print "RECUPERAÇÃO"
 goto L28
 L30:
-print "REPROVADO ✗"
+print "REPROVADO!"
 L28:
 print "=========================="
 print "Demonstração finalizada!"
 print "Todas as funcionalidades foram testadas:"
-print "✓ Tipos: int, String"
-print "✓ Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||"
-print "✓ Estruturas: if/elseif/else, for, while"
-print "✓ E/S: print, input"
-print "✓ Expressões complexas e precedência"
+print "Tipos: int, String"
+print "Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||"
+print "Estruturas: if/elseif/else, for, while"
+print "E/S: print, input"
+print "Expressões complexas e precedência"
 print "=========================="

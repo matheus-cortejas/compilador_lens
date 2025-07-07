@@ -162,41 +162,25 @@ def analisar_arquivo(caminho_arquivo):
             print("✅ Código TAC salvo em 'output.tac'.")
 
         # ========================================
-        # 🔧 FASE 5: ESCOLHA DO BACKEND
+        # 🔧 FASE 5: GERAÇÃO DE LLVM IR
         # ========================================
         print("\n🔧 FASE 5: Escolha do Backend de Geração")
         print("2. LLVM IR (.ll)")
         
-        while True:
-            try:
-                escolha = input("\nEscolha uma opção (1, 2 ou 3): ").strip()
-                if escolha in ['1', '2', '3']:
-                    break
-                print("⚠️ Opção inválida. Digite 1, 2 ou 3.")
-            except KeyboardInterrupt:
-                print("\n\n👋 Compilação cancelada pelo usuário.")
-                return
-
         arquivos_gerados = []
 
-        # ========================================
-        # 🔧 GERAÇÃO DE LLVM IR
-        # ========================================
-        if escolha in ['2', '3']:
-            print("\n🦙 Gerando LLVM IR...")
+        logging.info("Iniciando geração de código LLVM IR.")
+        llvm_generator = LLVMIRGenerator(tac_generator.instructions)
             
-            logging.info("Iniciando geração de código LLVM IR.")
-            llvm_generator = LLVMIRGenerator(tac_generator.instructions)
+        print("✅ Código LLVM IR gerado com sucesso.")
+        print("\n🦙 Código LLVM IR:")
+        print("-" * 60)
+        print(llvm_generator.generate())
+        print("-" * 60)
             
-            print("✅ Código LLVM IR gerado com sucesso.")
-            print("\n🦙 Código LLVM IR:")
-            print("-" * 60)
-            print(llvm_generator.generate())
-            print("-" * 60)
-            
-            if llvm_generator.save_to_file("output.ll"):
-                print("✅ Código LLVM IR salvo em 'output.ll'.")
-                arquivos_gerados.append("output.ll")
+        if llvm_generator.save_to_file("output.ll"):
+            print("✅ Código LLVM IR salvo em 'output.ll'.")
+            arquivos_gerados.append("output.ll")
 
         # ========================================
         # 🎉 FINALIZAÇÃO
@@ -208,9 +192,7 @@ def analisar_arquivo(caminho_arquivo):
         print("   • output.tac      - Código Intermediário")
         
         for arquivo in arquivos_gerados:
-            if arquivo == "output.s":
-                print("   • output.s        - Assembly x86-64")
-            elif arquivo == "output.ll":
+            if arquivo == "output.ll":
                 print("   • output.ll       - LLVM IR")
 
         # ========================================
@@ -218,30 +200,15 @@ def analisar_arquivo(caminho_arquivo):
         # ========================================
         print("\n💡 Instruções de execução:")
         
-        if "output.s" in arquivos_gerados:
-            print("\n📋 Assembly x86-64 (output.s):")
-            print("   as output.s -o output.o")
-            print("   ld output.o -o programa")
-            print("   ./programa")
-        
         if "output.ll" in arquivos_gerados:
             print("\n📋 LLVM IR (output.ll):")
             print("   # Execução direta:")
-            print("   lli output.ll")
-            print("   ")
-            print("   # OU compilar para executável:")
-            print("   llc output.ll -o output.s")
-            print("   cl output.s /Fe:programa.exe    # Windows")
-            print("   gcc output.s -o programa        # Linux/Mac")
-            print("   programa.exe                    # Windows")
-            print("   ./programa                      # Linux/Mac")
+            print("   clang output.ll -o output.exe")
 
         print("\n🔧 Dependências necessárias:")
-        if "output.s" in arquivos_gerados:
-            print("   • GNU Assembler (as) e Linker (ld)")
         if "output.ll" in arquivos_gerados:
-            print("   • LLVM (lli, llc)")
-            print("   • Visual Studio Build Tools (cl) ou GCC")
+            print("   • LLVM (clang)")
+            print("   • MinGW (GCC)")
 
     except Exception as e:
         logging.exception(f"Erro durante a análise: {e}")
@@ -249,7 +216,7 @@ def analisar_arquivo(caminho_arquivo):
 
 if __name__ == "__main__":
     print("🚀 COMPILADOR LENS - Pipeline Completo")
-    print("📋 Fases: Léxica → Sintática → Semântica → TAC → [Assembly/LLVM]")
+    print("📋 Fases: Léxica → Sintática → Semântica → TAC → LLVM")
     print("=" * 80)
     
     # caminho = str(input("Digite o nome do arquivo Lens: "))

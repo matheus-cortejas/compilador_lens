@@ -1,10 +1,10 @@
 @start
     // =====================================================
-    // 🔍 DEMONSTRAÇÃO COMPLETA DA LINGUAGEM LENS
+    //   DEMONSTRAÇÃO COMPLETA DA LINGUAGEM LENS
     // =====================================================
     
     // =====================================================
-    // 📝 DECLARAÇÕES DE VARIÁVEIS (todos os tipos)
+    //   DECLARAÇÕES DE VARIÁVEIS (todos os tipos)
     // =====================================================
     
     // Tipos primitivos básicos
@@ -18,7 +18,7 @@
     let sobrenome: String
     
     // =====================================================
-    // 🔧 ATRIBUIÇÕES (simples e compostas)
+    //   ATRIBUIÇÕES (simples e compostas)
     // =====================================================
     
     // Atribuições simples
@@ -33,7 +33,7 @@
     peso /= 2           // peso = peso / 2 = 35
     
     // =====================================================
-    // 📤 IMPRESSÕES (vários formatos)
+    //   IMPRESSÕES (vários formatos)
     // =====================================================
     
     // Impressão simples
@@ -48,7 +48,7 @@
     print :: "Peso:", peso
     
     // =====================================================
-    // 🔢 EXPRESSÕES ARITMÉTICAS
+    //   EXPRESSÕES ARITMÉTICAS
     // =====================================================
     
     let a: int = 10
@@ -73,7 +73,7 @@
     print :: "Com parênteses:", complexo
     
     // =====================================================
-    // 🔍 EXPRESSÕES DE COMPARAÇÃO
+    //  EXPRESSÕES DE COMPARAÇÃO
     // =====================================================
     
     let igual: int = a == b        // 0 (falso)
@@ -92,7 +92,7 @@
     print :: "10 >= 3:", maiorIgual
     
     // =====================================================
-    // 🧠 EXPRESSÕES LÓGICAS
+    //  EXPRESSÕES LÓGICAS
     // =====================================================
     
     let condicao1: int = 1      // 1 para verdadeiro
@@ -110,7 +110,7 @@
     print :: "Expressão complexa:", complexa
     
     // =====================================================
-    // 📥 ENTRADA DE DADOS
+    //   ENTRADA DE DADOS
     // =====================================================
     
     let entrada_usuario: int
@@ -120,7 +120,7 @@
     print :: "Você digitou:", entrada_usuario
     
     // =====================================================
-    // 🔀 ESTRUTURAS CONDICIONAIS (if/elseif/else)
+    //   ESTRUTURAS CONDICIONAIS (if/elseif/else)
     // =====================================================
     
     print :: "=== ESTRUTURAS CONDICIONAIS ==="
@@ -142,7 +142,7 @@
     }
     
     // =====================================================
-    // 🔁 LAÇOS FOR (iteração com range)
+    //   LAÇOS FOR (iteração com range)
     // =====================================================
     
     print :: "=== LAÇOS FOR ==="
@@ -170,7 +170,7 @@
     }
     
     // =====================================================
-    // 🔄 LAÇOS WHILE (iteração condicional)
+    //   LAÇOS WHILE (iteração condicional)
     // =====================================================
     
     print :: "=== LAÇOS WHILE ==="
@@ -194,7 +194,7 @@
     }
     
     // =====================================================
-    // 🎯 CASOS DE USO AVANÇADOS
+    //   CASOS DE USO AVANÇADOS
     // =====================================================
     
     print :: "=== CASOS AVANÇADOS ==="
@@ -259,25 +259,25 @@
     print :: "Frequência:", frequencia
     
     if (nota >= 7 && frequencia >= 75) {
-        print :: "APROVADO! ✓"
+        print :: "APROVADO!"
     } elseif (nota >= 5 && frequencia >= 75) {
         print :: "RECUPERAÇÃO"
     } else {
-        print :: "REPROVADO ✗"
+        print :: "REPROVADO!"
     }
     
     // =====================================================
-    // 🎉 FINALIZAÇÃO
+    //   FINALIZAÇÃO
     // =====================================================
     
     print :: "=========================="
     print :: "Demonstração finalizada!"
     print :: "Todas as funcionalidades foram testadas:"
-    print :: "✓ Tipos: int, String"
-    print :: "✓ Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||"
-    print :: "✓ Estruturas: if/elseif/else, for, while"
-    print :: "✓ E/S: print, input"
-    print :: "✓ Expressões complexas e precedência"
+    print :: "Tipos: int, String"
+    print :: "Operadores: +, -, *, /, ==, !=, <, >, <=, >=, &&, ||"
+    print :: "Estruturas: if/elseif/else, for, while"
+    print :: "E/S: print, input"
+    print :: "Expressões complexas e precedência"
     print :: "=========================="
 
 @end
