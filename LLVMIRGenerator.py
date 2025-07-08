@@ -77,16 +77,19 @@ class LLVMIRGenerator:
         # Gerar as strings globais
         self.llvm_code.append("; Strings globais")
         for name, value in self.string_literals.items():
-            # Remove aspas externas para calcular o tamanho real
-            if value.startswith('"') and value.endswith('"'):
-                raw = value[1:-1]
-            else:
-                raw = value
-            length = len(raw.encode('utf-8')) + 1  # +1 para o terminador nulo
+            # PRIMEIRO: Processar escapes
             escaped_value = self._escape_string(value)
+            
+            # SEGUNDO: Calcular tamanho baseado no valor processado
+            # Remove aspas do escaped_value para contar bytes
+            content = escaped_value[1:-1]  # Remove aspas externas
+            # Decodifica escapes LLVM para contar bytes reais
+            real_content = content.replace('\\0A', '\n').replace('\\09', '\t').replace('\\0D', '\r').replace('\\00', '\0')
+            length = len(real_content.encode('utf-8'))
+            
             self.llvm_code.append(f"@{name} = private unnamed_addr constant [{length} x i8] c{escaped_value}, align 1")
         self.llvm_code.append("")
-
+        
     def _add_string_literal(self, string_value: str) -> str:
         """Adiciona uma string literal e retorna seu nome global."""
         if string_value not in self.string_literals.values():
@@ -111,6 +114,12 @@ class LLVMIRGenerator:
         # Remove aspas externas
         if s.startswith('"') and s.endswith('"'):
             s = s[1:-1]
+        
+        # Converte escapes para formato LLVM
+        s = s.replace('\\n', '\\0A')    # Nova linha
+        s = s.replace('\\t', '\\09')    # Tab
+        s = s.replace('\\r', '\\0D')    # Carriage return
+        s = s.replace('\\\\', '\\5C')   # Backslash literal
         
         # Adiciona null terminator
         return f'"{s}\\00"'
