@@ -77,10 +77,10 @@ class LLVMIRGenerator:
         # Gerar as strings globais
         self.llvm_code.append("; Strings globais")
         for name, value in self.string_literals.items():
-            # PRIMEIRO: Processar escapes
+            # Processar escapes
             escaped_value = self._escape_string(value)
             
-            # SEGUNDO: Calcular tamanho baseado no valor processado
+            # Calcular tamanho baseado no valor processado
             # Remove aspas do escaped_value para contar bytes
             content = escaped_value[1:-1]  # Remove aspas externas
             # Decodifica escapes LLVM para contar bytes reais
@@ -132,10 +132,10 @@ class LLVMIRGenerator:
             "entry:"
         ])
         
-        # PRIMEIRO: Analisar todas as variáveis que serão usadas
+        # Analisar todas as variáveis que serão usadas
         self._pre_analyze_variables()
         
-        # SEGUNDO: Gerar todas as declarações de variáveis no início
+        # Gerar todas as declarações de variáveis no início
         self._generate_all_allocas()
 
         # Processar instruções TAC
@@ -326,7 +326,6 @@ class LLVMIRGenerator:
         result_reg = self._new_temp_reg()
         self.llvm_code.append(f"  {result_reg} = icmp {llvm_op} i32 {left_reg}, {right_reg}")
         
-        # Converter boolean para inteiro (1 ou 0)
         int_reg = self._new_temp_reg()
         self.llvm_code.append(f"  {int_reg} = zext i1 {result_reg} to i32")
         
@@ -337,8 +336,6 @@ class LLVMIRGenerator:
     
     def _generate_logical(self, op: str, left: str, right: str, result: str):
         """Gera código para operações lógicas."""
-        # Para operações lógicas, precisamos de short-circuit evaluation
-        # Por simplicidade, vamos fazer uma implementação básica
         
         left_val = self._get_value(left)
         right_val = self._get_value(right)
@@ -428,7 +425,7 @@ class LLVMIRGenerator:
             if last_line.startswith(term):
                 return True
         
-        return False  # Removido: or last_line.endswith(':')
+        return False 
 
     def _generate_goto(self, label: str):
         """Gera um salto incondicional."""
@@ -484,7 +481,6 @@ class LLVMIRGenerator:
                 'llvm_name': f"%{name}"
             }
         else:
-            # Atualizar tipo se necessário
             self.variables[name]['type'] = var_type
     
     def _load_variable(self, name: str, var_type: str) -> str:
@@ -499,7 +495,7 @@ class LLVMIRGenerator:
         if self._is_integer(value):
             return value
         elif self._is_string(value):
-            return value  # Será processado pelo contexto
+            return value  
         elif value in self.variables:
             var_type = self.variables[value]['type']
             return self._load_variable(value, var_type)

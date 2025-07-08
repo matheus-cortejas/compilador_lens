@@ -47,8 +47,6 @@ class SemanticAnalyzer(lensVisitor):
         self.error(line, f"Variável '{var_name}' usada sem declaração.")
         return None
 
-    # MUDANÇA: dec → declaracao
-    # Precisamos também salvar o valor das variáveis nas declarações
     def visitDeclaracao(self, ctx: lensParser.DeclaracaoContext):
         # Tenta múltiplas formas de acessar VAR
         if hasattr(ctx, 'VAR') and ctx.VAR():
@@ -74,7 +72,6 @@ class SemanticAnalyzer(lensVisitor):
             self.scope_stack[-1][var_name]["atribuida"] = True
             valor_tipo = self.visit(ctx.expressao())
             
-            # NOVO: Salvar valor se for literal simples
             if ctx.expressao():
                 valor_texto = ctx.expressao().getText()
                 self.scope_stack[-1][var_name]["valor"] = valor_texto
@@ -83,7 +80,6 @@ class SemanticAnalyzer(lensVisitor):
                 self.error(line, f"Atribuição incompatível: '{var_name}' é '{var_type}', mas recebeu '{valor_tipo}'.")
         return None
 
-    # MUDANÇA: atrsolta → atribuicao
     def visitAtribuicao(self, ctx: lensParser.AtribuicaoContext):
         try:
             var_name = ctx.VAR().getText()
@@ -102,21 +98,17 @@ class SemanticAnalyzer(lensVisitor):
             if valor_tipo and valor_tipo != "erro" and not self.comparar_tipos(simbolo["type"], valor_tipo):
                 self.error(line, f"Atribuição incompatível: '{var_name}' é '{simbolo['type']}', mas recebeu '{valor_tipo}'.")
                 
-            # NOVO: Atualizar valor se for literal
             if ctx.expressao():
                 valor_texto = ctx.expressao().getText()
                 if valor_texto.replace('-', '').isdigit():
                     simbolo["valor"] = valor_texto
         return None   
 
-    # MUDANÇA: imprime → impressao
     def visitImpressao(self, ctx: lensParser.ImpressaoContext):
-        # Mudança: concat() → acesso direto às expressões
         for expressao in ctx.expressao():
             self.visit(expressao)
         return None
 
-    # MUDANÇA: ler → entrada
     def visitEntrada(self, ctx: lensParser.EntradaContext):
         var_name = ctx.VAR().getText()
         line = ctx.start.line
@@ -124,14 +116,12 @@ class SemanticAnalyzer(lensVisitor):
         # Verificar se a variável existe
         simbolo = self.buscar_var(var_name, line)
         
-        # CORREÇÃO: input() atribui valor à variável
         if simbolo:
-            simbolo["atribuida"] = True  # ← LINHA ADICIONADA
+            simbolo["atribuida"] = True  
             self.log_action(f"Variável '{var_name}' recebeu valor via input().")
         
         return None
 
-    # MUDANÇA: condicao → condicional
     def visitCondicional(self, ctx: lensParser.CondicionalContext):
         # Visitar if obrigatório
         if ctx.if_stmt():
@@ -212,7 +202,6 @@ class SemanticAnalyzer(lensVisitor):
         # Criar novo escopo para o for
         self.scope_stack.append({})
         
-        # CORREÇÃO: Declarar automaticamente a variável de iteração
         if hasattr(ctx, 'VAR') and ctx.VAR():
             var_name = ctx.VAR().getText()
             line = ctx.start.line
@@ -256,7 +245,7 @@ class SemanticAnalyzer(lensVisitor):
         self.scope_stack.pop()
         return None
 
-    # Métodos para expressões (adaptados aos novos nomes)
+    # Métodos para expressões
     def visitExpressao(self, ctx: lensParser.ExpressaoContext):
         return self.visit(ctx.expressao_logica())
 
@@ -268,7 +257,6 @@ class SemanticAnalyzer(lensVisitor):
             # Há operações lógicas
             for i in range(1, len(ctx.expressao_comparacao())):
                 tipo_expr = self.visit(ctx.expressao_comparacao(i))
-                # Permitir apenas int para lógica (0 = falso, !=0 = verdadeiro)
                 if tipo_primeiro != "int" or tipo_expr != "int":
                     self.error(ctx.start.line, f"Operação lógica requer inteiros (0 ou 1).")
                     return "erro"
@@ -296,7 +284,6 @@ class SemanticAnalyzer(lensVisitor):
             for i in range(1, len(ctx.termo_arit())):
                 tipos.append(self.visit(ctx.termo_arit(i)))
             
-            # CORREÇÃO: Permitir concatenação de strings com operador +
             if "String" in tipos:
                 # Se tem String, só permite + para concatenação
                 if hasattr(ctx, 'op_adicao'):
@@ -381,6 +368,5 @@ class SemanticAnalyzer(lensVisitor):
         """Relatório final da análise semântica."""
         if not self.errors_found:
             logging.info("Análise semântica concluída sem erros.")
-            # NÃO imprime no console - será feito no main.py
         else:
             logging.error(f"Análise semântica encontrou erros.")
